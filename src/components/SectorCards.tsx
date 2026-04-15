@@ -45,32 +45,40 @@ export default function SectorCards() {
   return (
     <section id="sectors" className="section-padding bg-background">
       <div className="container mx-auto">
-        <h2 className="text-3xl md:text-4xl text-center mb-3">I'm looking for…</h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-lg mx-auto">
-          Select your sector and we'll guide you to the right AED solution
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-3">I'm looking for…</h2>
+          <p className="text-muted-foreground max-w-lg mx-auto">
+            Select your sector and we'll guide you to the right AED solution
+          </p>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {sectors.map((sector, i) => (
             <motion.div
               key={sector.slug}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
               <Link
                 to={`/sectors?tab=${sector.slug}`}
-                className={`group block rounded-xl bg-card border-l-4 ${sector.color} p-6 hover:shadow-lg transition-all duration-300 h-full`}
+                className={`group block rounded-2xl glass-card border-l-4 ${sector.color} p-8 hover-lift focus-ring h-full`}
               >
-                <div className={`inline-flex p-3 rounded-lg ${sector.bgColor} mb-4`}>
+                <div className={`inline-flex p-3 rounded-xl ${sector.bgColor} mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   <sector.icon className={`h-6 w-6 ${sector.iconColor}`} />
                 </div>
                 <h3 className="font-heading font-bold text-lg mb-2 text-card-foreground">
                   {sector.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">{sector.description}</p>
-                <span className="inline-flex items-center text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                <p className="text-sm text-muted-foreground mb-6">{sector.description}</p>
+                <span className="inline-flex items-center text-sm font-medium text-primary group-hover:gap-2 transition-all duration-300">
                   Learn more <ArrowRight className="h-4 w-4 ml-1" />
                 </span>
               </Link>
