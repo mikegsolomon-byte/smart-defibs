@@ -2,7 +2,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
-import { Shield, CheckCircle } from "lucide-react";
+import { Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -29,30 +29,34 @@ export default function ProductsPage() {
 
         <section className="section-padding bg-background">
           <div className="container mx-auto">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {products.map((p, i) => (
                 <motion.div
                   key={p.name}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.4 }}
-                  className="bg-card border border-border rounded-xl p-6 flex flex-col"
+                  className="glass-card p-8 flex flex-col hover-lift group"
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    <Shield className="h-5 w-5 text-primary" />
-                    <span className="text-xs font-medium bg-primary/10 text-primary px-2 py-0.5 rounded-full">CE Marked</span>
+                  {/* Image placeholder */}
+                  <div className="h-40 rounded-xl bg-muted/50 mb-6 flex items-center justify-center">
+                    <Shield className="h-12 w-12 text-primary/20 group-hover:text-primary/30 transition-colors" />
                   </div>
-                  <h3 className="font-heading font-bold text-lg text-card-foreground mb-1">{p.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 flex-1">{p.desc}</p>
-                  <div className="flex flex-wrap gap-1 mb-4">
+
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs font-medium bg-primary/10 text-primary px-2.5 py-1 rounded-full">CE Marked</span>
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-card-foreground mb-2">{p.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-6 flex-1">{p.desc}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-6">
                     {p.tags.map((t) => (
-                      <span key={t} className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">{t}</span>
+                      <span key={t} className="text-xs bg-muted text-muted-foreground px-2.5 py-1 rounded-full">{t}</span>
                     ))}
                   </div>
-                  <div className="flex items-center justify-between">
-                    <p className="font-heading font-bold text-primary">{p.price}</p>
-                    <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-teal-light">
+                  <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                    <p className="font-heading font-bold text-lg text-primary">{p.price}</p>
+                    <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-teal-light btn-micro">
                       <Link to="/quote">Add to Quote</Link>
                     </Button>
                   </div>

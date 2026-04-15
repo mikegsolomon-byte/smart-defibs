@@ -56,6 +56,10 @@
     --sector-community: 260 50% 50%;
     --sector-nursing: 210 60% 45%;
     --sector-workplace: 35 60% 45%;
+
+    /* Glass tokens */
+    --glass-bg: 0 0% 100% / 0.6;
+    --glass-border: 0 0% 100% / 0.2;
   }
 
   .dark {
@@ -67,7 +71,7 @@
     --popover-foreground: 180 10% 95%;
     --primary: 170 75% 40%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 195 50% 18%;
+    --secondary: 195 50% 12%;
     --secondary-foreground: 180 10% 95%;
     --muted: 195 40% 16%;
     --muted-foreground: 180 10% 65%;
@@ -78,6 +82,9 @@
     --border: 195 40% 20%;
     --input: 195 40% 20%;
     --ring: 170 75% 40%;
+
+    --glass-bg: 195 50% 12% / 0.6;
+    --glass-border: 195 40% 30% / 0.3;
   }
 }
 
@@ -97,10 +104,32 @@
 
 @layer components {
   .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 lg:py-24;
+    @apply px-4 sm:px-8 lg:px-8 py-16 lg:py-24;
   }
 
   .trust-badge {
     @apply flex items-center gap-2 text-sm font-medium text-primary;
+  }
+
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/40 rounded-2xl;
+  }
+
+  .btn-micro {
+    @apply transition-all duration-200 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
