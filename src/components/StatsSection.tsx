@@ -26,8 +26,7 @@ function AnimatedCounter({ value, prefix, suffix }: { value: number; prefix: str
 export default function StatsSection() {
   return (
     <section className="bg-secondary section-padding relative overflow-hidden">
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(var(--primary)/0.15),_transparent_60%)] pointer-events-none" />
 
       <div className="container mx-auto relative">
         <motion.div
@@ -37,7 +36,8 @@ export default function StatsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-secondary-foreground mb-3">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">The facts</span>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-secondary-foreground mb-3 font-extrabold tracking-tight">
             Why act now
           </h2>
           <p className="text-secondary-foreground/60 max-w-lg mx-auto">
@@ -45,17 +45,17 @@ export default function StatsSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="text-center p-8 rounded-2xl bg-secondary-foreground/5 border border-secondary-foreground/10 backdrop-blur-sm hover-lift"
+              transition={{ delay: i * 0.08, duration: 0.5 }}
+              className="text-center p-6 md:p-8 rounded-2xl bg-secondary-foreground/[0.04] border border-secondary-foreground/10 hover:border-primary/40 transition-colors"
             >
-              <p className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary mb-3">
+              <p className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-primary mb-3">
                 {stat.value !== null ? (
                   <AnimatedCounter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                 ) : (

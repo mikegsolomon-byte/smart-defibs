@@ -11,23 +11,20 @@ const badges = [
 
 export default function TrustBar() {
   return (
-    <section className="bg-card/80 backdrop-blur-sm border-y border-border/50">
+    <section className="bg-background border-y border-border">
       <div className="container mx-auto px-4 lg:px-8 py-5">
-        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
           {badges.map((badge, i) => (
             <motion.div
               key={badge}
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 6 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="trust-badge"
+              transition={{ delay: i * 0.06, duration: 0.35 }}
+              className="flex items-center gap-2 text-sm font-semibold text-foreground/70"
             >
-              <CheckCircle className="h-4 w-4 flex-shrink-0" />
+              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
               <span>{badge}</span>
-              {i < badges.length - 1 && (
-                <span className="hidden sm:inline ml-6 w-px h-4 bg-border" />
-              )}
             </motion.div>
           ))}
         </div>

@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        heading: ['Manrope', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -60,6 +60,14 @@ export default {
           light: "hsl(var(--teal-light))",
         },
         gold: "hsl(var(--gold))",
+        charcoal: {
+          DEFAULT: "hsl(var(--charcoal))",
+          light: "hsl(var(--charcoal-light))",
+        },
+        "red-brand": "hsl(var(--red-brand))",
+        "red-deep": "hsl(var(--red-deep))",
+        "red-soft": "hsl(var(--red-soft))",
+        "surface-soft": "hsl(var(--surface-soft))",
         sector: {
           schools: "hsl(var(--sector-schools))",
           community: "hsl(var(--sector-community))",
