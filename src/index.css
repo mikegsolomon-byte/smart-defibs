@@ -127,7 +127,11 @@
   }
 
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-border/40 rounded-2xl;
+    @apply bg-card border border-border rounded-xl shadow-sm;
+  }
+
+  .clinical-card {
+    @apply bg-card border border-border rounded-xl shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5;
   }
 
   .btn-micro {

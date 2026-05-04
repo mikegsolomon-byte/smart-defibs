@@ -40,16 +40,21 @@ export default function SiteHeader() {
         visible ? "translate-y-0" : "-translate-y-full"
       } ${
         scrolled
-          ? "bg-secondary/80 backdrop-blur-xl border-b border-border/30 shadow-sm"
-          : "bg-secondary border-b border-transparent"
+          ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-sm"
+          : "bg-background border-b border-border/60"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-16 px-4 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 focus-ring rounded-lg">
-          <img src={aedLogo} alt="AED Ireland" className="h-9 w-9" />
-          <span className="font-heading font-bold text-lg text-secondary-foreground">
-            AED Ireland
-          </span>
+      <div className="container mx-auto flex items-center justify-between h-20 px-4 lg:px-8">
+        <Link to="/" className="flex items-center gap-3 focus-ring rounded-lg">
+          <img src={aedLogo} alt="AED Ireland logo" className="h-11 w-11" />
+          <div className="leading-tight">
+            <span className="block font-heading font-extrabold text-lg text-foreground tracking-tight">
+              AED Ireland
+            </span>
+            <span className="block text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
+              Saving lives, every second
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -57,10 +62,10 @@ export default function SiteHeader() {
             <Link
               key={link.href}
               to={link.href}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors focus-ring ${
+              className={`px-4 py-2 rounded-md text-sm font-semibold transition-colors focus-ring ${
                 location.pathname === link.href
-                  ? "text-primary bg-primary/10"
-                  : "text-secondary-foreground/80 hover:text-primary hover:bg-primary/5"
+                  ? "text-primary"
+                  : "text-foreground/75 hover:text-primary"
               }`}
             >
               {link.label}
@@ -68,16 +73,16 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-3">
           <a
             href="tel:01234567"
-            className="flex items-center gap-1.5 text-sm text-secondary-foreground/70 hover:text-primary transition-colors px-3 py-2"
+            className="flex items-center gap-1.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
           >
             <Phone className="h-4 w-4" />
             01 234 5678
           </a>
           <ThemeToggle />
-          <Button asChild className="bg-primary text-primary-foreground hover:bg-teal-light btn-micro">
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro shadow-sm">
             <Link to="/quote">Get a Quote</Link>
           </Button>
         </div>
@@ -85,7 +90,7 @@ export default function SiteHeader() {
         <div className="flex lg:hidden items-center gap-2">
           <ThemeToggle />
           <button
-            className="text-secondary-foreground p-2 focus-ring rounded-lg"
+            className="text-foreground p-2 focus-ring rounded-lg"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -101,7 +106,7 @@ export default function SiteHeader() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="lg:hidden overflow-hidden bg-secondary/95 backdrop-blur-xl border-t border-border/20"
+            className="lg:hidden overflow-hidden bg-background border-t border-border"
           >
             <nav className="py-4">
               {navLinks.map((link, i) => (
@@ -114,14 +119,14 @@ export default function SiteHeader() {
                   <Link
                     to={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block px-6 py-3 min-h-[44px] flex items-center text-secondary-foreground/80 hover:text-primary hover:bg-primary/5 transition-colors focus-ring"
+                    className="block px-6 py-3 min-h-[44px] flex items-center text-foreground/80 hover:text-primary hover:bg-muted transition-colors focus-ring font-semibold"
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
               <div className="px-6 pt-4">
-                <Button asChild className="w-full bg-primary text-primary-foreground btn-micro">
+                <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-red-deep btn-micro">
                   <Link to="/quote" onClick={() => setMobileOpen(false)}>Get a Quote</Link>
                 </Button>
               </div>

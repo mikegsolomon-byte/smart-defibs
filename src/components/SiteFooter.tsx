@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Heart, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import aedLogo from "@/assets/aed-logo.png";
 
 export default function SiteFooter() {
   return (
@@ -7,9 +8,9 @@ export default function SiteFooter() {
       <div className="container mx-auto px-4 sm:px-8 lg:px-8 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <Heart className="h-6 w-6 text-primary fill-primary" />
-              <span className="font-heading font-bold text-lg">AED Ireland</span>
+            <div className="flex items-center gap-3 mb-6">
+              <img src={aedLogo} alt="AED Ireland" className="h-10 w-10 bg-background rounded-lg p-1" />
+              <span className="font-heading font-extrabold text-lg tracking-tight">AED Ireland</span>
             </div>
             <p className="text-secondary-foreground/60 text-sm leading-relaxed max-w-xs">
               Ireland's trusted AED supplier. Prepared communities save lives.
