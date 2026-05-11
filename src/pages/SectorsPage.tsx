@@ -20,7 +20,7 @@ const sectorData = {
     pricing: "From €1,295 incl. VAT — grant offset available",
     steps: ["Get a free quote", "We install & train your staff", "We monitor & maintain it"],
     caseStudy: {
-      quote: "The AED for Schools programme made it affordable. AED Ireland handled everything from the grant application to installation.",
+      quote: "The AED for Schools programme made it affordable. Smart Defibs LTD handled everything from the grant application to installation.",
       name: "Sarah Walsh",
       role: "Principal, St. Mary's NS",
     },
@@ -83,7 +83,7 @@ const sectorData = {
     pricing: "From €1,195 incl. VAT — group order discounts available",
     steps: ["Contact us for group pricing", "We deliver & install", "CFR training for your team"],
     caseStudy: {
-      quote: "Our GAA club now has two AEDs and twelve trained responders. AED Ireland made it happen.",
+      quote: "Our GAA club now has two AEDs and twelve trained responders. Smart Defibs LTD made it happen.",
       name: "Ciara Brennan",
       role: "CFR Coordinator, Ballycastle GAA",
     },

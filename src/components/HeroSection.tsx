@@ -90,9 +90,9 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute -inset-8 bg-primary/10 rounded-full blur-3xl" />
               <div className="relative bg-card border border-border rounded-3xl p-12 shadow-xl">
-                <img src={aedLogo} alt="AED Ireland" className="h-56 w-56 mx-auto" />
+                <img src={aedLogo} alt="Smart Defibs LTD" className="h-56 w-56 mx-auto" />
                 <div className="mt-8 text-center">
-                  <p className="font-heading font-extrabold text-2xl text-foreground">AED Ireland</p>
+                  <p className="font-heading font-extrabold text-2xl text-foreground">Smart Defibs LTD</p>
                   <p className="text-sm text-muted-foreground mt-1">Defibrillators · Training · Servicing</p>
                 </div>
               </div>

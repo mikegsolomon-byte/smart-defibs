@@ -139,7 +139,7 @@ export default function QuotePage() {
               {[
                 { icon: Clock, label: "4-hour response", desc: "We respond to every quote within 4 business hours" },
                 { icon: Phone, label: "01 234 5678", desc: "Call us for immediate assistance" },
-                { icon: Mail, label: "info@aedireland.ie", desc: "Email us any time" },
+                { icon: Mail, label: "info@smartdefibs.ie", desc: "Email us any time" },
               ].map((item) => (
                 <div key={item.label} className="flex gap-4 items-start">
                   <div className="p-3 rounded-xl bg-primary/10 flex-shrink-0">

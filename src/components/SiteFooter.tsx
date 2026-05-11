@@ -9,8 +9,8 @@ export default function SiteFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <img src={aedLogo} alt="AED Ireland" className="h-10 w-10 bg-background rounded-lg p-1" />
-              <span className="font-heading font-extrabold text-lg tracking-tight">AED Ireland</span>
+              <img src={aedLogo} alt="Smart Defibs LTD" className="h-10 w-10 bg-background rounded-lg p-1" />
+              <span className="font-heading font-extrabold text-lg tracking-tight">Smart Defibs LTD</span>
             </div>
             <p className="text-secondary-foreground/60 text-sm leading-relaxed max-w-xs">
               Ireland's trusted AED supplier. Prepared communities save lives.
@@ -48,7 +48,7 @@ export default function SiteFooter() {
             <h4 className="font-heading font-semibold mb-6 text-primary text-sm uppercase tracking-wider">Contact</h4>
             <ul className="space-y-4 text-sm text-secondary-foreground/60">
               <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-primary flex-shrink-0" /> 01 234 5678</li>
-              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-primary flex-shrink-0" /> info@aedireland.ie</li>
+              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-primary flex-shrink-0" /> info@smartdefibs.ie</li>
               <li className="flex items-center gap-3"><MapPin className="h-4 w-4 text-primary flex-shrink-0" /> Dublin, Ireland</li>
             </ul>
           </div>
@@ -62,7 +62,7 @@ export default function SiteFooter() {
             <span>✓ Irish Heart Foundation</span>
           </div>
           <p className="text-xs text-secondary-foreground/30">
-            © {new Date().getFullYear()} AED Ireland. All rights reserved.
+            © {new Date().getFullYear()} Smart Defibs LTD. All rights reserved.
           </p>
         </div>
       </div>
