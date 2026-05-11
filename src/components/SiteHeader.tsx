@@ -75,11 +75,11 @@ export default function SiteHeader() {
 
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="tel:01234567"
+            href="tel:+353894992903"
             className="flex items-center gap-1.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
           >
             <Phone className="h-4 w-4" />
-            01 234 5678
+            +353 89 499 2903
           </a>
           <ThemeToggle />
           <Button asChild className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro shadow-sm">

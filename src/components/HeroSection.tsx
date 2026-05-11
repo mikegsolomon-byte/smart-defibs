@@ -64,8 +64,8 @@ export default function HeroSection() {
                 variant="ghost"
                 className="text-foreground/70 hover:text-primary btn-micro"
               >
-                <a href="tel:01234567">
-                  <Phone className="mr-1 h-4 w-4" /> 01 234 5678
+                <a href="tel:+353894992903">
+                  <Phone className="mr-1 h-4 w-4" /> +353 89 499 2903
                 </a>
               </Button>
             </motion.div>
