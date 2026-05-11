@@ -49,7 +49,7 @@ export default function SiteFooter() {
             <ul className="space-y-4 text-sm text-secondary-foreground/60">
               <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-primary flex-shrink-0" /> 01 234 5678</li>
               <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-primary flex-shrink-0" /> info@smartdefibs.ie</li>
-              <li className="flex items-center gap-3"><MapPin className="h-4 w-4 text-primary flex-shrink-0" /> Dublin, Ireland</li>
+              <li className="flex items-start gap-3"><MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" /> <span>Unit 18, The Cube FlexiSpace,<br />Lanesborough Road,<br />Co. Roscommon F42 DX61, Ireland</span></li>
             </ul>
           </div>
         </div>
