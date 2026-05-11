@@ -114,7 +114,7 @@ export default function QuotePage() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone *</Label>
-                      <Input id="phone" type="tel" required placeholder="01 234 5678" className="focus-ring" />
+                      <Input id="phone" type="tel" required placeholder="+353 89 499 2903" className="focus-ring" />
                     </div>
                   </div>
 
@@ -138,7 +138,7 @@ export default function QuotePage() {
             >
               {[
                 { icon: Clock, label: "4-hour response", desc: "We respond to every quote within 4 business hours" },
-                { icon: Phone, label: "01 234 5678", desc: "Call us for immediate assistance" },
+                { icon: Phone, label: "+353 89 499 2903", desc: "Call us for immediate assistance" },
                 { icon: Mail, label: "info@smartdefibs.ie", desc: "Email us any time" },
               ].map((item) => (
                 <div key={item.label} className="flex gap-4 items-start">
