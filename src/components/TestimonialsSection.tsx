@@ -3,7 +3,7 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "AED Ireland made the whole process seamless — from grant application to installation. Our school is now prepared for any emergency.",
+    quote: "Smart Defibs LTD made the whole process seamless — from grant application to installation. Our school is now prepared for any emergency.",
     name: "Mary O'Brien",
     role: "School Principal, Co. Cork",
     sector: "Schools",

@@ -46,10 +46,10 @@ export default function SiteHeader() {
     >
       <div className="container mx-auto flex items-center justify-between h-20 px-4 lg:px-8">
         <Link to="/" className="flex items-center gap-3 focus-ring rounded-lg">
-          <img src={aedLogo} alt="AED Ireland logo" className="h-11 w-11" />
+          <img src={aedLogo} alt="Smart Defibs LTD logo" className="h-11 w-11" />
           <div className="leading-tight">
             <span className="block font-heading font-extrabold text-lg text-foreground tracking-tight">
-              AED Ireland
+              Smart Defibs LTD
             </span>
             <span className="block text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
               Saving lives, every second
