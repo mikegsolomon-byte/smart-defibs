@@ -92,7 +92,7 @@ export default function QuotePage() {
                   </div>
 
                   <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-teal-light text-base btn-micro">
-                    Submit — We Respond Within 4 Hours
+                    Submit Quote Request
                   </Button>
                 </form>
               )}
