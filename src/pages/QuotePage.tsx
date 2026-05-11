@@ -77,38 +77,6 @@ export default function QuotePage() {
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="qty">Number of AEDs needed</Label>
-                      <Input id="qty" type="number" min={1} placeholder="1" className="focus-ring" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="training">Training required?</Label>
-                      <Select><SelectTrigger className="focus-ring"><SelectValue placeholder="Select" /></SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="yes">Yes</SelectItem>
-                          <SelectItem value="no">No</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="service">Service plan?</Label>
-                      <Select><SelectTrigger className="focus-ring"><SelectValue placeholder="Select" /></SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="yes">Yes</SelectItem>
-                          <SelectItem value="no">No</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="budget">Budget range (optional)</Label>
-                      <Input id="budget" placeholder="e.g. €1,000 – €2,000" className="focus-ring" />
-                    </div>
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
                       <Label htmlFor="email">Email *</Label>
                       <Input id="email" type="email" required placeholder="you@example.ie" className="focus-ring" />
                     </div>
