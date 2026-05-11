@@ -71,6 +71,7 @@ export default function QuotePage() {
                         <SelectItem value="nursing">Nursing Home</SelectItem>
                         <SelectItem value="workplace">Workplace</SelectItem>
                         <SelectItem value="community">Community / CFR</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
