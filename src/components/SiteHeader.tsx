@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
@@ -74,13 +74,6 @@ export default function SiteHeader() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a
-            href="tel:+353894992903"
-            className="flex items-center gap-1.5 text-sm font-semibold text-foreground/80 hover:text-primary transition-colors"
-          >
-            <Phone className="h-4 w-4" />
-            +353 89 499 2903
-          </a>
           <ThemeToggle />
           <Button asChild className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro shadow-sm">
             <Link to="/quote">Get a Quote</Link>
