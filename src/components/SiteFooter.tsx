@@ -13,7 +13,7 @@ export default function SiteFooter() {
               <span className="font-heading font-extrabold text-lg tracking-tight">Smart Defibs LTD</span>
             </div>
             <p className="text-secondary-foreground/60 text-sm leading-relaxed max-w-xs">
-              Ireland's trusted AED supplier. Prepared communities save lives.
+              Ireland's trusted defibrillator supplier. Prepared communities save lives.
             </p>
           </div>
 
