@@ -65,7 +65,7 @@ export default function SiteHeader() {
               className={`px-4 py-2 rounded-md text-sm font-semibold transition-colors focus-ring ${
                 location.pathname === link.href
                   ? "text-primary"
-                  : "text-foreground/75 hover:text-primary"
+                  : "text-foreground hover:text-primary"
               }`}
             >
               {link.label}

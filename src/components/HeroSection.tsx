@@ -62,7 +62,7 @@ export default function HeroSection() {
                 asChild
                 size="lg"
                 variant="ghost"
-                className="text-foreground/70 hover:text-primary btn-micro"
+                className="text-foreground hover:text-primary btn-micro"
               >
                 <a href="tel:+353894992903">
                   <Phone className="mr-1 h-4 w-4" /> +353 89 499 2903

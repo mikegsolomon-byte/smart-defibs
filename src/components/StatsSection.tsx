@@ -40,7 +40,7 @@ export default function StatsSection() {
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-secondary-foreground mb-3 font-extrabold tracking-tight">
             Why act now
           </h2>
-          <p className="text-secondary-foreground/60 max-w-lg mx-auto">
+          <p className="text-secondary-foreground/80 max-w-lg mx-auto">
             Every minute without an AED reduces survival chances by 10%
           </p>
         </motion.div>
@@ -62,7 +62,7 @@ export default function StatsSection() {
                   stat.display
                 )}
               </p>
-              <p className="text-sm text-secondary-foreground/70">{stat.label}</p>
+              <p className="text-sm text-secondary-foreground/85">{stat.label}</p>
             </motion.div>
           ))}
         </div>
