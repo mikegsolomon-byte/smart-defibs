@@ -35,7 +35,7 @@ export default function SiteFooter() {
 
           <div>
             <h4 className="font-heading font-semibold mb-6 text-primary text-sm uppercase tracking-wider">Sectors</h4>
-            <ul className="space-y-3 text-sm text-secondary-foreground/60">
+            <ul className="space-y-3 text-sm text-secondary-foreground/85">
               {["Schools", "Nursing Homes", "Workplaces", "Community & CFR"].map((s) => (
                 <li key={s}>
                   <Link to="/sectors" className="hover:text-primary transition-colors inline-block story-link">{s}</Link>
