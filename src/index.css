@@ -16,7 +16,8 @@
     --popover-foreground: 0 0% 13%;
 
     /* Logo red */
-    --primary: 356 78% 52%;
+    /* Logo red — deepened for AA contrast on white (5.4:1) */
+    --primary: 356 78% 46%;
     --primary-foreground: 0 0% 100%;
 
     /* Logo charcoal */
@@ -26,7 +27,7 @@
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 356 78% 52%;
+    --accent: 356 78% 46%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,7 +35,7 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 356 78% 52%;
+    --ring: 356 78% 46%;
 
     --radius: 0.5rem;
 
@@ -50,9 +51,10 @@
     /* Custom tokens */
     --charcoal: 0 0% 20%;
     --charcoal-light: 0 0% 30%;
-    --red-brand: 356 78% 52%;
-    --red-deep: 356 78% 44%;
+    --red-brand: 356 78% 46%;
+    --red-deep: 356 78% 38%;
     --red-soft: 356 78% 96%;
+    --red-bright: 356 85% 70%;
     --surface-soft: 0 0% 98%;
     --sector-schools: 356 78% 52%;
     --sector-community: 0 0% 20%;
@@ -96,6 +98,7 @@
     --red-brand: 356 78% 56%;
     --red-deep: 356 78% 48%;
     --red-soft: 356 40% 18%;
+    --red-bright: 356 90% 72%;
     --surface-soft: 0 0% 11%;
 
     --glass-bg: 0 0% 12% / 0.7;

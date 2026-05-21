@@ -67,6 +67,7 @@ export default {
         "red-brand": "hsl(var(--red-brand))",
         "red-deep": "hsl(var(--red-deep))",
         "red-soft": "hsl(var(--red-soft))",
+        "red-bright": "hsl(var(--red-bright))",
         "surface-soft": "hsl(var(--surface-soft))",
         sector: {
           schools: "hsl(var(--sector-schools))",
