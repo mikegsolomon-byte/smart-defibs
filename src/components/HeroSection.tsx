@@ -24,10 +24,10 @@ export default function HeroSection() {
         alt="AED defibrillator cabinet mounted on a building wall"
         width={1920}
         height={1080}
-        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none select-none"
+        className="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none select-none"
       />
       {/* Readability overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/20 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--red-brand)/0.10),_transparent_60%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_hsl(var(--background)))] pointer-events-none" />
 
