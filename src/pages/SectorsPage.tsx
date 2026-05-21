@@ -147,7 +147,7 @@ export default function SectorsPage() {
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-teal-light">
                   <Link to="/quote">Get a Sector Quote</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/5">
+                <Button size="lg" className="bg-background text-secondary hover:bg-background/90 border-2 border-background btn-micro shadow-md">
                   Download Info Pack
                 </Button>
               </div>
