@@ -85,9 +85,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-5 hidden lg:flex justify-center"
+            className="lg:col-span-5 flex justify-center mt-4 lg:mt-0"
           >
-            <div className="relative w-full">
+            <div className="relative w-full max-w-md lg:max-w-none">
               <div className="absolute -inset-8 bg-primary/15 rounded-[2rem] blur-3xl" />
               <div className="relative overflow-hidden rounded-3xl border border-border shadow-2xl aspect-[4/5]">
                 <img
