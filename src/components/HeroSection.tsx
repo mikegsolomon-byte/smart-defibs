@@ -55,7 +55,7 @@ export default function HeroSection() {
                   Get a Free Quote <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-foreground/20 text-foreground hover:bg-muted text-base px-8 btn-micro">
+              <Button asChild size="lg" variant="outline" className="border-2 border-foreground/40 text-foreground hover:bg-muted text-base px-8 btn-micro">
                 <Link to="/products">Browse AEDs</Link>
               </Button>
               <Button

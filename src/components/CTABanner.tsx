@@ -20,7 +20,7 @@ export default function CTABanner() {
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-primary-foreground font-extrabold tracking-tight mb-3">
                 Ready to protect your community?
               </h2>
-              <p className="text-primary-foreground/85 text-lg max-w-xl">
+              <p className="text-primary-foreground/95 text-lg max-w-xl">
                 Get a free, no-obligation quote tailored to your sector. We respond within 4 business hours.
               </p>
             </div>
@@ -30,7 +30,7 @@ export default function CTABanner() {
                   Get a Free Quote <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground hover:text-primary text-base px-8 btn-micro">
+              <Button asChild size="lg" variant="outline" className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-base px-8 btn-micro">
                 <a href="tel:+353894992903">
                   <Phone className="mr-2 h-4 w-4" /> Call Us
                 </a>

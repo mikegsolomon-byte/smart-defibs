@@ -18,7 +18,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold mb-6 text-primary text-sm uppercase tracking-wider">Quick Links</h4>
+            <h4 className="font-heading font-semibold mb-6 text-red-bright text-sm uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-3 text-sm text-secondary-foreground/85">
               {[
                 { label: "Products", to: "/products" },
@@ -27,29 +27,29 @@ export default function SiteFooter() {
                 { label: "Servicing", to: "/servicing" },
               ].map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="hover:text-primary transition-colors inline-block story-link">{l.label}</Link>
+                  <Link to={l.to} className="hover:text-red-bright transition-colors inline-block story-link">{l.label}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold mb-6 text-primary text-sm uppercase tracking-wider">Sectors</h4>
+            <h4 className="font-heading font-semibold mb-6 text-red-bright text-sm uppercase tracking-wider">Sectors</h4>
             <ul className="space-y-3 text-sm text-secondary-foreground/85">
               {["Schools", "Nursing Homes", "Workplaces", "Community & CFR"].map((s) => (
                 <li key={s}>
-                  <Link to="/sectors" className="hover:text-primary transition-colors inline-block story-link">{s}</Link>
+                  <Link to="/sectors" className="hover:text-red-bright transition-colors inline-block story-link">{s}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-heading font-semibold mb-6 text-primary text-sm uppercase tracking-wider">Contact</h4>
+            <h4 className="font-heading font-semibold mb-6 text-red-bright text-sm uppercase tracking-wider">Contact</h4>
             <ul className="space-y-4 text-sm text-secondary-foreground/85">
-              <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-primary flex-shrink-0" /> +353 89 499 2903</li>
-              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-primary flex-shrink-0" /> info@smartdefibs.ie</li>
-              <li className="flex items-start gap-3"><MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" /> <span>Unit 18, The Cube FlexiSpace,<br />Lanesborough Road,<br />Co. Roscommon F42 DX61, Ireland</span></li>
+              <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-red-bright flex-shrink-0" /> +353 89 499 2903</li>
+              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-red-bright flex-shrink-0" /> info@smartdefibs.ie</li>
+              <li className="flex items-start gap-3"><MapPin className="h-4 w-4 text-red-bright flex-shrink-0 mt-0.5" /> <span>Unit 18, The Cube FlexiSpace,<br />Lanesborough Road,<br />Co. Roscommon F42 DX61, Ireland</span></li>
             </ul>
           </div>
         </div>
