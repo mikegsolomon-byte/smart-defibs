@@ -58,16 +58,6 @@ export default function HeroSection() {
               <Button asChild size="lg" variant="outline" className="border-2 border-foreground/40 text-foreground hover:bg-muted text-base px-8 btn-micro">
                 <Link to="/products">Browse AEDs</Link>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="ghost"
-                className="text-foreground hover:text-primary btn-micro"
-              >
-                <a href="tel:+353894992903">
-                  <Phone className="mr-1 h-4 w-4" /> +353 89 499 2903
-                </a>
-              </Button>
             </motion.div>
 
             <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
