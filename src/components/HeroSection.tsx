@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroAedWall from "@/assets/hero-aed-wall.jpg";
 
 
 const stagger = {
@@ -17,8 +18,17 @@ const fadeUp = {
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-surface-soft">
-      {/* Soft red wash */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--red-brand)/0.10),_transparent_60%)]" />
+      {/* Background hero image */}
+      <img
+        src={heroAedWall}
+        alt="AED defibrillator cabinet mounted on a building wall"
+        width={1920}
+        height={1080}
+        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none select-none"
+      />
+      {/* Readability overlays */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--red-brand)/0.10),_transparent_60%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_hsl(var(--background)))] pointer-events-none" />
 
       <div className="relative container mx-auto px-4 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
