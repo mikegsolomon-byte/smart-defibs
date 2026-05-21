@@ -27,7 +27,7 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-muted/50 border-y border-border">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

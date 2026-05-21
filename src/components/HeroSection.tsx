@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, CheckCircle2, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import aedLogo from "@/assets/aed-logo.png";
+import heroImage from "@/assets/hero-aed.jpg";
 
 const stagger = {
   hidden: {},
@@ -87,13 +87,19 @@ export default function HeroSection() {
             transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
             className="lg:col-span-5 hidden lg:flex justify-center"
           >
-            <div className="relative">
-              <div className="absolute -inset-8 bg-primary/10 rounded-full blur-3xl" />
-              <div className="relative bg-card border border-border rounded-3xl p-12 shadow-xl">
-                <img src={aedLogo} alt="Smart Defibs LTD" className="h-56 w-56 mx-auto" />
-                <div className="mt-8 text-center">
-                  <p className="font-heading font-extrabold text-2xl text-foreground">Smart Defibs LTD</p>
-                  <p className="text-sm text-muted-foreground mt-1">Defibrillators · Training · Servicing</p>
+            <div className="relative w-full">
+              <div className="absolute -inset-8 bg-primary/15 rounded-[2rem] blur-3xl" />
+              <div className="relative overflow-hidden rounded-3xl border border-border shadow-2xl aspect-[4/5]">
+                <img
+                  src={heroImage}
+                  alt="Wall-mounted AED defibrillator in an Irish workplace"
+                  width={1024}
+                  height={1280}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent p-6">
+                  <p className="font-heading font-extrabold text-xl text-white">Ready when seconds matter</p>
+                  <p className="text-sm text-white/85 mt-1">Supplied & serviced across Ireland</p>
                 </div>
               </div>
             </div>

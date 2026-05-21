@@ -43,7 +43,7 @@ const sectors = [
 
 export default function SectorCards() {
   return (
-    <section id="sectors" className="section-padding bg-surface-soft">
+    <section id="sectors" className="section-padding bg-background">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
