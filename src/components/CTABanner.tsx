@@ -30,7 +30,7 @@ export default function CTABanner() {
                   Get a Free Quote <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary text-base px-8 btn-micro">
+              <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 border-2 border-secondary text-base px-8 btn-micro shadow-md">
                 <a href="tel:+353894992903">
                   <Phone className="mr-2 h-4 w-4" /> Call Us
                 </a>
