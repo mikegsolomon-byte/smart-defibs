@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, CheckCircle2, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-aed.jpg";
+
 
 const stagger = {
   hidden: {},
@@ -80,30 +80,6 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right side: logo card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
-            className="lg:col-span-5 flex justify-center mt-4 lg:mt-0"
-          >
-            <div className="relative w-full max-w-md lg:max-w-none">
-              <div className="absolute -inset-8 bg-primary/15 rounded-[2rem] blur-3xl" />
-              <div className="relative overflow-hidden rounded-3xl border border-border shadow-2xl aspect-[4/5]">
-                <img
-                  src={heroImage}
-                  alt="Wall-mounted AED defibrillator in an Irish workplace"
-                  width={1024}
-                  height={1280}
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent p-6">
-                  <p className="font-heading font-extrabold text-xl text-white">Ready when seconds matter</p>
-                  <p className="text-sm text-white/85 mt-1">Supplied & serviced across Ireland</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
