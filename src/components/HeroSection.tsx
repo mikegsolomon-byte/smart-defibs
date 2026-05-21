@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, CheckCircle2, Phone } from "lucide-react";
+import { ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroImage from "@/assets/hero-cpr.jpg";
 
 
 const stagger = {
@@ -24,10 +25,31 @@ export default function HeroSection() {
       <div className="relative container mx-auto px-4 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] }}
+            className="lg:col-span-5 lg:order-2 relative"
+          >
+            <div className="absolute -inset-4 bg-[radial-gradient(ellipse_at_center,_hsl(var(--red-brand)/0.20),_transparent_70%)] blur-2xl" />
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/20 ring-1 ring-foreground/10 aspect-[4/5]">
+              <img
+                src={heroImage}
+                alt="CPR training in progress — life-saving skills for every community"
+                width={1024}
+                height={1280}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 via-transparent to-transparent" />
+            </div>
+          </motion.div>
+
+          <div className="lg:col-span-7 lg:order-1">
+
+          <motion.div
             variants={stagger}
             initial="hidden"
             animate="show"
-            className="lg:col-span-7 max-w-2xl"
+            className="max-w-2xl"
           >
             <motion.div variants={fadeUp}>
               <span className="inline-flex items-center gap-2 bg-red-soft text-primary text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-6 border border-primary/15">
@@ -69,6 +91,7 @@ export default function HeroSection() {
               ))}
             </motion.div>
           </motion.div>
+          </div>
 
         </div>
       </div>
