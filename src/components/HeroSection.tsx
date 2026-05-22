@@ -70,14 +70,6 @@ export default function HeroSection() {
               </Button>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-              {["CE Marked", "PHECC Certified", "Next-day delivery", "Grant support"].map((t) => (
-                <span key={t} className="inline-flex items-center gap-1.5">
-                  <CheckCircle2 className="h-4 w-4 text-primary" />
-                  {t}
-                </span>
-              ))}
-            </motion.div>
           </motion.div>
 
         </div>
