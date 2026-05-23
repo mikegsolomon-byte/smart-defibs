@@ -81,7 +81,7 @@ const sectorData = {
     subtitle: "HIQA-compliant AED solutions with full training & maintenance",
     color: "text-sector-nursing",
     bgColor: "bg-sector-nursing/10",
-    compliance: "HIQA Standard 2.7 — Emergency Planning",
+    compliance: "HIQA National Standards — emergency response expectations",
     packageItems: [
       "Clinical-grade AED with ECG display",
       "Accessory pack: spare pads, battery, rescue kit",
@@ -94,11 +94,11 @@ const sectorData = {
     steps: ["Request a sector quote", "We assess & install", "Ongoing training & monitoring"],
     whyNeeded: {
       intro:
-        "Residents in nursing homes are among the highest-risk groups for cardiac events. HIQA's emergency planning standard expects rapid, competent response — and that's only possible with an on-site AED and confident, trained staff.",
+        "Residents in nursing homes are among the highest-risk groups for cardiac events. HIQA inspectors expect rapid, competent emergency response — and that's only possible with an on-site AED and confident, trained staff.",
       points: [
-        { icon: HeartPulse, title: "High-risk population", desc: "Cardiac arrest risk in over-65s is up to 7x higher than the general population." },
-        { icon: Clock, title: "Response before paramedics", desc: "Rural and suburban nursing homes often face 10+ minute ambulance response times." },
-        { icon: Shield, title: "HIQA Standard 2.7", desc: "Inspectors look for documented emergency response capability — an AED is the visible proof." },
+        { icon: HeartPulse, title: "High-risk population", desc: "The median OHCA patient age in Ireland is 68 (OHCAR 2024) — older residents are the highest-risk group." },
+        { icon: Clock, title: "Response before paramedics", desc: "Rural and suburban nursing homes often face response times well above the 19-minute HIQA rural target." },
+        { icon: Shield, title: "HIQA emergency expectations", desc: "Inspectors expect documented, practised emergency response — an on-site AED with trained staff is the visible proof." },
         { icon: GraduationCap, title: "Confident rotating staff", desc: "Our refresher modules keep agency and night staff certified between visits." },
       ],
     },
