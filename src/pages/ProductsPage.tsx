@@ -2,7 +2,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
-import { Shield, CheckCircle, Award, Droplets, Battery, Radio, Baby, Zap } from "lucide-react";
+import { Shield, Award, Droplets, Battery, Radio, Baby, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import amoulI3 from "@/assets/amoul-i3.jpg";
