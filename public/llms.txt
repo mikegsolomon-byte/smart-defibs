@@ -1,0 +1,14 @@
+# Smart Defibs LTD
+
+> Ireland's exclusive Amoul AED partner — defibrillators, PHECC-aligned CPR/AED training, and maintenance for schools, workplaces, nursing homes, and community groups across all 32 counties.
+
+## Pages
+
+- [Home](/): Overview of Smart Defibs, sectors served, and why prepared communities save lives.
+- [Products](/products): Amoul i3 AED — 200J adult / 50J paediatric, IP54, 5-year battery, optional 4G connectivity. From EUR 1,295.
+- [Sectors](/sectors): Tailored AED packages for Schools/Crèche, Nursing Homes, Workplace, and Community/CFR groups.
+- [Training](/training): Onsite CPR/AED awareness courses and PHECC CFR certification.
+- [Servicing](/servicing): Maintenance plans — monthly readiness reports, consumables, annual checks, free replacement on failure.
+- [Why AED](/why-aed): The case for defibrillators — sudden cardiac arrest stats, response times, and survival impact.
+- [About](/about): Smart Defibs LTD — Irish company, exclusive Amoul partner.
+- [Quote](/quote): Request a free tailored quote.
