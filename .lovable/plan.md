@@ -1,98 +1,47 @@
+# Fact-check & correct site copy
 
+I cross-checked every quoted figure on the site against OHCAR (HSE), HIQA, HSA, PHECC, ERC and peer-reviewed sources. Several claims are wrong or unsupported and need to be replaced with accurate, defensible wording. Solid claims (10% per minute, paediatric pads 1+, HSA Section 1.10, PHECC CFR, bystander CPR+AED multiplies survival) stay.
 
-# Design Upgrade Plan — AED Ireland
+## Changes by file
 
-Aligning the current site with your workspace instructions (Apple/Stripe/Linear-inspired, 8pt spacing, micro-interactions, glassmorphism, dark mode, accessibility).
+**`src/components/StatsSection.tsx`**
+- "~5,000 cardiac arrests outside hospital" → **"~2,900 cardiac arrests attended outside hospital (OHCAR 2024)"**
+- "75% survival increase with AED in <5 min" → **"Up to 70% survival when defibrillation occurs within 3–5 minutes"** (ERC 2021)
+- "10 min average rural ambulance response" → **"26 min national average response for Cat. 1 (life-threatening) calls, 2022"** (NAS via RTÉ/PQ data)
+- "Legal — HSA guidance on workplace AEDs" → keep, reword label to **"HSA guidance recommends AEDs in workplaces"** (Section 1.10 — recommendation, not legal mandate)
 
----
+**`src/pages/WhyAEDPage.tsx`**
+- "~5,000 cardiac arrests… every year" → **"~2,900 out-of-hospital cardiac arrests attended by EMS each year in Ireland (OHCAR 2024)"**
+- "rural ambulance response time is 10 minutes" → **"national average response for life-threatening calls exceeds 20 minutes"**
+- "survival rates by up to 75%" → **"survival rates of 50–70% in witnessed cases"**
+- "HSA provides clear guidance" → keep (verified). Soften "HIQA standards require emergency planning" to **"HIQA standards expect documented emergency response arrangements in care settings"** (avoid citing a specific standard number).
 
-## Current Gaps
+**`src/pages/SectorsPage.tsx`**
 
-1. **No dark mode support** — no toggle, no system preference detection
-2. **Spacing is inconsistent** — not strictly 8pt system; padding varies arbitrarily
-3. **Header lacks polish** — no sticky blur/glass effect, no smooth transitions, mobile menu is basic
-4. **Hero is conventional** — could benefit from split-screen layout, more refined typography hierarchy
-5. **Cards lack premium feel** — no hover lift, no subtle shadows/glass, no skeleton loading
-6. **No page transitions** — abrupt route changes
-7. **No micro-interactions** — buttons lack hover scale, no staggered entrance polish
-8. **Testimonials are plain** — no avatar placeholders, no carousel, basic layout
-9. **Footer is dense** — needs more breathing room and modern grid
-10. **Accessibility gaps** — no focus-visible rings on cards, no reduced-motion fallbacks, touch targets may be small
-11. **No loading skeletons** anywhere
-12. **Typography could be bolder** — headlines could use tighter tracking, larger sizes
+*Schools tab*
+- "Ambulance ETA in most areas exceeds 8 minutes" → **"national average response for life-threatening calls is 26 minutes (NAS, 2022)"**
+- "1 in 100 children have an undiagnosed cardiac condition" → **"1 in 300 teenagers screened in Ireland has a previously undiagnosed cardiac condition (Dillon Quirke Foundation, 2024)"**
+- "AED for Schools programme provides grants" FAQ → reword to **"Funding may be available via CLÁR, LEADER, HSE National Lottery Grants or the FAI Heart Care programme. We help identify and apply for the best fit for your school."** (No ROI Dept. of Education AED-for-Schools scheme exists — NI only.)
+- Case-study quote referencing "AED for Schools programme made it affordable" → replace with grant-neutral wording.
 
----
+*Nursing tab*
+- "HIQA Standard 2.7 — Emergency Planning" (compliance line + "Why" point) → **"HIQA National Standards for Residential Care — emergency response expectations"** (drop the incorrect 2.7 reference; Standard 2.7 is actually Physical Environment).
+- "HIQA Standard 2.7" `Why` card title → **"HIQA emergency expectations"** with desc: *"Inspectors expect documented, practised emergency response — an on-site AED with trained staff is the visible proof."*
+- "Cardiac arrest risk in over-65s is up to 7x higher" → **"Median OHCA patient age in Ireland is 68 (OHCAR 2024) — older residents are the highest-risk group."**
+- "Rural… often face 10+ minute ambulance response times" → **"often face response times well above the 19-minute HIQA rural target."**
 
-## Plan
+*Workplace tab*
+- "10,000+ OHCA per year" → **"~2,900 OHCA attended per year in Ireland (OHCAR 2024) — many occur during working hours."**
+- "Defibrillation within 4 minutes can yield survival rates above 70%" → **"In witnessed shockable cases with bystander CPR, defibrillation within 3–5 minutes has produced survival rates above 50%."**
+- "2005 Act requires risk-appropriate emergency provision. AEDs are best-practice evidence." → **"The Safety, Health & Welfare at Work Act 2005 requires adequate first-aid and emergency arrangements; HSA guidance (Section 1.10) recommends AEDs wherever an occupational first-aider is in place."**
 
-### 1. Dark Mode Toggle & System Detection
-- Add a `ThemeProvider` context with `light`/`dark`/`system` modes using `class` strategy (already configured in Tailwind)
-- Add a toggle button in the header (sun/moon icon)
-- Persist preference in `localStorage`
+*Community tab*
+- "Rural ambulance response in Ireland averages 18+ minutes" → **"National average response for life-threatening calls was 26 minutes in 2022 (NAS) — rural areas typically exceed this."**
+- "Bystander CPR + AED doubles or triples survival" → keep (verified).
 
-### 2. Premium Header Upgrade
-- Glassmorphism: `bg-secondary/80 backdrop-blur-xl` with a subtle bottom border
-- Smooth show/hide on scroll (hide on scroll-down, reveal on scroll-up)
-- Animated mobile menu with slide-down transition (framer-motion)
-- Larger touch targets (44px minimum) on mobile nav items
+## Out of scope
+- TrustBar / Footer badges ("PHECC Certified", "CE marked", "HSE/HIQA aligned"): these describe the company's own offering, not factual statistics, and are left unchanged. If you want these reviewed too, say so.
+- Testimonial names/quotes are marketing copy, not statistics — left unchanged unless you want them flagged as placeholder.
 
-### 3. Hero — Split-Screen / Refined Layout
-- Split-screen: text left, floating AED product card/image right on desktop
-- Larger, bolder headline with gradient text accent
-- Animated badge pill ("Ireland's #1 AED Supplier") with subtle entrance
-- Staggered entrance animations for each text element
-
-### 4. Trust Bar — Subtle & Polished
-- Add soft dividers between badges
-- Subtle scroll animation on mobile (horizontal scroll or marquee)
-
-### 5. Sector Cards — Bento-Inspired
-- Bento grid layout: make first card span 2 columns on desktop
-- Glassmorphism card backgrounds with subtle border
-- Hover: lift (`translateY(-4px)`), shadow increase, subtle icon scale
-- `prefers-reduced-motion` fallback to disable animations
-
-### 6. Stats Section — Animated Counters
-- Animate numbers counting up when in viewport
-- Add subtle gradient background instead of flat color
-- Cards with glass effect
-
-### 7. Testimonials — Modern Carousel
-- Horizontal scroll/carousel with drag on mobile
-- Avatar placeholder circles with initials
-- Star ratings or sector badge enhancement
-- Quote mark as a large decorative element
-
-### 8. CTA Banner — Refined
-- Add subtle gradient overlay or mesh gradient background
-- Floating card style with rounded corners and shadow
-- Button hover micro-interactions (scale + shadow)
-
-### 9. Footer — Spacious & Modern
-- Wider spacing, 8pt grid alignment
-- Add social media icon links (placeholder)
-- Subtle hover underline animations on links
-
-### 10. Global Enhancements
-- **Page transitions**: Wrap routes in `framer-motion` `AnimatePresence` with fade transitions
-- **8pt spacing system**: Audit and standardize all padding/margins to multiples of 8px (p-2=8, p-4=16, p-6=24, p-8=32, etc.)
-- **Button micro-interactions**: Add `hover:scale-[1.02]` and `active:scale-[0.98]` transitions
-- **Focus states**: Add visible focus rings on all interactive elements
-- **Reduced motion**: Wrap all framer-motion in `useReducedMotion` checks
-- **Loading skeletons**: Add skeleton components for product cards and sector cards
-- **Typography refinement**: Increase hero headline size, tighten letter-spacing, bolder weights
-
-### 11. Product & Quote Pages
-- Product cards: add hover glass effect, image placeholder area, cleaner price badge
-- Quote form: floating label style, better input focus states, progress indicator feel
-- Split-screen layout on quote page (form left, trust signals right — already partially done, just polish)
-
----
-
-## Technical Notes
-- All changes use existing stack: React, Tailwind, Framer Motion, shadcn/ui
-- Dark mode via Tailwind `class` strategy (already in `tailwind.config.ts`)
-- New component: `ThemeProvider.tsx`, `ThemeToggle.tsx`
-- Modify: `SiteHeader`, `HeroSection`, `SectorCards`, `StatsSection`, `TestimonialsSection`, `CTABanner`, `SiteFooter`, `App.tsx` (AnimatePresence), `index.css` (spacing utilities)
-- ~12 files modified/created
-
+## Technical notes
+All edits are copy-only changes in 3 files: `src/components/StatsSection.tsx`, `src/pages/WhyAEDPage.tsx`, `src/pages/SectorsPage.tsx`. No structural, styling, or data-shape changes. The `AnimatedCounter` value for the OHCA stat changes from `5000` to `2900`; everything else is string edits.

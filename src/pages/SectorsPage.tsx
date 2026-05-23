@@ -27,29 +27,29 @@ const sectorData = {
     subtitle: "Protect your students with grant-eligible AED programmes",
     color: "text-sector-schools",
     bgColor: "bg-sector-schools/10",
-    compliance: "Dept of Education / AED for Schools Programme",
+    compliance: "Funding routes: CLÁR, LEADER, HSE National Lottery Grants & FAI Heart Care",
     packageItems: [
       "AED device (semi-automatic, paediatric-capable)",
       "Lockable wall cabinet with alarm",
       "Signage & emergency action poster",
       "On-site PHECC-aligned staff training (up to 12)",
     ],
-    packageHighlight: "Grant-eligible — most schools pay €0 out of pocket",
-    pricing: "From €1,295 incl. VAT — grant offset available",
+    packageHighlight: "Grant-eligible — we help schools identify and apply for funding",
+    pricing: "From €1,295 incl. VAT — grant offset may be available",
     steps: ["Get a free quote", "We install & train your staff", "We monitor & maintain it"],
     whyNeeded: {
       intro:
-        "Sudden cardiac arrest doesn't discriminate by age. Each year in Ireland, children, teachers and visitors collapse on school grounds — and survival depends on what happens in the next four minutes. An on-site AED, combined with trained staff, turns a tragedy into a survivable event.",
+        "Sudden cardiac arrest doesn't discriminate by age. Each year in Ireland, children, teachers and visitors collapse on school grounds — and survival depends on what happens in the next few minutes. An on-site AED, combined with trained staff, turns a tragedy into a survivable event.",
       points: [
         {
           icon: Clock,
           title: "Minutes matter",
-          desc: "Survival drops 10% for every minute without defibrillation. Ambulance ETA in most areas exceeds 8 minutes.",
+          desc: "Survival drops by up to 10% for every minute without defibrillation. The national average response for life-threatening calls was 26 minutes in 2022 (NAS).",
         },
         {
           icon: HeartPulse,
-          title: "1 in 100 children",
-          desc: "have an undiagnosed cardiac condition. AEDs are safe for use on children aged 1+ with paediatric pads.",
+          title: "1 in 300 teenagers",
+          desc: "screened in Ireland had a previously undiagnosed cardiac condition (Dillon Quirke Foundation, 2024). AEDs are safe for use on children aged 1+ with paediatric pads.",
         },
         {
           icon: GraduationCap,
@@ -65,12 +65,12 @@ const sectorData = {
     },
     caseStudy: {
       quote:
-        "The AED for Schools programme made it affordable. Smart Defibs LTD handled everything from the grant application to installation.",
+        "Smart Defibs LTD walked us through the funding options, handled installation and trained our staff — it was completely turn-key.",
       name: "Sarah Walsh",
       role: "Principal, St. Mary's NS",
     },
     faqs: [
-      { q: "Is there grant funding available?", a: "Yes — the AED for Schools programme provides grants to eligible schools. We handle the application process for you." },
+      { q: "Is there grant funding available?", a: "There is no dedicated ROI Department of Education AED grant, but funding may be available via CLÁR, LEADER, HSE National Lottery Grants or the FAI Heart Care programme. We help schools identify and apply for the best fit." },
       { q: "Do staff need certification?", a: "We provide PHECC-aligned CPR/AED training on-site for up to 12 staff members." },
       { q: "What about maintenance?", a: "Our basic annual service plan ensures your AED is always rescue-ready." },
     ],
@@ -81,7 +81,7 @@ const sectorData = {
     subtitle: "HIQA-compliant AED solutions with full training & maintenance",
     color: "text-sector-nursing",
     bgColor: "bg-sector-nursing/10",
-    compliance: "HIQA Standard 2.7 — Emergency Planning",
+    compliance: "HIQA National Standards — emergency response expectations",
     packageItems: [
       "Clinical-grade AED with ECG display",
       "Accessory pack: spare pads, battery, rescue kit",
@@ -94,11 +94,11 @@ const sectorData = {
     steps: ["Request a sector quote", "We assess & install", "Ongoing training & monitoring"],
     whyNeeded: {
       intro:
-        "Residents in nursing homes are among the highest-risk groups for cardiac events. HIQA's emergency planning standard expects rapid, competent response — and that's only possible with an on-site AED and confident, trained staff.",
+        "Residents in nursing homes are among the highest-risk groups for cardiac events. HIQA inspectors expect rapid, competent emergency response — and that's only possible with an on-site AED and confident, trained staff.",
       points: [
-        { icon: HeartPulse, title: "High-risk population", desc: "Cardiac arrest risk in over-65s is up to 7x higher than the general population." },
-        { icon: Clock, title: "Response before paramedics", desc: "Rural and suburban nursing homes often face 10+ minute ambulance response times." },
-        { icon: Shield, title: "HIQA Standard 2.7", desc: "Inspectors look for documented emergency response capability — an AED is the visible proof." },
+        { icon: HeartPulse, title: "High-risk population", desc: "The median OHCA patient age in Ireland is 68 (OHCAR 2024) — older residents are the highest-risk group." },
+        { icon: Clock, title: "Response before paramedics", desc: "Rural and suburban nursing homes often face response times well above the 19-minute HIQA rural target." },
+        { icon: Shield, title: "HIQA emergency expectations", desc: "Inspectors expect documented, practised emergency response — an on-site AED with trained staff is the visible proof." },
         { icon: GraduationCap, title: "Confident rotating staff", desc: "Our refresher modules keep agency and night staff certified between visits." },
       ],
     },
@@ -132,11 +132,11 @@ const sectorData = {
     steps: ["Request multi-site proposal", "Site assessments & install", "Account-managed maintenance"],
     whyNeeded: {
       intro:
-        "Most cardiac arrests happen at work or in public — but only a minority of workplaces are equipped to respond. The Safety, Health & Welfare at Work Act puts the duty of care squarely on employers, and a single saved life pays back the investment many times over.",
+        "Many cardiac arrests happen at work or in public — but only a minority of workplaces are equipped to respond. The Safety, Health & Welfare at Work Act 2005 puts a clear duty of care on employers, and a single saved life pays back the investment many times over.",
       points: [
-        { icon: HeartPulse, title: "10,000+ OHCA per year", desc: "Out-of-hospital cardiac arrests in Ireland — most happen during working hours." },
-        { icon: Clock, title: "4-minute window", desc: "Defibrillation within 4 minutes can yield survival rates above 70%." },
-        { icon: Shield, title: "Employer duty", desc: "The 2005 Act requires risk-appropriate emergency provision. AEDs are best-practice evidence." },
+        { icon: HeartPulse, title: "~2,900 OHCA per year", desc: "Out-of-hospital cardiac arrests attended in Ireland (OHCAR 2024) — many occur during working hours." },
+        { icon: Clock, title: "3–5 minute window", desc: "In witnessed shockable cases with bystander CPR, defibrillation within 3–5 minutes has produced survival rates above 50%." },
+        { icon: Shield, title: "Employer duty", desc: "The 2005 Act requires adequate first-aid and emergency arrangements; HSA guidance (Section 1.10) recommends AEDs wherever an occupational first-aider is in place." },
         { icon: Activity, title: "Visible safety culture", desc: "On-display AEDs reinforce a proactive H&S culture for staff and visitors." },
       ],
     },
@@ -171,10 +171,10 @@ const sectorData = {
       intro:
         "Community First Responders are often first on the scene, minutes ahead of an ambulance. A publicly accessible AED in your village, club or community centre is the single biggest intervention you can make to improve local cardiac arrest survival.",
       points: [
-        { icon: Clock, title: "Beat the ambulance", desc: "Rural ambulance response in Ireland averages 18+ minutes — far beyond the survival window." },
-        { icon: HeartPulse, title: "Bystander CPR + AED", desc: "Doubles or triples survival vs CPR alone. Public access AEDs save lives daily across Ireland." },
+        { icon: Clock, title: "Beat the ambulance", desc: "The national average response for life-threatening calls was 26 minutes in 2022 (NAS) — rural areas typically exceed this." },
+        { icon: HeartPulse, title: "Bystander CPR + AED", desc: "Doubles or triples survival vs CPR alone (NEJM PAD Trial 2004; Hallstrom et al., Circulation 2003)." },
         { icon: Users, title: "Whole-village asset", desc: "An outdoor cabinet AED is available 24/7 to anyone — runners, drivers, neighbours, visitors." },
-        { icon: GraduationCap, title: "Trained CFR team", desc: "PHECC CFR certification builds local capability that lasts for years." },
+        { icon: GraduationCap, title: "Trained CFR team", desc: "PHECC Cardiac First Response certification builds local capability that lasts for years." },
       ],
     },
     caseStudy: {
