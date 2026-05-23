@@ -9,22 +9,22 @@ const reasons = [
   {
     icon: AlertTriangle,
     title: "Sudden Cardiac Arrest Is Unpredictable",
-    desc: "~5,000 cardiac arrests occur outside hospital in Ireland every year. SCA can happen to anyone, anywhere, at any age.",
+    desc: "Around 2,900 out-of-hospital cardiac arrests are attended by EMS in Ireland each year (OHCAR 2024). SCA can happen to anyone, anywhere, at any age.",
   },
   {
     icon: Clock,
     title: "Every Minute Counts",
-    desc: "For every minute without defibrillation, survival chances drop by 10%. The average rural ambulance response time is 10 minutes.",
+    desc: "For every minute without defibrillation, survival chances drop by up to 10%. The national average response for life-threatening (Cat. 1) calls exceeds 20 minutes.",
   },
   {
     icon: Heart,
     title: "AEDs Save Lives",
-    desc: "Using an AED within the first 5 minutes can increase survival rates by up to 75%. AEDs are safe and designed for use by anyone.",
+    desc: "When defibrillation occurs within 3–5 minutes of collapse, survival rates of 50–70% have been documented in witnessed cases (ERC 2021). AEDs are designed for use by anyone.",
   },
   {
     icon: Scale,
     title: "Compliance & Legal Guidance",
-    desc: "The HSA provides clear guidance on AEDs in the workplace. HIQA standards require emergency planning in care settings.",
+    desc: "HSA guidance (Section 1.10) recommends AEDs wherever a workplace first-aider is in place. HIQA standards expect documented emergency response arrangements in care settings.",
   },
 ];
 
