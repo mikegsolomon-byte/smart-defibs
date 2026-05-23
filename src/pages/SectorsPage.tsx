@@ -82,6 +82,7 @@ const sectorData = {
   },
   nursing: {
     icon: Stethoscope,
+    image: sectorNursingImg,
     title: "AEDs for Nursing Homes",
     subtitle: "HIQA-compliant AED solutions with full training & maintenance",
     color: "text-sector-nursing",
@@ -120,6 +121,7 @@ const sectorData = {
   },
   workplace: {
     icon: Shield,
+    image: sectorWorkplaceImg,
     title: "AEDs for Workplaces",
     subtitle: "H&S compliance for single and multi-site organisations",
     color: "text-sector-workplace",
@@ -158,6 +160,7 @@ const sectorData = {
   },
   community: {
     icon: Users,
+    image: sectorCommunityImg,
     title: "AEDs for Community & CFR Groups",
     subtitle: "Equip your community first responders and save lives locally",
     color: "text-sector-community",
