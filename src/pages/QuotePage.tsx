@@ -63,7 +63,7 @@ export default function QuotePage() {
     // Fire-and-forget notification email to info@smartdefibs.ie
     supabase.functions
       .invoke("send-quote-notification", {
-        body: { quoteId: data.id, ...form },
+        body: { quoteId: data.id },
       })
       .catch((err) => console.error("Notification email failed", err));
 

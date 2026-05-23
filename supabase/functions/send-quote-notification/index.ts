@@ -1,11 +1,35 @@
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors'
+import { createClient } from 'npm:@supabase/supabase-js@2'
+import { z } from 'npm:zod@3'
 
 const GATEWAY_URL = 'https://connector-gateway.lovable.dev/resend'
 const NOTIFY_TO = 'info@smartdefibs.ie'
 const FROM_ADDR = 'Smart Defibs Website <onboarding@resend.dev>'
 
+const ALLOWED_SECTORS = ['schools', 'nursing', 'workplace', 'community', 'other'] as const
+
+const BodySchema = z.object({
+  quoteId: z.string().uuid(),
+})
+
+const RowSchema = z.object({
+  id: z.string().uuid(),
+  name: z.string().min(1).max(200),
+  organisation: z.string().min(1).max(200),
+  sector: z.enum(ALLOWED_SECTORS),
+  email: z.string().email().max(320),
+  phone: z.string().min(1).max(30),
+  message: z.string().max(2000).nullable().optional(),
+})
+
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+const errorResponse = (status: number, message = 'Internal server error') =>
+  new Response(JSON.stringify({ error: message }), {
+    status,
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  })
 
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
@@ -13,26 +37,40 @@ Deno.serve(async (req) => {
   try {
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY')
     const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
-    if (!LOVABLE_API_KEY) throw new Error('LOVABLE_API_KEY not configured')
-    if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY not configured')
-
-    const body = await req.json().catch(() => ({}))
-    const {
-      quoteId = '',
-      name = '',
-      organisation = '',
-      sector = '',
-      email = '',
-      phone = '',
-      message = '',
-    } = body ?? {}
-
-    if (!name || !organisation || !sector || !email || !phone) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
-        status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      })
+    const SUPABASE_URL = Deno.env.get('SUPABASE_URL')
+    const SERVICE_ROLE = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
+    if (!LOVABLE_API_KEY || !RESEND_API_KEY || !SUPABASE_URL || !SERVICE_ROLE) {
+      console.error('Missing required environment variables')
+      return errorResponse(500)
     }
+
+    const raw = await req.json().catch(() => null)
+    const parsed = BodySchema.safeParse(raw)
+    if (!parsed.success) {
+      return errorResponse(400, 'Invalid request')
+    }
+
+    const admin = createClient(SUPABASE_URL, SERVICE_ROLE)
+    const { data: row, error: fetchErr } = await admin
+      .from('quote_requests')
+      .select('id, name, organisation, sector, email, phone, message')
+      .eq('id', parsed.data.quoteId)
+      .maybeSingle()
+
+    if (fetchErr) {
+      console.error('DB fetch error', fetchErr)
+      return errorResponse(500)
+    }
+    if (!row) {
+      return errorResponse(404, 'Not found')
+    }
+
+    const validated = RowSchema.safeParse(row)
+    if (!validated.success) {
+      console.error('Stored row failed validation', validated.error.flatten())
+      return errorResponse(500)
+    }
+    const { id, name, organisation, sector, email, phone, message } = validated.data
 
     const subject = `New quote request — ${organisation} (${sector})`
     const html = `
@@ -47,7 +85,7 @@ Deno.serve(async (req) => {
           <tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;">Phone</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="tel:${esc(phone)}">${esc(phone)}</a></td></tr>
           ${message ? `<tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;vertical-align:top;">Message</td><td style="padding:8px 12px;border-bottom:1px solid #eee;white-space:pre-wrap;">${esc(message)}</td></tr>` : ''}
         </table>
-        <p style="margin-top:24px;font-size:12px;color:#999;">Quote ID: ${esc(quoteId)}</p>
+        <p style="margin-top:24px;font-size:12px;color:#999;">Quote ID: ${esc(id)}</p>
         <p style="margin-top:8px;font-size:12px;color:#999;">Reply to this email to respond directly to the customer.</p>
       </div>
     `
@@ -71,21 +109,15 @@ Deno.serve(async (req) => {
     const data = await resp.json().catch(() => ({}))
     if (!resp.ok) {
       console.error('Resend error', resp.status, data)
-      return new Response(JSON.stringify({ error: 'Email send failed', details: data }), {
-        status: 502,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      })
+      return errorResponse(502, 'Email send failed')
     }
 
-    return new Response(JSON.stringify({ success: true, id: data?.id }), {
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   } catch (err) {
     console.error('send-quote-notification error', err)
-    return new Response(
-      JSON.stringify({ error: err instanceof Error ? err.message : 'Unknown error' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
-    )
+    return errorResponse(500)
   }
 })
