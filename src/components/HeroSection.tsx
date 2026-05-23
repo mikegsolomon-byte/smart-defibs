@@ -49,7 +49,7 @@ export default function HeroSection() {
               variants={fadeUp}
               className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-[1.05] mb-6 tracking-tight font-extrabold"
             >
-              Every second counts.
+              Every second <span className="relative inline-block"><span className="relative z-10">counts</span><span aria-hidden className="absolute left-0 right-0 bottom-1 h-3 bg-accent/70 -z-0 rounded-sm" /></span>.
               <br />
               <span className="text-primary">Be ready to save a life.</span>
             </motion.h1>
