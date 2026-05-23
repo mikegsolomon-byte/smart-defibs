@@ -40,10 +40,14 @@ export default function HeroSection() {
             animate="show"
             className="lg:col-span-7 max-w-2xl"
           >
-            <motion.div variants={fadeUp}>
-              <span className="inline-flex items-center gap-2 bg-red-soft text-primary text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-6 border border-primary/15">
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-2 mb-6">
+              <span className="inline-flex items-center gap-2 bg-red-soft text-primary text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-primary/15">
                 <ShieldCheck className="h-3.5 w-3.5" />
                 Ireland's Trusted AED Supplier
+              </span>
+              <span className="inline-flex items-center gap-2 bg-card text-foreground text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-border shadow-sm">
+                <img src={amoulLogo} alt="Amoul" className="h-4 w-auto" />
+                Official Irish Importer
               </span>
             </motion.div>
 
