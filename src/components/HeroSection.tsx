@@ -32,6 +32,35 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--red-brand)/0.10),_transparent_60%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_hsl(var(--background)))] pointer-events-none" />
 
+      {/* Bookmark ribbon — top right */}
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: [0, 0, 0.2, 1] }}
+        className="absolute top-0 right-4 sm:right-8 lg:right-16 z-20"
+      >
+        <div className="relative bg-gradient-to-b from-primary to-red-deep text-primary-foreground shadow-2xl shadow-primary/30 pl-3 pr-4 sm:pl-4 sm:pr-5 pt-3 pb-5 sm:pb-6">
+          {/* Ribbon V-cut at bottom */}
+          <div
+            className="absolute -bottom-px left-0 right-0 h-3 bg-background"
+            style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}
+          />
+          <div className="flex items-center gap-2.5 sm:gap-3 relative z-10">
+            <div className="bg-white rounded p-1 shadow-sm shrink-0">
+              <img src={amoulLogo} alt="Amoul" className="h-5 sm:h-6 w-auto" />
+            </div>
+            <div className="leading-tight">
+              <div className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] opacity-90">
+                Official Irish
+              </div>
+              <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider">
+                Importer
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
       <div className="relative container mx-auto px-4 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <motion.div
@@ -40,12 +69,6 @@ export default function HeroSection() {
             animate="show"
             className="lg:col-span-7 max-w-2xl"
           >
-            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-2 mb-6">
-              <span className="inline-flex items-center gap-2 bg-card text-foreground text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-border shadow-sm">
-                <img src={amoulLogo} alt="Amoul" className="h-4 w-auto" />
-                Official Irish Importer
-              </span>
-            </motion.div>
 
             <motion.h1
               variants={fadeUp}
