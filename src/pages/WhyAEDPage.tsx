@@ -36,7 +36,7 @@ export default function WhyAEDPage() {
       <SEO title="Why AEDs Save Lives — Cardiac Arrest Facts for Ireland" description="Sudden cardiac arrest stats, EMS response times, and why every minute without defibrillation drops survival by 10%. The case for AEDs in Irish communities." path="/why-aed" />
       <SiteHeader />
       <main className="flex-1">
-        <section className="bg-secondary section-padding-hero">
+        <section className="relative overflow-hidden bg-secondary section-padding-hero">
           <div className="container mx-auto">
             <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">Why an AED?</h1>
