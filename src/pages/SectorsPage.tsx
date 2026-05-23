@@ -171,10 +171,10 @@ const sectorData = {
       intro:
         "Community First Responders are often first on the scene, minutes ahead of an ambulance. A publicly accessible AED in your village, club or community centre is the single biggest intervention you can make to improve local cardiac arrest survival.",
       points: [
-        { icon: Clock, title: "Beat the ambulance", desc: "Rural ambulance response in Ireland averages 18+ minutes — far beyond the survival window." },
-        { icon: HeartPulse, title: "Bystander CPR + AED", desc: "Doubles or triples survival vs CPR alone. Public access AEDs save lives daily across Ireland." },
+        { icon: Clock, title: "Beat the ambulance", desc: "The national average response for life-threatening calls was 26 minutes in 2022 (NAS) — rural areas typically exceed this." },
+        { icon: HeartPulse, title: "Bystander CPR + AED", desc: "Doubles or triples survival vs CPR alone (NEJM PAD Trial 2004; Hallstrom et al., Circulation 2003)." },
         { icon: Users, title: "Whole-village asset", desc: "An outdoor cabinet AED is available 24/7 to anyone — runners, drivers, neighbours, visitors." },
-        { icon: GraduationCap, title: "Trained CFR team", desc: "PHECC CFR certification builds local capability that lasts for years." },
+        { icon: GraduationCap, title: "Trained CFR team", desc: "PHECC Cardiac First Response certification builds local capability that lasts for years." },
       ],
     },
     caseStudy: {
