@@ -60,9 +60,9 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all text-lg font-bold px-10 py-7 h-auto btn-micro shadow-lg shadow-primary/30 ring-1 ring-primary/20">
+              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep text-base px-8 btn-micro shadow-md shadow-primary/20">
                 <Link to="/quote">
-                  Get a Free Quote <ArrowRight className="ml-2 h-5 w-5" />
+                  Get a Free Quote <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-2 border-foreground/40 text-foreground hover:bg-muted text-base px-8 btn-micro">
