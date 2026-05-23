@@ -80,7 +80,7 @@ export default function SiteHeader() {
           <Button asChild variant="outline">
             <Link to="/quote">Get a Quote</Link>
           </Button>
-          <Button asChild className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro shadow-sm">
+          <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 btn-micro shadow-sm font-bold">
             <Link to="/products">Shop</Link>
           </Button>
         </div>
