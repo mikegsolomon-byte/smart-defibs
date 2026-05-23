@@ -19,10 +19,15 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import sectorSchoolsImg from "@/assets/sector-schools.jpg";
+import sectorNursingImg from "@/assets/sector-nursing.jpg";
+import sectorWorkplaceImg from "@/assets/sector-workplace.jpg";
+import sectorCommunityImg from "@/assets/sector-community.jpg";
 
 const sectorData = {
   schools: {
     icon: School,
+    image: sectorSchoolsImg,
     title: "AEDs for Schools & Crèches",
     subtitle: "Protect your students with grant-eligible AED programmes",
     color: "text-sector-schools",
