@@ -2,10 +2,10 @@ import { CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const badges = [
+  "Official Irish Amoul® Importer",
   "CE Marked",
   "Irish Heart Foundation",
-  "HSE Recommended",
-  "PHECC Certified",
+  "PHECC Aligned Training",
   "Next-Day Delivery IE",
 ];
 
