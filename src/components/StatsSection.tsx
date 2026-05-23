@@ -2,10 +2,10 @@ import { motion, useMotionValue, useTransform, animate, useInView } from "framer
 import { useEffect, useRef } from "react";
 
 const stats = [
-  { value: 5000, prefix: "~", suffix: "", label: "Cardiac arrests outside hospital in Ireland p.a." },
-  { value: 75, prefix: "", suffix: "%", label: "Survival increase with AED in <5 minutes" },
-  { value: 10, prefix: "", suffix: " min", label: "Average rural ambulance response time" },
-  { value: null, display: "Legal", prefix: "", suffix: "", label: "HSA guidance on workplace AEDs" },
+  { value: 2900, prefix: "~", suffix: "", label: "OHCA cases attended outside hospital in Ireland (OHCAR 2024)" },
+  { value: 70, prefix: "Up to ", suffix: "%", label: "Survival when defibrillation occurs within 3–5 minutes (ERC 2021)" },
+  { value: 26, prefix: "", suffix: " min", label: "National average response for Cat. 1 life-threatening calls (NAS, 2022)" },
+  { value: null, display: "Best practice", prefix: "", suffix: "", label: "HSA guidance recommends AEDs in workplaces (Section 1.10)" },
 ];
 
 function AnimatedCounter({ value, prefix, suffix }: { value: number; prefix: string; suffix: string }) {
