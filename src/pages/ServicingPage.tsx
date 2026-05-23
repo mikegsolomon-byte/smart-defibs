@@ -3,20 +3,61 @@ import SiteHeader from "@/components/SiteHeader";
 import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
-import { Check } from "lucide-react";
+import { Check, Info } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const plans = ["Plan 1", "Plan 2", "Plan 3", "POA"] as const;
 
-const matrix: { feature: string; included: boolean[] }[] = [
-  { feature: "Monthly readiness report", included: [true, true, true, true] },
-  { feature: "Expiry dates tracking", included: [true, true, true, true] },
-  { feature: "Responder cert expiry dates", included: [true, true, true, true] },
-  { feature: "Free replacement AED in case of failure", included: [true, true, true, true] },
-  { feature: "All-you-can-eat consumables", included: [false, true, true, true] },
-  { feature: "Annual check", included: [false, false, true, true] },
-  { feature: "Bi-annual training", included: [false, false, false, true] },
+const matrix: { feature: string; description: string; included: boolean[] }[] = [
+  {
+    feature: "Monthly readiness report",
+    description:
+      "A concise PDF summary delivered every month confirming your AED's status, battery and pad health, and any actions taken — ready to show inspectors or insurers.",
+    included: [true, true, true, true],
+  },
+  {
+    feature: "Expiry dates tracking",
+    description:
+      "We track battery and electrode pad expiry dates for every device on your account and notify you well in advance so nothing lapses.",
+    included: [true, true, true, true],
+  },
+  {
+    feature: "Responder cert expiry dates",
+    description:
+      "We log your trained responders' CPR/AED certification dates and remind you before they expire, so your team always stays compliant.",
+    included: [true, true, true, true],
+  },
+  {
+    feature: "Free replacement AED in case of failure",
+    description:
+      "If your AED fails a self-test or is damaged in normal use, we replace the unit free of charge for the duration of your plan — zero downtime.",
+    included: [true, true, true, true],
+  },
+  {
+    feature: "All-you-can-eat consumables",
+    description:
+      "Unlimited replacement pads (adult & paediatric) and batteries as they expire or are used in a rescue — no per-item charges.",
+    included: [false, true, true, true],
+  },
+  {
+    feature: "Annual check",
+    description:
+      "A yearly on-site inspection by our technician: full diagnostic, cabinet check, signage audit and a signed compliance certificate.",
+    included: [false, false, true, true],
+  },
+  {
+    feature: "Bi-annual training",
+    description:
+      "Two PHECC-aligned CPR/AED refresher sessions per year for your responder team, delivered on-site at your premises.",
+    included: [false, false, false, true],
+  },
 ];
+
 
 export default function ServicingPage() {
   return (
@@ -73,7 +114,20 @@ export default function ServicingPage() {
                         className={`border-b border-border/60 ${idx % 2 === 1 ? "bg-muted/40" : ""}`}
                       >
                         <td className="p-4 lg:p-5 text-sm lg:text-base text-foreground font-medium">
-                          {row.feature}
+                          <span className="inline-flex items-center gap-2">
+                            {row.feature}
+                            <Popover>
+                              <PopoverTrigger
+                                className="inline-flex items-center justify-center h-5 w-5 rounded-full border border-border text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40"
+                                aria-label={`More info about ${row.feature}`}
+                              >
+                                <Info className="h-3 w-3" />
+                              </PopoverTrigger>
+                              <PopoverContent side="top" className="text-sm leading-relaxed max-w-xs">
+                                {row.description}
+                              </PopoverContent>
+                            </Popover>
+                          </span>
                         </td>
                         {row.included.map((on, i) => (
                           <td key={i} className="p-4 lg:p-5 text-center">
@@ -119,7 +173,18 @@ export default function ServicingPage() {
                           >
                             {row.included[planIdx] && <Check className="h-3 w-3" strokeWidth={3} />}
                           </span>
-                          {row.feature}
+                          <span className="flex-1">{row.feature}</span>
+                          <Popover>
+                            <PopoverTrigger
+                              className="shrink-0 inline-flex items-center justify-center h-5 w-5 rounded-full border border-border text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40"
+                              aria-label={`More info about ${row.feature}`}
+                            >
+                              <Info className="h-3 w-3" />
+                            </PopoverTrigger>
+                            <PopoverContent side="top" className="text-sm leading-relaxed max-w-xs">
+                              {row.description}
+                            </PopoverContent>
+                          </Popover>
                         </li>
                       ))}
                     </ul>
