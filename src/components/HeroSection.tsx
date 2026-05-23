@@ -37,23 +37,23 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2, ease: [0, 0, 0.2, 1] }}
-        className="absolute top-0 right-4 sm:right-8 lg:right-16 z-20"
+        className="absolute top-0 right-2 sm:right-8 lg:right-16 z-20"
       >
-        <div className="relative bg-gradient-to-b from-primary to-red-deep text-primary-foreground shadow-2xl shadow-primary/30 pl-3 pr-4 sm:pl-4 sm:pr-5 pt-3 pb-5 sm:pb-6">
+        <div className="relative bg-gradient-to-b from-primary to-red-deep text-primary-foreground shadow-2xl shadow-primary/30 pl-2 pr-2.5 sm:pl-4 sm:pr-5 pt-2 pb-3 sm:pt-3 sm:pb-6">
           {/* Ribbon V-cut at bottom */}
           <div
-            className="absolute -bottom-px left-0 right-0 h-3 bg-background"
+            className="absolute -bottom-px left-0 right-0 h-2 sm:h-3 bg-background"
             style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}
           />
-          <div className="flex items-center gap-2.5 sm:gap-3 relative z-10">
-            <div className="bg-white rounded p-1 shadow-sm shrink-0">
-              <img src={amoulLogo} alt="Amoul" className="h-5 sm:h-6 w-auto" />
+          <div className="flex items-center gap-1.5 sm:gap-3 relative z-10">
+            <div className="bg-white rounded p-0.5 sm:p-1 shadow-sm shrink-0">
+              <img src={amoulLogo} alt="Amoul" className="h-4 sm:h-6 w-auto" />
             </div>
             <div className="leading-tight">
-              <div className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.2em] opacity-90">
+              <div className="text-[8px] sm:text-[10px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] opacity-90">
                 Official Irish
               </div>
-              <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider">
+              <div className="text-[10px] sm:text-sm font-extrabold uppercase tracking-wide sm:tracking-wider">
                 Importer
               </div>
             </div>
