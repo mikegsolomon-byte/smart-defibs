@@ -2,7 +2,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
-import { Shield, CheckCircle, Award, Droplets, Battery, Radio, Baby, Zap } from "lucide-react";
+import { Shield, Award, Droplets, Battery, Radio, Baby, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import amoulI3 from "@/assets/amoul-i3.jpg";
@@ -17,14 +17,6 @@ const i3Features = [
   { icon: Shield, title: "EMS-trusted", desc: "Clear multilingual voice & visual prompts" },
 ];
 
-const accessories = [
-  { name: "Outdoor Heated Cabinet", desc: "Weatherproof cabinet with alarm & heating element", price: "From €395", tags: ["Community", "Schools"] },
-  { name: "Indoor Wall Cabinet", desc: "Alarmed indoor cabinet with signage", price: "From €195", tags: ["Workplace", "Nursing"] },
-  { name: "Responder Bag Kit", desc: "Complete first responder kit — AED, mask, gloves, scissors", price: "From €1,295", tags: ["Community"] },
-  { name: "Amoul i3 Replacement Pads", desc: "Genuine adult or paediatric electrode pads", price: "From €95", tags: ["Consumables"] },
-  { name: "Amoul i3 Replacement Battery", desc: "Genuine 5-year disposable battery", price: "From €195", tags: ["Consumables"] },
-  { name: "AED Signage Pack", desc: "Compliant interior & exterior AED location signs", price: "From €35", tags: ["All sectors"] },
-];
 
 export default function ProductsPage() {
   return (
@@ -122,48 +114,6 @@ export default function ProductsPage() {
           </div>
         </section>
 
-        {/* Accessories */}
-        <section className="section-padding bg-background">
-          <div className="container mx-auto">
-            <div className="max-w-2xl mb-10">
-              <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-foreground mb-2">Cabinets, Kits & Consumables</h2>
-              <p className="text-base text-muted-foreground">Everything you need to deploy, protect, and maintain your Amoul® AED.</p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {accessories.map((p, i) => (
-                <motion.div
-                  key={p.name}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.06, duration: 0.4 }}
-                  className="clinical-card p-6 flex flex-col group"
-                >
-                  <div className="h-28 rounded-lg bg-muted/50 mb-5 flex items-center justify-center">
-                    <Shield className="h-10 w-10 text-primary/20 group-hover:text-primary/30 transition-colors" />
-                  </div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle className="h-3.5 w-3.5 text-primary" />
-                    <span className="text-xs font-medium text-muted-foreground">In stock — ships next day</span>
-                  </div>
-                  <h3 className="font-heading font-bold text-lg text-card-foreground mb-2">{p.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 flex-1">{p.desc}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {p.tags.map((t) => (
-                      <span key={t} className="text-xs bg-muted text-muted-foreground px-2.5 py-1 rounded-full">{t}</span>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                    <p className="font-heading font-bold text-lg text-primary">{p.price}</p>
-                    <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro">
-                      <Link to="/quote">Add to Quote</Link>
-                    </Button>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         <CTABanner />
       </main>
