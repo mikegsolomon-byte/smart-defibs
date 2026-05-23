@@ -11,7 +11,7 @@ const badges = [
 
 export default function TrustBar() {
   return (
-    <section className="bg-background border-y border-border">
+    <section className="bg-muted border-y border-border">
       <div className="container mx-auto px-4 lg:px-8 py-5">
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
           {badges.map((badge, i) => (
