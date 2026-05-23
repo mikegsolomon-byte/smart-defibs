@@ -70,18 +70,22 @@ export default function SectorCards() {
             >
               <Link
                 to={`/sectors?tab=${sector.slug}`}
-                className="group block clinical-card p-8 focus-ring h-full hover:border-primary/40"
+                className="group relative block clinical-card p-8 focus-ring h-full overflow-hidden bg-gradient-to-br from-card via-card to-red-soft/40 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500"
               >
-                <div className="inline-flex p-3 rounded-xl bg-red-soft mb-6 group-hover:bg-primary group-hover:scale-105 transition-all duration-300">
-                  <sector.icon className="h-6 w-6 text-primary group-hover:text-primary-foreground transition-colors" />
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="relative">
+                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-red-soft to-red-soft/50 mb-6 shadow-sm group-hover:from-primary group-hover:to-primary/85 group-hover:scale-105 group-hover:shadow-md group-hover:shadow-primary/30 transition-all duration-300">
+                    <sector.icon className="h-6 w-6 text-primary group-hover:text-primary-foreground transition-colors" />
+                  </div>
+                  <h3 className="font-heading font-extrabold text-lg mb-2 text-card-foreground tracking-tight">
+                    {sector.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed">{sector.description}</p>
+                  <span className="inline-flex items-center text-sm font-bold text-primary group-hover:gap-2 transition-all duration-300">
+                    Learn more <ArrowRight className="h-4 w-4 ml-1" />
+                  </span>
                 </div>
-                <h3 className="font-heading font-extrabold text-lg mb-2 text-card-foreground tracking-tight">
-                  {sector.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-6 leading-relaxed">{sector.description}</p>
-                <span className="inline-flex items-center text-sm font-bold text-primary group-hover:gap-2 transition-all duration-300">
-                  Learn more <ArrowRight className="h-4 w-4 ml-1" />
-                </span>
               </Link>
             </motion.div>
           ))}
