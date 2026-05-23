@@ -1,4 +1,5 @@
 import SiteHeader from "@/components/SiteHeader";
+import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
@@ -34,6 +35,7 @@ export default function TrainingPage() {
       <main className="flex-1">
         <section className="bg-secondary section-padding-hero">
           <div className="container mx-auto">
+            <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">Training & Certification</h1>
             <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">PHECC-aligned CPR/AED training courses for every sector — onsite, online, or certified CFR programmes.</p>
           </div>
