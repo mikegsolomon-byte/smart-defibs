@@ -48,7 +48,7 @@ export default function SiteHeader() {
     >
       <div className="container mx-auto flex items-center justify-between h-14 lg:h-20 px-4 lg:px-8">
         <Link to="/" className="flex items-center gap-2 lg:gap-3 focus-ring rounded-lg">
-          <img src={aedLogo} alt="Smart Defibs LTD logo" className="h-8 w-8 lg:h-11 lg:w-11" />
+          <img src={aedLogo} alt="Smart Defibs LTD logo" className="h-10 lg:h-14 w-auto" />
           <div className="leading-tight">
             <span className="block font-heading font-extrabold text-sm lg:text-lg text-foreground tracking-tight">
               Smart Defibs LTD
@@ -80,7 +80,7 @@ export default function SiteHeader() {
           <Button asChild variant="outline">
             <Link to="/quote">Get a Quote</Link>
           </Button>
-          <Button asChild className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro shadow-sm">
+          <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 btn-micro shadow-sm font-bold">
             <Link to="/products">Shop</Link>
           </Button>
         </div>

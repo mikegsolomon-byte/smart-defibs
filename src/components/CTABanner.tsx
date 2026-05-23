@@ -18,19 +18,19 @@ export default function CTABanner() {
           <div className="relative grid lg:grid-cols-3 gap-8 items-center">
             <div className="lg:col-span-2">
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-primary-foreground font-extrabold tracking-tight mb-3">
-                Ready to protect your community?
+                Ready to <span className="text-accent">protect your community</span>?
               </h2>
               <p className="text-primary-foreground/95 text-lg max-w-xl">
                 Get a free, no-obligation quote tailored to your sector.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-stretch">
-              <Button asChild size="lg" className="bg-background text-primary hover:bg-background/90 text-base px-8 btn-micro shadow-md">
+              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 btn-micro shadow-md font-bold">
                 <Link to="/quote">
                   Get a Free Quote <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 border-2 border-secondary text-base px-8 btn-micro shadow-md">
+              <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 border-2 border-accent/40 text-base px-8 btn-micro shadow-md">
                 <a href="tel:+353894992903">
                   <Phone className="mr-2 h-4 w-4" /> Call Us
                 </a>
