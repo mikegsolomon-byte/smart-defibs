@@ -17,14 +17,6 @@ const i3Features = [
   { icon: Shield, title: "EMS-trusted", desc: "Clear multilingual voice & visual prompts" },
 ];
 
-const accessories = [
-  { name: "Outdoor Heated Cabinet", desc: "Weatherproof cabinet with alarm & heating element", price: "From €395", tags: ["Community", "Schools"] },
-  { name: "Indoor Wall Cabinet", desc: "Alarmed indoor cabinet with signage", price: "From €195", tags: ["Workplace", "Nursing"] },
-  { name: "Responder Bag Kit", desc: "Complete first responder kit — AED, mask, gloves, scissors", price: "From €1,295", tags: ["Community"] },
-  { name: "Amoul i3 Replacement Pads", desc: "Genuine adult or paediatric electrode pads", price: "From €95", tags: ["Consumables"] },
-  { name: "Amoul i3 Replacement Battery", desc: "Genuine 5-year disposable battery", price: "From €195", tags: ["Consumables"] },
-  { name: "AED Signage Pack", desc: "Compliant interior & exterior AED location signs", price: "From €35", tags: ["All sectors"] },
-];
 
 export default function ProductsPage() {
   return (
