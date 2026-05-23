@@ -132,11 +132,11 @@ const sectorData = {
     steps: ["Request multi-site proposal", "Site assessments & install", "Account-managed maintenance"],
     whyNeeded: {
       intro:
-        "Most cardiac arrests happen at work or in public — but only a minority of workplaces are equipped to respond. The Safety, Health & Welfare at Work Act puts the duty of care squarely on employers, and a single saved life pays back the investment many times over.",
+        "Many cardiac arrests happen at work or in public — but only a minority of workplaces are equipped to respond. The Safety, Health & Welfare at Work Act 2005 puts a clear duty of care on employers, and a single saved life pays back the investment many times over.",
       points: [
-        { icon: HeartPulse, title: "10,000+ OHCA per year", desc: "Out-of-hospital cardiac arrests in Ireland — most happen during working hours." },
-        { icon: Clock, title: "4-minute window", desc: "Defibrillation within 4 minutes can yield survival rates above 70%." },
-        { icon: Shield, title: "Employer duty", desc: "The 2005 Act requires risk-appropriate emergency provision. AEDs are best-practice evidence." },
+        { icon: HeartPulse, title: "~2,900 OHCA per year", desc: "Out-of-hospital cardiac arrests attended in Ireland (OHCAR 2024) — many occur during working hours." },
+        { icon: Clock, title: "3–5 minute window", desc: "In witnessed shockable cases with bystander CPR, defibrillation within 3–5 minutes has produced survival rates above 50%." },
+        { icon: Shield, title: "Employer duty", desc: "The 2005 Act requires adequate first-aid and emergency arrangements; HSA guidance (Section 1.10) recommends AEDs wherever an occupational first-aider is in place." },
         { icon: Activity, title: "Visible safety culture", desc: "On-display AEDs reinforce a proactive H&S culture for staff and visitors." },
       ],
     },
