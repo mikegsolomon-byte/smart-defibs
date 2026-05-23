@@ -242,19 +242,41 @@ export default function SectorsPage() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--primary)/0.18),_transparent_60%)] pointer-events-none" />
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_hsl(var(--secondary)))] pointer-events-none" />
           <div className="relative container mx-auto">
-            <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-              <div className={`inline-flex p-4 rounded-2xl ${data.bgColor} mb-6`}>
-                <Icon className={`h-10 w-10 ${data.color}`} />
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center"
+            >
+              <div className="lg:col-span-7">
+                <div className={`inline-flex p-4 rounded-2xl ${data.bgColor} mb-6`}>
+                  <Icon className={`h-10 w-10 ${data.color}`} />
+                </div>
+                <h1 className="text-3xl md:text-5xl text-secondary-foreground mb-4">{data.title}</h1>
+                <p className="text-lg text-secondary-foreground/70 mb-8 max-w-2xl">{data.subtitle}</p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep">
+                    <Link to="/quote">Get a Sector Quote</Link>
+                  </Button>
+                  <Button size="lg" className="bg-background text-secondary hover:bg-background/90 border-2 border-background btn-micro shadow-md">
+                    Download Info Pack
+                  </Button>
+                </div>
               </div>
-              <h1 className="text-3xl md:text-5xl text-secondary-foreground mb-4">{data.title}</h1>
-              <p className="text-lg text-secondary-foreground/70 mb-8 max-w-2xl">{data.subtitle}</p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep">
-                  <Link to="/quote">Get a Sector Quote</Link>
-                </Button>
-                <Button size="lg" className="bg-background text-secondary hover:bg-background/90 border-2 border-background btn-micro shadow-md">
-                  Download Info Pack
-                </Button>
+
+              <div className="lg:col-span-5">
+                <div className="relative aspect-[4/5] lg:aspect-[5/6] rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 ring-1 ring-primary/20">
+                  <img
+                    src={data.image}
+                    alt={data.title}
+                    width={1280}
+                    height={896}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
+                </div>
               </div>
             </motion.div>
           </div>
