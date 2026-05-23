@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
+import amoulLogo from "@/assets/amoul-logo.png";
+
 
 // Split-tone credential badge — white "Amoul®" side + red "Official Irish Importer"
 // side, with a floating verification check. Parent section must be `relative`
@@ -19,15 +21,14 @@ export default function AmoulImporterChip({ variant }: { variant?: "dark" | "lig
 
         <div className="relative flex items-stretch shadow-2xl shadow-primary/20 rounded-md overflow-hidden ring-1 ring-primary/30">
           {/* Brand side */}
-          <div className="bg-white flex flex-col items-center justify-center px-3 py-2 sm:px-5 sm:py-3">
-            <div className="flex items-start leading-none">
-              <span className="text-primary font-heading font-extrabold italic text-lg sm:text-2xl tracking-tighter">
-                Amoul
-              </span>
-              <span className="text-primary text-[7px] sm:text-[9px] font-bold mt-0.5 ml-0.5">®</span>
-            </div>
-            <div className="h-0.5 w-full bg-primary/15 mt-1 rounded-full" />
+          <div className="bg-white flex items-center justify-center px-3 py-2 sm:px-5 sm:py-3">
+            <img
+              src={amoulLogo}
+              alt="Amoul"
+              className="h-5 sm:h-7 w-auto object-contain"
+            />
           </div>
+
 
           {/* Status side */}
           <div className="relative bg-primary text-primary-foreground flex flex-col justify-center px-3 py-2 sm:px-5 sm:py-3 overflow-hidden">
