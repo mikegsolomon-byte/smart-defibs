@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import HeroSection from "@/components/HeroSection";
@@ -9,6 +10,11 @@ import CTABanner from "@/components/CTABanner";
 
 const Index = () => (
   <div className="min-h-screen flex flex-col">
+    <SEO
+      title="Smart Defibs LTD — AEDs, Training & Servicing in Ireland"
+      description="Ireland's exclusive Amoul AED partner. CE-marked defibrillators, PHECC-aligned training, and nationwide maintenance for schools, workplaces and community groups."
+      path="/"
+    />
     <SiteHeader />
     <main className="flex-1">
       <HeroSection />
