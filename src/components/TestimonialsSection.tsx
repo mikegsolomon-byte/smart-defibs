@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Testimonials</span>
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] bg-accent text-accent-foreground px-3 py-1 rounded-full mb-3">Testimonials</span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
             Trusted by organisations across Ireland
           </h2>

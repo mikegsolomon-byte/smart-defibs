@@ -52,7 +52,7 @@ export default function SectorCards() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Sectors</span>
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] bg-accent text-accent-foreground px-3 py-1 rounded-full mb-3">Sectors</span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-3 font-extrabold tracking-tight">I'm looking for…</h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
             Select your sector and we'll guide you to the right AED solution
@@ -82,7 +82,7 @@ export default function SectorCards() {
                     {sector.title}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-6 leading-relaxed">{sector.description}</p>
-                  <span className="inline-flex items-center text-sm font-bold text-primary group-hover:gap-2 transition-all duration-300">
+                  <span className="inline-flex items-center text-sm font-bold text-primary group-hover:text-accent group-hover:gap-2 transition-all duration-300">
                     Learn more <ArrowRight className="h-4 w-4 ml-1" />
                   </span>
                 </div>
