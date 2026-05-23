@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroAedWall from "@/assets/hero-aed-wall.jpg";
+import amoulLogo from "@/assets/amoul-logo.png";
 
 
 const stagger = {
