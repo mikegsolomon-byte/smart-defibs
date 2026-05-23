@@ -7,18 +7,69 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle, Phone, Mail } from "lucide-react";
+import { CheckCircle, Phone, Mail, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function QuotePage() {
   const { toast } = useToast();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    organisation: "",
+    sector: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.sector) {
+      toast({ title: "Please select a sector", variant: "destructive" });
+      return;
+    }
+    setSubmitting(true);
+
+    const { data, error } = await supabase
+      .from("quote_requests")
+      .insert({
+        name: form.name,
+        organisation: form.organisation,
+        sector: form.sector,
+        email: form.email,
+        phone: form.phone,
+        message: form.message || null,
+      })
+      .select("id")
+      .single();
+
+    if (error || !data) {
+      console.error("Quote insert failed", error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or call us directly.",
+        variant: "destructive",
+      });
+      setSubmitting(false);
+      return;
+    }
+
+    // Fire-and-forget notification email to info@smartdefibs.ie
+    supabase.functions
+      .invoke("send-quote-notification", {
+        body: { quoteId: data.id, ...form },
+      })
+      .catch((err) => console.error("Notification email failed", err));
+
     setSubmitted(true);
-    toast({ title: "Quote request sent!", description: "We'll respond within 4 business hours." });
+    setSubmitting(false);
+    toast({ title: "Quote request sent!", description: "We'll be in touch shortly." });
   };
 
   return (
@@ -34,7 +85,7 @@ export default function QuotePage() {
             <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl mb-3 sm:mb-4">Get a Free Quote</h1>
             <p className="text-muted-foreground max-w-lg mx-auto">
-              Select your sector and we'll send you a tailored proposal. We respond within 4 business hours.
+              Select your sector and we'll send you a tailored proposal.
             </p>
           </motion.div>
 
@@ -49,24 +100,24 @@ export default function QuotePage() {
                 <div className="glass-card p-12 text-center">
                   <CheckCircle className="h-16 w-16 text-primary mx-auto mb-4" />
                   <h2 className="text-2xl mb-2">Thank you!</h2>
-                  <p className="text-muted-foreground">Your quote request has been received. We'll be in touch within 4 business hours.</p>
+                  <p className="text-muted-foreground">Your quote request has been received. We'll be in touch shortly.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
-                      <Input id="name" required placeholder="Your name" className="focus-ring" />
+                      <Input id="name" required placeholder="Your name" className="focus-ring" value={form.name} onChange={update("name")} />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="org">Organisation *</Label>
-                      <Input id="org" required placeholder="Organisation name" className="focus-ring" />
+                      <Input id="org" required placeholder="Organisation name" className="focus-ring" value={form.organisation} onChange={update("organisation")} />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="sector">Sector *</Label>
-                    <Select required>
+                    <Select required value={form.sector} onValueChange={(v) => setForm((f) => ({ ...f, sector: v }))}>
                       <SelectTrigger className="focus-ring"><SelectValue placeholder="Select your sector" /></SelectTrigger>
                       <SelectContent>
                         <SelectItem value="schools">Schools / Crèche</SelectItem>
@@ -81,21 +132,21 @@ export default function QuotePage() {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="email">Email *</Label>
-                      <Input id="email" type="email" required placeholder="you@example.ie" className="focus-ring" />
+                      <Input id="email" type="email" required placeholder="you@example.ie" className="focus-ring" value={form.email} onChange={update("email")} />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone *</Label>
-                      <Input id="phone" type="tel" required placeholder="+353 89 499 2903" className="focus-ring" />
+                      <Input id="phone" type="tel" required placeholder="+353 89 499 2903" className="focus-ring" value={form.phone} onChange={update("phone")} />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message">Message / Notes</Label>
-                    <Textarea id="message" placeholder="Any additional details..." rows={3} className="focus-ring" />
+                    <Textarea id="message" placeholder="Any additional details..." rows={3} className="focus-ring" value={form.message} onChange={update("message")} />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-teal-light text-base btn-micro">
-                    Submit Quote Request
+                  <Button type="submit" size="lg" disabled={submitting} className="w-full bg-primary text-primary-foreground hover:bg-teal-light text-base btn-micro">
+                    {submitting ? (<><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Submitting...</>) : "Submit Quote Request"}
                   </Button>
                 </form>
               )}
