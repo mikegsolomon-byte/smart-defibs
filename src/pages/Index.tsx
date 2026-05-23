@@ -6,7 +6,6 @@ import SectorCards from "@/components/SectorCards";
 import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CTABanner from "@/components/CTABanner";
-import AmoulPartnerBanner from "@/components/AmoulPartnerBanner";
 
 const Index = () => (
   <div className="min-h-screen flex flex-col">
@@ -14,7 +13,6 @@ const Index = () => (
     <main className="flex-1">
       <HeroSection />
       <TrustBar />
-      <AmoulPartnerBanner />
       <SectorCards />
       <StatsSection />
       <TestimonialsSection />
