@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,7 @@ export default function QuotePage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
+            <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl mb-3 sm:mb-4">Get a Free Quote</h1>
             <p className="text-muted-foreground max-w-lg mx-auto">
               Select your sector and we'll send you a tailored proposal. We respond within 4 business hours.

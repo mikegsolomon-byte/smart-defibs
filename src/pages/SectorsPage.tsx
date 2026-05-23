@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AmoulImporterChip from "@/components/AmoulImporterChip";
 import { useSearchParams } from "react-router-dom";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -235,6 +236,7 @@ export default function SectorsPage() {
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_hsl(var(--secondary)))] pointer-events-none" />
           <div className="relative container mx-auto">
             <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+              <AmoulImporterChip />
               <div className={`inline-flex p-3 sm:p-4 rounded-2xl ${data.bgColor} mb-6`}>
                 <Icon className={`h-8 w-8 sm:h-10 sm:w-10 ${data.color}`} />
               </div>
