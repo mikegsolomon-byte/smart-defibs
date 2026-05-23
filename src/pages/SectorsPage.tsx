@@ -27,29 +27,29 @@ const sectorData = {
     subtitle: "Protect your students with grant-eligible AED programmes",
     color: "text-sector-schools",
     bgColor: "bg-sector-schools/10",
-    compliance: "Dept of Education / AED for Schools Programme",
+    compliance: "Funding routes: CLÁR, LEADER, HSE National Lottery Grants & FAI Heart Care",
     packageItems: [
       "AED device (semi-automatic, paediatric-capable)",
       "Lockable wall cabinet with alarm",
       "Signage & emergency action poster",
       "On-site PHECC-aligned staff training (up to 12)",
     ],
-    packageHighlight: "Grant-eligible — most schools pay €0 out of pocket",
-    pricing: "From €1,295 incl. VAT — grant offset available",
+    packageHighlight: "Grant-eligible — we help schools identify and apply for funding",
+    pricing: "From €1,295 incl. VAT — grant offset may be available",
     steps: ["Get a free quote", "We install & train your staff", "We monitor & maintain it"],
     whyNeeded: {
       intro:
-        "Sudden cardiac arrest doesn't discriminate by age. Each year in Ireland, children, teachers and visitors collapse on school grounds — and survival depends on what happens in the next four minutes. An on-site AED, combined with trained staff, turns a tragedy into a survivable event.",
+        "Sudden cardiac arrest doesn't discriminate by age. Each year in Ireland, children, teachers and visitors collapse on school grounds — and survival depends on what happens in the next few minutes. An on-site AED, combined with trained staff, turns a tragedy into a survivable event.",
       points: [
         {
           icon: Clock,
           title: "Minutes matter",
-          desc: "Survival drops 10% for every minute without defibrillation. Ambulance ETA in most areas exceeds 8 minutes.",
+          desc: "Survival drops by up to 10% for every minute without defibrillation. The national average response for life-threatening calls was 26 minutes in 2022 (NAS).",
         },
         {
           icon: HeartPulse,
-          title: "1 in 100 children",
-          desc: "have an undiagnosed cardiac condition. AEDs are safe for use on children aged 1+ with paediatric pads.",
+          title: "1 in 300 teenagers",
+          desc: "screened in Ireland had a previously undiagnosed cardiac condition (Dillon Quirke Foundation, 2024). AEDs are safe for use on children aged 1+ with paediatric pads.",
         },
         {
           icon: GraduationCap,
@@ -65,12 +65,12 @@ const sectorData = {
     },
     caseStudy: {
       quote:
-        "The AED for Schools programme made it affordable. Smart Defibs LTD handled everything from the grant application to installation.",
+        "Smart Defibs LTD walked us through the funding options, handled installation and trained our staff — it was completely turn-key.",
       name: "Sarah Walsh",
       role: "Principal, St. Mary's NS",
     },
     faqs: [
-      { q: "Is there grant funding available?", a: "Yes — the AED for Schools programme provides grants to eligible schools. We handle the application process for you." },
+      { q: "Is there grant funding available?", a: "There is no dedicated ROI Department of Education AED grant, but funding may be available via CLÁR, LEADER, HSE National Lottery Grants or the FAI Heart Care programme. We help schools identify and apply for the best fit." },
       { q: "Do staff need certification?", a: "We provide PHECC-aligned CPR/AED training on-site for up to 12 staff members." },
       { q: "What about maintenance?", a: "Our basic annual service plan ensures your AED is always rescue-ready." },
     ],
