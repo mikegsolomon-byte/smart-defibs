@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Training", href: "/training" },
   { label: "Servicing", href: "/servicing" },
   { label: "Why an AED?", href: "/why-aed" },
+  { label: "About", href: "/about" },
 ];
 
 export default function SiteHeader() {
