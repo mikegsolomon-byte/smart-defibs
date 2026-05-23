@@ -21,7 +21,7 @@ export default function CTABanner() {
                 Ready to protect your community?
               </h2>
               <p className="text-primary-foreground/95 text-lg max-w-xl">
-                Get a free, no-obligation quote tailored to your sector. We respond within 4 business hours.
+                Get a free, no-obligation quote tailored to your sector.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-stretch">
