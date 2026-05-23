@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteFooter from "@/components/SiteFooter";
@@ -20,6 +21,12 @@ const matrix: { feature: string; included: boolean[] }[] = [
 export default function ServicingPage() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="AED Servicing & Maintenance Plans — Smart Defibs Ireland"
+        description="AED maintenance plans with monthly readiness reports, consumables, annual checks and free replacement on failure. Keep your defibrillator rescue-ready."
+        path="/servicing"
+        jsonLd={{ "@context": "https://schema.org", "@type": "Service", serviceType: "AED Maintenance and Servicing", provider: { "@type": "Organization", name: "Smart Defibs LTD" }, areaServed: "IE" }}
+      />
       <SiteHeader />
       <main className="flex-1">
         <section className="bg-secondary section-padding-hero">

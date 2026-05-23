@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import { useState } from "react";
 import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteHeader from "@/components/SiteHeader";
@@ -74,6 +75,7 @@ export default function QuotePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO title="Get a Free AED Quote — Smart Defibs Ireland" description="Request a free, tailored AED quote for your school, nursing home, workplace or community group. Fast response from Ireland's Amoul partner." path="/quote" />
       <SiteHeader />
       <main className="flex-1 section-padding bg-background">
         <div className="container mx-auto max-w-5xl">

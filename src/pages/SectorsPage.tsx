@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import { useState } from "react";
 import AmoulImporterChip from "@/components/AmoulImporterChip";
 import { useSearchParams } from "react-router-dom";
@@ -202,6 +203,7 @@ export default function SectorsPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO title="AED Sectors — Schools, Workplace, Nursing & Community" description="Tailored AED packages for schools and crèches, nursing homes, workplaces and community CFR groups across Ireland. Compliant, supported, life-saving." path="/sectors" />
       <SiteHeader />
       <main className="flex-1">
         {/* Tab navigation */}

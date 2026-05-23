@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteFooter from "@/components/SiteFooter";
@@ -32,6 +33,7 @@ const reasons = [
 export default function WhyAEDPage() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO title="Why AEDs Save Lives — Cardiac Arrest Facts for Ireland" description="Sudden cardiac arrest stats, EMS response times, and why every minute without defibrillation drops survival by 10%. The case for AEDs in Irish communities." path="/why-aed" />
       <SiteHeader />
       <main className="flex-1">
         <section className="bg-secondary section-padding-hero">
