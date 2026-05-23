@@ -29,7 +29,7 @@ export default function ServicingPage() {
       />
       <SiteHeader />
       <main className="flex-1">
-        <section className="bg-secondary section-padding-hero">
+        <section className="relative overflow-hidden bg-secondary section-padding-hero">
           <div className="container mx-auto">
             <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">Servicing & Maintenance</h1>

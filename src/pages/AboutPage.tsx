@@ -11,7 +11,7 @@ export default function AboutPage() {
       <SEO title="About Smart Defibs LTD — Ireland's Amoul AED Partner" description="Smart Defibs LTD is the exclusive Irish partner of Amoul, supplying AEDs, training and servicing to communities across all 32 counties." path="/about" />
       <SiteHeader />
       <main className="flex-1">
-        <section className="bg-secondary section-padding-hero">
+        <section className="relative overflow-hidden bg-secondary section-padding-hero">
           <div className="container mx-auto">
             <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">
