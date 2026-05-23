@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle, Phone, Mail, Clock } from "lucide-react";
+import { CheckCircle, Phone, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -108,7 +108,6 @@ export default function QuotePage() {
               className="space-y-8"
             >
               {[
-                { icon: Clock, label: "4-hour response", desc: "We respond to every quote within 4 business hours" },
                 { icon: Phone, label: "+353 89 499 2903", desc: "Call us for immediate assistance" },
                 { icon: Mail, label: "info@smartdefibs.ie", desc: "Email us any time" },
               ].map((item) => (
