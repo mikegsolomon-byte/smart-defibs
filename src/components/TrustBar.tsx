@@ -23,7 +23,7 @@ export default function TrustBar() {
               transition={{ delay: i * 0.06, duration: 0.35 }}
               className="flex items-center gap-2 text-sm font-semibold text-foreground/70"
             >
-              <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+              <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-accent flex-shrink-0"><CheckCircle className="h-3.5 w-3.5 text-accent-foreground" strokeWidth={3} /></span>
               <span>{badge}</span>
             </motion.div>
           ))}
