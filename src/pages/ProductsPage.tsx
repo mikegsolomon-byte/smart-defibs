@@ -3,11 +3,14 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
-import { Shield, Award, Droplets, Battery, Radio, Baby, Zap } from "lucide-react";
+import { Shield, Award, Droplets, Battery, Radio, Baby, Zap, Loader2, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 import amoulI3 from "@/assets/amoul-i3.jpg";
 import amoulLogo from "@/assets/amoul-logo.png";
+import { useShopifyProducts } from "@/hooks/useShopifyProducts";
+import { useCartStore } from "@/stores/cartStore";
 
 const i3Features = [
   { icon: Zap, title: "200J adult / 50J paediatric", desc: "Smart escalating biphasic shock" },
@@ -20,6 +23,30 @@ const i3Features = [
 
 
 export default function ProductsPage() {
+  const { data: products, isLoading } = useShopifyProducts();
+  const addItem = useCartStore((s) => s.addItem);
+  const cartLoading = useCartStore((s) => s.isLoading);
+
+  // Match by handle; fallback to first product
+  const shopifyProduct = products?.find((p) => p.node.handle === "amoul-i3-aed") ?? products?.[0];
+  const variant = shopifyProduct?.node.variants.edges[0]?.node;
+  const livePrice = variant ? `${variant.price.currencyCode === "EUR" ? "€" : variant.price.currencyCode} ${Math.round(parseFloat(variant.price.amount)).toLocaleString()}` : "€1,295";
+
+  const handleAddToCart = async () => {
+    if (!shopifyProduct || !variant) {
+      toast.error("Product unavailable", { description: "Please request a quote instead." });
+      return;
+    }
+    await addItem({
+      product: shopifyProduct,
+      variantId: variant.id,
+      variantTitle: variant.title,
+      price: variant.price,
+      quantity: 1,
+      selectedOptions: variant.selectedOptions || [],
+    });
+    toast.success("Added to cart", { description: "Amoul i3 AED added — open cart to checkout." });
+  };
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
@@ -110,16 +137,26 @@ export default function ProductsPage() {
                   <div className="mt-auto pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
                       <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Direct from Irish importer</p>
-                      <p className="font-heading font-extrabold text-3xl text-primary">€1,295</p>
+                      <p className="font-heading font-extrabold text-3xl text-primary">{isLoading ? "—" : livePrice}</p>
                       <p className="text-xs text-muted-foreground">ex. VAT · includes pads & 5yr battery</p>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-2">
-                      <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro shadow-md">
-                        <Link to="/quote">Add to Quote</Link>
+                      <Button
+                        size="lg"
+                        onClick={handleAddToCart}
+                        disabled={isLoading || cartLoading || !variant}
+                        className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro shadow-md"
+                      >
+                        {cartLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><ShoppingCart className="h-4 w-4 mr-2" />Buy now</>}
                       </Button>
                       <Button asChild size="lg" variant="outline">
-                        <Link to="/quote">Request Spec Sheet</Link>
+                        <Link to="/quote">Request a Quote</Link>
                       </Button>
+                      {shopifyProduct && (
+                        <Button asChild size="lg" variant="ghost">
+                          <Link to={`/product/${shopifyProduct.node.handle}`}>View details</Link>
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>
