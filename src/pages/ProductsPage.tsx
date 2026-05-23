@@ -67,10 +67,8 @@ export default function ProductsPage() {
         {/* Hero */}
         <section className="bg-secondary section-padding-hero">
           <div className="container mx-auto">
-            <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary-foreground px-3 py-1.5 rounded-full mb-4">
-              <Award className="h-4 w-4 text-primary" />
-              <span className="text-xs font-semibold uppercase tracking-wider">Official Irish Importer of Amoul AEDs</span>
-            </div>
+            <AmoulImporterChip variant="dark" />
+
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">AEDs & Accessories</h1>
             <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">
               We are the sole Irish representative and importer of Amoul® medical defibrillators — CE-marked, EMS-trusted, with transparent pricing and next-day delivery across Ireland.
