@@ -77,14 +77,13 @@ export default function QuotePage() {
     <div className="min-h-screen flex flex-col">
       <SEO title="Get a Free AED Quote — Smart Defibs Ireland" description="Request a free, tailored AED quote for your school, nursing home, workplace or community group. Fast response from Ireland's Amoul partner." path="/quote" />
       <SiteHeader />
-      <main className="flex-1 section-padding bg-background">
+      <main className="flex-1 pb-16 md:pb-24 pt-8 md:pt-12 bg-background">
         <div className="container mx-auto max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl mb-3 sm:mb-4">Get a Free Quote</h1>
             <p className="text-muted-foreground max-w-lg mx-auto">
               Select your sector and we'll send you a tailored proposal.
