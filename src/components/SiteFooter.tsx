@@ -9,7 +9,7 @@ export default function SiteFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <img src={aedLogo} alt="Smart Defibs LTD" className="h-10 w-10 bg-background rounded-lg p-1" />
+              <img src={aedLogo} alt="Smart Defibs LTD" className="h-12 w-auto bg-white rounded-lg p-1" />
               <span className="font-heading font-extrabold text-lg tracking-tight">Smart Defibs LTD</span>
             </div>
             <p className="text-secondary-foreground/80 text-sm leading-relaxed max-w-xs">
