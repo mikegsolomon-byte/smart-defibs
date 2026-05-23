@@ -35,10 +35,10 @@ export default function ServicingPage() {
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
       <main className="flex-1">
-        <section className="bg-secondary section-padding pb-12">
+        <section className="bg-secondary section-padding-hero">
           <div className="container mx-auto">
-            <h1 className="text-3xl md:text-5xl text-secondary-foreground mb-4">Servicing & Maintenance</h1>
-            <p className="text-lg text-secondary-foreground/70 max-w-2xl">No hidden fees. All pricing transparent. HIQA & HSA compliance docs included with all plans.</p>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">Servicing & Maintenance</h1>
+            <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">No hidden fees. All pricing transparent. HIQA & HSA compliance docs included with all plans.</p>
           </div>
         </section>
 

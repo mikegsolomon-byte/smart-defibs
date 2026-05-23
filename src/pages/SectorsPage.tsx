@@ -230,16 +230,16 @@ export default function SectorsPage() {
         </div>
 
         {/* Hero */}
-        <section className="relative overflow-hidden bg-secondary section-padding pb-12">
+        <section className="relative overflow-hidden bg-secondary section-padding-hero">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--primary)/0.18),_transparent_60%)] pointer-events-none" />
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_hsl(var(--secondary)))] pointer-events-none" />
           <div className="relative container mx-auto">
             <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-              <div className={`inline-flex p-4 rounded-2xl ${data.bgColor} mb-6`}>
-                <Icon className={`h-10 w-10 ${data.color}`} />
+              <div className={`inline-flex p-3 sm:p-4 rounded-2xl ${data.bgColor} mb-6`}>
+                <Icon className={`h-8 w-8 sm:h-10 sm:w-10 ${data.color}`} />
               </div>
-              <h1 className="text-3xl md:text-5xl text-secondary-foreground mb-4">{data.title}</h1>
-              <p className="text-lg text-secondary-foreground/70 mb-8 max-w-2xl">{data.subtitle}</p>
+              <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">{data.title}</h1>
+              <p className="text-base sm:text-lg text-secondary-foreground/70 mb-6 sm:mb-8 max-w-2xl">{data.subtitle}</p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep">
                   <Link to="/quote">Get a Sector Quote</Link>

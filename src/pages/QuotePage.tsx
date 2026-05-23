@@ -30,7 +30,7 @@ export default function QuotePage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h1 className="text-3xl md:text-5xl mb-4">Get a Free Quote</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl mb-3 sm:mb-4">Get a Free Quote</h1>
             <p className="text-muted-foreground max-w-lg mx-auto">
               Select your sector and we'll send you a tailored proposal. We respond within 4 business hours.
             </p>
