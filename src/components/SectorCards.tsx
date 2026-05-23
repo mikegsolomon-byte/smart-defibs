@@ -43,14 +43,14 @@ const sectors = [
 
 export default function SectorCards() {
   return (
-    <section id="sectors" className="section-padding bg-background">
+    <section id="sectors" className="px-4 sm:px-8 lg:px-8 py-6 sm:py-10 lg:py-14 bg-background">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-14"
+          className="text-center mb-8"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Sectors</span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-3 font-extrabold tracking-tight">I'm looking for…</h2>
