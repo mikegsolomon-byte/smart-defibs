@@ -2,33 +2,19 @@ import SiteHeader from "@/components/SiteHeader";
 import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { CheckCircle } from "lucide-react";
+import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 
-const plans = [
-  {
-    title: "Basic Annual Check",
-    price: "€99/yr",
-    features: ["Visual inspection", "Readiness report", "Certificate issued"],
-    personas: ["Schools"],
-    popular: false,
-  },
-  {
-    title: "Full Service Plan",
-    price: "€199/yr",
-    features: ["Annual inspection", "Pads & battery replacement", "Priority support", "Compliance documentation"],
-    personas: ["Nursing", "Workplace"],
-    popular: true,
-  },
-  {
-    title: "Multi-Site Managed",
-    price: "POA",
-    features: ["Dedicated account manager", "All sites covered", "Compliance docs package", "24/7 priority support"],
-    personas: ["Workplace"],
-    popular: false,
-  },
+const plans = ["Plan 1", "Plan 2", "Plan 3", "POA"] as const;
+
+const matrix: { feature: string; included: boolean[] }[] = [
+  { feature: "Monthly readiness report", included: [true, true, true, true] },
+  { feature: "Expiry dates tracking", included: [true, true, true, true] },
+  { feature: "Responder cert expiry dates", included: [true, true, true, true] },
+  { feature: "Free replacement AED in case of failure", included: [true, true, true, true] },
+  { feature: "All-you-can-eat consumables", included: [false, true, true, true] },
+  { feature: "Annual check", included: [false, false, true, true] },
+  { feature: "Bi-annual training", included: [false, false, false, true] },
 ];
 
 export default function ServicingPage() {
@@ -40,50 +26,104 @@ export default function ServicingPage() {
           <div className="container mx-auto">
             <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">Servicing & Maintenance</h1>
-            <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">No hidden fees. All pricing transparent. HIQA & HSA compliance docs included with all plans.</p>
+            <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">
+              Choose the level of cover that suits your site. HIQA & HSA compliance documentation included across all plans.
+            </p>
           </div>
         </section>
 
         <section className="section-padding bg-background">
           <div className="container mx-auto max-w-5xl">
-            <div className="grid md:grid-cols-3 gap-6">
-              {plans.map((plan, i) => (
-                <motion.div
-                  key={plan.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`bg-card border rounded-xl p-8 flex flex-col ${
-                    plan.popular ? "border-primary ring-2 ring-primary/20" : "border-border"
-                  }`}
-                >
-                  {plan.popular && (
-                    <span className="text-xs font-semibold bg-primary text-primary-foreground px-3 py-1 rounded-full self-start mb-4">
-                      Most Popular
-                    </span>
-                  )}
-                  <h3 className="font-heading font-bold text-xl text-card-foreground mb-2">{plan.title}</h3>
-                  <p className="text-3xl font-heading font-bold text-primary mb-6">{plan.price}</p>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                        {f}
-                      </li>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="clinical-card overflow-hidden"
+            >
+              {/* Desktop / tablet table */}
+              <div className="hidden sm:block overflow-x-auto">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="p-4 lg:p-5 font-heading font-extrabold text-foreground text-sm uppercase tracking-wider">
+                        Servicing
+                      </th>
+                      {plans.map((p) => (
+                        <th
+                          key={p}
+                          className="p-4 lg:p-5 text-center font-heading font-extrabold text-foreground text-sm uppercase tracking-wider w-24"
+                        >
+                          {p}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {matrix.map((row, idx) => (
+                      <tr
+                        key={row.feature}
+                        className={`border-b border-border/60 ${idx % 2 === 1 ? "bg-muted/40" : ""}`}
+                      >
+                        <td className="p-4 lg:p-5 text-sm lg:text-base text-foreground font-medium">
+                          {row.feature}
+                        </td>
+                        {row.included.map((on, i) => (
+                          <td key={i} className="p-4 lg:p-5 text-center">
+                            <span
+                              className={`inline-flex items-center justify-center h-7 w-7 rounded-md border ${
+                                on
+                                  ? "bg-primary border-primary text-primary-foreground"
+                                  : "bg-background border-border"
+                              }`}
+                              aria-label={on ? "Included" : "Not included"}
+                            >
+                              {on && <Check className="h-4 w-4" strokeWidth={3} />}
+                            </span>
+                          </td>
+                        ))}
+                      </tr>
                     ))}
-                  </ul>
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {plan.personas.map((p) => (
-                      <span key={p} className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">{p}</span>
-                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile stacked view */}
+              <div className="sm:hidden divide-y divide-border">
+                {plans.map((p, planIdx) => (
+                  <div key={p} className="p-5">
+                    <h3 className="font-heading font-extrabold text-foreground text-base uppercase tracking-wider mb-3">
+                      {p}
+                    </h3>
+                    <ul className="space-y-2">
+                      {matrix.map((row) => (
+                        <li
+                          key={row.feature}
+                          className={`flex items-start gap-3 text-sm ${
+                            row.included[planIdx] ? "text-foreground" : "text-muted-foreground/60"
+                          }`}
+                        >
+                          <span
+                            className={`mt-0.5 inline-flex items-center justify-center h-5 w-5 rounded-md border shrink-0 ${
+                              row.included[planIdx]
+                                ? "bg-primary border-primary text-primary-foreground"
+                                : "bg-background border-border"
+                            }`}
+                          >
+                            {row.included[planIdx] && <Check className="h-3 w-3" strokeWidth={3} />}
+                          </span>
+                          {row.feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <Button asChild className={plan.popular ? "bg-primary text-primary-foreground hover:bg-teal-light" : "bg-muted text-foreground hover:bg-muted/80"}>
-                    <Link to="/quote">Get Started</Link>
-                  </Button>
-                </motion.div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <p className="text-xs text-muted-foreground text-center mt-6">
+              Contact us for a tailored quote based on your number of sites and devices.
+            </p>
           </div>
         </section>
 
