@@ -2,6 +2,7 @@ import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
+import AmoulImporterChip from "@/components/AmoulImporterChip";
 import { motion } from "framer-motion";
 import { Shield, Award, Droplets, Battery, Radio, Baby, Zap, Loader2, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
