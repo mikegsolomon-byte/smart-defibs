@@ -4,7 +4,19 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { motion } from "framer-motion";
-import { School, Users, Stethoscope, Shield, CheckCircle } from "lucide-react";
+import {
+  School,
+  Users,
+  Stethoscope,
+  Shield,
+  CheckCircle,
+  HeartPulse,
+  Clock,
+  GraduationCap,
+  Activity,
+  Package as PackageIcon,
+  Sparkles,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -16,11 +28,44 @@ const sectorData = {
     color: "text-sector-schools",
     bgColor: "bg-sector-schools/10",
     compliance: "Dept of Education / AED for Schools Programme",
-    package: "AED device + wall cabinet + signage + staff training session",
+    packageItems: [
+      "AED device (semi-automatic, paediatric-capable)",
+      "Lockable wall cabinet with alarm",
+      "Signage & emergency action poster",
+      "On-site PHECC-aligned staff training (up to 12)",
+    ],
+    packageHighlight: "Grant-eligible — most schools pay €0 out of pocket",
     pricing: "From €1,295 incl. VAT — grant offset available",
     steps: ["Get a free quote", "We install & train your staff", "We monitor & maintain it"],
+    whyNeeded: {
+      intro:
+        "Sudden cardiac arrest doesn't discriminate by age. Each year in Ireland, children, teachers and visitors collapse on school grounds — and survival depends on what happens in the next four minutes. An on-site AED, combined with trained staff, turns a tragedy into a survivable event.",
+      points: [
+        {
+          icon: Clock,
+          title: "Minutes matter",
+          desc: "Survival drops 10% for every minute without defibrillation. Ambulance ETA in most areas exceeds 8 minutes.",
+        },
+        {
+          icon: HeartPulse,
+          title: "1 in 100 children",
+          desc: "have an undiagnosed cardiac condition. AEDs are safe for use on children aged 1+ with paediatric pads.",
+        },
+        {
+          icon: GraduationCap,
+          title: "A duty of care",
+          desc: "Schools and crèches are expected to have emergency response plans. An AED demonstrates active safeguarding.",
+        },
+        {
+          icon: Activity,
+          title: "Used by the whole community",
+          desc: "School AEDs serve sports clubs, parents, staff and weekend events — multiplying their lifesaving impact.",
+        },
+      ],
+    },
     caseStudy: {
-      quote: "The AED for Schools programme made it affordable. Smart Defibs LTD handled everything from the grant application to installation.",
+      quote:
+        "The AED for Schools programme made it affordable. Smart Defibs LTD handled everything from the grant application to installation.",
       name: "Sarah Walsh",
       role: "Principal, St. Mary's NS",
     },
@@ -37,9 +82,26 @@ const sectorData = {
     color: "text-sector-nursing",
     bgColor: "bg-sector-nursing/10",
     compliance: "HIQA Standard 2.7 — Emergency Planning",
-    package: "AED + accessories + full service plan + staff training + compliance docs",
+    packageItems: [
+      "Clinical-grade AED with ECG display",
+      "Accessory pack: spare pads, battery, rescue kit",
+      "Full annual service & compliance plan",
+      "On-site staff training + online refresher access",
+      "HIQA-ready compliance documentation",
+    ],
+    packageHighlight: "Everything HIQA inspectors look for — in one bundle",
     pricing: "From €1,495 incl. VAT — maintenance contract available",
     steps: ["Request a sector quote", "We assess & install", "Ongoing training & monitoring"],
+    whyNeeded: {
+      intro:
+        "Residents in nursing homes are among the highest-risk groups for cardiac events. HIQA's emergency planning standard expects rapid, competent response — and that's only possible with an on-site AED and confident, trained staff.",
+      points: [
+        { icon: HeartPulse, title: "High-risk population", desc: "Cardiac arrest risk in over-65s is up to 7x higher than the general population." },
+        { icon: Clock, title: "Response before paramedics", desc: "Rural and suburban nursing homes often face 10+ minute ambulance response times." },
+        { icon: Shield, title: "HIQA Standard 2.7", desc: "Inspectors look for documented emergency response capability — an AED is the visible proof." },
+        { icon: GraduationCap, title: "Confident rotating staff", desc: "Our refresher modules keep agency and night staff certified between visits." },
+      ],
+    },
     caseStudy: {
       quote: "The HIQA compliance documentation alone was worth it. Staff training was thorough and professional.",
       name: "Niall Murphy",
@@ -58,9 +120,26 @@ const sectorData = {
     color: "text-sector-workplace",
     bgColor: "bg-sector-workplace/10",
     compliance: "HSA / Safety, Health & Welfare at Work Act",
-    package: "Certified AEDs + multi-site deployment + managed maintenance + compliance pack",
+    packageItems: [
+      "CE-certified AEDs (semi or fully automatic)",
+      "Multi-site rollout & installation coordination",
+      "Managed maintenance with priority response",
+      "HSA-aligned compliance documentation pack",
+      "On-site CPR/AED awareness training",
+    ],
+    packageHighlight: "Volume discounts and a single account manager across sites",
     pricing: "Multi-site pricing on application — volume discounts available",
     steps: ["Request multi-site proposal", "Site assessments & install", "Account-managed maintenance"],
+    whyNeeded: {
+      intro:
+        "Most cardiac arrests happen at work or in public — but only a minority of workplaces are equipped to respond. The Safety, Health & Welfare at Work Act puts the duty of care squarely on employers, and a single saved life pays back the investment many times over.",
+      points: [
+        { icon: HeartPulse, title: "10,000+ OHCA per year", desc: "Out-of-hospital cardiac arrests in Ireland — most happen during working hours." },
+        { icon: Clock, title: "4-minute window", desc: "Defibrillation within 4 minutes can yield survival rates above 70%." },
+        { icon: Shield, title: "Employer duty", desc: "The 2005 Act requires risk-appropriate emergency provision. AEDs are best-practice evidence." },
+        { icon: Activity, title: "Visible safety culture", desc: "On-display AEDs reinforce a proactive H&S culture for staff and visitors." },
+      ],
+    },
     caseStudy: {
       quote: "We equipped all five sites in under a week. The compliance documentation pack is comprehensive.",
       name: "Sam Kelly",
@@ -79,9 +158,25 @@ const sectorData = {
     color: "text-sector-community",
     bgColor: "bg-sector-community/10",
     compliance: "NAS / PHECC Community First Responder Framework",
-    package: "Community AED + outdoor cabinet + responder bag + CFR training",
+    packageItems: [
+      "Community-grade AED with rugged carry case",
+      "Heated outdoor cabinet (24/7 public access)",
+      "Responder bag with rescue essentials",
+      "PHECC CFR-level training course",
+    ],
+    packageHighlight: "Group order discounts for clubs and CFR schemes",
     pricing: "From €1,195 incl. VAT — group order discounts available",
     steps: ["Contact us for group pricing", "We deliver & install", "CFR training for your team"],
+    whyNeeded: {
+      intro:
+        "Community First Responders are often first on the scene, minutes ahead of an ambulance. A publicly accessible AED in your village, club or community centre is the single biggest intervention you can make to improve local cardiac arrest survival.",
+      points: [
+        { icon: Clock, title: "Beat the ambulance", desc: "Rural ambulance response in Ireland averages 18+ minutes — far beyond the survival window." },
+        { icon: HeartPulse, title: "Bystander CPR + AED", desc: "Doubles or triples survival vs CPR alone. Public access AEDs save lives daily across Ireland." },
+        { icon: Users, title: "Whole-village asset", desc: "An outdoor cabinet AED is available 24/7 to anyone — runners, drivers, neighbours, visitors." },
+        { icon: GraduationCap, title: "Trained CFR team", desc: "PHECC CFR certification builds local capability that lasts for years." },
+      ],
+    },
     caseStudy: {
       quote: "Our GAA club now has two AEDs and twelve trained responders. Smart Defibs LTD made it happen.",
       name: "Ciara Brennan",
@@ -135,8 +230,10 @@ export default function SectorsPage() {
         </div>
 
         {/* Hero */}
-        <section className="bg-secondary section-padding pb-12">
-          <div className="container mx-auto">
+        <section className="relative overflow-hidden bg-secondary section-padding pb-12">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--primary)/0.18),_transparent_60%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_hsl(var(--secondary)))] pointer-events-none" />
+          <div className="relative container mx-auto">
             <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
               <div className={`inline-flex p-4 rounded-2xl ${data.bgColor} mb-6`}>
                 <Icon className={`h-10 w-10 ${data.color}`} />
@@ -144,7 +241,7 @@ export default function SectorsPage() {
               <h1 className="text-3xl md:text-5xl text-secondary-foreground mb-4">{data.title}</h1>
               <p className="text-lg text-secondary-foreground/70 mb-8 max-w-2xl">{data.subtitle}</p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-teal-light">
+                <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep">
                   <Link to="/quote">Get a Sector Quote</Link>
                 </Button>
                 <Button size="lg" className="bg-background text-secondary hover:bg-background/90 border-2 border-background btn-micro shadow-md">
@@ -155,34 +252,126 @@ export default function SectorsPage() {
           </div>
         </section>
 
-        {/* Compliance */}
-        <section className="section-padding bg-background">
-          <div className="container mx-auto max-w-4xl">
+        {/* Why AEDs matter */}
+        <section className="section-padding bg-background relative">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(var(--primary)/0.05),_transparent_50%)] pointer-events-none" />
+          <div className="relative container mx-auto max-w-5xl">
+            <motion.div
+              key={activeTab + "-why"}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45 }}
+            >
+              <div className="max-w-2xl mb-12">
+                <span className="inline-flex items-center gap-2 bg-red-soft text-primary text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-4 border border-primary/15">
+                  <HeartPulse className="h-3.5 w-3.5" />
+                  Why it matters
+                </span>
+                <h2 className="font-heading text-3xl md:text-4xl font-extrabold tracking-tight mb-4">
+                  Why AEDs are essential here
+                </h2>
+                <p className="text-muted-foreground text-lg leading-relaxed">{data.whyNeeded.intro}</p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-5">
+                {data.whyNeeded.points.map((p, i) => {
+                  const PIcon = p.icon;
+                  return (
+                    <motion.div
+                      key={p.title}
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.06, duration: 0.4 }}
+                      className="clinical-card p-6 flex gap-4 hover:border-primary/30 transition-colors"
+                    >
+                      <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-red-soft flex items-center justify-center">
+                        <PIcon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-heading font-bold text-foreground mb-1">{p.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Compliance + Recommended Package */}
+        <section className="section-padding bg-muted/40">
+          <div className="container mx-auto max-w-5xl">
             <motion.div key={activeTab + "-content"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }}>
-              <div className="grid md:grid-cols-2 gap-12 mb-16">
-                <div>
-                  <h2 className="text-2xl mb-4">Regulatory Context</h2>
-                  <p className="text-muted-foreground bg-muted/50 p-4 rounded-lg border border-border">{data.compliance}</p>
+              <div className="grid lg:grid-cols-5 gap-6 mb-16">
+                {/* Regulatory */}
+                <div className="lg:col-span-2 clinical-card p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Shield className="h-4 w-4 text-secondary" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-secondary">Regulatory Context</span>
+                  </div>
+                  <p className="text-foreground font-medium leading-relaxed">{data.compliance}</p>
                 </div>
-                <div>
-                  <h2 className="text-2xl mb-4">Recommended Package</h2>
-                  <p className="text-muted-foreground bg-muted/50 p-4 rounded-lg border border-border">{data.package}</p>
+
+                {/* Recommended Package — featured */}
+                <div className="lg:col-span-3 relative rounded-2xl p-[1.5px] bg-gradient-to-br from-primary via-primary/40 to-primary/10 shadow-xl shadow-primary/10">
+                  <div className="relative rounded-2xl bg-card p-7 overflow-hidden">
+                    <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+                    <div className="relative">
+                      <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center shadow-md shadow-primary/30">
+                            <PackageIcon className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <span className="text-xs font-bold uppercase tracking-wider text-primary">Recommended Package</span>
+                            <h3 className="font-heading text-xl font-extrabold text-foreground">Everything you need, bundled</h3>
+                          </div>
+                        </div>
+                        <span className="inline-flex items-center gap-1 bg-red-soft text-primary text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border border-primary/20">
+                          <Sparkles className="h-3 w-3" />
+                          Most popular
+                        </span>
+                      </div>
+
+                      <ul className="space-y-2.5 mb-5">
+                        {data.packageItems.map((item) => (
+                          <li key={item} className="flex items-start gap-3 text-foreground/90">
+                            <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                            <span className="text-[15px] leading-snug">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="border-t border-border pt-4 flex flex-wrap items-center justify-between gap-3">
+                        <p className="text-sm font-semibold text-foreground/80">{data.packageHighlight}</p>
+                        <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-red-deep">
+                          <Link to="/quote">Get this package →</Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Pricing */}
-              <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-16 text-center">
-                <h3 className="text-lg font-heading font-semibold text-primary mb-1">Transparent Pricing</h3>
-                <p className="text-foreground font-medium">{data.pricing}</p>
+              <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 rounded-xl p-8 mb-16 text-center overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,_hsl(var(--primary)/0.15),_transparent_60%)] pointer-events-none" />
+                <div className="relative">
+                  <h3 className="text-lg font-heading font-bold text-primary mb-1 uppercase tracking-wider text-sm">Transparent Pricing</h3>
+                  <p className="text-foreground text-xl font-heading font-extrabold">{data.pricing}</p>
+                </div>
               </div>
 
               {/* Steps */}
               <div className="mb-16">
-                <h2 className="text-2xl text-center mb-8">How It Works</h2>
+                <h2 className="text-2xl md:text-3xl font-heading font-extrabold text-center mb-10">How It Works</h2>
                 <div className="grid md:grid-cols-3 gap-6">
                   {data.steps.map((step, i) => (
-                    <div key={i} className="text-center">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-heading font-bold text-lg mb-4">
+                    <div key={i} className="clinical-card p-6 text-center">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-heading font-bold text-lg mb-4 shadow-md shadow-primary/20">
                         {i + 1}
                       </div>
                       <p className="font-medium text-foreground">{step}</p>
@@ -192,24 +381,29 @@ export default function SectorsPage() {
               </div>
 
               {/* Case study */}
-              <div className="bg-card border border-border rounded-xl p-8 mb-16">
-                <h2 className="text-2xl mb-4">Case Study</h2>
-                <blockquote className="text-foreground/80 italic text-lg mb-4">"{data.caseStudy.quote}"</blockquote>
-                <p className="font-heading font-semibold">{data.caseStudy.name}</p>
-                <p className="text-sm text-muted-foreground">{data.caseStudy.role}</p>
+              <div className="relative bg-secondary text-secondary-foreground rounded-2xl p-8 md:p-10 mb-16 overflow-hidden">
+                <div className="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-primary/15 blur-3xl pointer-events-none" />
+                <div className="relative">
+                  <span className="text-xs font-bold uppercase tracking-wider text-primary mb-3 inline-block">Case Study</span>
+                  <blockquote className="text-secondary-foreground italic text-xl md:text-2xl font-heading mb-5 leading-relaxed">
+                    "{data.caseStudy.quote}"
+                  </blockquote>
+                  <p className="font-heading font-bold">{data.caseStudy.name}</p>
+                  <p className="text-sm text-secondary-foreground/70">{data.caseStudy.role}</p>
+                </div>
               </div>
 
               {/* FAQs */}
               <div className="mb-8">
-                <h2 className="text-2xl mb-6">Frequently Asked Questions</h2>
-                <div className="space-y-4">
+                <h2 className="text-2xl md:text-3xl font-heading font-extrabold mb-6">Frequently Asked Questions</h2>
+                <div className="space-y-3">
                   {data.faqs.map((faq) => (
-                    <details key={faq.q} className="group bg-card border border-border rounded-lg">
-                      <summary className="cursor-pointer p-4 font-medium text-foreground flex justify-between items-center">
+                    <details key={faq.q} className="group clinical-card">
+                      <summary className="cursor-pointer p-5 font-semibold text-foreground flex justify-between items-center">
                         {faq.q}
-                        <span className="text-primary group-open:rotate-45 transition-transform text-xl">+</span>
+                        <span className="text-primary group-open:rotate-45 transition-transform text-2xl leading-none">+</span>
                       </summary>
-                      <p className="px-4 pb-4 text-muted-foreground">{faq.a}</p>
+                      <p className="px-5 pb-5 text-muted-foreground leading-relaxed">{faq.a}</p>
                     </details>
                   ))}
                 </div>
@@ -219,11 +413,11 @@ export default function SectorsPage() {
         </section>
 
         {/* Trust signals */}
-        <section className="bg-muted section-padding py-12">
+        <section className="bg-background section-padding py-12 border-t border-border">
           <div className="container mx-auto">
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
               {["CE marked device", "PHECC certified training", "HSE/HIQA aligned", "Irish-based support team", "Compliance docs included"].map((t) => (
-                <div key={t} className="flex items-center gap-2 text-sm font-medium text-foreground">
+                <div key={t} className="flex items-center gap-2 text-sm font-semibold text-foreground/80">
                   <CheckCircle className="h-4 w-4 text-primary" />
                   {t}
                 </div>
