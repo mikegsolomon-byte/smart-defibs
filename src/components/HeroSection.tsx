@@ -25,12 +25,27 @@ export default function HeroSection() {
         alt="AED defibrillator cabinet mounted on a building wall"
         width={1920}
         height={1080}
-        className="absolute inset-0 w-full h-full object-cover object-[95%_center] opacity-70 pointer-events-none select-none"
+        className="absolute inset-0 w-full h-full object-cover object-[95%_center] opacity-95 pointer-events-none select-none"
       />
-      {/* Readability overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/20 pointer-events-none" />
+      {/* Readability overlays — lightened so the AED stays visible */}
+      <div className="absolute inset-0 bg-gradient-to-r from-background/92 via-background/55 to-background/5 pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--red-brand)/0.10),_transparent_60%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_hsl(var(--background)))] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent_60%,_hsl(var(--background)))] pointer-events-none" />
+
+      {/* Amoul corner ribbon — "dog-ear" badge on hero image */}
+      <div className="hidden md:block absolute top-0 right-0 z-20 pointer-events-none">
+        <div className="relative">
+          <div className="bg-primary text-primary-foreground shadow-xl shadow-primary/30 pl-6 pr-5 py-3 flex items-center gap-2.5 rounded-bl-2xl border-l-2 border-b-2 border-white/20">
+            <img src={amoulLogo} alt="Amoul" className="h-7 w-auto bg-white rounded-sm px-1 py-0.5" />
+            <div className="leading-tight">
+              <p className="text-[10px] font-bold uppercase tracking-[0.15em] opacity-90">Official Irish Importer</p>
+              <p className="text-sm font-extrabold font-heading">Amoul® Medical</p>
+            </div>
+          </div>
+          <div className="absolute -bottom-2 right-2 h-2 w-24 bg-black/20 blur-md rounded-full" />
+        </div>
+      </div>
+
 
       <div className="relative container mx-auto px-4 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
