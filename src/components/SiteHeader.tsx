@@ -12,7 +12,7 @@ const navLinks = [
   { label: "Sectors", href: "/sectors" },
   { label: "Training", href: "/training" },
   { label: "Servicing", href: "/servicing" },
-  { label: "Why an AED?", href: "/why-aed" },
+  
   { label: "About", href: "/about" },
 ];
 
