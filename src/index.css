@@ -79,26 +79,26 @@
     --card-foreground: 0 0% 96%;
     --popover: 0 0% 12%;
     --popover-foreground: 0 0% 96%;
-    --primary: 356 78% 56%;
+    --primary: 140 55% 38%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 14%;
+    --secondary: 140 50% 14%;
     --secondary-foreground: 0 0% 96%;
     --muted: 0 0% 16%;
     --muted-foreground: 0 0% 65%;
-    --accent: 356 78% 56%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 95% 58%;
+    --accent-foreground: 140 60% 12%;
     --destructive: 0 62.8% 40%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 356 78% 56%;
+    --ring: 140 55% 38%;
 
-    --charcoal: 0 0% 14%;
-    --charcoal-light: 0 0% 22%;
-    --red-brand: 356 78% 56%;
-    --red-deep: 356 78% 48%;
-    --red-soft: 356 40% 18%;
-    --red-bright: 356 90% 72%;
+    --charcoal: 140 50% 14%;
+    --charcoal-light: 140 40% 22%;
+    --red-brand: 140 55% 38%;
+    --red-deep: 140 60% 26%;
+    --red-soft: 140 40% 18%;
+    --red-bright: 45 95% 60%;
     --surface-soft: 0 0% 11%;
 
     --glass-bg: 0 0% 12% / 0.7;
