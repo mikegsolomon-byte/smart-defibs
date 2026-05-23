@@ -61,7 +61,7 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      <div className="relative container mx-auto px-4 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
+      <div className="relative container mx-auto px-4 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32 py-[60px]">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <motion.div
             variants={stagger}
