@@ -75,7 +75,7 @@ export default function ProductsPage() {
               <div className="grid lg:grid-cols-2 gap-0">
                 {/* Image */}
                 <div className="relative bg-gradient-to-br from-muted to-background p-8 lg:p-12 flex items-center justify-center min-h-[360px]">
-                  <div className="absolute top-4 left-4 flex items-center gap-2 bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md">
+                  <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md">
                     <Award className="h-3.5 w-3.5" />
                     Flagship Model
                   </div>
