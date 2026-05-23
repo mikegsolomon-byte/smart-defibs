@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteFooter from "@/components/SiteFooter";
@@ -31,6 +32,12 @@ const courses = [
 export default function TrainingPage() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="CPR & AED Training Ireland — PHECC-Aligned Courses"
+        description="Onsite CPR/AED awareness and PHECC CFR certification for Irish schools, workplaces, nursing homes and community responder groups."
+        path="/training"
+        jsonLd={{ "@context": "https://schema.org", "@type": "Service", serviceType: "CPR and AED Training", provider: { "@type": "Organization", name: "Smart Defibs LTD" }, areaServed: "IE" }}
+      />
       <SiteHeader />
       <main className="flex-1">
         <section className="bg-secondary section-padding-hero">

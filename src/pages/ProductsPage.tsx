@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
@@ -21,6 +22,19 @@ const i3Features = [
 export default function ProductsPage() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO
+        title="Amoul i3 AED — CE-Marked Defibrillator from €1,295"
+        description="Amoul i3 AED: 200J adult / 50J paediatric shock, IP54, 5-year battery, adult & paediatric pads included. Optional 4G connectivity. From €1,295 in Ireland."
+        path="/products"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: "Amoul i3 AED",
+          description: "CE-marked automated external defibrillator with 200J adult / 50J paediatric shock, IP54 rating, 5-year battery, adult & paediatric pads included.",
+          brand: { "@type": "Brand", name: "Amoul" },
+          offers: { "@type": "Offer", price: "1295", priceCurrency: "EUR", availability: "https://schema.org/InStock", url: "https://smartdefibs.ie/products" },
+        }}
+      />
       <SiteHeader />
       <main className="flex-1">
         {/* Hero */}
