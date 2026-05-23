@@ -20,10 +20,10 @@ export default function ProductsPage() {
     <div className="min-h-screen flex flex-col">
       <SiteHeader />
       <main className="flex-1">
-        <section className="bg-secondary section-padding pb-12">
+        <section className="bg-secondary section-padding-hero">
           <div className="container mx-auto">
-            <h1 className="text-3xl md:text-5xl text-secondary-foreground mb-4">AEDs & Accessories</h1>
-            <p className="text-lg text-secondary-foreground/70 max-w-2xl">CE-marked defibrillators, cabinets, and accessories — all with transparent pricing and next-day delivery across Ireland.</p>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">AEDs & Accessories</h1>
+            <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">CE-marked defibrillators, cabinets, and accessories — all with transparent pricing and next-day delivery across Ireland.</p>
           </div>
         </section>
 
