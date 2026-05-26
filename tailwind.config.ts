@@ -74,6 +74,7 @@ export default {
           community: "hsl(var(--sector-community))",
           nursing: "hsl(var(--sector-nursing))",
           workplace: "hsl(var(--sector-workplace))",
+          gyms: "hsl(var(--sector-gyms))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
