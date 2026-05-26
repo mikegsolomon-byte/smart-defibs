@@ -16,6 +16,7 @@ import {
   Clock,
   GraduationCap,
   Activity,
+  Dumbbell,
   Package as PackageIcon,
   Sparkles,
 } from "lucide-react";
