@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
-import aedLogo from "@/assets/aed-logo.png";
+import aedLogo from "@/assets/smart-defibs-logo.jpeg";
 
 const navLinks = [
   { label: "Products", href: "/products" },
