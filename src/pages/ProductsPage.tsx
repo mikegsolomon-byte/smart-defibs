@@ -22,9 +22,9 @@ export default function ProductsPage() {
         {/* Hero */}
         <section className="bg-secondary section-padding-hero">
           <div className="container mx-auto">
-            <div className="inline-flex items-center gap-2 bg-accent/15 border border-accent/40 text-accent px-3 py-1.5 rounded-full mb-4">
-              <Award className="h-4 w-4" />
-              <span className="text-xs font-semibold uppercase tracking-wider">Official Irish Importer · Amoul® AEDs</span>
+            <div className="inline-flex items-center gap-3 bg-background border border-accent/40 px-4 py-2 rounded-full mb-4 shadow-sm">
+              <img src={amoulLogo} alt="Amoul Medical" className="h-6 w-auto" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-foreground">Official Irish Importer</span>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">
               AEDs & <span className="text-accent">CPR Devices</span>
