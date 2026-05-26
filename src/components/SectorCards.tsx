@@ -70,20 +70,20 @@ export default function SectorCards() {
             >
               <Link
                 to={`/sectors?tab=${sector.slug}`}
-                className="group relative block clinical-card p-8 focus-ring h-full overflow-hidden bg-gradient-to-br from-card via-card to-red-soft/40 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500"
+                className="group relative block rounded-2xl p-8 focus-ring h-full overflow-hidden bg-card border-2 border-border hover:border-accent shadow-md hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300"
               >
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary via-accent to-primary" />
+                <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 <div className="relative">
-                  <div className="inline-flex p-3 rounded-xl bg-gradient-to-br from-red-soft to-red-soft/50 mb-6 shadow-sm group-hover:from-primary group-hover:to-primary/85 group-hover:scale-105 group-hover:shadow-md group-hover:shadow-primary/30 transition-all duration-300">
-                    <sector.icon className="h-6 w-6 text-primary group-hover:text-primary-foreground transition-colors" />
+                  <div className="inline-flex p-4 rounded-xl bg-primary mb-6 shadow-lg shadow-primary/30 ring-4 ring-accent/30 group-hover:bg-accent group-hover:ring-primary/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    <sector.icon className="h-7 w-7 text-primary-foreground group-hover:text-accent-foreground transition-colors" />
                   </div>
-                  <h3 className="font-heading font-extrabold text-lg mb-2 text-card-foreground tracking-tight">
+                  <h3 className="font-heading font-extrabold text-xl mb-2 text-card-foreground tracking-tight">
                     {sector.title}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-6 leading-relaxed">{sector.description}</p>
-                  <span className="inline-flex items-center text-sm font-bold text-primary group-hover:text-accent group-hover:gap-2 transition-all duration-300">
-                    Learn more <ArrowRight className="h-4 w-4 ml-1" />
+                  <span className="inline-flex items-center text-sm font-bold text-primary group-hover:text-accent-foreground group-hover:bg-accent px-3 py-1.5 rounded-full bg-accent/10 transition-all duration-300">
+                    Learn more <ArrowRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
               </Link>
