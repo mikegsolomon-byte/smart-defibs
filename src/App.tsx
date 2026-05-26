@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
-import { useCartSync } from "@/hooks/useCartSync";
+
 import Index from "./pages/Index.tsx";
 import SectorsPage from "./pages/SectorsPage.tsx";
 import QuotePage from "./pages/QuotePage.tsx";
@@ -22,7 +22,6 @@ const queryClient = new QueryClient();
 
 function AnimatedRoutes() {
   const location = useLocation();
-  useCartSync();
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>

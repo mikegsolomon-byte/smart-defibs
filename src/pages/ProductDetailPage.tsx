@@ -1,45 +1,47 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Loader2, ShoppingCart, ArrowLeft, ShieldCheck } from "lucide-react";
-import { toast } from "sonner";
+import { ArrowLeft, ShieldCheck, Check, FileText, PhoneCall, Award } from "lucide-react";
 import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
-import { useShopifyProduct } from "@/hooks/useShopifyProducts";
-import { useCartStore } from "@/stores/cartStore";
+import { getProduct } from "@/data/products";
 
 export default function ProductDetailPage() {
   const { handle = "" } = useParams<{ handle: string }>();
-  const { data: product, isLoading } = useShopifyProduct(handle);
-  const addItem = useCartStore((s) => s.addItem);
-  const cartLoading = useCartStore((s) => s.isLoading);
+  const product = getProduct(handle);
 
-  const variant = product?.node.variants.edges[0]?.node;
-  const image = product?.node.images.edges[0]?.node;
-  const price = variant
-    ? `${variant.price.currencyCode === "EUR" ? "€" : variant.price.currencyCode} ${parseFloat(variant.price.amount).toFixed(2)}`
-    : "";
-
-  const handleAddToCart = async () => {
-    if (!product || !variant) return;
-    await addItem({
-      product,
-      variantId: variant.id,
-      variantTitle: variant.title,
-      price: variant.price,
-      quantity: 1,
-      selectedOptions: variant.selectedOptions || [],
-    });
-    toast.success("Added to cart", { description: `${product.node.title} added — open cart to checkout.` });
-  };
+  if (!product) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <SEO title="Product not found — Smart Defibs LTD" description="This product is no longer available." path={`/product/${handle}`} />
+        <SiteHeader />
+        <main className="flex-1 bg-surface-soft flex items-center justify-center py-24">
+          <div className="text-center">
+            <h1 className="font-heading font-extrabold text-2xl mb-2">Product not found</h1>
+            <p className="text-muted-foreground mb-6">This product is no longer available.</p>
+            <Button asChild><Link to="/products">View all products</Link></Button>
+          </div>
+        </main>
+        <SiteFooter />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title={product ? `${product.node.title} — Smart Defibs LTD` : "Product — Smart Defibs LTD"}
-        description={product?.node.description.slice(0, 155) ?? "AED defibrillator product details."}
-        path={`/product/${handle}`}
+        title={`${product.title} — Smart Defibs LTD Ireland`}
+        description={product.shortDescription}
+        path={`/product/${product.handle}`}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: product.title,
+          description: product.shortDescription,
+          brand: { "@type": "Brand", name: product.brand },
+          category: product.category,
+        }}
       />
       <SiteHeader />
       <main className="flex-1 bg-surface-soft">
@@ -50,67 +52,114 @@ export default function ProductDetailPage() {
             </Link>
           </Button>
 
-          {isLoading && (
-            <div className="flex items-center justify-center py-24">
-              <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            </div>
-          )}
-
-          {!isLoading && !product && (
-            <div className="text-center py-24">
-              <h1 className="text-2xl font-heading font-extrabold mb-2">Product not found</h1>
-              <p className="text-muted-foreground mb-6">This product is no longer available.</p>
-              <Button asChild><Link to="/products">View all products</Link></Button>
-            </div>
-          )}
-
-          {product && (
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="grid lg:grid-cols-2 gap-8 lg:gap-12 bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
-            >
-              <div className="bg-gradient-to-br from-muted to-background p-8 lg:p-12 flex items-center justify-center min-h-[360px]">
-                {image && (
-                  <img
-                    src={image.url}
-                    alt={image.altText ?? product.node.title}
-                    className="max-h-[400px] w-auto object-contain drop-shadow-2xl"
-                  />
-                )}
-              </div>
-              <div className="p-8 lg:p-12 flex flex-col">
-                <h1 className="font-heading font-extrabold text-3xl md:text-4xl text-card-foreground mb-3">
-                  {product.node.title}
-                </h1>
-                <p className="font-heading font-extrabold text-3xl text-primary mb-6">{price}</p>
-                <div
-                  className="prose prose-sm max-w-none text-muted-foreground mb-8"
-                  dangerouslySetInnerHTML={{ __html: product.node.description.replace(/\n/g, "<br/>") }}
-                />
-
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-                  <ShieldCheck className="h-4 w-4 text-primary" />
-                  Direct from Irish importer · genuine warranty
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="grid lg:grid-cols-2 gap-0 bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
+          >
+            {/* Image */}
+            <div className="relative bg-gradient-to-br from-muted to-background p-8 lg:p-12 flex items-center justify-center min-h-[360px]">
+              {product.flagship && (
+                <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-accent text-accent-foreground px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md">
+                  <Award className="h-3.5 w-3.5" />
+                  Flagship Model
                 </div>
+              )}
+              <img
+                src={product.image}
+                alt={product.title}
+                width={1024}
+                height={1024}
+                className="max-h-[420px] w-auto object-contain drop-shadow-2xl"
+              />
+            </div>
 
-                <div className="mt-auto pt-6 border-t border-border flex flex-col sm:flex-row gap-2">
-                  <Button
-                    size="lg"
-                    onClick={handleAddToCart}
-                    disabled={cartLoading || !variant?.availableForSale}
-                    className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro shadow-md flex-1"
-                  >
-                    {cartLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><ShoppingCart className="h-4 w-4 mr-2" />Buy now</>}
+            {/* Details */}
+            <div className="p-8 lg:p-12 flex flex-col">
+              <div className="flex items-center gap-2 mb-4 flex-wrap">
+                {product.badges.map((b) => (
+                  <span key={b} className="text-[11px] font-semibold bg-primary/10 text-primary px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    {b}
+                  </span>
+                ))}
+              </div>
+              <h1 className="font-heading font-extrabold text-3xl md:text-4xl text-card-foreground mb-2">
+                {product.title}
+              </h1>
+              <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-5">{product.subtitle}</p>
+              <p className="text-base text-muted-foreground mb-6">{product.longDescription}</p>
+
+              <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+                <ShieldCheck className="h-4 w-4 text-primary" />
+                Direct from Irish importer · genuine manufacturer warranty
+              </div>
+
+              <div className="mt-auto pt-6 border-t border-border">
+                <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">From</p>
+                <p className="font-heading font-extrabold text-3xl text-primary mb-1">{product.priceFrom}</p>
+                <p className="text-xs text-muted-foreground mb-5">{product.priceNote}</p>
+
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 btn-micro shadow-md flex-1">
+                    <Link to={`/quote?product=${product.handle}`}>
+                      <FileText className="h-4 w-4 mr-2" /> Request a Quote
+                    </Link>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="flex-1">
-                    <Link to="/quote">Request a Quote</Link>
+                  <Button asChild size="lg" variant="outline" className="flex-1 border-accent/40 hover:bg-accent/10 hover:border-accent">
+                    <a href="tel:+353000000000">
+                      <PhoneCall className="h-4 w-4 mr-2" /> Call to Order
+                    </a>
                   </Button>
                 </div>
               </div>
-            </motion.div>
-          )}
+            </div>
+          </motion.div>
+
+          {/* Highlights */}
+          <section className="mt-12">
+            <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-6">Key features</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {product.highlights.map((h) => (
+                <div key={h.title} className="bg-card border border-border rounded-xl p-5 hover:border-accent transition-colors">
+                  <p className="font-heading font-extrabold text-base text-card-foreground mb-1">{h.title}</p>
+                  <p className="text-sm text-muted-foreground">{h.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* What's included */}
+          <section className="mt-12 bg-card border border-border rounded-2xl p-8 shadow-sm">
+            <h2 className="font-heading font-extrabold text-2xl text-card-foreground mb-5">What's included</h2>
+            <ul className="grid sm:grid-cols-2 gap-3">
+              {product.features.map((f) => (
+                <li key={f} className="flex items-start gap-3">
+                  <span className="flex-shrink-0 h-6 w-6 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
+                    <Check className="h-3.5 w-3.5 text-accent-foreground" />
+                  </span>
+                  <span className="text-sm text-card-foreground">{f}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* CTA */}
+          <section className="mt-12 bg-secondary text-secondary-foreground rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
+            <div>
+              <h3 className="font-heading font-extrabold text-2xl text-secondary-foreground mb-1">
+                Need a tailored quote?
+              </h3>
+              <p className="text-secondary-foreground/80 text-sm max-w-xl">
+                We'll bundle pricing for the {product.title}, optional cabinets, consumables and PHECC-aligned training — and confirm next-day delivery anywhere in Ireland.
+              </p>
+            </div>
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold shadow-md">
+              <Link to={`/quote?product=${product.handle}`}>
+                <FileText className="h-4 w-4 mr-2" /> Get my quote
+              </Link>
+            </Button>
+          </section>
         </div>
       </main>
       <SiteFooter />
