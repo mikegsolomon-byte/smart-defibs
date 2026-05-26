@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { School, Users, Stethoscope, Shield, ArrowRight } from "lucide-react";
+import { School, Users, Stethoscope, Shield, Dumbbell, ArrowRight } from "lucide-react";
 
 const sectors = [
   {
@@ -29,6 +29,15 @@ const sectors = [
     bgColor: "bg-sector-workplace/10",
     iconColor: "text-sector-workplace",
     slug: "workplace",
+  },
+  {
+    icon: Dumbbell,
+    title: "A Gym or Fitness Facility",
+    description: "Member safety, insurance & staff training",
+    color: "border-sector-gyms",
+    bgColor: "bg-sector-gyms/10",
+    iconColor: "text-sector-gyms",
+    slug: "gyms",
   },
   {
     icon: Users,
