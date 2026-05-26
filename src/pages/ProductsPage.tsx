@@ -1,170 +1,140 @@
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Award, Check, ArrowRight, FileText } from "lucide-react";
 import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
-import { motion } from "framer-motion";
-import { Shield, Award, Droplets, Battery, Radio, Baby, Zap, Loader2, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { toast } from "sonner";
-import amoulI3 from "@/assets/amoul-i3.jpg";
 import amoulLogo from "@/assets/amoul-logo.png";
-import { useShopifyProducts } from "@/hooks/useShopifyProducts";
-import { useCartStore } from "@/stores/cartStore";
-
-const i3Features = [
-  { icon: Zap, title: "200J adult / 50J paediatric", desc: "Smart escalating biphasic shock" },
-  { icon: Baby, title: "Adult & paediatric pads", desc: "Both included as standard" },
-  { icon: Droplets, title: "IP54 rated", desc: "Dust & water resistant" },
-  { icon: Battery, title: "5-year battery life", desc: "Long-life disposable battery" },
-  { icon: Radio, title: "Optional 4G connectivity", desc: "Remote management & daily self-tests" },
-  { icon: Shield, title: "EMS-trusted", desc: "Clear multilingual voice & visual prompts" },
-];
-
+import { products } from "@/data/products";
 
 export default function ProductsPage() {
-  const { data: products, isLoading } = useShopifyProducts();
-  const addItem = useCartStore((s) => s.addItem);
-  const cartLoading = useCartStore((s) => s.isLoading);
-
-  // Match by handle; fallback to first product
-  const shopifyProduct = products?.find((p) => p.node.handle === "amoul-i3-aed") ?? products?.[0];
-  const variant = shopifyProduct?.node.variants.edges[0]?.node;
-  const livePrice = variant ? `${variant.price.currencyCode === "EUR" ? "€" : variant.price.currencyCode} ${Math.round(parseFloat(variant.price.amount)).toLocaleString()}` : "€1,295";
-
-  const handleAddToCart = async () => {
-    if (!shopifyProduct || !variant) {
-      toast.error("Product unavailable", { description: "Please request a quote instead." });
-      return;
-    }
-    await addItem({
-      product: shopifyProduct,
-      variantId: variant.id,
-      variantTitle: variant.title,
-      price: variant.price,
-      quantity: 1,
-      selectedOptions: variant.selectedOptions || [],
-    });
-    toast.success("Added to cart", { description: "Amoul i3 AED added — open cart to checkout." });
-  };
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Amoul i3 AED — CE-Marked Defibrillator from €1,295"
-        description="Amoul i3 AED: 200J adult / 50J paediatric shock, IP54, 5-year battery, adult & paediatric pads included. Optional 4G connectivity. From €1,295 in Ireland."
+        title="AEDs & CPR Devices — Smart Defibs LTD Ireland"
+        description="Shop CE-marked AEDs and automated CPR devices in Ireland: Amoul i3, Amoul i5 and Chest-ER. Buy online or request a tailored quote with training and servicing."
         path="/products"
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "Product",
-          name: "Amoul i3 AED",
-          description: "CE-marked automated external defibrillator with 200J adult / 50J paediatric shock, IP54 rating, 5-year battery, adult & paediatric pads included.",
-          brand: { "@type": "Brand", name: "Amoul" },
-          offers: { "@type": "Offer", price: "1295", priceCurrency: "EUR", availability: "https://schema.org/InStock", url: "https://smartdefibs.ie/products" },
-        }}
       />
       <SiteHeader />
       <main className="flex-1">
         {/* Hero */}
         <section className="bg-secondary section-padding-hero">
           <div className="container mx-auto">
-            <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/30 text-primary-foreground px-3 py-1.5 rounded-full mb-4">
-              <Award className="h-4 w-4 text-primary" />
-              <span className="text-xs font-semibold uppercase tracking-wider">Official Irish Importer of Amoul AEDs</span>
+            <div className="inline-flex items-center gap-2 bg-accent/15 border border-accent/40 text-accent px-3 py-1.5 rounded-full mb-4">
+              <Award className="h-4 w-4" />
+              <span className="text-xs font-semibold uppercase tracking-wider">Official Irish Importer · Amoul® AEDs</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">AEDs & Accessories</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">
+              AEDs & <span className="text-accent">CPR Devices</span>
+            </h1>
             <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">
-              We are the sole Irish representative and importer of Amoul® medical defibrillators — CE-marked, EMS-trusted, with transparent pricing and next-day delivery across Ireland.
+              CE-marked, EMS-trusted equipment with transparent Irish pricing, manufacturer warranty and next-day delivery. Buy online or request a tailored quote with installation and training.
             </p>
           </div>
         </section>
 
-        {/* Amoul partnership strip */}
+        {/* Partnership strip */}
         <section className="bg-background border-b border-border">
           <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-center sm:text-left">
             <img src={amoulLogo} alt="Amoul Medical official partner" className="h-10 w-auto" />
             <div className="hidden sm:block h-8 w-px bg-border" />
             <p className="text-sm text-muted-foreground max-w-xl">
-              <span className="font-semibold text-foreground">Smart Defibs LTD</span> is the official Irish representative and importer for Amoul® Medical — direct manufacturer warranty, genuine consumables, and full PHECC-aligned training.
+              <span className="font-semibold text-foreground">Smart Defibs LTD</span> is the official Irish representative for Amoul® Medical and Progetti Medical — direct manufacturer warranty, genuine consumables, and full PHECC-aligned training.
             </p>
           </div>
         </section>
 
-        {/* Featured product: Amoul i3 */}
+        {/* Product grid */}
         <section className="section-padding bg-surface-soft">
           <div className="container mx-auto max-w-6xl">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-card border border-border rounded-2xl shadow-lg overflow-hidden"
-            >
-              <div className="grid lg:grid-cols-2 gap-0">
-                {/* Image */}
-                <div className="relative bg-gradient-to-br from-muted to-background p-8 lg:p-12 flex items-center justify-center min-h-[360px]">
-                  <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md">
-                    <Award className="h-3.5 w-3.5" />
-                    Flagship Model
-                  </div>
-                  <img src={amoulI3} alt="Amoul i3 Semi-Automatic AED" className="max-h-[340px] w-auto object-contain drop-shadow-2xl" />
-                </div>
+            <div className="mb-10 max-w-2xl">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent mb-2">Our Range</p>
+              <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground">
+                Lifesaving equipment, <span className="text-primary">built to deploy</span>
+              </h2>
+            </div>
 
-                {/* Details */}
-                <div className="p-8 lg:p-12 flex flex-col">
-                  <div className="flex items-center gap-3 mb-4">
-                    <img src={amoulLogo} alt="Amoul" className="h-7 w-auto" />
-                    <span className="text-xs font-medium bg-primary/10 text-primary px-2.5 py-1 rounded-full">CE Marked</span>
-                    <span className="text-xs font-medium bg-muted text-muted-foreground px-2.5 py-1 rounded-full">IP54</span>
-                  </div>
-                  <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-card-foreground mb-2">Amoul® i3 AED</h2>
-                  <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">Semi-Automatic External Defibrillator</p>
-                  <p className="text-base text-muted-foreground mb-6">
-                    Smart ECG analysis with real-time visual and voice guidance for both CPR and defibrillation. Ships with adult and paediatric pads as standard, IP54 rated for Irish conditions, and backed by a 5-year battery and full manufacturer warranty.
-                  </p>
-
-                  <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                    {i3Features.map((f) => (
-                      <div key={f.title} className="flex items-start gap-2.5">
-                        <f.icon className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                        <div>
-                          <p className="text-sm font-semibold text-card-foreground leading-tight">{f.title}</p>
-                          <p className="text-xs text-muted-foreground">{f.desc}</p>
-                        </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {products.map((p, i) => (
+                <motion.article
+                  key={p.handle}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  className="group flex flex-col bg-card border-2 border-border rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:border-accent hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="relative bg-gradient-to-br from-muted to-background aspect-[4/3] flex items-center justify-center overflow-hidden">
+                    {p.flagship && (
+                      <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-accent text-accent-foreground px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-md">
+                        <Award className="h-3 w-3" />
+                        Flagship
                       </div>
-                    ))}
+                    )}
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      loading="lazy"
+                      width={1024}
+                      height={1024}
+                      className="max-h-[220px] w-auto object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
 
-                  <div className="mt-auto pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div>
-                      <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Direct from Irish importer</p>
-                      <p className="font-heading font-extrabold text-3xl text-primary">{isLoading ? "—" : livePrice}</p>
-                      <p className="text-xs text-muted-foreground">ex. VAT · includes pads & 5yr battery</p>
+                  <div className="flex flex-col flex-1 p-6">
+                    <div className="flex items-center gap-2 mb-3 flex-wrap">
+                      {p.badges.slice(0, 2).map((b) => (
+                        <span key={b} className="text-[10px] font-semibold bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-wider">
+                          {b}
+                        </span>
+                      ))}
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-2">
-                      <Button
-                        size="lg"
-                        onClick={handleAddToCart}
-                        disabled={isLoading || cartLoading || !variant}
-                        className="bg-primary text-primary-foreground hover:bg-red-deep btn-micro shadow-md"
-                      >
-                        {cartLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <><ShoppingCart className="h-4 w-4 mr-2" />Buy now</>}
+                    <h3 className="font-heading font-extrabold text-xl text-card-foreground mb-1">{p.title}</h3>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">{p.subtitle}</p>
+                    <p className="text-sm text-muted-foreground mb-5 flex-1">{p.shortDescription}</p>
+
+                    <div className="mb-5 pt-4 border-t border-border">
+                      <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">From</p>
+                      <p className="font-heading font-extrabold text-2xl text-primary leading-tight">{p.priceFrom}</p>
+                      <p className="text-[11px] text-muted-foreground">{p.priceNote}</p>
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 btn-micro shadow-sm w-full">
+                        <Link to={`/product/${p.handle}`}>
+                          View details <ArrowRight className="h-4 w-4 ml-1.5" />
+                        </Link>
                       </Button>
-                      <Button asChild size="lg" variant="outline">
-                        <Link to="/quote">Request a Quote</Link>
+                      <Button asChild variant="outline" className="w-full border-accent/40 text-foreground hover:bg-accent/10 hover:border-accent">
+                        <Link to={`/quote?product=${p.handle}`}>
+                          <FileText className="h-4 w-4 mr-1.5" /> Request a Quote
+                        </Link>
                       </Button>
-                      {shopifyProduct && (
-                        <Button asChild size="lg" variant="ghost">
-                          <Link to={`/product/${shopifyProduct.node.handle}`}>View details</Link>
-                        </Button>
-                      )}
                     </div>
                   </div>
+                </motion.article>
+              ))}
+            </div>
+
+            {/* Why buy from us */}
+            <div className="mt-16 grid md:grid-cols-3 gap-4">
+              {[
+                "Direct Irish importer — genuine warranty",
+                "Next-day delivery across Ireland",
+                "Full PHECC-aligned training included",
+              ].map((line) => (
+                <div key={line} className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">
+                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-accent/20 flex items-center justify-center">
+                    <Check className="h-4 w-4 text-accent-foreground" />
+                  </div>
+                  <p className="text-sm font-semibold text-card-foreground">{line}</p>
                 </div>
-              </div>
-            </motion.div>
+              ))}
+            </div>
           </div>
         </section>
-
 
         <CTABanner />
       </main>

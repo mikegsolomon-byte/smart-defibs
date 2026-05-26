@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
 import aedLogo from "@/assets/aed-logo.png";
-import { CartDrawer } from "@/components/CartDrawer";
 
 const navLinks = [
   { label: "Products", href: "/products" },
@@ -76,17 +75,15 @@ export default function SiteHeader() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <CartDrawer />
           <Button asChild variant="outline">
-            <Link to="/quote">Get a Quote</Link>
+            <Link to="/products">View Products</Link>
           </Button>
           <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 btn-micro shadow-sm font-bold">
-            <Link to="/products">Shop</Link>
+            <Link to="/quote">Get a Quote</Link>
           </Button>
         </div>
 
         <div className="flex lg:hidden items-center gap-2">
-          <CartDrawer />
           <button
             className="text-foreground p-2 focus-ring rounded-lg"
             onClick={() => setMobileOpen(!mobileOpen)}
