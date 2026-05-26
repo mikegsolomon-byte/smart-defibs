@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { School, Users, Stethoscope, Shield, ArrowRight } from "lucide-react";
+import { School, Users, Stethoscope, Shield, Dumbbell, ArrowRight } from "lucide-react";
 
 const sectors = [
   {
@@ -31,6 +31,15 @@ const sectors = [
     slug: "workplace",
   },
   {
+    icon: Dumbbell,
+    title: "A Gym or Fitness Facility",
+    description: "Member safety, insurance & staff training",
+    color: "border-sector-gyms",
+    bgColor: "bg-sector-gyms/10",
+    iconColor: "text-sector-gyms",
+    slug: "gyms",
+  },
+  {
     icon: Users,
     title: "A CFR Group",
     description: "Responder kits & community AEDs",
@@ -59,7 +68,7 @@ export default function SectorCards() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {sectors.map((sector, i) => (
             <motion.div
               key={sector.slug}

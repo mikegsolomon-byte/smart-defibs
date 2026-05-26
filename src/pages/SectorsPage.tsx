@@ -16,6 +16,7 @@ import {
   Clock,
   GraduationCap,
   Activity,
+  Dumbbell,
   Package as PackageIcon,
   Sparkles,
 } from "lucide-react";
@@ -188,6 +189,45 @@ const sectorData = {
       { q: "Do you offer group discounts?", a: "Yes — community groups and CFR schemes get preferential pricing on AED bundles." },
       { q: "What training is available?", a: "Full PHECC CFR certification courses, perfect for volunteer groups." },
       { q: "Indoor or outdoor cabinets?", a: "We supply both — outdoor heated cabinets are ideal for GAA clubs and community centres." },
+    ],
+  },
+  gyms: {
+    icon: Dumbbell,
+    title: "AEDs for Gyms & Fitness Facilities",
+    subtitle: "Protect members and staff with reliable, easy-to-use AEDs",
+    color: "text-sector-gyms",
+    bgColor: "bg-sector-gyms/10",
+    compliance: "Insurance & H&S best practice for fitness facilities",
+    packageItems: [
+      "Semi-automatic AED with clear voice prompts",
+      "Wall cabinet with alarm & signage",
+      "Staff CPR/AED training (online or onsite)",
+      "Readiness monitoring & maintenance plan",
+      "Transparent, all-in pricing",
+    ],
+    packageHighlight: "Simple, reliable kit your staff can use under pressure",
+    pricing: "From €1,295 incl. VAT — staff training included",
+    steps: ["Request a gym quote", "We install & train your team", "Ongoing readiness monitoring"],
+    whyNeeded: {
+      intro:
+        "Gyms see high-intensity exertion every day, and sudden cardiac arrest can strike members of any age. Insurers, members and sports clubs increasingly expect on-site AEDs and trained staff — and a confident emergency response protects both lives and your business.",
+      points: [
+        { icon: HeartPulse, title: "Exertion-related risk", desc: "High-intensity training raises the chance of a cardiac event — even in apparently fit members." },
+        { icon: Clock, title: "Minutes decide outcomes", desc: "Defibrillation within 3–5 minutes can push survival above 50% in shockable cases." },
+        { icon: Shield, title: "Insurance & liability", desc: "Many insurers and sports bodies now expect on-site AEDs and trained staff as standard." },
+        { icon: GraduationCap, title: "Confident staff", desc: "Simple devices plus online + onsite training keep PTs and reception staff rescue-ready." },
+      ],
+    },
+    caseStudy: {
+      quote:
+        "Smart Defibs LTD gave us a straightforward package — AED, cabinet, staff trained in a morning. Our insurer was delighted.",
+      name: "Fiona Doyle",
+      role: "Owner, Fit Hub Gym",
+    },
+    faqs: [
+      { q: "Is an AED required for my gym?", a: "It's not a universal legal requirement in Ireland, but insurers, sports governing bodies and H&S best practice increasingly expect one on-site." },
+      { q: "Can my staff really use it?", a: "Yes — semi-automatic AEDs talk users through every step. We pair the device with CPR/AED training so staff feel confident." },
+      { q: "What does ongoing maintenance involve?", a: "We monitor pads/battery expiry and provide an annual service so your AED is always rescue-ready." },
     ],
   },
 };
