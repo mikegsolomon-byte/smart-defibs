@@ -60,6 +60,7 @@
     --sector-community: 140 55% 16%;
     --sector-nursing: 45 95% 55%;
     --sector-workplace: 140 55% 16%;
+    --sector-gyms: 140 55% 22%;
 
     /* Legacy aliases (kept so older components don't break) */
     --navy: 140 55% 16%;
