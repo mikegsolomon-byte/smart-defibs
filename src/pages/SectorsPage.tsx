@@ -279,8 +279,8 @@ export default function SectorsPage() {
           <div className="relative container mx-auto">
             <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
               <AmoulImporterChip />
-              <div className={`inline-flex p-3 sm:p-4 rounded-2xl ${data.bgColor} mb-6`}>
-                <Icon className={`h-8 w-8 sm:h-10 sm:w-10 ${data.color}`} />
+              <div className="inline-flex p-3 sm:p-4 rounded-2xl bg-accent ring-4 ring-accent/30 shadow-lg shadow-accent/20 mb-6">
+                <Icon className="h-8 w-8 sm:h-10 sm:w-10 text-accent-foreground" />
               </div>
               <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">{data.title}</h1>
               <p className="text-base sm:text-lg text-secondary-foreground/70 mb-6 sm:mb-8 max-w-2xl">{data.subtitle}</p>
