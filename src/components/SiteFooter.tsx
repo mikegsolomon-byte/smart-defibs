@@ -61,9 +61,21 @@ export default function SiteFooter() {
             <span>✓ HSE Recommended</span>
             <span>✓ Irish Heart Foundation</span>
           </div>
-          <p className="text-xs text-secondary-foreground/65">
-            © {new Date().getFullYear()} Smart Defibs LTD. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-xs text-secondary-foreground/65">
+            <p>© {new Date().getFullYear()} Smart Defibs LTD. All rights reserved.</p>
+            <span className="hidden md:inline text-secondary-foreground/30">•</span>
+            <p>
+              Site made by{" "}
+              <a
+                href="https://www.hellowebby.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-secondary-foreground/85 hover:text-red-bright transition-colors underline-offset-2 hover:underline"
+              >
+                HelloWebby
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
