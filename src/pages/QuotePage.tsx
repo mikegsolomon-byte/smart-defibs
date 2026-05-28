@@ -37,21 +37,19 @@ export default function QuotePage() {
     }
     setSubmitting(true);
 
-    const { data, error } = await supabase
-      .from("quote_requests")
-      .insert({
+    const { error } = await supabase.functions.invoke("send-quote-notification", {
+      body: {
         name: form.name,
         organisation: form.organisation,
         sector: form.sector,
         email: form.email,
         phone: form.phone,
         message: form.message || null,
-      })
-      .select("id")
-      .single();
+      },
+    });
 
-    if (error || !data) {
-      console.error("Quote insert failed", error);
+    if (error) {
+      console.error("Quote submission failed", error);
       toast({
         title: "Something went wrong",
         description: "Please try again or call us directly.",
@@ -60,13 +58,6 @@ export default function QuotePage() {
       setSubmitting(false);
       return;
     }
-
-    // Fire-and-forget notification email to info@smartdefibs.ie
-    supabase.functions
-      .invoke("send-quote-notification", {
-        body: { quoteId: data.id },
-      })
-      .catch((err) => console.error("Notification email failed", err));
 
     setSubmitted(true);
     setSubmitting(false);

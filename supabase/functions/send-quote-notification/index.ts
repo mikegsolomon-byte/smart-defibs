@@ -8,9 +8,19 @@ const FROM_ADDR = 'Smart Defibs Website <onboarding@resend.dev>'
 
 const ALLOWED_SECTORS = ['schools', 'nursing', 'workplace', 'community', 'other'] as const
 
-const BodySchema = z.object({
-  quoteId: z.string().uuid(),
+const QuotePayloadSchema = z.object({
+  name: z.string().trim().min(1).max(200),
+  organisation: z.string().trim().min(1).max(200),
+  sector: z.enum(ALLOWED_SECTORS),
+  email: z.string().trim().email().max(320),
+  phone: z.string().trim().min(1).max(30),
+  message: z.string().trim().max(2000).optional().nullable(),
 })
+
+const BodySchema = z.union([
+  z.object({ quoteId: z.string().uuid() }),
+  QuotePayloadSchema,
+])
 
 const RowSchema = z.object({
   id: z.string().uuid(),
@@ -51,21 +61,34 @@ Deno.serve(async (req) => {
     }
 
     const admin = createClient(SUPABASE_URL, SERVICE_ROLE)
-    const { data: row, error: fetchErr } = await admin
-      .from('quote_requests')
-      .select('id, name, organisation, sector, email, phone, message')
-      .eq('id', parsed.data.quoteId)
-      .maybeSingle()
+    const rowResult = 'quoteId' in parsed.data
+      ? await admin
+          .from('quote_requests')
+          .select('id, name, organisation, sector, email, phone, message')
+          .eq('id', parsed.data.quoteId)
+          .maybeSingle()
+      : await admin
+          .from('quote_requests')
+          .insert({
+            name: parsed.data.name,
+            organisation: parsed.data.organisation,
+            sector: parsed.data.sector,
+            email: parsed.data.email,
+            phone: parsed.data.phone,
+            message: parsed.data.message || null,
+          })
+          .select('id, name, organisation, sector, email, phone, message')
+          .single()
 
-    if (fetchErr) {
-      console.error('DB fetch error', fetchErr)
+    if (rowResult.error) {
+      console.error('DB quote request error', rowResult.error)
       return errorResponse(500)
     }
-    if (!row) {
+    if (!rowResult.data) {
       return errorResponse(404, 'Not found')
     }
 
-    const validated = RowSchema.safeParse(row)
+    const validated = RowSchema.safeParse(rowResult.data)
     if (!validated.success) {
       console.error('Stored row failed validation', validated.error.flatten())
       return errorResponse(500)
