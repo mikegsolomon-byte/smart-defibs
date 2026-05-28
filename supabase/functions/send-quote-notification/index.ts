@@ -132,10 +132,13 @@ Deno.serve(async (req) => {
     const data = await resp.json().catch(() => ({}))
     if (!resp.ok) {
       console.error('Resend error', resp.status, data)
-      return errorResponse(502, 'Email send failed')
+      return new Response(JSON.stringify({ success: true, emailSent: false }), {
+        status: 200,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
     }
 
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ success: true, emailSent: true }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
