@@ -1,44 +1,36 @@
-## GDPR Compliance: Privacy Page + Form Consent
+# Fix: Quote form submission fails with RLS error
 
-### 1. New `/privacy` page (`src/pages/PrivacyPage.tsx`)
+## The problem
 
-A clean, readable Privacy Policy page using the existing site layout (SiteHeader, SiteFooter, SEO component, container + prose styling to match the rest of the site).
+Submitting the quote form returns:
+> `new row violates row-level security policy for table "quote_requests"`
 
-Content sections, tailored to Smart Defibs LTD:
+## Root cause
 
-- **Who we are** — Smart Defibs LTD, Unit 18 The Cube FlexiSpace, Roscommon; contact `info@smartdefibs.ie`, +353 89 499 2903. Data controller statement.
-- **What we collect** — Quote form fields (name, organisation, sector, email, phone, optional message). No tracking cookies at present.
-- **Why we collect it (legal basis)** — Legitimate interest + pre-contractual steps (Art. 6(1)(b) and 6(1)(f) GDPR) to respond to quote requests.
-- **How long we keep it** — State a retention period (suggest: quote requests kept for 24 months after last contact, then deleted). User will need to confirm the number.
-- **Who we share it with (sub-processors)** — Lovable Cloud (hosting + database, EU region), Resend (transactional email delivery for the notification to `info@smartdefibs.ie`). No marketing, no third-party advertising.
-- **International transfers** — Note if Resend processes data outside the EEA and that Standard Contractual Clauses apply.
-- **Your rights** — Access, rectification, erasure, restriction, objection, portability, complaint to the Irish Data Protection Commission (with link `https://www.dataprotection.ie`).
-- **Cookies** — Statement that the site currently uses only strictly necessary cookies (session/security) and does not use analytics or marketing trackers. A banner will be added if that changes.
-- **Security** — HTTPS, access controls, Row-Level Security on stored data.
-- **Contact for privacy requests** — `info@smartdefibs.ie`.
-- **Last updated** date.
+The `quote_requests` table has correct RLS policies (anonymous visitors are allowed to insert), **but the table has no `GRANT` privileges at all**. Supabase's Data API requires both:
 
-Add the route to `src/App.tsx`:
+1. An RLS policy that permits the action ✅ (already in place)
+2. A SQL `GRANT` on the table to the role making the request ❌ (missing)
+
+Without the GRANT, PostgREST blocks the request and reports it as an RLS violation — which is why this looks confusing.
+
+## The fix
+
+One small database migration adding the missing grants:
+
+```sql
+GRANT INSERT ON public.quote_requests TO anon;
+GRANT INSERT, SELECT ON public.quote_requests TO authenticated;
+GRANT ALL ON public.quote_requests TO service_role;
 ```
-<Route path="/privacy" element={<PageTransition><PrivacyPage /></PageTransition>} />
-```
 
-### 2. Footer link to Privacy
+- `anon` gets INSERT only (so website visitors can submit the form, but cannot read other people's submissions — matching the existing "No public read" policy).
+- `service_role` gets full access so the `send-quote-notification` edge function can keep reading rows to send the notification email.
 
-In `src/components/SiteFooter.tsx`, add a small "Privacy Policy" link in the bottom bar alongside the copyright / HelloWebby credit. Same muted styling, opens in same tab, routes to `/privacy`.
+No code changes needed — the frontend form and edge function are already correct.
 
-### 3. Consent line under the Quote form
+## Verification after applying
 
-In `src/pages/QuotePage.tsx`, directly above (or below) the Submit button, add a small muted line:
-
-> "By submitting this form you agree to our [Privacy Policy](/privacy). We'll only use your details to respond to your enquiry."
-
-Styled with `text-xs text-muted-foreground`, link styled with `underline hover:text-primary`. No checkbox required — legitimate interest + clear notice is sufficient under Irish DPC guidance for B2B quote enquiries.
-
-### Out of scope (for a later request)
-- Cookie banner / Consent Management Platform (only needed when analytics or marketing tags are added).
-- Automated data-retention deletion job for `quote_requests` (can be added as a scheduled edge function later).
-- Terms of Service / Cookie Policy pages.
-
-### One thing to confirm before I build
-**Retention period for quote requests** — is 24 months after last contact OK, or do you prefer something else (e.g. 12 months, 36 months)? I'll plug your answer into the Privacy Policy text.
+1. Submit a test quote from `/quote` — should show the success state.
+2. Confirm the row lands in `quote_requests`.
+3. Confirm the notification email arrives at `info@smartdefibs.ie`.
