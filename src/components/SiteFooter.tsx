@@ -64,6 +64,10 @@ export default function SiteFooter() {
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-xs text-secondary-foreground/65">
             <p>© {new Date().getFullYear()} Smart Defibs LTD. All rights reserved.</p>
             <span className="hidden md:inline text-secondary-foreground/30">•</span>
+            <Link to="/privacy" className="hover:text-red-bright transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="hidden md:inline text-secondary-foreground/30">•</span>
             <p>
               Site made by{" "}
               <a

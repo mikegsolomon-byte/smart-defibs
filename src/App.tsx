@@ -17,6 +17,7 @@ import TrainingPage from "./pages/TrainingPage.tsx";
 import ServicingPage from "./pages/ServicingPage.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
+import PrivacyPage from "./pages/PrivacyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ function AnimatedRoutes() {
         <Route path="/servicing" element={<PageTransition><ServicingPage /></PageTransition>} />
         
         <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
+        <Route path="/privacy" element={<PageTransition><PrivacyPage /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>

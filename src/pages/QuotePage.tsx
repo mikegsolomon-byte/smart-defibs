@@ -149,6 +149,11 @@ export default function QuotePage() {
                   <Button type="submit" size="lg" disabled={submitting} className="w-full bg-primary text-primary-foreground hover:bg-teal-light text-base btn-micro">
                     {submitting ? (<><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Submitting...</>) : "Submit Quote Request"}
                   </Button>
+                  <p className="text-xs text-muted-foreground text-center">
+                    By submitting this form you agree to our{" "}
+                    <a href="/privacy" className="underline hover:text-primary">Privacy Policy</a>.
+                    We'll only use your details to respond to your enquiry.
+                  </p>
                 </form>
               )}
             </motion.div>
