@@ -3,8 +3,48 @@ import { createClient } from 'npm:@supabase/supabase-js@2'
 import { z } from 'npm:zod@3'
 
 const GATEWAY_URL = 'https://connector-gateway.lovable.dev/resend'
+const SHEETS_GATEWAY_URL = 'https://connector-gateway.lovable.dev/google_sheets/v4'
+const SPREADSHEET_ID = '1Up0fTZSNkSTCD8Fn88dZkcvGkJxuHF0N9T556epwhN8'
+const SHEET_TAB = 'Leads'
 const NOTIFY_TO = 'info@smartdefibs.ie'
 const FROM_ADDR = 'Smart Defibs Website <onboarding@resend.dev>'
+
+async function appendToSheet(
+  row: { id: string; name: string; organisation: string; sector: string; email: string; phone: string; message: string | null | undefined },
+) {
+  const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY')
+  const SHEETS_API_KEY = Deno.env.get('GOOGLE_SHEETS_API_KEY')
+  if (!LOVABLE_API_KEY || !SHEETS_API_KEY) {
+    console.error('Missing Google Sheets gateway credentials')
+    return false
+  }
+  const values = [[
+    new Date().toISOString(),
+    row.name,
+    row.organisation,
+    row.sector,
+    row.email,
+    row.phone,
+    row.message ?? '',
+    row.id,
+  ]]
+  const url = `${SHEETS_GATEWAY_URL}/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_TAB}!A1:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`
+  const resp = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${LOVABLE_API_KEY}`,
+      'X-Connection-Api-Key': SHEETS_API_KEY,
+    },
+    body: JSON.stringify({ values }),
+  })
+  if (!resp.ok) {
+    const body = await resp.text().catch(() => '')
+    console.error('Google Sheets append error', resp.status, body)
+    return false
+  }
+  return true
+}
 
 const ALLOWED_SECTORS = ['schools', 'nursing', 'workplace', 'community', 'other'] as const
 
@@ -95,6 +135,10 @@ Deno.serve(async (req) => {
     }
     const { id, name, organisation, sector, email, phone, message } = validated.data
 
+    const sheetAppended = await appendToSheet({ id, name, organisation, sector, email, phone, message })
+
+
+
     const subject = `New quote request — ${organisation} (${sector})`
     const html = `
       <div style="font-family:Arial,sans-serif;color:#1a1a1a;max-width:600px;margin:0 auto;padding:24px;">
@@ -132,13 +176,13 @@ Deno.serve(async (req) => {
     const data = await resp.json().catch(() => ({}))
     if (!resp.ok) {
       console.error('Resend error', resp.status, data)
-      return new Response(JSON.stringify({ success: true, emailSent: false }), {
+      return new Response(JSON.stringify({ success: true, emailSent: false, sheetAppended }), {
         status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
 
-    return new Response(JSON.stringify({ success: true, emailSent: true }), {
+    return new Response(JSON.stringify({ success: true, emailSent: true, sheetAppended }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
