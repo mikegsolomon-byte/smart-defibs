@@ -135,6 +135,10 @@ Deno.serve(async (req) => {
     }
     const { id, name, organisation, sector, email, phone, message } = validated.data
 
+    const sheetAppended = await appendToSheet({ id, name, organisation, sector, email, phone, message })
+
+
+
     const subject = `New quote request — ${organisation} (${sector})`
     const html = `
       <div style="font-family:Arial,sans-serif;color:#1a1a1a;max-width:600px;margin:0 auto;padding:24px;">
