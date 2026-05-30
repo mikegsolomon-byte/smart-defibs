@@ -115,6 +115,7 @@ export default function QuotePage() {
                         <SelectItem value="schools">Schools / Crèche</SelectItem>
                         <SelectItem value="nursing">Nursing Home</SelectItem>
                         <SelectItem value="workplace">Workplace</SelectItem>
+                        <SelectItem value="gyms">Gym / Fitness Facility</SelectItem>
                         <SelectItem value="community">Community / CFR</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
