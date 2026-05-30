@@ -61,7 +61,7 @@ export default function QuotePage() {
 
     setSubmitted(true);
     setSubmitting(false);
-    toast({ title: "Quote request sent!", description: "We'll be in touch shortly." });
+    toast({ title: "Thanks — we've got your request!", description: "Our team will be in touch with your tailored quote shortly." });
   };
 
   return (
