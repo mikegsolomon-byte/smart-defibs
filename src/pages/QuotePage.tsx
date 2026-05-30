@@ -61,7 +61,7 @@ export default function QuotePage() {
 
     setSubmitted(true);
     setSubmitting(false);
-    toast({ title: "Quote request sent!", description: "We'll be in touch shortly." });
+    toast({ title: "Thanks — we've got your request!", description: "Our team will be in touch with your tailored quote shortly." });
   };
 
   return (
@@ -115,6 +115,7 @@ export default function QuotePage() {
                         <SelectItem value="schools">Schools / Crèche</SelectItem>
                         <SelectItem value="nursing">Nursing Home</SelectItem>
                         <SelectItem value="workplace">Workplace</SelectItem>
+                        <SelectItem value="gyms">Gym / Fitness Facility</SelectItem>
                         <SelectItem value="community">Community / CFR</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
