@@ -89,8 +89,9 @@ export const products: StaticProduct[] = [
     brand: "Progetti Medical",
     category: "CPR Device",
     image: chestEr,
-    priceFrom: "POA",
-    priceNote: "Request a quote — full Irish supply & training package",
+    priceFrom: "€500",
+    priceNote: "incl. VAT · full Irish supply & training package",
+    priceId: "chest_er_cpr_price",
     shortDescription:
       "Portable automated chest-compression device delivering consistent, guideline-compliant CPR — freeing responders to focus on the patient.",
     longDescription:
