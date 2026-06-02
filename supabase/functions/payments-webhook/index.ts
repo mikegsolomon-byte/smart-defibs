@@ -137,11 +137,56 @@ async function handleCheckoutCompleted(session: any, env: StripeEnv) {
   });
 }
 
+async function updateOrderStatusByPaymentIntent(
+  paymentIntentId: string | null,
+  status: string,
+  env: StripeEnv,
+) {
+  if (!paymentIntentId) {
+    console.log("No payment_intent on event; skipping status update");
+    return;
+  }
+  const { error } = await getSupabase()
+    .from("orders")
+    .update({ status, updated_at: new Date().toISOString() })
+    .eq("stripe_payment_intent_id", paymentIntentId)
+    .eq("environment", env);
+  if (error) console.error("Failed to update order status", error);
+}
+
+async function handleChargeRefunded(charge: any, env: StripeEnv) {
+  const fullyRefunded = charge.amount_refunded >= charge.amount;
+  await updateOrderStatusByPaymentIntent(
+    charge.payment_intent || null,
+    fullyRefunded ? "refunded" : "partially_refunded",
+    env,
+  );
+}
+
+async function handleDisputeCreated(dispute: any, env: StripeEnv) {
+  await updateOrderStatusByPaymentIntent(dispute.payment_intent || null, "disputed", env);
+}
+
+async function handlePaymentFailed(paymentIntent: any, env: StripeEnv) {
+  // Failed payments usually have no recorded order (orders are written on
+  // checkout completion). This is a no-op update unless a prior order exists.
+  await updateOrderStatusByPaymentIntent(paymentIntent.id || null, "failed", env);
+}
+
 async function handleWebhook(req: Request, env: StripeEnv) {
   const event = await verifyWebhook(req, env);
   switch (event.type) {
     case "checkout.session.completed":
       await handleCheckoutCompleted(event.data.object, env);
+      break;
+    case "charge.refunded":
+      await handleChargeRefunded(event.data.object, env);
+      break;
+    case "charge.dispute.created":
+      await handleDisputeCreated(event.data.object, env);
+      break;
+    case "payment_intent.payment_failed":
+      await handlePaymentFailed(event.data.object, env);
       break;
     default:
       console.log("Unhandled event:", event.type);
