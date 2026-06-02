@@ -15,6 +15,7 @@ import ProductsPage from "./pages/ProductsPage.tsx";
 import ProductDetailPage from "./pages/ProductDetailPage.tsx";
 import TrainingPage from "./pages/TrainingPage.tsx";
 import ServicingPage from "./pages/ServicingPage.tsx";
+import CheckoutReturn from "./pages/CheckoutReturn.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
