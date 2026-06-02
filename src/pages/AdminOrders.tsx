@@ -27,6 +27,7 @@ interface OrderRow {
 const statusStyles: Record<string, string> = {
   paid: "bg-primary/10 text-primary border-primary/20",
   refunded: "bg-muted text-muted-foreground border-border",
+  partially_refunded: "bg-muted text-muted-foreground border-border",
   failed: "bg-destructive/10 text-destructive border-destructive/20",
   disputed: "bg-accent/20 text-accent-foreground border-accent/30",
 };
