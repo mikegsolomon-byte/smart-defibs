@@ -55,6 +55,7 @@ const QuotePayloadSchema = z.object({
   email: z.string().trim().email().max(320),
   phone: z.string().trim().min(1).max(30),
   message: z.string().trim().max(2000).optional().nullable(),
+  company_website: z.string().max(200).optional().nullable(),
 })
 
 const BodySchema = z.union([
