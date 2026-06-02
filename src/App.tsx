@@ -64,7 +64,9 @@ const App = () => (
         <Toaster />
         <Sonner position="top-center" />
         <BrowserRouter>
-          <AnimatedRoutes />
+          <AuthProvider>
+            <AnimatedRoutes />
+          </AuthProvider>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
