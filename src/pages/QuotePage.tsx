@@ -24,6 +24,7 @@ export default function QuotePage() {
     email: "",
     phone: "",
     message: "",
+    company_website: "", // honeypot — must stay empty
   });
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -45,6 +46,7 @@ export default function QuotePage() {
         email: form.email,
         phone: form.phone,
         message: form.message || null,
+        company_website: form.company_website,
       },
     });
 
@@ -136,6 +138,20 @@ export default function QuotePage() {
                   <div className="space-y-2">
                     <Label htmlFor="message">Message / Notes</Label>
                     <Textarea id="message" placeholder="Any additional details..." rows={3} className="focus-ring" value={form.message} onChange={update("message")} />
+                  </div>
+
+                  {/* Honeypot field — hidden from real users, traps bots */}
+                  <div className="absolute left-[-9999px] top-[-9999px]" aria-hidden="true">
+                    <label htmlFor="company_website">Company website (leave blank)</label>
+                    <input
+                      id="company_website"
+                      name="company_website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={form.company_website}
+                      onChange={update("company_website")}
+                    />
                   </div>
 
                   <Button type="submit" size="lg" disabled={submitting} className="w-full bg-primary text-primary-foreground hover:bg-teal-light text-base btn-micro">
