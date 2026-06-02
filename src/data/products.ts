@@ -29,7 +29,8 @@ export const products: StaticProduct[] = [
     category: "Defibrillator",
     image: amoulI3,
     priceFrom: "€1,295",
-    priceNote: "ex. VAT · includes pads & 5yr battery",
+    priceNote: "incl. VAT · includes pads & 5yr battery",
+    priceId: "amoul_i3_aed_price",
     shortDescription:
       "Smart ECG analysis with clear voice & visual guidance. Adult & paediatric pads included as standard.",
     longDescription:
