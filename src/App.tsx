@@ -15,6 +15,7 @@ import ProductsPage from "./pages/ProductsPage.tsx";
 import ProductDetailPage from "./pages/ProductDetailPage.tsx";
 import TrainingPage from "./pages/TrainingPage.tsx";
 import ServicingPage from "./pages/ServicingPage.tsx";
+import CheckoutReturn from "./pages/CheckoutReturn.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
@@ -38,6 +39,7 @@ function AnimatedRoutes() {
         <Route path="/product/:handle" element={<PageTransition><ProductDetailPage /></PageTransition>} />
         <Route path="/training" element={<PageTransition><TrainingPage /></PageTransition>} />
         <Route path="/servicing" element={<PageTransition><ServicingPage /></PageTransition>} />
+        <Route path="/checkout/return" element={<PageTransition><CheckoutReturn /></PageTransition>} />
         
         <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
         <Route path="/privacy" element={<PageTransition><PrivacyPage /></PageTransition>} />

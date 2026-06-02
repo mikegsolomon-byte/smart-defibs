@@ -11,6 +11,7 @@ export type StaticProduct = {
   image: string;
   priceFrom: string;
   priceNote: string;
+  priceId?: string;
   shortDescription: string;
   longDescription: string;
   badges: string[];
@@ -28,7 +29,8 @@ export const products: StaticProduct[] = [
     category: "Defibrillator",
     image: amoulI3,
     priceFrom: "€1,295",
-    priceNote: "ex. VAT · includes pads & 5yr battery",
+    priceNote: "incl. VAT · includes pads & 5yr battery",
+    priceId: "amoul_i3_aed_price",
     shortDescription:
       "Smart ECG analysis with clear voice & visual guidance. Adult & paediatric pads included as standard.",
     longDescription:
@@ -58,7 +60,8 @@ export const products: StaticProduct[] = [
     category: "Defibrillator",
     image: amoulI5,
     priceFrom: "€1,895",
-    priceNote: "ex. VAT · quote includes pads, battery & cabinet options",
+    priceNote: "incl. VAT · pads, battery & cabinet options included",
+    priceId: "amoul_i5_aed_price",
     shortDescription:
       "Premium AED with 7-inch HD LCD, GPS tracking, 4G remote management and storage for up to 1,000 ECG events.",
     longDescription:
@@ -86,8 +89,9 @@ export const products: StaticProduct[] = [
     brand: "Progetti Medical",
     category: "CPR Device",
     image: chestEr,
-    priceFrom: "POA",
-    priceNote: "Request a quote — full Irish supply & training package",
+    priceFrom: "€500",
+    priceNote: "incl. VAT · full Irish supply & training package",
+    priceId: "chest_er_cpr_price",
     shortDescription:
       "Portable automated chest-compression device delivering consistent, guideline-compliant CPR — freeing responders to focus on the patient.",
     longDescription:

@@ -1,10 +1,12 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ShieldCheck, Check, FileText, PhoneCall, Award } from "lucide-react";
+import { ArrowLeft, ShieldCheck, Check, FileText, Award } from "lucide-react";
 import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
+import { BuyProductDialog } from "@/components/BuyProductDialog";
+import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
 import { getProduct } from "@/data/products";
 
 export default function ProductDetailPage() {
@@ -44,6 +46,7 @@ export default function ProductDetailPage() {
         }}
       />
       <SiteHeader />
+      <PaymentTestModeBanner />
       <main className="flex-1 bg-surface-soft">
         <div className="container mx-auto max-w-6xl px-4 lg:px-8 py-8 lg:py-12">
           <Button asChild variant="ghost" size="sm" className="mb-6">
@@ -101,17 +104,26 @@ export default function ProductDetailPage() {
                 <p className="text-xs text-muted-foreground mb-5">{product.priceNote}</p>
 
                 <div className="flex flex-col sm:flex-row gap-2">
-                  <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 btn-micro shadow-md flex-1">
+                  {product.priceId ? (
+                    <BuyProductDialog priceId={product.priceId} productTitle={product.title} />
+                  ) : (
+                    <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 btn-micro shadow-md flex-1">
+                      <Link to={`/quote?product=${product.handle}`}>
+                        <FileText className="h-4 w-4 mr-2" /> Request a Quote
+                      </Link>
+                    </Button>
+                  )}
+                  <Button asChild size="lg" variant="outline" className="flex-1 border-accent/40 hover:bg-accent/10 hover:border-accent">
                     <Link to={`/quote?product=${product.handle}`}>
                       <FileText className="h-4 w-4 mr-2" /> Request a Quote
                     </Link>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="flex-1 border-accent/40 hover:bg-accent/10 hover:border-accent">
-                    <a href="tel:+353000000000">
-                      <PhoneCall className="h-4 w-4 mr-2" /> Call to Order
-                    </a>
-                  </Button>
                 </div>
+                {product.priceId && (
+                  <p className="text-xs text-muted-foreground mt-3 text-center sm:text-left">
+                    Secure checkout · ships to Ireland &amp; UK
+                  </p>
+                )}
               </div>
             </div>
           </motion.div>
