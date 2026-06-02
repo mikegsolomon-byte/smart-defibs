@@ -11,6 +11,7 @@ export type StaticProduct = {
   image: string;
   priceFrom: string;
   priceNote: string;
+  priceId?: string;
   shortDescription: string;
   longDescription: string;
   badges: string[];
