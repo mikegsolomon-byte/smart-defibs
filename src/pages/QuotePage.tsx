@@ -140,6 +140,20 @@ export default function QuotePage() {
                     <Textarea id="message" placeholder="Any additional details..." rows={3} className="focus-ring" value={form.message} onChange={update("message")} />
                   </div>
 
+                  {/* Honeypot field — hidden from real users, traps bots */}
+                  <div className="absolute left-[-9999px] top-[-9999px]" aria-hidden="true">
+                    <label htmlFor="company_website">Company website (leave blank)</label>
+                    <input
+                      id="company_website"
+                      name="company_website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={form.company_website}
+                      onChange={update("company_website")}
+                    />
+                  </div>
+
                   <Button type="submit" size="lg" disabled={submitting} className="w-full bg-primary text-primary-foreground hover:bg-teal-light text-base btn-micro">
                     {submitting ? (<><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Submitting...</>) : "Submit Quote Request"}
                   </Button>
