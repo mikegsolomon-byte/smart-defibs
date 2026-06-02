@@ -16,10 +16,15 @@ import ProductDetailPage from "./pages/ProductDetailPage.tsx";
 import TrainingPage from "./pages/TrainingPage.tsx";
 import ServicingPage from "./pages/ServicingPage.tsx";
 import CheckoutReturn from "./pages/CheckoutReturn.tsx";
+import AdminLogin from "./pages/AdminLogin.tsx";
+import AdminOrders from "./pages/AdminOrders.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
+
+import { AuthProvider } from "@/hooks/useAuth";
+import { RequireAdmin } from "@/components/RequireAdmin";
 
 const queryClient = new QueryClient();
 
