@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ShieldCheck, Check, FileText, PhoneCall, Award } from "lucide-react";
+import { ArrowLeft, ShieldCheck, Check, FileText, Award } from "lucide-react";
 import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
