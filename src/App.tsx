@@ -45,7 +45,10 @@ function AnimatedRoutes() {
         <Route path="/training" element={<PageTransition><TrainingPage /></PageTransition>} />
         <Route path="/servicing" element={<PageTransition><ServicingPage /></PageTransition>} />
         <Route path="/checkout/return" element={<PageTransition><CheckoutReturn /></PageTransition>} />
-        
+
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/orders" element={<RequireAdmin><AdminOrders /></RequireAdmin>} />
+
         <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
         <Route path="/privacy" element={<PageTransition><PrivacyPage /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
