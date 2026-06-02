@@ -24,6 +24,7 @@ export default function QuotePage() {
     email: "",
     phone: "",
     message: "",
+    company_website: "", // honeypot — must stay empty
   });
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
