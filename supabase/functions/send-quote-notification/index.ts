@@ -46,7 +46,21 @@ async function appendToSheet(
   return true
 }
 
-const ALLOWED_SECTORS = ['schools', 'nursing', 'workplace', 'community', 'other'] as const
+const ALLOWED_SECTORS = ['schools', 'nursing', 'workplace', 'gyms', 'community', 'other'] as const
+
+// In-memory rate limiter (per edge-function instance). Not a hard guarantee
+// since instances are ephemeral, but blocks casual/burst abuse.
+const RATE_LIMIT_MAX = 5
+const RATE_LIMIT_WINDOW_MS = 60_000
+const rateBuckets = new Map<string, number[]>()
+
+function isRateLimited(key: string): boolean {
+  const now = Date.now()
+  const hits = (rateBuckets.get(key) ?? []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS)
+  hits.push(now)
+  rateBuckets.set(key, hits)
+  return hits.length > RATE_LIMIT_MAX
+}
 
 const QuotePayloadSchema = z.object({
   name: z.string().trim().min(1).max(200),
