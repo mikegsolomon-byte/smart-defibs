@@ -115,6 +115,24 @@ Deno.serve(async (req) => {
       return errorResponse(400, 'Invalid request')
     }
 
+    // Honeypot: bots fill hidden fields. Pretend success, store nothing.
+    if ('company_website' in parsed.data && parsed.data.company_website) {
+      console.warn('Honeypot triggered — dropping submission')
+      return new Response(JSON.stringify({ success: true, emailSent: false, sheetAppended: false }), {
+        status: 200,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      })
+    }
+
+    // Rate limit by client IP (only for new submissions, not quoteId lookups).
+    if (!('quoteId' in parsed.data)) {
+      const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown'
+      if (isRateLimited(ip)) {
+        console.warn('Rate limit exceeded for', ip)
+        return errorResponse(429, 'Too many requests. Please try again in a minute.')
+      }
+    }
+
     const admin = createClient(SUPABASE_URL, SERVICE_ROLE)
     const rowResult = 'quoteId' in parsed.data
       ? await admin
