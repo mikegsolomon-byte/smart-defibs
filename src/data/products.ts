@@ -60,7 +60,8 @@ export const products: StaticProduct[] = [
     category: "Defibrillator",
     image: amoulI5,
     priceFrom: "€1,895",
-    priceNote: "ex. VAT · quote includes pads, battery & cabinet options",
+    priceNote: "incl. VAT · pads, battery & cabinet options included",
+    priceId: "amoul_i5_aed_price",
     shortDescription:
       "Premium AED with 7-inch HD LCD, GPS tracking, 4G remote management and storage for up to 1,000 ECG events.",
     longDescription:
