@@ -52,7 +52,7 @@ const sectors = [
 
 export default function SectorCards() {
   return (
-    <section id="sectors" className="px-4 sm:px-8 lg:px-8 py-6 sm:py-10 lg:py-14 bg-background">
+    <section id="sectors" className="px-4 sm:px-8 lg:px-8 py-6 lg:py-14 bg-background sm:py-[30px]">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
