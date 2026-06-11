@@ -2,11 +2,9 @@ import { CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 const badges = [
-  "Official Irish Amoul® Importer",
-  "CE Marked",
-  "Irish Heart Foundation",
+  "Exclusive Amoul® Partner",
   "PHECC Aligned Training",
-  "Next-Day Delivery IE",
+  "Speedy Delivery",
 ];
 
 export default function TrustBar() {
