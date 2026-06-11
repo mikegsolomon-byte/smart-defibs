@@ -236,7 +236,7 @@ type SectorKey = keyof typeof sectorData;
 
 export default function SectorsPage() {
   const [searchParams] = useSearchParams();
-  const initialTab = (searchParams.get("tab") as SectorKey) || "schools";
+  const initialTab = (searchParams.get("tab") as SectorKey) || "community";
   const [activeTab, setActiveTab] = useState<SectorKey>(initialTab);
   const data = sectorData[activeTab];
   const Icon = data.icon;
