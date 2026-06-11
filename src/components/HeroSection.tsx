@@ -59,7 +59,7 @@ export default function HeroSection() {
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep text-base px-8 btn-micro shadow-md shadow-primary/20">
                 <Link to="/quote">
-                  Get a Free Quote <ArrowRight className="ml-1 h-4 w-4" />
+                  Contact Us <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-2 border-foreground/40 text-foreground hover:bg-muted text-base px-8 btn-micro">
