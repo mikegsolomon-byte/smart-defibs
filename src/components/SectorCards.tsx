@@ -4,22 +4,13 @@ import { School, Users, Stethoscope, Shield, Dumbbell, ArrowRight } from "lucide
 
 const sectors = [
   {
-    icon: School,
-    title: "A School or Crèche",
-    description: "Grants, installation, AED for Schools programme",
-    color: "border-sector-schools",
-    bgColor: "bg-sector-schools/10",
-    iconColor: "text-sector-schools",
-    slug: "schools",
-  },
-  {
-    icon: Stethoscope,
-    title: "A Nursing Home",
-    description: "HIQA-compliant AEDs & training",
-    color: "border-sector-nursing",
-    bgColor: "bg-sector-nursing/10",
-    iconColor: "text-sector-nursing",
-    slug: "nursing",
+    icon: Users,
+    title: "A CFR Group",
+    description: "Responder kits & community AEDs",
+    color: "border-sector-community",
+    bgColor: "bg-sector-community/10",
+    iconColor: "text-sector-community",
+    slug: "community",
   },
   {
     icon: Shield,
@@ -31,6 +22,24 @@ const sectors = [
     slug: "workplace",
   },
   {
+    icon: Stethoscope,
+    title: "A Nursing Home",
+    description: "HIQA-compliant AEDs & training",
+    color: "border-sector-nursing",
+    bgColor: "bg-sector-nursing/10",
+    iconColor: "text-sector-nursing",
+    slug: "nursing",
+  },
+  {
+    icon: School,
+    title: "A School or Crèche",
+    description: "Grants, installation, AED for Schools programme",
+    color: "border-sector-schools",
+    bgColor: "bg-sector-schools/10",
+    iconColor: "text-sector-schools",
+    slug: "schools",
+  },
+  {
     icon: Dumbbell,
     title: "A Gym or Fitness Facility",
     description: "Member safety, insurance & staff training",
@@ -38,15 +47,6 @@ const sectors = [
     bgColor: "bg-sector-gyms/10",
     iconColor: "text-sector-gyms",
     slug: "gyms",
-  },
-  {
-    icon: Users,
-    title: "A CFR Group",
-    description: "Responder kits & community AEDs",
-    color: "border-sector-community",
-    bgColor: "bg-sector-community/10",
-    iconColor: "text-sector-community",
-    slug: "community",
   },
 ];
 
