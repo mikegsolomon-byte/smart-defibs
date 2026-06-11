@@ -44,11 +44,11 @@ export default function AmoulImporterChip({ variant }: { variant?: "dark" | "lig
               <div className="flex items-center gap-1.5 mb-0.5 sm:mb-1">
                 <div className="h-px w-2 sm:w-3 bg-primary-foreground/50" />
                 <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] font-bold text-primary-foreground/90 leading-none">
-                  Official
+                  Exclusive
                 </span>
               </div>
               <span className="block text-[10px] sm:text-sm uppercase tracking-[0.15em] sm:tracking-[0.18em] font-extrabold leading-none whitespace-nowrap">
-                Irish Importer
+                Partner
               </span>
             </div>
           </div>
