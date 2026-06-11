@@ -39,7 +39,7 @@ const sectorData = {
     ],
     packageHighlight: "Grant-eligible — we help schools identify and apply for funding",
     pricing: "From €1,295 incl. VAT — grant offset may be available",
-    steps: ["Get a free quote", "We install & train your staff", "We monitor & maintain it"],
+    steps: ["Get a free quote", "We train your staff", "We monitor & maintain it"],
     whyNeeded: {
       intro:
         "Sudden cardiac arrest doesn't discriminate by age. Each year in Ireland, children, teachers and visitors collapse on school grounds — and survival depends on what happens in the next few minutes. An on-site AED, combined with trained staff, turns a tragedy into a survivable event.",
@@ -74,7 +74,7 @@ const sectorData = {
     },
     faqs: [
       { q: "Is there grant funding available?", a: "There is no dedicated ROI Department of Education AED grant, but funding may be available via CLÁR, LEADER, HSE National Lottery Grants or the FAI Heart Care programme. We help schools identify and apply for the best fit." },
-      { q: "Do staff need certification?", a: "We provide PHECC-aligned CPR/AED training on-site for up to 12 staff members." },
+      { q: "Do staff need certification?", a: "We provide PHECC-aligned CPR/AED training on-site." },
       { q: "What about maintenance?", a: "Our basic annual service plan ensures your AED is always rescue-ready." },
     ],
   },
@@ -112,7 +112,7 @@ const sectorData = {
     },
     faqs: [
       { q: "Does this meet HIQA requirements?", a: "Yes — our packages include all compliance documentation needed for HIQA inspections." },
-      { q: "Can you train rotating staff?", a: "Our online refresher module is perfect for high-turnover settings with certificate downloads." },
+      { q: "Can you train rotating staff?", a: "Our refresher module is perfect for high-turnover settings with certificate downloads." },
       { q: "What service plans do you offer?", a: "Full service plans include annual inspection, pads & battery replacement, and priority support." },
     ],
   },
