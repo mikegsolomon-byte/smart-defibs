@@ -41,7 +41,7 @@ export default function StatsSection() {
             Why act now
           </h2>
           <p className="text-secondary-foreground/80 max-w-lg mx-auto">
-            Every minute without an AED reduces survival chances by 10%
+            Every minute without CPR and AED reduces survival chances by 10%
           </p>
         </motion.div>
 
