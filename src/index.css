@@ -123,10 +123,10 @@
 
 @layer components {
   .section-padding {
-    @apply px-4 sm:px-8 lg:px-8 py-10 sm:py-16 lg:py-24;
+    @apply px-4 sm:px-8 lg:px-8 py-8 sm:py-12 lg:py-16;
   }
   .section-padding-hero {
-    @apply px-4 sm:px-8 lg:px-8 pt-8 pb-6 sm:pt-16 sm:pb-12 lg:pt-24;
+    @apply px-4 sm:px-8 lg:px-8 pt-6 pb-4 sm:pt-12 sm:pb-8 lg:pt-16;
   }
 
   .trust-badge {
