@@ -55,12 +55,6 @@ export default function SiteFooter() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-secondary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-wrap justify-center gap-6 text-xs text-secondary-foreground/75">
-            <span>✓ CE Marked</span>
-            <span>✓ PHECC Certified</span>
-            <span>✓ HSE Recommended</span>
-            <span>✓ Irish Heart Foundation</span>
-          </div>
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-xs text-secondary-foreground/65">
             <p>© {new Date().getFullYear()} Smart Defibs LTD. All rights reserved.</p>
             <span className="hidden md:inline text-secondary-foreground/30">•</span>
