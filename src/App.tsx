@@ -21,6 +21,7 @@ import AdminOrders from "./pages/AdminOrders.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
+import UnsubscribePage from "./pages/UnsubscribePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 import { AuthProvider } from "@/hooks/useAuth";
@@ -51,6 +52,7 @@ function AnimatedRoutes() {
 
         <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
         <Route path="/privacy" element={<PageTransition><PrivacyPage /></PageTransition>} />
+        <Route path="/unsubscribe" element={<PageTransition><UnsubscribePage /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
