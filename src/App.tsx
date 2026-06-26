@@ -21,6 +21,7 @@ import AdminOrders from "./pages/AdminOrders.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
+import UnsubscribePage from "./pages/UnsubscribePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 import { AuthProvider } from "@/hooks/useAuth";
