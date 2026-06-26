@@ -2,12 +2,9 @@ import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import { z } from 'npm:zod@3'
 
-const GATEWAY_URL = 'https://connector-gateway.lovable.dev/resend'
 const SHEETS_GATEWAY_URL = 'https://connector-gateway.lovable.dev/google_sheets/v4'
 const SPREADSHEET_ID = '1Up0fTZSNkSTCD8Fn88dZkcvGkJxuHF0N9T556epwhN8'
 const SHEET_TAB = 'Leads'
-const NOTIFY_TO = 'info@smartdefibs.ie'
-const FROM_ADDR = 'Smart Defibs Website <onboarding@resend.dev>'
 
 async function appendToSheet(
   row: { id: string; name: string; organisation: string; sector: string; email: string; phone: string; message: string | null | undefined },
