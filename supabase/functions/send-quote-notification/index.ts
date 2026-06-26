@@ -84,9 +84,6 @@ const RowSchema = z.object({
   message: z.string().max(2000).nullable().optional(),
 })
 
-const esc = (s: string) =>
-  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-
 const errorResponse = (status: number, message = 'Internal server error') =>
   new Response(JSON.stringify({ error: message }), {
     status,
