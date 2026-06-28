@@ -31,7 +31,7 @@ export default function AboutPartnership() {
             <div className="p-8 lg:p-12">
               <div className="flex items-center gap-3 mb-5">
                 <img src={amoulLogo} alt="Amoul" className="h-9 w-auto bg-white rounded-md px-2 py-1 border border-border" />
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Official Irish Importer</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Exclusive Amoul® Partner</span>
               </div>
 
               <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
