@@ -13,15 +13,6 @@ const sectors = [
     slug: "community",
   },
   {
-    icon: Shield,
-    title: "A Workplace",
-    description: "H&S compliance, multi-site bundles",
-    color: "border-sector-workplace",
-    bgColor: "bg-sector-workplace/10",
-    iconColor: "text-sector-workplace",
-    slug: "workplace",
-  },
-  {
     icon: Stethoscope,
     title: "A Nursing Home",
     description: "HIQA-compliant AEDs & training",
@@ -29,6 +20,15 @@ const sectors = [
     bgColor: "bg-sector-nursing/10",
     iconColor: "text-sector-nursing",
     slug: "nursing",
+  },
+  {
+    icon: Shield,
+    title: "A Workplace",
+    description: "H&S compliance, multi-site bundles",
+    color: "border-sector-workplace",
+    bgColor: "bg-sector-workplace/10",
+    iconColor: "text-sector-workplace",
+    slug: "workplace",
   },
   {
     icon: School,
@@ -62,7 +62,7 @@ export default function SectorCards() {
           className="text-center mb-8"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] bg-accent text-accent-foreground px-3 py-1 rounded-full mb-3">Sectors</span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-3 font-extrabold tracking-tight">I'm looking for…</h2>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-3 font-extrabold tracking-tight">Solutions for every sector</h2>
           <p className="text-muted-foreground max-w-lg mx-auto">
             Select your sector and we'll guide you to the right AED solution
           </p>

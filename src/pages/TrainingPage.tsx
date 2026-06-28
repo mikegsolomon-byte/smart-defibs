@@ -5,27 +5,35 @@ import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { GraduationCap, Users, Monitor, Calendar } from "lucide-react";
+import { ShieldCheck, HeartPulse, Stethoscope, Check } from "lucide-react";
 import { motion } from "framer-motion";
+
+const heartSafeIncludes = [
+  "OHCA Readiness Assessment",
+  "AED Readiness Service (Tier 2 or Tier 3)",
+  "CFR Training for designated responders",
+  "CPR & AED Awareness for all staff",
+  "Heart Safe Team Champion support",
+  "Emergency response planning",
+  "Regular drills and refresher sessions",
+  "Internal communication resources",
+  "Heart Safe Team Recognition Pack",
+  "Annual programme review",
+  "2-Year Heart Safe Team Certification",
+];
 
 const courses = [
   {
-    icon: GraduationCap,
-    title: "Onsite CPR / AED Awareness",
-    desc: "Half-day · up to 12 staff · cert issued · PHECC aligned",
-    personas: ["Schools", "Nursing", "Workplace"],
+    icon: HeartPulse,
+    title: "Cardiac First Responder (CFR) Training",
+    desc: "Equips individuals with the essential skills to recognise cardiac arrest, perform high-quality CPR and use an AED confidently in the critical first minutes of an emergency. Delivered in line with PHECC CFR standards, it prepares responders to act quickly and effectively until emergency services arrive — helping to improve survival outcomes through early intervention.",
+    tags: ["PHECC CFR"],
   },
   {
-    icon: Users,
-    title: "PHECC CFR Certification",
-    desc: "Full CFR course · PHECC registered · renewal cycles · perfect for volunteer groups",
-    personas: ["Community"],
-  },
-  {
-    icon: Monitor,
-    title: "Online Refresher",
-    desc: "E-learning · staff self-service · certificate download · ideal for high-turnover settings",
-    personas: ["Nursing", "Workplace"],
+    icon: Stethoscope,
+    title: "First Aid Response (FAR)",
+    desc: "Comprehensive workplace first aid training delivered in accordance with PHECC FAR standards and supporting Health and Safety Authority (HSA) requirements for occupational first aid. The course prepares participants to respond to a wide range of medical emergencies — including cardiac arrest, trauma and other life-threatening conditions — and supports emergency preparedness within healthcare and care environments, including nursing homes, where appropriate.",
+    tags: ["PHECC FAR", "HSA Aligned"],
   },
 ];
 
@@ -33,8 +41,8 @@ export default function TrainingPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="CPR & AED Training Ireland — PHECC-Aligned Courses"
-        description="Onsite CPR/AED awareness and PHECC CFR certification for Irish schools, workplaces, nursing homes and community responder groups."
+        title="Training & Awareness — Heart Safe Team, CFR & FAR | Smart Defibs"
+        description="PHECC-aligned training and awareness from Smart Defibs: the Heart Safe Team Programme, Cardiac First Responder (CFR) and First Aid Response (FAR) courses for organisations across Ireland."
         path="/training"
         jsonLd={{ "@context": "https://schema.org", "@type": "Service", serviceType: "CPR and AED Training", provider: { "@type": "Organization", name: "Smart Defibs LTD" }, areaServed: "IE" }}
       />
@@ -43,12 +51,60 @@ export default function TrainingPage() {
         <section className="relative overflow-hidden bg-secondary section-padding-hero">
           <div className="container mx-auto">
             <AmoulImporterChip />
-            <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">Training & Certification</h1>
-            <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">PHECC-aligned CPR/AED training courses for every sector — onsite, online, or certified CFR programmes.</p>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">Training & Awareness</h1>
+            <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">
+              Build a team ready to respond — through structured programmes, certified training and a lasting culture of emergency preparedness.
+            </p>
           </div>
         </section>
 
+        {/* Heart Safe Team Programme */}
         <section className="section-padding bg-background">
+          <div className="container mx-auto max-w-5xl">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="clinical-card p-8 lg:p-10"
+            >
+              <span className="inline-flex items-center gap-2 bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-4">
+                <ShieldCheck className="h-3.5 w-3.5" /> Flagship Programme
+              </span>
+              <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-2">Heart Safe Team Programme</h2>
+              <p className="text-primary font-semibold mb-4">Build a team ready to respond.</p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The Heart Safe Team Programme is a service that helps organisations develop a confident, coordinated response to out-of-hospital cardiac arrest (OHCA). Combining training, AED readiness, emergency planning and ongoing support, it creates a lasting culture of emergency preparedness.
+              </p>
+
+              <h3 className="font-heading font-bold text-lg text-foreground mb-3">Includes</h3>
+              <ul className="grid sm:grid-cols-2 gap-2.5 mb-6">
+                {heartSafeIncludes.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm text-card-foreground">
+                    <span className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
+                      <Check className="h-3 w-3 text-accent-foreground" strokeWidth={3} />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                The Heart Safe Team Programme enhances your organisation's reputation by demonstrating a clear commitment to saving lives and community safety, improving public trust, visibility and local PR. It also strengthens staff morale, engagement and retention by involving teams in meaningful, life-saving activity and training.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Beyond internal benefits, it positions your organisation as an active community asset, supporting CSR goals and creating valuable marketing and recognition opportunities.
+              </p>
+
+              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep">
+                <Link to="/quote">Enquire about the programme</Link>
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* CFR + FAR */}
+        <section className="section-padding bg-surface-soft">
           <div className="container mx-auto max-w-4xl">
             <div className="space-y-6">
               {courses.map((c, i) => (
@@ -65,10 +121,10 @@ export default function TrainingPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-heading font-bold text-xl text-card-foreground mb-2">{c.title}</h3>
-                    <p className="text-muted-foreground mb-3">{c.desc}</p>
+                    <p className="text-muted-foreground mb-3 leading-relaxed">{c.desc}</p>
                     <div className="flex flex-wrap gap-1">
-                      {c.personas.map((p) => (
-                        <span key={p} className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">{p}</span>
+                      {c.tags.map((t) => (
+                        <span key={t} className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full">{t}</span>
                       ))}
                     </div>
                   </div>
@@ -77,17 +133,6 @@ export default function TrainingPage() {
                   </Button>
                 </motion.div>
               ))}
-            </div>
-
-            <div className="mt-12 bg-muted rounded-xl p-8 flex flex-col md:flex-row items-center gap-6">
-              <Calendar className="h-10 w-10 text-primary shrink-0" />
-              <div className="flex-1">
-                <h3 className="font-heading font-bold text-xl mb-1">Book a Training Session</h3>
-                <p className="text-muted-foreground">Choose your date, location, and staff count — we'll confirm same-day.</p>
-              </div>
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-teal-light">
-                <Link to="/quote">Request Training</Link>
-              </Button>
             </div>
           </div>
         </section>

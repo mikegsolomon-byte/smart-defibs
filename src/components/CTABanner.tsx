@@ -31,7 +31,7 @@ export default function CTABanner() {
                 </Link>
               </Button>
               <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 border-2 border-accent/40 text-base px-8 btn-micro shadow-md">
-                <a href="tel:+353894992903">
+                <a href="tel:+353906641050">
                   <Phone className="mr-2 h-4 w-4" /> Call Us
                 </a>
               </Button>

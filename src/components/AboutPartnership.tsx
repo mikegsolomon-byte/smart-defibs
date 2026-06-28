@@ -31,7 +31,7 @@ export default function AboutPartnership() {
             <div className="p-8 lg:p-12">
               <div className="flex items-center gap-3 mb-5">
                 <img src={amoulLogo} alt="Amoul" className="h-9 w-auto bg-white rounded-md px-2 py-1 border border-border" />
-                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Official Irish Importer</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Exclusive Amoul® Partner</span>
               </div>
 
               <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
@@ -71,6 +71,40 @@ export default function AboutPartnership() {
                 ))}
               </div>
             </div>
+          </div>
+        </motion.div>
+
+        {/* Founder & mission */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+          className="clinical-card p-8 lg:p-12 mb-20 lg:mb-28"
+        >
+          <span className="inline-flex items-center gap-2 bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-4">
+            Our Founder
+          </span>
+          <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground mb-4">
+            Founded by a frontline paramedic
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Smart Defibs Ltd was founded by <strong className="text-foreground">Maciej Koczur</strong>, a National Ambulance
+            Service Paramedic Supervisor with over 20 years of frontline emergency care experience. Having witnessed
+            first-hand how the right equipment, training and readiness can mean the difference between life and death,
+            Maciej set out to make AEDs genuinely ready, every day.
+          </p>
+          <div className="grid md:grid-cols-3 gap-5 mt-8">
+            {[
+              { t: "Our Mission", d: "To improve survival from out-of-hospital cardiac arrest by ensuring every AED in our care is ready, compliant and supported." },
+              { t: "Our Approach", d: "Connected AED technology, proactive monitoring, certified training and dependable Irish-based support — combined in one managed service." },
+              { t: "Our Vision", d: "A Heart Safe Ireland where communities, workplaces and organisations are prepared and confident to respond." },
+            ].map((b) => (
+              <div key={b.t} className="bg-muted/50 border border-border rounded-lg p-5">
+                <h3 className="font-heading font-bold text-lg text-foreground mb-2">{b.t}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{b.d}</p>
+              </div>
+            ))}
           </div>
         </motion.div>
 

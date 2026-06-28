@@ -45,15 +45,19 @@ export default function HeroSection() {
             className="lg:col-span-7 max-w-2xl"
           >
 
+            <motion.span variants={fadeUp} className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">
+              Smart Defibs Ltd · Est. 2019
+            </motion.span>
+
             <motion.h1
               variants={fadeUp}
               className="font-heading text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-[1.05] mb-6 tracking-tight font-extrabold"
             >
-              Defibrillators AED with <span className="relative inline-block"><span className="relative z-10">Remote Monitoring</span><span aria-hidden className="absolute left-0 right-0 bottom-1 h-3 bg-accent/70 -z-0 rounded-sm" /></span>
+              Every AED <span className="relative inline-block"><span className="relative z-10">ready</span><span aria-hidden className="absolute left-0 right-0 bottom-1 h-3 bg-accent/70 -z-0 rounded-sm" /></span>. Every day. Every time.
             </motion.h1>
 
             <motion.p variants={fadeUp} className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed">
-              Defibrillators, training and ongoing servicing for community groups, workplaces, nursing homes and schools across Ireland.
+              Connected defibrillators with remote monitoring, reporting and fully managed support — keeping communities, workplaces, nursing homes, schools and gyms across Ireland ready to respond.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3">

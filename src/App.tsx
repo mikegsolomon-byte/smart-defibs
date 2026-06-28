@@ -20,6 +20,7 @@ import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminOrders from "./pages/AdminOrders.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
+import PricingPage from "./pages/PricingPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import UnsubscribePage from "./pages/UnsubscribePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -51,6 +52,7 @@ function AnimatedRoutes() {
         <Route path="/admin/orders" element={<RequireAdmin><AdminOrders /></RequireAdmin>} />
 
         <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
+        <Route path="/pricing" element={<PageTransition><PricingPage /></PageTransition>} />
         <Route path="/privacy" element={<PageTransition><PrivacyPage /></PageTransition>} />
         <Route path="/unsubscribe" element={<PageTransition><UnsubscribePage /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
