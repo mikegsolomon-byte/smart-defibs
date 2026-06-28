@@ -24,7 +24,7 @@ export default function ProductsPage() {
           <div className="container mx-auto">
             <div className="inline-flex items-center gap-3 bg-background border border-accent/40 px-4 py-2 rounded-full mb-4 shadow-sm">
               <img src={amoulLogo} alt="Amoul Medical" className="h-6 w-auto" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-foreground">Official Irish Importer</span>
+              <span className="text-xs font-semibold uppercase tracking-wider text-foreground">Exclusive Amoul® Partner</span>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">
               AEDs, Cabinets & <span className="text-accent">Accessories</span>
