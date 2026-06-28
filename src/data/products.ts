@@ -69,7 +69,6 @@ export const products: StaticProduct[] = [
       "Premium AED with a 7-inch HD colour display, real-time ECG and 4G remote monitoring for clear, confident rescues.",
     longDescription:
       "The Amoul i5 View 4G adds a 7-inch HD colour display and real-time ECG to clear voice prompts, giving responders full visual guidance during a rescue. 4G connectivity enables remote monitoring and automatic self-tests, while an 8-year warranty, 5-year battery and IP55 protection make it ideal for high-traffic public-access deployments.",
-    priceId: "aed_i5_view_4g_price",
     badges: ["CE Marked", "7\" HD Display", "4G Connected"],
     highlights: [
       { title: "7\" HD colour display", desc: "Clear visual guidance & voice prompts" },
