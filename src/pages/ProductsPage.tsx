@@ -27,10 +27,10 @@ export default function ProductsPage() {
               <span className="text-xs font-semibold uppercase tracking-wider text-foreground">Official Irish Importer</span>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">
-              AEDs & <span className="text-accent">CPR Devices</span>
+              AEDs, Cabinets & <span className="text-accent">Accessories</span>
             </h1>
             <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">
-              CE-marked, EMS-trusted equipment with transparent Irish pricing, manufacturer warranty and next-day delivery. Buy online or request a tailored quote with installation and training.
+              Connected AEDs, cabinets and accessories, backed by our AED Readiness Service to help keep your organisation ready every day. Order online or request a tailored solution.
             </p>
           </div>
         </section>
