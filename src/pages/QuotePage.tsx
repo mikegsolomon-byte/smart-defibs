@@ -173,7 +173,7 @@ export default function QuotePage() {
               className="space-y-8"
             >
               {[
-                { icon: Phone, label: "+353 89 499 2903", desc: "Call us for immediate assistance" },
+                { icon: Phone, label: "090 664 1050", desc: "Call us for immediate assistance" },
                 { icon: Mail, label: "info@smartdefibs.ie", desc: "Email us any time" },
               ].map((item) => (
                 <div key={item.label} className="flex gap-4 items-start">
