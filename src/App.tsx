@@ -20,6 +20,7 @@ import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminOrders from "./pages/AdminOrders.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
+import PricingPage from "./pages/PricingPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import UnsubscribePage from "./pages/UnsubscribePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
