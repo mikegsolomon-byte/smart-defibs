@@ -252,7 +252,7 @@ export default function SectorsPage() {
         <div className="bg-secondary">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="flex overflow-x-auto gap-1 py-2">
-              {(Object.keys(sectorData) as SectorKey[]).map((key) => {
+              {sectorOrder.map((key) => {
                 const s = sectorData[key];
                 const TabIcon = s.icon;
                 return (
