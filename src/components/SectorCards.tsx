@@ -13,15 +13,6 @@ const sectors = [
     slug: "community",
   },
   {
-    icon: Shield,
-    title: "A Workplace",
-    description: "H&S compliance, multi-site bundles",
-    color: "border-sector-workplace",
-    bgColor: "bg-sector-workplace/10",
-    iconColor: "text-sector-workplace",
-    slug: "workplace",
-  },
-  {
     icon: Stethoscope,
     title: "A Nursing Home",
     description: "HIQA-compliant AEDs & training",
@@ -29,6 +20,15 @@ const sectors = [
     bgColor: "bg-sector-nursing/10",
     iconColor: "text-sector-nursing",
     slug: "nursing",
+  },
+  {
+    icon: Shield,
+    title: "A Workplace",
+    description: "H&S compliance, multi-site bundles",
+    color: "border-sector-workplace",
+    bgColor: "bg-sector-workplace/10",
+    iconColor: "text-sector-workplace",
+    slug: "workplace",
   },
   {
     icon: School,
