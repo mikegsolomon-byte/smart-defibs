@@ -234,6 +234,8 @@ const sectorData = {
 
 type SectorKey = keyof typeof sectorData;
 
+const sectorOrder: SectorKey[] = ["community", "nursing", "workplace", "schools", "gyms"];
+
 export default function SectorsPage() {
   const [searchParams] = useSearchParams();
   const initialTab = (searchParams.get("tab") as SectorKey) || "community";
