@@ -44,7 +44,6 @@ export default function ProductDetailPage() {
         }}
       />
       <SiteHeader />
-      <PaymentTestModeBanner />
       <main className="flex-1 bg-surface-soft">
         <div className="container mx-auto max-w-6xl px-4 lg:px-8 py-8 lg:py-12">
           <Button asChild variant="ghost" size="sm" className="mb-6">
@@ -102,26 +101,12 @@ export default function ProductDetailPage() {
                 <p className="text-xs text-muted-foreground mb-5">{product.priceNote}</p>
 
                 <div className="flex flex-col sm:flex-row gap-2">
-                  {product.priceId ? (
-                    <BuyProductDialog priceId={product.priceId} productTitle={product.title} />
-                  ) : (
-                    <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 btn-micro shadow-md flex-1">
-                      <Link to={`/quote?product=${product.handle}`}>
-                        <FileText className="h-4 w-4 mr-2" /> Request a Quote
-                      </Link>
-                    </Button>
-                  )}
-                  <Button asChild size="lg" variant="outline" className="flex-1 border-accent/40 hover:bg-accent/10 hover:border-accent">
+                  <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 btn-micro shadow-md flex-1">
                     <Link to={`/quote?product=${product.handle}`}>
-                      <FileText className="h-4 w-4 mr-2" /> Request a Quote
+                      <FileText className="h-4 w-4 mr-2" /> Contact Us
                     </Link>
                   </Button>
                 </div>
-                {product.priceId && (
-                  <p className="text-xs text-muted-foreground mt-3 text-center sm:text-left">
-                    Secure checkout · ships to Ireland &amp; UK
-                  </p>
-                )}
               </div>
             </div>
           </motion.div>
@@ -158,15 +143,15 @@ export default function ProductDetailPage() {
           <section className="mt-12 bg-secondary text-secondary-foreground rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
             <div>
               <h3 className="font-heading font-extrabold text-2xl text-secondary-foreground mb-1">
-                Need a tailored quote?
+                Interested in this product?
               </h3>
               <p className="text-secondary-foreground/80 text-sm max-w-xl">
-                We'll bundle pricing for the {product.title}, optional cabinets, consumables and PHECC-aligned training — and confirm next-day delivery anywhere in Ireland.
+                Contact us for pricing on the {product.title}, optional cabinets, consumables and PHECC-aligned training — and confirm next-day delivery anywhere in Ireland.
               </p>
             </div>
             <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold shadow-md">
               <Link to={`/quote?product=${product.handle}`}>
-                <FileText className="h-4 w-4 mr-2" /> Get my quote
+                <FileText className="h-4 w-4 mr-2" /> Contact Us
               </Link>
             </Button>
           </section>
