@@ -1,8 +1,10 @@
 import amoulI3 from "@/assets/amoul-i3.jpg";
 import amoulI5 from "@/assets/amoul-i5.jpg";
 import chestErAsset from "@/assets/chest-er.png.asset.json";
+import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
 
 const chestEr = chestErAsset.url;
+const outdoorCabinet = outdoorCabinetAsset.url;
 
 export type StaticProduct = {
   handle: string;
@@ -167,7 +169,7 @@ export const products: StaticProduct[] = [
     subtitle: "Galvanised Steel · Heated · Lockable",
     brand: "Smart Defibs",
     category: "Cabinet",
-    image: amoulI3,
+    image: outdoorCabinet,
     priceFrom: "€399",
     priceNote: "incl. VAT · 230V mains powered",
     shortDescription:
