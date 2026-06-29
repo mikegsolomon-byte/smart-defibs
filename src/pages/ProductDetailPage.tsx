@@ -12,6 +12,8 @@ import { cn } from "@/lib/utils";
 export default function ProductDetailPage() {
   const { handle = "" } = useParams<{ handle: string }>();
   const product = getProduct(handle);
+  const gallery = product?.galleryImages?.length ? product.galleryImages : product ? [product.image] : [];
+  const [activeImage, setActiveImage] = useState(0);
 
   if (!product) {
     return (
