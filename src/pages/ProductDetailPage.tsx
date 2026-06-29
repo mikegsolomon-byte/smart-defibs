@@ -5,8 +5,6 @@ import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
-import { BuyProductDialog } from "@/components/BuyProductDialog";
-import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
 import { getProduct } from "@/data/products";
 
 export default function ProductDetailPage() {
