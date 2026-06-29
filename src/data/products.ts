@@ -3,10 +3,12 @@ import amoulI5 from "@/assets/amoul-i5.jpg";
 import chestErAsset from "@/assets/chest-er.png.asset.json";
 import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
 import indoorCabinetAsset from "@/assets/indoor-cabinet.png.asset.json";
+import batteryAsset from "@/assets/amoul-battery.png.asset.json";
 
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
 const indoorCabinet = indoorCabinetAsset.url;
+const battery = batteryAsset.url;
 
 export type StaticProduct = {
   handle: string;
@@ -234,7 +236,7 @@ export const products: StaticProduct[] = [
     subtitle: "Long-Life Replacement Battery",
     brand: "Amoul",
     category: "Consumable",
-    image: amoulI3,
+    image: battery,
     priceFrom: "€160",
     priceNote: "incl. VAT · model-dependent capacity",
     shortDescription:
