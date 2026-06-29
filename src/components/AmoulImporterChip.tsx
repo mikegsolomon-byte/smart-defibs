@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
-import amoulLogo from "@/assets/amoul-logo.png";
+import amoulLogoAsset from "@/assets/amoul-logo.png.asset.json";
 
+const amoulLogo = amoulLogoAsset.url;
 
-// Split-tone credential badge — white "Amoul®" side + red "Official Irish Importer"
+// Split-tone credential badge — white "Amoul" side + green "Exclusive Partner"
 // side, with a floating verification check. Parent section must be `relative`
 // (and ideally `overflow-hidden`) for correct positioning.
 export default function AmoulImporterChip({ variant }: { variant?: "dark" | "light" }) {
