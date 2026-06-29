@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ShieldCheck, Check, FileText, Award } from "lucide-react";
@@ -6,6 +7,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
 import { getProduct } from "@/data/products";
+import { cn } from "@/lib/utils";
 
 export default function ProductDetailPage() {
   const { handle = "" } = useParams<{ handle: string }>();
