@@ -303,7 +303,7 @@ export const products: StaticProduct[] = [
     subtitle: "Essential Rescue Accessories",
     brand: "Smart Defibs",
     category: "Accessory",
-    image: amoulI3,
+    image: cprResponseKit,
     priceFrom: "€5",
     priceNote: "incl. VAT · single-use rescue essentials",
     shortDescription:
