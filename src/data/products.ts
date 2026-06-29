@@ -1,4 +1,4 @@
-import amoulI3 from "@/assets/amoul-i3.jpg";
+import amoulI3Asset from "@/assets/amoul-i3.png.asset.json";
 import amoulI5 from "@/assets/amoul-i5.jpg";
 import chestErAsset from "@/assets/chest-er.png.asset.json";
 import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
@@ -7,6 +7,7 @@ import batteryAsset from "@/assets/amoul-battery.png.asset.json";
 import electrodePadsAsset from "@/assets/amoul-electrode-pads.png.asset.json";
 import cprResponseKitAsset from "@/assets/cpr-response-kit.png.asset.json";
 
+const amoulI3 = amoulI3Asset.url;
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
 const indoorCabinet = indoorCabinetAsset.url;

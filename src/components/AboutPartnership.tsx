@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { MapPin, Heart, Users, Monitor, GraduationCap, ClipboardCheck, ShieldCheck, Globe2, Cpu, Factory } from "lucide-react";
 import amoulLogoAsset from "@/assets/amoul-logo.png.asset.json";
-import amoulI3 from "@/assets/amoul-i3.jpg";
+import amoulI3Asset from "@/assets/amoul-i3.png.asset.json";
 
 const amoulLogo = amoulLogoAsset.url;
+const amoulI3 = amoulI3Asset.url;
 
 const fadeIn = {
   initial: { opacity: 0, y: 24 },
