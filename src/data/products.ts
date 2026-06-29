@@ -7,6 +7,7 @@ import batteryAsset from "@/assets/amoul-battery.png.asset.json";
 import electrodePadsAsset from "@/assets/amoul-electrode-pads.png.asset.json";
 import cprResponseKitAsset from "@/assets/cpr-response-kit.png.asset.json";
 
+const amoulI3 = amoulI3Asset.url;
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
 const indoorCabinet = indoorCabinetAsset.url;
