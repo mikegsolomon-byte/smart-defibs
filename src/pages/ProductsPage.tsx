@@ -6,8 +6,10 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
-import amoulLogo from "@/assets/amoul-logo.png";
+import amoulLogoAsset from "@/assets/amoul-logo.png.asset.json";
 import { products } from "@/data/products";
+
+const amoulLogo = amoulLogoAsset.url;
 
 export default function ProductsPage() {
   return (
