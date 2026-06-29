@@ -2,9 +2,11 @@ import amoulI3 from "@/assets/amoul-i3.jpg";
 import amoulI5 from "@/assets/amoul-i5.jpg";
 import chestErAsset from "@/assets/chest-er.png.asset.json";
 import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
+import indoorCabinetAsset from "@/assets/indoor-cabinet.png.asset.json";
 
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
+const indoorCabinet = indoorCabinetAsset.url;
 
 export type StaticProduct = {
   handle: string;
@@ -201,7 +203,7 @@ export const products: StaticProduct[] = [
     subtitle: "High-Visibility · Alarmed",
     brand: "Smart Defibs",
     category: "Cabinet",
-    image: amoulI3,
+    image: indoorCabinet,
     priceFrom: "€40",
     priceNote: "incl. VAT · easy wall installation",
     shortDescription:
