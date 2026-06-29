@@ -169,7 +169,7 @@ export const products: StaticProduct[] = [
     subtitle: "Galvanised Steel · Heated · Lockable",
     brand: "Smart Defibs",
     category: "Cabinet",
-    image: amoulI3,
+    image: outdoorCabinet,
     priceFrom: "€399",
     priceNote: "incl. VAT · 230V mains powered",
     shortDescription:
