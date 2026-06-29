@@ -1,4 +1,4 @@
-import amoulI3 from "@/assets/amoul-i3.jpg";
+import amoulI3Asset from "@/assets/amoul-i3.png.asset.json";
 import amoulI5 from "@/assets/amoul-i5.jpg";
 import chestErAsset from "@/assets/chest-er.png.asset.json";
 import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
