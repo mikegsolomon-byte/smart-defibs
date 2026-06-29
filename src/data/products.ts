@@ -1,6 +1,8 @@
 import amoulI3 from "@/assets/amoul-i3.jpg";
 import amoulI5 from "@/assets/amoul-i5.jpg";
-import chestEr from "@/assets/chest-er.jpg";
+import chestErAsset from "@/assets/chest-er.png.asset.json";
+
+const chestEr = chestErAsset.url;
 
 export type StaticProduct = {
   handle: string;
