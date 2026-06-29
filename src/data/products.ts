@@ -33,6 +33,7 @@ export type StaticProduct = {
   highlights: { title: string; desc: string }[];
   features: string[];
   flagship?: boolean;
+  galleryImages?: string[];
 };
 
 export const products: StaticProduct[] = [
