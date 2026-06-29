@@ -236,7 +236,7 @@ export const products: StaticProduct[] = [
     subtitle: "Long-Life Replacement Battery",
     brand: "Amoul",
     category: "Consumable",
-    image: amoulI3,
+    image: battery,
     priceFrom: "€160",
     priceNote: "incl. VAT · model-dependent capacity",
     shortDescription:
