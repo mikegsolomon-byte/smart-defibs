@@ -111,7 +111,7 @@ export default function ProductsPage() {
                       </Button>
                       <Button asChild variant="outline" className="w-full border-accent/40 text-foreground hover:bg-accent/10 hover:border-accent">
                         <Link to={`/quote?product=${p.handle}`}>
-                          <FileText className="h-4 w-4 mr-1.5" /> Request a Quote
+                          <FileText className="h-4 w-4 mr-1.5" /> Contact Us
                         </Link>
                       </Button>
                     </div>
