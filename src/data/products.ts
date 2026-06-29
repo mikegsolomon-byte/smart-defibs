@@ -270,7 +270,7 @@ export const products: StaticProduct[] = [
     subtitle: "Adult & Paediatric Pads",
     brand: "Amoul",
     category: "Consumable",
-    image: amoulI3,
+    image: electrodePads,
     priceFrom: "€65",
     priceNote: "incl. VAT · 3–5 year shelf life (model dependent)",
     shortDescription:
