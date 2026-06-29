@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, ShieldCheck, Check, FileText, Award } from "lucide-react";
@@ -6,10 +7,13 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { Button } from "@/components/ui/button";
 import { getProduct } from "@/data/products";
+import { cn } from "@/lib/utils";
 
 export default function ProductDetailPage() {
   const { handle = "" } = useParams<{ handle: string }>();
   const product = getProduct(handle);
+  const gallery = product?.galleryImages?.length ? product.galleryImages : product ? [product.image] : [];
+  const [activeImage, setActiveImage] = useState(0);
 
   if (!product) {
     return (
@@ -59,7 +63,7 @@ export default function ProductDetailPage() {
             className="grid lg:grid-cols-2 gap-0 bg-card border border-border rounded-2xl overflow-hidden shadow-lg"
           >
             {/* Image */}
-            <div className="relative bg-gradient-to-br from-muted to-background p-8 lg:p-12 flex items-center justify-center min-h-[360px]">
+            <div className="relative bg-gradient-to-br from-muted to-background p-8 lg:p-12 flex flex-col items-center justify-center min-h-[360px]">
               {product.flagship && (
                 <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-accent text-accent-foreground px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-md">
                   <Award className="h-3.5 w-3.5" />
@@ -67,13 +71,32 @@ export default function ProductDetailPage() {
                 </div>
               )}
               <img
-                src={product.image}
-                alt={product.title}
+                src={gallery[activeImage]}
+                alt={`${product.title} — view ${activeImage + 1}`}
                 width={1024}
                 height={1024}
                 className="max-h-[420px] w-auto object-contain drop-shadow-2xl"
               />
+              {gallery.length > 1 && (
+                <div className="flex items-center justify-center gap-3 mt-6">
+                  {gallery.map((img, i) => (
+                    <button
+                      key={img}
+                      type="button"
+                      onClick={() => setActiveImage(i)}
+                      aria-label={`View image ${i + 1}`}
+                      className={cn(
+                        "h-16 w-16 rounded-lg border-2 bg-card p-1.5 transition-colors",
+                        i === activeImage ? "border-primary" : "border-border hover:border-accent",
+                      )}
+                    >
+                      <img src={img} alt="" className="h-full w-full object-contain" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
+
 
             {/* Details */}
             <div className="p-8 lg:p-12 flex flex-col">

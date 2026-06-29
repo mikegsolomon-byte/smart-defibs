@@ -2,7 +2,8 @@ import amoulI3Asset from "@/assets/amoul-i3.png.asset.json";
 import amoulI5 from "@/assets/amoul-i5.jpg";
 import chestErAsset from "@/assets/chest-er.png.asset.json";
 import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
-import indoorCabinetAsset from "@/assets/indoor-cabinet.png.asset.json";
+import indoorCabinet1Asset from "@/assets/indoor-cabinet-1.png.asset.json";
+import indoorCabinet2Asset from "@/assets/indoor-cabinet-2.png.asset.json";
 import batteryAsset from "@/assets/amoul-battery.png.asset.json";
 import electrodePadsAsset from "@/assets/amoul-electrode-pads.png.asset.json";
 import cprResponseKitAsset from "@/assets/cpr-response-kit.png.asset.json";
@@ -10,7 +11,8 @@ import cprResponseKitAsset from "@/assets/cpr-response-kit.png.asset.json";
 const amoulI3 = amoulI3Asset.url;
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
-const indoorCabinet = indoorCabinetAsset.url;
+const indoorCabinet1 = indoorCabinet1Asset.url;
+const indoorCabinet2 = indoorCabinet2Asset.url;
 const battery = batteryAsset.url;
 const electrodePads = electrodePadsAsset.url;
 const cprResponseKit = cprResponseKitAsset.url;
@@ -31,6 +33,7 @@ export type StaticProduct = {
   highlights: { title: string; desc: string }[];
   features: string[];
   flagship?: boolean;
+  galleryImages?: string[];
 };
 
 export const products: StaticProduct[] = [
@@ -210,7 +213,8 @@ export const products: StaticProduct[] = [
     subtitle: "High-Visibility · Alarmed",
     brand: "Smart Defibs",
     category: "Cabinet",
-    image: indoorCabinet,
+    image: indoorCabinet1,
+    galleryImages: [indoorCabinet1, indoorCabinet2],
     priceFrom: "€40",
     priceNote: "incl. VAT · easy wall installation",
     shortDescription:
