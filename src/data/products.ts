@@ -4,11 +4,13 @@ import chestErAsset from "@/assets/chest-er.png.asset.json";
 import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
 import indoorCabinetAsset from "@/assets/indoor-cabinet.png.asset.json";
 import batteryAsset from "@/assets/amoul-battery.png.asset.json";
+import electrodePadsAsset from "@/assets/amoul-electrode-pads.png.asset.json";
 
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
 const indoorCabinet = indoorCabinetAsset.url;
 const battery = batteryAsset.url;
+const electrodePads = electrodePadsAsset.url;
 
 export type StaticProduct = {
   handle: string;
@@ -268,7 +270,7 @@ export const products: StaticProduct[] = [
     subtitle: "Adult & Paediatric Pads",
     brand: "Amoul",
     category: "Consumable",
-    image: amoulI3,
+    image: electrodePads,
     priceFrom: "€65",
     priceNote: "incl. VAT · 3–5 year shelf life (model dependent)",
     shortDescription:
