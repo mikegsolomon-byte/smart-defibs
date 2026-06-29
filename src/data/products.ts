@@ -203,7 +203,7 @@ export const products: StaticProduct[] = [
     subtitle: "High-Visibility · Alarmed",
     brand: "Smart Defibs",
     category: "Cabinet",
-    image: amoulI3,
+    image: indoorCabinet,
     priceFrom: "€40",
     priceNote: "incl. VAT · easy wall installation",
     shortDescription:
