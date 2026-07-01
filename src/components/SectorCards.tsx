@@ -5,7 +5,7 @@ import { School, Users, Stethoscope, Shield, Dumbbell, ArrowRight } from "lucide
 const sectors = [
   {
     icon: Users,
-    title: "A CFR Group",
+    title: "CFR Group",
     description: "Responder kits & community AEDs",
     color: "border-sector-community",
     bgColor: "bg-sector-community/10",
@@ -14,7 +14,7 @@ const sectors = [
   },
   {
     icon: Stethoscope,
-    title: "A Nursing Home",
+    title: "Healthcare",
     description: "HIQA-compliant AEDs & training",
     color: "border-sector-nursing",
     bgColor: "bg-sector-nursing/10",
@@ -23,7 +23,7 @@ const sectors = [
   },
   {
     icon: Shield,
-    title: "A Workplace",
+    title: "Workplace",
     description: "H&S compliance, multi-site bundles",
     color: "border-sector-workplace",
     bgColor: "bg-sector-workplace/10",
@@ -32,7 +32,7 @@ const sectors = [
   },
   {
     icon: School,
-    title: "A School or Crèche",
+    title: "School or Crèche",
     description: "Grants, installation, AED for Schools programme",
     color: "border-sector-schools",
     bgColor: "bg-sector-schools/10",
@@ -41,7 +41,7 @@ const sectors = [
   },
   {
     icon: Dumbbell,
-    title: "A Gym or Fitness Facility",
+    title: "Gym or Fitness Facility",
     description: "Member safety, insurance & staff training",
     color: "border-sector-gyms",
     bgColor: "bg-sector-gyms/10",
