@@ -236,6 +236,14 @@ type SectorKey = keyof typeof sectorData;
 
 const sectorOrder: SectorKey[] = ["community", "nursing", "workplace", "schools", "gyms"];
 
+const tabLabels: Record<SectorKey, string> = {
+  community: "Community",
+  nursing: "Healthcare",
+  workplace: "Workplace",
+  schools: "Schools",
+  gyms: "Gyms",
+};
+
 export default function SectorsPage() {
   const [searchParams] = useSearchParams();
   const initialTab = (searchParams.get("tab") as SectorKey) || "community";
@@ -266,7 +274,7 @@ export default function SectorsPage() {
                     }`}
                   >
                     <TabIcon className="h-4 w-4" />
-                    {key.charAt(0).toUpperCase() + key.slice(1)}
+                    {tabLabels[key]}
                   </button>
                 );
               })}
