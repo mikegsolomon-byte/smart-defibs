@@ -24,7 +24,7 @@ export default function SiteFooter() {
                 { label: "Products", to: "/products" },
                 { label: "Sector Solutions", to: "/sectors" },
                 { label: "Training", to: "/training" },
-                { label: "Lifecycle Management", to: "/servicing" },
+                { label: "Monitoring & Support", to: "/servicing" },
                 { label: "Pricing", to: "/pricing" },
               ].map((l) => (
                 <li key={l.to}>
