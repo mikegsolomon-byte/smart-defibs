@@ -119,6 +119,11 @@ export default function PricingPage() {
               ))}
             </div>
 
+            <div className="mt-6 space-y-1 text-xs text-muted-foreground">
+              <p>* Unlimited consumables are subject to our Fair Usage Policy.</p>
+              <p>** Upfront pricing is based on a 5-year contract.</p>
+            </div>
+
             <div className="mt-10 clinical-card p-6 text-center">
               <h3 className="font-heading font-bold text-lg text-foreground mb-2">Multi-site, training & Heart Safe programmes</h3>
               <p className="text-muted-foreground text-sm mb-4">
