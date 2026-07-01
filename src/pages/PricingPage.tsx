@@ -14,7 +14,7 @@ const features = [
   { label: "Email notifications & alerts", clinical: true, plus: true },
   { label: "Expiry & certificate date tracking", clinical: true, plus: true },
   { label: "Monthly readiness report", clinical: true, plus: true },
-  { label: "Unlimited consumables (pads & batteries)", clinical: true, plus: true },
+  { label: "Unlimited consumables (pads & batteries)*", clinical: true, plus: true },
   { label: "Post-event support", clinical: true, plus: true },
   { label: "Climate & motion monitoring", clinical: false, plus: true },
 ];
@@ -85,12 +85,12 @@ export default function PricingPage() {
 
                   <div className="mb-6">
                     <div className="flex items-baseline gap-1">
-                      <span className="font-heading font-extrabold text-4xl text-foreground">{plan.upfront}</span>
-                      <span className="text-sm text-muted-foreground">upfront</span>
+                      <span className="font-heading font-extrabold text-4xl text-foreground">{plan.monthly}</span>
+                      <span className="text-sm text-muted-foreground">/ month</span>
                     </div>
                     <div className="flex items-baseline gap-1 mt-1">
-                      <span className="font-heading font-bold text-xl text-primary">{plan.monthly}</span>
-                      <span className="text-sm text-muted-foreground">/ month</span>
+                      <span className="font-heading font-bold text-xl text-primary">{plan.upfront}</span>
+                      <span className="text-sm text-muted-foreground">upfront**</span>
                     </div>
                   </div>
 
@@ -117,6 +117,11 @@ export default function PricingPage() {
                   </Button>
                 </motion.div>
               ))}
+            </div>
+
+            <div className="mt-6 space-y-1 text-xs text-muted-foreground">
+              <p>* Unlimited consumables are subject to our Fair Usage Policy.</p>
+              <p>** Upfront pricing is based on a 5-year contract.</p>
             </div>
 
             <div className="mt-10 clinical-card p-6 text-center">

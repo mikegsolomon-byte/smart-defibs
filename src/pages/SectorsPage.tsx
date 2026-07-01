@@ -38,8 +38,8 @@ const sectorData = {
       "PHECC CFR-level training course",
     ],
     packageHighlight: "Group order discounts for clubs and CFR schemes",
-    pricing: "From €1,195 incl. VAT — group order discounts available",
-    steps: ["Contact us for group pricing", "We deliver & install", "CFR training for your team"],
+    pricing: "1299",
+    steps: ["Contact us for group pricing", "We deliver", "CFR training & monitoring"],
     whyNeeded: {
       intro:
         "Community First Responders are often first on the scene, minutes ahead of an ambulance. A publicly accessible AED in your village, club or community centre is the single biggest intervention you can make to improve local cardiac arrest survival.",
@@ -77,7 +77,7 @@ const sectorData = {
     ],
     packageHighlight: "Volume discounts and a single account manager across sites",
     pricing: "Multi-site pricing on application — volume discounts available",
-    steps: ["Request multi-site proposal", "Site assessments & install", "Account-managed maintenance"],
+    steps: ["Request multi-site proposal", "Site assessments", "Account-managed monitoring & maintenance"],
     whyNeeded: {
       intro:
         "Many cardiac arrests happen at work or in public — but only a minority of workplaces are equipped to respond. The Safety, Health & Welfare at Work Act 2005 puts a clear duty of care on employers, and a single saved life pays back the investment many times over.",
@@ -101,7 +101,7 @@ const sectorData = {
   },
   nursing: {
     icon: Stethoscope,
-    title: "AEDs for Nursing Homes",
+    title: "AEDs for Healthcare Providers",
     subtitle: "HIQA-compliant AED solutions with full training & maintenance",
     color: "text-sector-nursing",
     bgColor: "bg-sector-nursing/10",
@@ -114,11 +114,11 @@ const sectorData = {
       "HIQA-ready compliance documentation",
     ],
     packageHighlight: "Everything HIQA inspectors look for — in one bundle",
-    pricing: "From €1,495 incl. VAT — maintenance contract available",
-    steps: ["Request a sector quote", "We assess & install", "Ongoing training & monitoring"],
+    pricing: "1299",
+    steps: ["Request a sector quote", "We assess", "Ongoing training & monitoring"],
     whyNeeded: {
       intro:
-        "Residents in nursing homes are among the highest-risk groups for cardiac events. HIQA inspectors expect rapid, competent emergency response — and that's only possible with an on-site AED and confident, trained staff.",
+        "Residents in nursing homes, day care centres, assisted living and patients at the GP surgeries are among the highest-risk groups for cardiac events. HIQA inspectors expect rapid, competent emergency response — and that's only possible with an on-site AED and confident, trained staff.",
       points: [
         { icon: HeartPulse, title: "High-risk population", desc: "The median OHCA patient age in Ireland is 68 (OHCAR 2024) — older residents are the highest-risk group." },
         { icon: Clock, title: "Response before paramedics", desc: "Rural and suburban nursing homes often face response times well above the 19-minute HIQA rural target." },
@@ -207,7 +207,7 @@ const sectorData = {
     ],
     packageHighlight: "Simple, reliable kit your staff can use under pressure",
     pricing: "From €1,295 incl. VAT — staff training included",
-    steps: ["Request a gym quote", "We install & train your team", "Ongoing readiness monitoring"],
+    steps: ["Request a gym quote", "We train your team", "Ongoing readiness monitoring"],
     whyNeeded: {
       intro:
         "Gyms see high-intensity exertion every day, and sudden cardiac arrest can strike members of any age. Insurers, members and sports clubs increasingly expect on-site AEDs and trained staff — and a confident emergency response protects both lives and your business.",
@@ -235,6 +235,14 @@ const sectorData = {
 type SectorKey = keyof typeof sectorData;
 
 const sectorOrder: SectorKey[] = ["community", "nursing", "workplace", "schools", "gyms"];
+
+const tabLabels: Record<SectorKey, string> = {
+  community: "Community",
+  nursing: "Healthcare",
+  workplace: "Workplace",
+  schools: "Schools",
+  gyms: "Gyms",
+};
 
 export default function SectorsPage() {
   const [searchParams] = useSearchParams();
@@ -266,7 +274,7 @@ export default function SectorsPage() {
                     }`}
                   >
                     <TabIcon className="h-4 w-4" />
-                    {key.charAt(0).toUpperCase() + key.slice(1)}
+                    {tabLabels[key]}
                   </button>
                 );
               })}
