@@ -259,7 +259,7 @@ export default function SectorsPage() {
         {/* Tab navigation */}
         <div className="bg-secondary">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="flex overflow-x-auto gap-1 py-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:overflow-x-auto gap-2 py-3 lg:py-2">
               {sectorOrder.map((key) => {
                 const s = sectorData[key];
                 const TabIcon = s.icon;
@@ -267,7 +267,7 @@ export default function SectorsPage() {
                   <button
                     key={key}
                     onClick={() => setActiveTab(key)}
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors ${
+                    className={`flex items-center justify-center lg:justify-start gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       activeTab === key
                         ? "bg-primary text-primary-foreground"
                         : "text-secondary-foreground/70 hover:text-primary"
