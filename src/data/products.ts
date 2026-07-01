@@ -73,7 +73,7 @@ export const products: StaticProduct[] = [
   },
   {
     handle: "amoul-i5-view-aed-4g",
-    title: "Amoul® i5 View AED 4G",
+    title: "Amoul® i5 AED 4G View",
     subtitle: "Semi-Automatic AED with 7\" HD Colour Display",
     brand: "Amoul",
     category: "Defibrillator",
@@ -107,7 +107,7 @@ export const products: StaticProduct[] = [
   },
   {
     handle: "amoul-i5-view-cpr-aed-4g",
-    title: "Amoul® i5 View CPR AED 4G",
+    title: "Amoul® i5 AED 4G View CPR",
     subtitle: "AED with Integrated Real-Time CPR Feedback",
     brand: "Amoul",
     category: "Defibrillator",
