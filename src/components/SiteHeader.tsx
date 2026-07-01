@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -72,6 +72,13 @@ export default function SiteHeader() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
+          <a
+            href="tel:0906641050"
+            className="flex items-center gap-2 text-sm font-bold text-foreground hover:text-primary transition-colors focus-ring rounded-md px-2 py-1"
+          >
+            <Phone className="h-4 w-4" />
+            090 664 1050
+          </a>
           <Button asChild variant="outline">
             <Link to="/products">View Products</Link>
           </Button>
