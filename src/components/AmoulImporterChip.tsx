@@ -14,7 +14,7 @@ export default function AmoulImporterChip({ variant }: { variant?: "dark" | "lig
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2, ease: [0, 0, 0.2, 1] }}
-      className="absolute top-3 right-3 sm:top-5 sm:right-6 lg:top-6 lg:right-10 z-20"
+      className="block w-fit mb-5 sm:mb-0 sm:absolute sm:top-5 sm:right-6 lg:top-6 lg:right-10 z-20"
     >
       <div className="relative group">
         {/* Soft presence glow */}

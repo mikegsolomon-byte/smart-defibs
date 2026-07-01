@@ -33,10 +33,9 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(var(--red-brand)/0.10),_transparent_60%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent,_hsl(var(--background)))] pointer-events-none" />
 
-      {/* Credential badge — top right */}
-      <AmoulImporterChip />
-
-      <div className="relative container mx-auto px-4 lg:px-8 pt-12 pb-16 lg:pt-16 lg:pb-20 py-[40px]">
+      <div className="relative container mx-auto px-4 lg:px-8 pt-8 pb-16 lg:pt-16 lg:pb-20 py-[40px]">
+        {/* Credential badge — inline on mobile, top right on desktop */}
+        <AmoulImporterChip />
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <motion.div
             variants={stagger}
