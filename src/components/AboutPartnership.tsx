@@ -35,7 +35,7 @@ export default function AboutPartnership() {
             Smart Defibs Ltd is an Irish company specialising in connected defibrillators,
             AED readiness management, and emergency response training for organisations across
             Ireland. Founded by{" "}
-            <strong className="text-foreground">Maciej Koczur</strong>, National Ambulance Service
+            Maciej Koczur, National Ambulance Service
             Paramedic Supervisor with over 20 years’ experience across public, private and
             voluntary emergency care, Smart Defibs was created to solve a simple problem: AEDs are
             often installed, but not actively managed or checked when they are needed most.
@@ -235,7 +235,7 @@ export default function AboutPartnership() {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {["ISO 13485", "CE Marked", "FDA (EUA)", "700+ Staff"].map((b) => (
+                {["ISO 13485", "CE Marked", "700+ Staff"].map((b) => (
                   <span key={b} className="text-xs bg-primary/10 text-primary font-semibold px-3 py-1.5 rounded-full">
                     {b}
                   </span>
