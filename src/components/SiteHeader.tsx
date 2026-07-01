@@ -87,7 +87,15 @@ export default function SiteHeader() {
           </Button>
         </div>
 
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-1">
+          <a
+            href="tel:0906641050"
+            className="flex items-center gap-1.5 text-sm font-bold text-foreground hover:text-primary transition-colors focus-ring rounded-md px-2 py-1"
+            aria-label="Call 090 664 1050"
+          >
+            <Phone className="h-4 w-4" />
+            <span className="hidden sm:inline">090 664 1050</span>
+          </a>
           <button
             className="text-foreground p-2 focus-ring rounded-lg"
             onClick={() => setMobileOpen(!mobileOpen)}
