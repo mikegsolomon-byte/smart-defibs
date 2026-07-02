@@ -28,7 +28,31 @@ export default function TestimonialsSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="max-w-3xl mx-auto">
+            <motion.blockquote
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="clinical-card p-10 md:p-12 relative text-center"
+            >
+              <Quote className="h-12 w-12 text-primary/15 mx-auto mb-6" />
+              <p className="font-heading text-xl md:text-2xl leading-relaxed text-foreground mb-8">
+                "{testimonials[0].quote}"
+              </p>
+              <div className="flex items-center justify-center gap-4">
+                <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-heading font-extrabold flex-shrink-0">
+                  {testimonials[0].initials}
+                </div>
+                <div className="text-left">
+                  <p className="font-heading font-bold text-foreground">{testimonials[0].name}</p>
+                  <p className="text-sm text-muted-foreground">{testimonials[0].role}</p>
+                </div>
+              </div>
+            </motion.blockquote>
+        </div>
+        {/* legacy grid removed */}
+        <div className="hidden">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
