@@ -11,8 +11,15 @@ import i5ClosedInBagAsset from "@/assets/i5_closed_in_bag.jpg.asset.json";
 import i5OpenWithBagAsset from "@/assets/i5_open_with_bag.jpg.asset.json";
 import i5OpenNoBagAsset from "@/assets/i5_open_no_bag.jpg.asset.json";
 import i5InBagBackAsset from "@/assets/i5_in_bag_back.jpg.asset.json";
+import i3ClosedWithBagAsset from "@/assets/i3_closed_with_bag.jpg.asset.json";
+import i3InBagBackAsset from "@/assets/i3_in_bag_back.jpg.asset.json";
 
-const amoulI3 = amoulI3Asset.url;
+const amoulI3 = i3ClosedWithBagAsset.url;
+const i3Gallery = [
+  i3ClosedWithBagAsset.url,
+  i3InBagBackAsset.url,
+  amoulI3Asset.url,
+];
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
 const indoorCabinet1 = indoorCabinet1Asset.url;
@@ -55,6 +62,7 @@ export const products: StaticProduct[] = [
     brand: "Amoul",
     category: "Defibrillator",
     image: amoulI3,
+    galleryImages: i3Gallery,
     priceFrom: "€1,299",
     priceNote: "incl. VAT · includes pads & 5-year battery",
     priceId: "aed_i3_4g_price",

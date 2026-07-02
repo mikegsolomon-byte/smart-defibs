@@ -5,6 +5,7 @@ import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
 import SectorCards from "@/components/SectorCards";
 import StatsSection from "@/components/StatsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import CTABanner from "@/components/CTABanner";
 
 const Index = () => (
@@ -20,6 +21,7 @@ const Index = () => (
       <TrustBar />
       <SectorCards />
       <StatsSection />
+      <TestimonialsSection />
       <CTABanner />
     </main>
     <SiteFooter />
