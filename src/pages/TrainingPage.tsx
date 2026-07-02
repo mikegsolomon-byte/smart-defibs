@@ -147,6 +147,39 @@ export default function TrainingPage() {
           </div>
         </section>
 
+        {/* Certified courses */}
+        <section className="section-padding bg-background">
+          <div className="container mx-auto max-w-5xl">
+            <div className="mb-8 text-center">
+              <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-foreground mb-2">Certified courses</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                A full range of PHECC-aligned first aid and responder training, delivered on-site or at your premises.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {courseTiles.map((c, i) => (
+                <motion.div
+                  key={c.title}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="clinical-card p-5 flex flex-col items-start gap-3 h-full"
+                >
+                  <div className="p-2.5 rounded-lg bg-primary/10">
+                    <c.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-heading font-bold text-base text-card-foreground leading-tight">{c.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{c.desc}</p>
+                  </div>
+                  <Link to="/quote" className="text-sm font-semibold text-primary hover:underline focus-ring rounded">Book now</Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <CTABanner />
       </main>
       <SiteFooter />
