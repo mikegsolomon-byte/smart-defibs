@@ -14,7 +14,12 @@ import i5InBagBackAsset from "@/assets/i5_in_bag_back.jpg.asset.json";
 import i3ClosedWithBagAsset from "@/assets/i3_closed_with_bag.jpg.asset.json";
 import i3InBagBackAsset from "@/assets/i3_in_bag_back.jpg.asset.json";
 
-const amoulI3 = amoulI3Asset.url;
+const amoulI3 = i3ClosedWithBagAsset.url;
+const i3Gallery = [
+  i3ClosedWithBagAsset.url,
+  i3InBagBackAsset.url,
+  amoulI3Asset.url,
+];
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
 const indoorCabinet1 = indoorCabinet1Asset.url;
