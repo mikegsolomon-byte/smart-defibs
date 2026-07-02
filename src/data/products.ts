@@ -1,5 +1,6 @@
 import amoulI3Asset from "@/assets/amoul-i3.png.asset.json";
-import amoulI5 from "@/assets/amoul-i5.jpg";
+import amoulI5Old from "@/assets/amoul-i5.jpg";
+import i5OpenWithBag2Asset from "@/assets/i5_open_with_bag_2.jpg.asset.json";
 import chestErAsset from "@/assets/chest-er.png.asset.json";
 import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
 import indoorCabinet1Asset from "@/assets/indoor-cabinet-1.png.asset.json";
@@ -27,12 +28,14 @@ const indoorCabinet2 = indoorCabinet2Asset.url;
 const battery = batteryAsset.url;
 const electrodePads = electrodePadsAsset.url;
 const cprResponseKit = cprResponseKitAsset.url;
+const amoulI5 = i5OpenWithBag2Asset.url;
 const i5Gallery = [
-  amoulI5,
+  i5OpenWithBag2Asset.url,
   i5ClosedInBagAsset.url,
   i5OpenWithBagAsset.url,
   i5OpenNoBagAsset.url,
   i5InBagBackAsset.url,
+  amoulI5Old,
 ];
 
 export type StaticProduct = {
