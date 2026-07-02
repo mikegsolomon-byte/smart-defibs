@@ -24,6 +24,7 @@ import PricingPage from "./pages/PricingPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import UnsubscribePage from "./pages/UnsubscribePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import MobileCtaBar from "@/components/MobileCtaBar";
 
 import { AuthProvider } from "@/hooks/useAuth";
 import { RequireAdmin } from "@/components/RequireAdmin";
