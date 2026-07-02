@@ -7,6 +7,10 @@ import indoorCabinet2Asset from "@/assets/indoor-cabinet-2.png.asset.json";
 import batteryAsset from "@/assets/amoul-battery.png.asset.json";
 import electrodePadsAsset from "@/assets/amoul-electrode-pads.png.asset.json";
 import cprResponseKitAsset from "@/assets/cpr-response-kit.png.asset.json";
+import i5ClosedInBagAsset from "@/assets/i5_closed_in_bag.jpg.asset.json";
+import i5OpenWithBagAsset from "@/assets/i5_open_with_bag.jpg.asset.json";
+import i5OpenNoBagAsset from "@/assets/i5_open_no_bag.jpg.asset.json";
+import i5InBagBackAsset from "@/assets/i5_in_bag_back.jpg.asset.json";
 
 const amoulI3 = amoulI3Asset.url;
 const chestEr = chestErAsset.url;
