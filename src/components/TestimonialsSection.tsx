@@ -3,25 +3,12 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "Smart Defibs LTD made the whole process seamless — from grant application to installation. Our school is now prepared for any emergency.",
-    name: "Mary O'Brien",
-    role: "School Principal, Co. Cork",
-    sector: "Schools",
-    initials: "MO",
-  },
-  {
-    quote: "The HIQA compliance pack saved us weeks of paperwork. Their training was excellent and staff felt confident using the AED.",
-    name: "Niall Murphy",
-    role: "Nursing Home Manager, Co. Dublin",
-    sector: "Nursing",
-    initials: "NM",
-  },
-  {
-    quote: "We equipped all 5 sites within a week. The multi-site managed plan gives us total peace of mind on H&S compliance.",
-    name: "Sam Kelly",
-    role: "H&S Manager, Cork",
-    sector: "Workplace",
-    initials: "SK",
+    quote:
+      "Peace of mind that your defibrillator is always in good working condition and ready to use. That is the single biggest benefit our team has seen from remote monitoring.",
+    name: "Tom Garvey",
+    role: "Kilbride Defibrillator Group",
+    sector: "Community",
+    initials: "TG",
   },
 ];
 
