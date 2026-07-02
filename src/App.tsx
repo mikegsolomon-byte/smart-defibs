@@ -24,6 +24,7 @@ import PricingPage from "./pages/PricingPage.tsx";
 import PrivacyPage from "./pages/PrivacyPage.tsx";
 import UnsubscribePage from "./pages/UnsubscribePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import MobileCtaBar from "@/components/MobileCtaBar";
 
 import { AuthProvider } from "@/hooks/useAuth";
 import { RequireAdmin } from "@/components/RequireAdmin";
@@ -36,7 +37,9 @@ function AnimatedRoutes() {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [location.pathname]);
   return (
-    <AnimatePresence mode="wait">
+    <div className="pb-20 lg:pb-0">
+      <AnimatePresence mode="wait">
+
 
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
@@ -57,7 +60,9 @@ function AnimatedRoutes() {
         <Route path="/unsubscribe" element={<PageTransition><UnsubscribePage /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
-    </AnimatePresence>
+      </AnimatePresence>
+      <MobileCtaBar />
+    </div>
   );
 }
 

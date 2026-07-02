@@ -1,66 +1,38 @@
-# Smart Defibs — Website Review 2 update
+# Conversion improvements: logo fallback + sticky mobile CTA
 
-Apply the approved copy from the "Smart Defibs Website Review 2" sheet across the site, and update the product section with new products, specs and prices. Images are excluded — you'll add those afterwards (existing placeholder images stay in place for now).
+Two changes based on the conversion review. Frontend/presentation only — no backend, data, or business-logic changes.
 
-## 1. Products section (Products tab)
+## 1. Amoul partner-badge logo fallback
 
-Rebuild `src/data/products.ts` to match the sheet — corrected prices, specs and an expanded catalogue:
+**Finding:** The Amoul logo appears broken in the Lovable *preview* because the local dev server doesn't proxy CDN asset URLs (`/__l5e/...`) — it serves the HTML fallback instead. On the **published** site the same URL resolves correctly, so real visitors most likely see it fine. Still, a broken image in the top-right trust badge is a credibility risk if the CDN ever hiccups, so we make it self-healing.
 
-| Product | Price |
-|---|---|
-| Amoul® i3 AED 4G | €1,299 |
-| Amoul® i5 View AED 4G | €1,399 |
-| Amoul® i5 View CPR AED 4G | €1,649 (new) |
-| Chest-eR® CPR Feedback Device | €349 |
-| Heated Outdoor AED Cabinet | €399 (new) |
-| Indoor AED Cabinet | €40 (new) |
-| Amoul® AED Battery | €160 (new) |
-| Amoul® Universal Electrode Pads | €65 (new) |
-| AED / CPR Response Kit | €5 (new) |
+**Change — `src/components/AmoulImporterChip.tsx`:**
+- Add an `onError` handler to the `<img>` that hides the image and reveals a styled "Amoul" text wordmark fallback (green, bold, matching the badge's brand side) so the badge never renders empty/broken.
+- Keeps the existing image as the primary display; fallback only shows if the image fails to load.
 
-- Each product gets the exact bullet-point spec list from the sheet.
-- New products reuse existing/placeholder images until you supply real photos.
-- Products intro copy updated to the new version ("Connected AEDs, cabinets and accessories, backed by our AED Readiness Service…").
+No other files need editing — every other page renders the logo through this same component or the same asset import, and the asset pointer itself is valid.
 
-**Online purchase vs quote:** the 3 current AEDs + Chest-ER are wired to Stripe checkout today. I'll update their Stripe prices to match the sheet and add a Stripe price for the new i5 View CPR. The low-cost accessories (cabinets, battery, pads, kit) will be added as catalogue items with a "Request a Quote" CTA (not individual Stripe checkout) unless you want them individually buyable — see Open questions.
+## 2. Sticky mobile call / quote bar
 
-## 2. Main page & global (Sheet1 tab)
+**Goal:** On mobile the phone is a small icon and the primary CTA scrolls out of view. A persistent bottom bar keeps the two key conversion actions always tappable, lifting mobile leads.
 
-- **Phone number** → `090 664 1050` everywhere it appears.
-- **Hero**: keep headline direction; update sub-copy to the new version and CTA stays "Contact Us".
-- **Navigation rename/reorder**: `AED Readiness Service` (home), Products, Sectors, Training & Awareness, **AED Lifecycle Management** (rename of "Servicing"), Pricing (new), About, Contact.
-- **Badges / trust bar**: "Official Irish Importer" → **Exclusive Amoul® Partner**; Amoul logo tag "Celebrating 25 Years"; add "CE Marked"; "Next-Day Delivery" → "Speedy Delivery".
-- **Remove** flagged items: the "I'm looking for…" intro block, National Average Response Time stat, poster references, GPS, CPR Machine line.
-- **Sector order** → Community, Healthcare Providers, Nursing homes, Workplaces, Schools, Gyms (rename "Nursing" → "Healthcare Providers"/"Nursing homes" per sheet and reorder tabs + home cards).
+**New file — `src/components/MobileCtaBar.tsx`:**
+- Fixed bar pinned to the bottom of the viewport, visible on mobile/tablet only (`lg:hidden`).
+- Two large, thumb-friendly buttons side by side:
+  - **Call** → `tel:0906641050` (secondary/outline style, phone icon).
+  - **Get a Quote** → links to the quote route (primary green/yellow style).
+- Safe-area padding (`env(safe-area-inset-bottom)`) for notched phones, subtle top border + shadow, uses existing design tokens (no hardcoded colors).
+- Entrance handled with a simple slide-up; respects `prefers-reduced-motion`.
 
-## 3. Servicing → "AED Lifecycle Management" (AED Readiness Service tab)
+**Change — `src/App.tsx`:**
+- Render `<MobileCtaBar />` once globally (inside the router, alongside existing global elements) so it appears on every page.
+- Add bottom padding to page content on mobile (e.g. a `pb-20 lg:pb-0` wrapper or body utility) so the fixed bar never overlaps footer content or the last CTA.
 
-Rename the page/route label and rewrite content to the new service description: intro + sections for Defibrillator AED, Remote Monitoring, Notifications, Expiry Date Tracking, Certificate Date Tracking, Monthly Readiness Report, Consumables, Post-Event Support, Environmental Monitoring, closing line "One service. Complete AED readiness management."
+## Verification
+- Rebuild and confirm no type/build errors.
+- Playwright screenshots at 390px (bar visible, both buttons tappable, no footer overlap) and 1280px (bar hidden).
+- Confirm the Amoul badge still renders the image normally and the text fallback appears only when the image is forced to fail.
 
-## 4. Training & Awareness (Training tab)
-
-Rewrite `TrainingPage` to the new content: **Heart Safe Team Programme** (with the full "Includes" list and benefit paragraphs), **Cardiac First Responder (CFR) Training**, **First Aid Response (FAR)**.
-
-## 5. About (About tab)
-
-Rewrite `AboutPage` to the new copy: intro, founder (Maciej Koczur, NAS Paramedic Supervisor, 20+ yrs), What We Do, Mission, Approach, Heart Safe Programme, Why Smart Defibs, Vision.
-
-## 6. New Pricing page (Pricing tab)
-
-Add `/pricing` route + page with a two-plan comparison table:
-
-- **Clinical**: €1,499 upfront / €34 month — all features except Climate/Motion Monitoring.
-- **Clinical Plus**: €1,990 upfront / €39 month — includes Climate/Motion Monitoring.
-- Multi-site (3+ units), Training packages, Heart Safe Team programme = **POA**.
-
-## Open questions
-
-1. For the low-cost accessories (cabinets, battery, pads, response kit), do you want them **individually buyable via Stripe**, or **quote/catalogue-only**? (Default: quote-only.)
-2. The sheet's AED prices differ from the live ones (e.g. i5 €1,399 vs current €1,895). Confirm I should **update the live Stripe prices** to the sheet values.
-
-## Technical notes
-
-- `products.ts` is the single source for the products + detail pages, so the catalogue change is centralised.
-- New Stripe prices created via the payments tool in test; they sync to live on publish.
-- Nav changes in `SiteHeader.tsx`; badge/trust changes in `TrustBar.tsx` + `AmoulImporterChip.tsx`; sector reorder in `SectorsPage.tsx` and the home `SectorCards.tsx`.
-- New `PricingPage.tsx` + route in `App.tsx`; "Servicing" route/label renamed to AED Lifecycle Management.
+## Not included (per your answers)
+- No social proof / testimonials.
+- No CTA-copy overhaul or sector-link rewrites — can be a follow-up if you want.
