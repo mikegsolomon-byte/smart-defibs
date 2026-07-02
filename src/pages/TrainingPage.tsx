@@ -5,7 +5,7 @@ import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ShieldCheck, HeartPulse, Stethoscope, Check } from "lucide-react";
+import { ShieldCheck, HeartPulse, Stethoscope, Check, Baby, Syringe, Cross, Award, Activity } from "lucide-react";
 import { motion } from "framer-motion";
 
 const heartSafeIncludes = [
