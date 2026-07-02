@@ -27,7 +27,19 @@ export default function AmoulImporterChip({ variant }: { variant?: "dark" | "lig
               src={amoulLogo}
               alt="Amoul"
               className="h-5 sm:h-7 w-auto object-contain"
+              onError={(e) => {
+                const img = e.currentTarget;
+                img.style.display = "none";
+                const fallback = img.nextElementSibling as HTMLElement | null;
+                if (fallback) fallback.style.display = "block";
+              }}
             />
+            <span
+              className="hidden text-primary font-extrabold text-sm sm:text-lg tracking-tight leading-none"
+              aria-hidden="true"
+            >
+              Amoul<sup className="text-[0.6em]">®</sup>
+            </span>
           </div>
 
 
