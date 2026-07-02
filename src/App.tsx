@@ -37,7 +37,9 @@ function AnimatedRoutes() {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [location.pathname]);
   return (
-    <AnimatePresence mode="wait">
+    <div className="pb-20 lg:pb-0">
+      <AnimatePresence mode="wait">
+
 
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
