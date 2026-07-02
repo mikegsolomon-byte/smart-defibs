@@ -62,6 +62,7 @@ export const products: StaticProduct[] = [
     brand: "Amoul",
     category: "Defibrillator",
     image: amoulI3,
+    galleryImages: i3Gallery,
     priceFrom: "€1,299",
     priceNote: "incl. VAT · includes pads & 5-year battery",
     priceId: "aed_i3_4g_price",
