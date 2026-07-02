@@ -7,6 +7,10 @@ import indoorCabinet2Asset from "@/assets/indoor-cabinet-2.png.asset.json";
 import batteryAsset from "@/assets/amoul-battery.png.asset.json";
 import electrodePadsAsset from "@/assets/amoul-electrode-pads.png.asset.json";
 import cprResponseKitAsset from "@/assets/cpr-response-kit.png.asset.json";
+import i5ClosedInBagAsset from "@/assets/i5_closed_in_bag.jpg.asset.json";
+import i5OpenWithBagAsset from "@/assets/i5_open_with_bag.jpg.asset.json";
+import i5OpenNoBagAsset from "@/assets/i5_open_no_bag.jpg.asset.json";
+import i5InBagBackAsset from "@/assets/i5_in_bag_back.jpg.asset.json";
 
 const amoulI3 = amoulI3Asset.url;
 const chestEr = chestErAsset.url;
@@ -16,6 +20,13 @@ const indoorCabinet2 = indoorCabinet2Asset.url;
 const battery = batteryAsset.url;
 const electrodePads = electrodePadsAsset.url;
 const cprResponseKit = cprResponseKitAsset.url;
+const i5Gallery = [
+  amoulI5,
+  i5ClosedInBagAsset.url,
+  i5OpenWithBagAsset.url,
+  i5OpenNoBagAsset.url,
+  i5InBagBackAsset.url,
+];
 
 export type StaticProduct = {
   handle: string;
@@ -78,6 +89,7 @@ export const products: StaticProduct[] = [
     brand: "Amoul",
     category: "Defibrillator",
     image: amoulI5,
+    galleryImages: i5Gallery,
     priceFrom: "€1,399",
     priceNote: "incl. VAT · pads & 5-year battery included",
     priceId: "aed_i5_view_4g_price",
