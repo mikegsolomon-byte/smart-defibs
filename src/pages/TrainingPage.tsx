@@ -37,6 +37,16 @@ const courses = [
   },
 ];
 
+const courseTiles = [
+  { icon: HeartPulse, title: "CFR", desc: "Cardiac First Responder" },
+  { icon: Activity, title: "CFR-A", desc: "Cardiac First Responder — Advanced" },
+  { icon: Stethoscope, title: "FAR", desc: "First Aid Response" },
+  { icon: Cross, title: "Emergency First Aid", desc: "Emergency First Aid at work" },
+  { icon: Baby, title: "Paediatric First Aid", desc: "First aid for infants & children" },
+  { icon: Syringe, title: "Anaphylaxis — EpiPen", desc: "EpiPen management & administration" },
+  { icon: Award, title: "EFR", desc: "Emergency First Response" },
+];
+
 export default function TrainingPage() {
   return (
     <div className="min-h-screen flex flex-col">
