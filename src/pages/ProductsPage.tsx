@@ -16,7 +16,7 @@ export default function ProductsPage() {
     <div className="min-h-screen flex flex-col">
       <SEO
         title="AEDs & CPR Devices — Smart Defibs LTD Ireland"
-        description="Shop CE-marked AEDs and automated CPR devices in Ireland: Amoul i3, Amoul i5 and Chest-ER. Buy online or request a tailored quote with training and servicing."
+        description="Explore CE-marked AEDs and automated CPR devices in Ireland: Amoul i3, Amoul i5 and Chest-ER. Contact us for a tailored quote with training and servicing."
         path="/products"
       />
       <SiteHeader />
@@ -32,7 +32,7 @@ export default function ProductsPage() {
               AEDs, Cabinets & <span className="text-accent">Accessories</span>
             </h1>
             <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">
-              Connected AEDs, cabinets and accessories, backed by our AED Readiness Service to help keep your organisation ready every day. Order online or request a tailored solution.
+              Connected AEDs, cabinets and accessories, backed by our AED Readiness Service to help keep your organisation ready every day. Contact us for a tailored solution.
             </p>
           </div>
         </section>
