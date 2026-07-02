@@ -20,6 +20,13 @@ const indoorCabinet2 = indoorCabinet2Asset.url;
 const battery = batteryAsset.url;
 const electrodePads = electrodePadsAsset.url;
 const cprResponseKit = cprResponseKitAsset.url;
+const i5Gallery = [
+  amoulI5,
+  i5ClosedInBagAsset.url,
+  i5OpenWithBagAsset.url,
+  i5OpenNoBagAsset.url,
+  i5InBagBackAsset.url,
+];
 
 export type StaticProduct = {
   handle: string;
