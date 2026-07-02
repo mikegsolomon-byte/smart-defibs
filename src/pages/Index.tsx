@@ -21,6 +21,7 @@ const Index = () => (
       <TrustBar />
       <SectorCards />
       <StatsSection />
+      <TestimonialsSection />
       <CTABanner />
     </main>
     <SiteFooter />
