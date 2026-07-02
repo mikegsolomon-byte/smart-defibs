@@ -60,7 +60,9 @@ function AnimatedRoutes() {
         <Route path="/unsubscribe" element={<PageTransition><UnsubscribePage /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
-    </AnimatePresence>
+      </AnimatePresence>
+      <MobileCtaBar />
+    </div>
   );
 }
 
