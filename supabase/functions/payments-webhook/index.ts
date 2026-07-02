@@ -130,7 +130,7 @@ async function handleCheckoutCompleted(session: any, env: StripeEnv) {
       <p style="margin-top:24px;font-size:12px;color:#999;">Order reference: ${esc(order.stripe_session_id)}</p>
     </div>`;
   await sendEmail({
-    to: [NOTIFY_TO],
+    to: NOTIFY_TO,
     subject: `New order — ${esc(order.product_name || 'AED product')}${env === 'sandbox' ? ' (TEST)' : ''}`,
     html: teamHtml,
     ...(order.customer_email && { reply_to: order.customer_email }),
