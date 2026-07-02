@@ -77,7 +77,6 @@ export const template = {
   subject: (data: Record<string, any>) =>
     `New quote request — ${data?.organisation ?? 'Website'}${data?.sector ? ` (${data.sector})` : ''}`,
   displayName: 'Quote request notification',
-  to: 'info@smartdefibs.ie',
   previewData: {
     name: 'Jane Doe',
     organisation: 'Riverside Gym',
