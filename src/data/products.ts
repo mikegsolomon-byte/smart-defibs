@@ -11,6 +11,8 @@ import i5ClosedInBagAsset from "@/assets/i5_closed_in_bag.jpg.asset.json";
 import i5OpenWithBagAsset from "@/assets/i5_open_with_bag.jpg.asset.json";
 import i5OpenNoBagAsset from "@/assets/i5_open_no_bag.jpg.asset.json";
 import i5InBagBackAsset from "@/assets/i5_in_bag_back.jpg.asset.json";
+import i3ClosedWithBagAsset from "@/assets/i3_closed_with_bag.jpg.asset.json";
+import i3InBagBackAsset from "@/assets/i3_in_bag_back.jpg.asset.json";
 
 const amoulI3 = amoulI3Asset.url;
 const chestEr = chestErAsset.url;
