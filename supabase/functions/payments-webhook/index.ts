@@ -2,7 +2,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import { type StripeEnv, verifyWebhook } from "../_shared/stripe.ts";
 
 const RESEND_GATEWAY_URL = 'https://connector-gateway.lovable.dev/resend';
-const NOTIFY_TO = 'info@smartdefibs.ie';
+const NOTIFY_TO = ['info@smartdefibs.ie', 'maciek_koczur@yahoo.com'];
 const FROM_ADDR = 'Smart Defibs <onboarding@resend.dev>';
 
 let _supabase: ReturnType<typeof createClient> | null = null;
