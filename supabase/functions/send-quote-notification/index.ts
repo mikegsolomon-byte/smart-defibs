@@ -164,26 +164,38 @@ Deno.serve(async (req) => {
     const sheetAppended = await appendToSheet({ id, name, organisation, sector, email, phone, message })
 
     // Send the notification via the app-email system so it goes out from the
-    // verified sender domain (notify.smartdefibs.com). The template has a fixed
-    // recipient of info@smartdefibs.ie.
-    const { data: emailResult, error: emailError } = await admin.functions.invoke(
-      'send-transactional-email',
-      {
-        body: {
-          templateName: 'quote-notification',
-          idempotencyKey: `quote-${id}`,
-          templateData: { name, organisation, sector, email, phone, message, quoteId: id },
+    // verified sender domain (notify.smartdefibs.com). Notify the internal team
+    // addresses.
+    const NOTIFY_RECIPIENTS = ['info@smartdefibs.ie', 'maciek_koczur@yahoo.com']
+    let emailSent = false
+    for (const recipient of NOTIFY_RECIPIENTS) {
+      const { data: emailResult, error: emailError } = await admin.functions.invoke(
+        'send-transactional-email',
+        {
+          body: {
+            templateName: 'quote-notification',
+            recipientEmail: recipient,
+            idempotencyKey: `quote-${id}-${recipient}`,
+            templateData: { name, organisation, sector, email, phone, message, quoteId: id },
+          },
         },
-      },
-    )
+      )
 
-    if (emailError) {
-      console.error('send-transactional-email error', emailError)
+      if (emailError) {
+        console.error('send-transactional-email error', recipient, emailError)
+      } else {
+        emailSent = true
+        console.log('Quote notification queued', recipient, emailResult)
+      }
+    }
+
+    if (!emailSent) {
       return new Response(JSON.stringify({ success: true, emailSent: false, sheetAppended }), {
         status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
+
 
     console.log('Quote notification queued', emailResult)
 
