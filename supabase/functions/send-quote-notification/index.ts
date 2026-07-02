@@ -196,9 +196,6 @@ Deno.serve(async (req) => {
       })
     }
 
-
-    console.log('Quote notification queued', emailResult)
-
     return new Response(JSON.stringify({ success: true, emailSent: true, sheetAppended }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
