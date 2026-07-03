@@ -68,7 +68,7 @@ export default function QuotePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEO title="Get a Free AED Quote — Smart Defibs Ireland" description="Request a free, tailored AED quote for your school, nursing home, workplace or community group. Fast response from Ireland's Amoul partner." path="/quote" />
+      <SEO title="Contact Smart Defibs — Request a Quote or Ask a Question" description="Get in touch with Smart Defibs Ireland. Request a free AED quote, ask a question, or tell us about your site for tailored guidance." path="/quote" />
       <SiteHeader />
       <main className="flex-1 pb-16 md:pb-24 pt-8 md:pt-12 bg-background">
         <div className="container mx-auto max-w-5xl">
@@ -94,7 +94,7 @@ export default function QuotePage() {
                 <div className="glass-card p-12 text-center">
                   <CheckCircle className="h-16 w-16 text-primary mx-auto mb-4" />
                   <h2 className="text-2xl mb-2">Thank you!</h2>
-                  <p className="text-muted-foreground">Your quote request has been received. We'll be in touch shortly.</p>
+                  <p className="text-muted-foreground">Your message has been received. We'll be in touch shortly.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
@@ -136,8 +136,8 @@ export default function QuotePage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message / Notes</Label>
-                    <Textarea id="message" placeholder="Any additional details..." rows={3} className="focus-ring" value={form.message} onChange={update("message")} />
+                    <Label htmlFor="message">How can we help?</Label>
+                    <Textarea id="message" placeholder="Ask a question, describe your site, or tell us what you need..." rows={3} className="focus-ring" value={form.message} onChange={update("message")} />
                   </div>
 
                   {/* Honeypot field — hidden from real users, traps bots */}
@@ -155,7 +155,7 @@ export default function QuotePage() {
                   </div>
 
                   <Button type="submit" size="lg" disabled={submitting} className="w-full bg-primary text-primary-foreground hover:bg-teal-light text-base btn-micro">
-                    {submitting ? (<><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Submitting...</>) : "Submit Quote Request"}
+                    {submitting ? (<><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Submitting...</>) : "Send Enquiry"}
                   </Button>
                   <p className="text-xs text-muted-foreground text-center">
                     By submitting this form you agree to our{" "}
@@ -190,9 +190,9 @@ export default function QuotePage() {
               <div className="glass-card p-8">
                 <h3 className="font-heading font-semibold mb-4">What happens next?</h3>
                 <ol className="space-y-3 text-sm text-muted-foreground list-decimal list-inside">
-                  <li>We review your requirements</li>
-                  <li>You receive a tailored sector quote</li>
-                  <li>We schedule installation & training</li>
+                  <li>We review your enquiry</li>
+                  <li>We get back with guidance or a tailored quote</li>
+                  <li>We schedule installation & training if you go ahead</li>
                   <li>Your AED goes live — we monitor it</li>
                 </ol>
               </div>
