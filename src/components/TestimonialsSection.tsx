@@ -20,23 +20,23 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="px-4 sm:px-8 lg:px-8 py-10 sm:py-14 lg:py-20 bg-muted/50 border-y border-border">
+    <section className="px-4 sm:px-8 lg:px-8 py-8 sm:py-10 lg:py-16 bg-muted/50 border-y border-border">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10"
+          className="text-center mb-8"
         >
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] bg-accent text-accent-foreground px-3 py-1 rounded-full mb-3">
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] bg-accent text-accent-foreground px-3 py-1 rounded-full mb-2">
             Testimonials
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">
+          <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight">
             Trusted by communities across Ireland
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <motion.blockquote
               key={testimonial.name}
@@ -44,19 +44,19 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="clinical-card p-8 md:p-10 relative text-center flex flex-col"
+              className="clinical-card p-6 md:p-8 relative text-center flex flex-col"
             >
-              <Quote className="h-10 w-10 text-primary/15 mx-auto mb-5" />
-              <p className="font-heading text-lg md:text-xl leading-relaxed text-foreground mb-6 flex-1">
+              <Quote className="h-8 w-8 text-primary/15 mx-auto mb-4" />
+              <p className="font-heading text-base md:text-lg leading-relaxed text-foreground mb-5 flex-1">
                 "{testimonial.quote}"
               </p>
-              <div className="flex items-center justify-center gap-4">
-                <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-heading font-extrabold flex-shrink-0">
+              <div className="flex items-center justify-center gap-3">
+                <div className="h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-heading font-extrabold flex-shrink-0">
                   {testimonial.initials}
                 </div>
                 <div className="text-left">
-                  <p className="font-heading font-bold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  <p className="font-heading font-bold text-sm text-foreground">{testimonial.name}</p>
+                  <p className="text-xs text-muted-foreground">{testimonial.role}</p>
                 </div>
               </div>
             </motion.blockquote>
@@ -66,4 +66,5 @@ export default function TestimonialsSection() {
     </section>
   );
 }
+
 
