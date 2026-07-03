@@ -53,17 +53,20 @@ export default function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="text-center p-6 md:p-8 rounded-2xl bg-secondary-foreground/[0.04] border border-secondary-foreground/10 hover:border-primary/40 transition-colors"
+              className="text-center p-4 sm:p-6 md:p-8 rounded-2xl bg-secondary-foreground/[0.04] border border-secondary-foreground/10 hover:border-primary/40 transition-colors break-words"
             >
-              <p className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold text-red-bright mb-3">
+              <p className="font-heading text-2xl md:text-3xl lg:text-4xl font-extrabold text-red-bright mb-2 md:mb-3 text-balance break-words">
                 {stat.value !== null ? (
                   <AnimatedCounter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                 ) : (
                   stat.display
                 )}
               </p>
-              <p className="text-sm text-secondary-foreground/85">{stat.label}</p>
+              <p className="text-xs sm:text-sm text-secondary-foreground/85 text-balance break-words leading-relaxed">
+                {stat.label}
+              </p>
             </motion.div>
+
           ))}
         </div>
       </div>
