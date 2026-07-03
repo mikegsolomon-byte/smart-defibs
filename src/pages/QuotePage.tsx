@@ -77,9 +77,9 @@ export default function QuotePage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-5xl mb-3 sm:mb-4">Get a Free Quote</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl mb-3 sm:mb-4">Contact us or request a free quote</h1>
             <p className="text-muted-foreground max-w-lg mx-auto">
-              Select your sector and we'll send you a tailored proposal.
+              Ask a question, request a tailored proposal, or tell us about your site — we'll guide you to the right AED package for your sector.
             </p>
           </motion.div>
 
