@@ -8,42 +8,86 @@ import { Link } from "react-router-dom";
 import { Check, Minus } from "lucide-react";
 import { motion } from "framer-motion";
 
-const features = [
-  { label: "Connected 4G AED", clinical: true, plus: true },
-  { label: "Remote monitoring", clinical: true, plus: true },
-  { label: "Email notifications & alerts", clinical: true, plus: true },
-  { label: "Expiry & certificate date tracking", clinical: true, plus: true },
-  { label: "Monthly readiness report", clinical: true, plus: true },
-  { label: "Unlimited consumables (pads & batteries)*", clinical: true, plus: true },
-  { label: "Post-event support", clinical: true, plus: true },
-  { label: "Climate & motion monitoring", clinical: false, plus: true },
-];
-
 const plans = [
   {
-    name: "Clinical",
-    upfront: "€1,499",
-    monthly: "€34",
-    desc: "Everything you need to keep a single AED ready, compliant and supported.",
+    name: "Indoor",
+    monthly: "€39",
+    yearly: "€429",
+    desc: "For sheltered, indoor locations — everything you need to keep an AED ready and compliant.",
     highlight: false,
-    key: "clinical" as const,
+    key: "indoor" as const,
   },
   {
-    name: "Clinical Plus",
-    upfront: "€1,990",
-    monthly: "€39",
-    desc: "Our complete package — adds climate and motion monitoring for total peace of mind.",
+    name: "Outdoor",
+    monthly: "€49",
+    yearly: "€539",
+    desc: "Adds a heated outdoor cabinet and climate monitoring for exposed, all-weather locations.",
     highlight: true,
-    key: "plus" as const,
+    key: "outdoor" as const,
   },
 ];
+
+type Cell = boolean | string;
+
+const matrix: {
+  group: string;
+  rows: { label: string; indoor: Cell; outdoor: Cell; note: string }[];
+}[] = [
+  {
+    group: "Hardware",
+    rows: [
+      { label: "AED unit (Amoul)", indoor: true, outdoor: true, note: "Device remains supplier property during term" },
+      { label: "Cabinet", indoor: "Indoor wall cabinet", outdoor: "Heated outdoor cabinet", note: "Outdoor incl. thermostat-controlled heating" },
+      { label: "Environmental sensor", indoor: false, outdoor: true, note: "Temp/humidity monitoring of cabinet" },
+    ],
+  },
+  {
+    group: "Monitoring & Reporting",
+    rows: [
+      { label: "Defib monitoring", indoor: true, outdoor: true, note: "Device readiness status" },
+      { label: "Alerts (device)", indoor: true, outdoor: true, note: "Fault / readiness alerts" },
+      { label: "Expiry date tracking — consumables", indoor: true, outdoor: true, note: "Pads & battery expiry" },
+      { label: "Expiry date tracking — certs", indoor: true, outdoor: true, note: "Responder cert renewals" },
+      { label: "Monthly readiness report", indoor: true, outdoor: true, note: "Compliance/audit trail" },
+      { label: "Environmental alerts", indoor: false, outdoor: true, note: "Out-of-range temp/humidity alerts" },
+      { label: "Environmental monthly report", indoor: false, outdoor: true, note: "Cabinet climate log" },
+    ],
+  },
+  {
+    group: "Consumables & Events",
+    rows: [
+      { label: "All-Inclusive Consumables (FUP)", indoor: true, outdoor: true, note: "Scheduled expiry + genuine rescue use only" },
+      { label: "Post-event consumable replacement", indoor: true, outdoor: true, note: "Pads/battery replaced after deployment" },
+      { label: "Post-event readiness report", indoor: true, outdoor: true, note: "Unit re-certified ready" },
+      { label: "Post-event report (Device log & ECG)", indoor: true, outdoor: true, note: "GDPR-compliant handling — see contract" },
+    ],
+  },
+];
+
+function CellValue({ value }: { value: Cell }) {
+  if (value === true) {
+    return (
+      <span className="inline-flex h-5 w-5 rounded-full bg-accent/20 items-center justify-center">
+        <Check className="h-3 w-3 text-accent-foreground" strokeWidth={3} />
+      </span>
+    );
+  }
+  if (value === false) {
+    return (
+      <span className="inline-flex h-5 w-5 rounded-full bg-muted items-center justify-center">
+        <Minus className="h-3 w-3 text-muted-foreground" />
+      </span>
+    );
+  }
+  return <span className="text-xs sm:text-sm text-card-foreground">{value}</span>;
+}
 
 export default function PricingPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Pricing — AED Plans | Smart Defibs Ireland"
-        description="Simple, transparent AED plans from Smart Defibs. Clinical and Clinical Plus include connected AED technology, monitoring, unlimited consumables and ongoing support."
+        title="Pricing — AED Subscription Plans | Smart Defibs Ireland"
+        description="Simple AED subscription plans from Smart Defibs. Indoor from €39/mo, Outdoor from €49/mo — connected AED, monitoring, all-inclusive consumables and Irish-based support included."
         path="/pricing"
       />
       <SiteHeader />
@@ -55,8 +99,9 @@ export default function PricingPage() {
               Simple, transparent <span className="text-accent">pricing</span>
             </h1>
             <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">
-              One managed service that keeps your AED ready every day — connected technology,
-              monitoring, unlimited consumables and Irish-based support, all included.
+              One managed subscription that keeps your AED ready every day — connected technology,
+              monitoring, all-inclusive consumables and Irish-based support, all included. Choose
+              Indoor or Outdoor to match your location.
             </p>
           </div>
         </section>
@@ -83,45 +128,70 @@ export default function PricingPage() {
                   <h2 className="font-heading font-extrabold text-2xl text-foreground mb-2">{plan.name}</h2>
                   <p className="text-sm text-muted-foreground mb-6">{plan.desc}</p>
 
-                  <div className="mb-6">
+                  <div className="mb-2">
                     <div className="flex items-baseline gap-1">
                       <span className="font-heading font-extrabold text-4xl text-foreground">{plan.monthly}</span>
                       <span className="text-sm text-muted-foreground">/ month</span>
                     </div>
-                    <div className="flex items-baseline gap-1 mt-1">
-                      <span className="font-heading font-bold text-xl text-primary">{plan.upfront}</span>
-                      <span className="text-sm text-muted-foreground">upfront**</span>
+                    <div className="flex items-baseline gap-2 mt-1">
+                      <span className="font-heading font-bold text-xl text-primary">{plan.yearly}</span>
+                      <span className="text-sm text-muted-foreground">/ year</span>
+                      <span className="bg-accent/20 text-primary text-xs font-semibold px-2 py-0.5 rounded-full">
+                        1 month free
+                      </span>
                     </div>
                   </div>
 
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {features.map((f) => {
-                      const included = f[plan.key];
-                      return (
-                        <li key={f.label} className={`flex items-start gap-3 text-sm ${included ? "text-card-foreground" : "text-muted-foreground/50"}`}>
-                          <span className={`flex-shrink-0 h-5 w-5 rounded-full flex items-center justify-center mt-0.5 ${included ? "bg-accent/20" : "bg-muted"}`}>
-                            {included ? (
-                              <Check className="h-3 w-3 text-accent-foreground" strokeWidth={3} />
-                            ) : (
-                              <Minus className="h-3 w-3 text-muted-foreground" />
-                            )}
-                          </span>
-                          {f.label}
-                        </li>
-                      );
-                    })}
-                  </ul>
-
-                  <Button asChild size="lg" className={plan.highlight ? "bg-accent text-accent-foreground hover:bg-accent/90 font-bold" : "bg-primary text-primary-foreground hover:bg-red-deep"}>
-                    <Link to="/quote">Get Started</Link>
-                  </Button>
+                  <div className="mt-auto pt-6">
+                    <Button asChild size="lg" className={`w-full ${plan.highlight ? "bg-accent text-accent-foreground hover:bg-accent/90 font-bold" : "bg-primary text-primary-foreground hover:bg-red-deep"}`}>
+                      <Link to="/quote">Get Started</Link>
+                    </Button>
+                  </div>
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-6 space-y-1 text-xs text-muted-foreground">
-              <p>* Unlimited consumables are subject to our Fair Usage Policy.</p>
-              <p>** Upfront pricing is based on a 5-year contract.</p>
+            {/* Perks matrix */}
+            <div className="mt-12 clinical-card overflow-hidden">
+              <div className="grid grid-cols-[1.6fr_0.7fr_0.7fr] sm:grid-cols-[2fr_1fr_1fr] bg-secondary text-secondary-foreground">
+                <div className="p-4 font-heading font-bold text-sm sm:text-base">Perks Matrix</div>
+                <div className="p-4 text-center font-heading font-bold text-sm sm:text-base">Indoor</div>
+                <div className="p-4 text-center font-heading font-bold text-sm sm:text-base">Outdoor</div>
+              </div>
+
+              {matrix.map((section) => (
+                <div key={section.group}>
+                  <div className="bg-muted/60 px-4 py-2 font-heading font-bold text-xs uppercase tracking-wider text-foreground">
+                    {section.group}
+                  </div>
+                  {section.rows.map((row) => (
+                    <div
+                      key={row.label}
+                      className="grid grid-cols-[1.6fr_0.7fr_0.7fr] sm:grid-cols-[2fr_1fr_1fr] border-t border-border items-center"
+                    >
+                      <div className="p-4">
+                        <p className="text-sm text-card-foreground font-medium">{row.label}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{row.note}</p>
+                      </div>
+                      <div className="p-4 flex justify-center text-center">
+                        <CellValue value={row.indoor} />
+                      </div>
+                      <div className="p-4 flex justify-center text-center">
+                        <CellValue value={row.outdoor} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 space-y-2 text-xs text-muted-foreground">
+              <p className="font-semibold text-foreground">Fair Usage Policy</p>
+              <p>
+                Covers scheduled expiry replacements and genuine deployment/rescue use. Excludes loss,
+                theft, vandalism, tampering and training use. Training consumables available at list price.
+              </p>
+              <p>Device remains supplier property during the subscription term.</p>
             </div>
 
             <div className="mt-10 clinical-card p-6 text-center">
