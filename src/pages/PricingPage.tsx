@@ -194,16 +194,6 @@ export default function PricingPage() {
               <p>Device remains supplier property during the subscription term.</p>
             </div>
 
-            <div className="mt-10 clinical-card p-6 text-center">
-              <h3 className="font-heading font-bold text-lg text-foreground mb-2">Multi-site, training & Heart Safe programmes</h3>
-              <p className="text-muted-foreground text-sm mb-4">
-                Multi-site deployments (3+ units), training packages and the Heart Safe Team Programme are
-                priced on application. Tell us about your organisation and we'll tailor a quote.
-              </p>
-              <Button asChild variant="outline">
-                <Link to="/quote">Request a tailored quote</Link>
-              </Button>
-            </div>
           </div>
         </section>
 
