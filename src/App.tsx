@@ -76,6 +76,7 @@ const App = () => (
         <Sonner position="top-center" />
         <BrowserRouter>
           <AuthProvider>
+            <GoogleAnalytics />
             <AnimatedRoutes />
           </AuthProvider>
         </BrowserRouter>
