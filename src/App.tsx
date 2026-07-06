@@ -28,6 +28,8 @@ import MobileCtaBar from "@/components/MobileCtaBar";
 
 import { AuthProvider } from "@/hooks/useAuth";
 import { RequireAdmin } from "@/components/RequireAdmin";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+
 
 const queryClient = new QueryClient();
 
@@ -74,6 +76,7 @@ const App = () => (
         <Sonner position="top-center" />
         <BrowserRouter>
           <AuthProvider>
+            <GoogleAnalytics />
             <AnimatedRoutes />
           </AuthProvider>
         </BrowserRouter>
