@@ -11,8 +11,8 @@ import CTABanner from "@/components/CTABanner";
 const Index = () => (
   <div className="min-h-screen flex flex-col">
     <SEO
-      title="Smart Defibs Ltd — AEDs, Training & Servicing in Ireland"
-      description="Ireland's exclusive Amoul AED partner. CE-marked defibrillators, PHECC-aligned training, and nationwide maintenance for schools, workplaces and community groups."
+      title="Defibrillators from €39/Month | Smart Defibs Ireland"
+      description="Get a defibrillator for your premises from €39/month — cabinet, pads and remote monitoring included, with no large upfront cost. Smart Defibs Ireland."
       path="/"
     />
     <SiteHeader />

@@ -86,8 +86,8 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Pricing — AED Subscription Plans | Smart Defibs Ireland"
-        description="Simple AED subscription plans from Smart Defibs. Indoor from €39/mo, Outdoor from €49/mo — connected AED, monitoring, all-inclusive consumables and Irish-based support included."
+        title="Defibrillator Packages from €39/Month | Smart Defibs"
+        description="Every plan includes your defibrillator, cabinet, pads and full remote monitoring — one easy monthly payment, no upfront cost, and nothing for you to manage."
         path="/pricing"
       />
       <SiteHeader />
