@@ -82,7 +82,7 @@ export default function SiteHeader() {
             <Link to="/products">View Products</Link>
           </Button>
           <Button asChild className="bg-accent text-accent-foreground hover:bg-accent/90 btn-micro shadow-sm font-bold">
-            <Link to="/quote">Get a Quote</Link>
+            <Link to="/quote">Get Your Defibrillator</Link>
           </Button>
         </div>
 
@@ -133,7 +133,7 @@ export default function SiteHeader() {
               ))}
               <div className="px-6 pt-4">
                 <Button asChild className="w-full bg-primary text-primary-foreground hover:bg-red-deep btn-micro">
-                  <Link to="/quote" onClick={() => setMobileOpen(false)}>Get a Quote</Link>
+                  <Link to="/quote" onClick={() => setMobileOpen(false)}>Get Your Defibrillator</Link>
                 </Button>
               </div>
             </nav>
