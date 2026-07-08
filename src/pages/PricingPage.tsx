@@ -10,18 +10,18 @@ import { motion } from "framer-motion";
 
 const plans = [
   {
-    name: "Indoor",
+    name: "Indoor Defibrillator Package",
     monthly: "€39",
     yearly: "€429",
-    desc: "For sheltered, indoor locations — everything you need to keep an AED ready and compliant.",
+    desc: "Your defibrillator, indoor cabinet, pads and consumables — fully supplied and monitored, ready to use in sheltered indoor locations.",
     highlight: false,
     key: "indoor" as const,
   },
   {
-    name: "Outdoor",
+    name: "Outdoor Defibrillator Package",
     monthly: "€49",
     yearly: "€539",
-    desc: "Adds a heated outdoor cabinet and climate monitoring for exposed, all-weather locations.",
+    desc: "Your defibrillator, plus a heated, weatherproof outdoor cabinet with climate monitoring — built for exposed, all-weather locations.",
     highlight: true,
     key: "outdoor" as const,
   },
@@ -96,12 +96,10 @@ export default function PricingPage() {
           <div className="container mx-auto">
             <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">
-              Simple, transparent <span className="text-accent">pricing</span>
+              Own a defibrillator, the easy way
             </h1>
             <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">
-              One managed subscription that keeps your AED ready every day — connected technology,
-              monitoring, all-inclusive consumables and Irish-based support, all included. Choose
-              Indoor or Outdoor to match your location.
+              Every plan includes your defibrillator, cabinet, pads and full remote monitoring — one easy monthly payment, no upfront cost, and nothing for you to manage.
             </p>
           </div>
         </section>
@@ -141,6 +139,10 @@ export default function PricingPage() {
                       </span>
                     </div>
                   </div>
+
+                  <p className="text-sm text-primary font-medium mt-2">
+                    Defibrillator, cabinet & pads included in your plan — not a separate purchase.
+                  </p>
 
                   <div className="mt-auto pt-6">
                     <Button asChild size="lg" className={`w-full ${plan.highlight ? "bg-accent text-accent-foreground hover:bg-accent/90 font-bold" : "bg-primary text-primary-foreground hover:bg-red-deep"}`}>
