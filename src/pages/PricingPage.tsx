@@ -96,12 +96,10 @@ export default function PricingPage() {
           <div className="container mx-auto">
             <AmoulImporterChip />
             <h1 className="text-2xl sm:text-3xl md:text-5xl text-secondary-foreground mb-3 sm:mb-4">
-              Simple, transparent <span className="text-accent">pricing</span>
+              Own a defibrillator, the easy way
             </h1>
             <p className="text-base sm:text-lg text-secondary-foreground/70 max-w-2xl">
-              One managed subscription that keeps your AED ready every day — connected technology,
-              monitoring, all-inclusive consumables and Irish-based support, all included. Choose
-              Indoor or Outdoor to match your location.
+              Every plan includes your defibrillator, cabinet, pads and full remote monitoring — one easy monthly payment, no upfront cost, and nothing for you to manage.
             </p>
           </div>
         </section>
