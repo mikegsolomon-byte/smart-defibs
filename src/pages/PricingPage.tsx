@@ -140,6 +140,10 @@ export default function PricingPage() {
                     </div>
                   </div>
 
+                  <p className="text-sm text-primary font-medium mt-2">
+                    Defibrillator, cabinet & pads included in your plan — not a separate purchase.
+                  </p>
+
                   <div className="mt-auto pt-6">
                     <Button asChild size="lg" className={`w-full ${plan.highlight ? "bg-accent text-accent-foreground hover:bg-accent/90 font-bold" : "bg-primary text-primary-foreground hover:bg-red-deep"}`}>
                       <Link to="/quote">Get Started</Link>
