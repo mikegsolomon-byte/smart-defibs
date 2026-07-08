@@ -1,38 +1,36 @@
-# Conversion improvements: logo fallback + sticky mobile CTA
+## Scope
+A copy-only update to the Smart Defibs Ltd website. No design, layout, colour, font, or image changes. The goal is to lead with the defibrillator product and price, framing monitoring/compliance as an included feature.
 
-Two changes based on the conversion review. Frontend/presentation only — no backend, data, or business-logic changes.
+## Files to edit
+1. `src/components/HeroSection.tsx`
+2. `src/pages/PricingPage.tsx`
+3. `src/components/SiteHeader.tsx`
 
-## 1. Amoul partner-badge logo fallback
+## Changes
 
-**Finding:** The Amoul logo appears broken in the Lovable *preview* because the local dev server doesn't proxy CDN asset URLs (`/__l5e/...`) — it serves the HTML fallback instead. On the **published** site the same URL resolves correctly, so real visitors most likely see it fine. Still, a broken image in the top-right trust badge is a credibility risk if the CDN ever hiccups, so we make it self-healing.
+### 1. Homepage Hero — `src/components/HeroSection.tsx`
+- Headline: change from `Every AED ready. Every day. Every time.` to `Get a defibrillator for your premises — from €39 a month.`
+- Subheading: change to `Your AED, cabinet, pads and remote monitoring — all included, with no large upfront cost. We supply it, install it, and keep it ready to save a life, every single day.`
+- Primary button: change text from `Contact Us` to `Get Your Defibrillator` (keep existing button style and icon)
+- Secondary button: change text from `Browse AEDs` to `See Plans & Pricing` (keep existing outline style)
 
-**Change — `src/components/AmoulImporterChip.tsx`:**
-- Add an `onError` handler to the `<img>` that hides the image and reveals a styled "Amoul" text wordmark fallback (green, bold, matching the badge's brand side) so the badge never renders empty/broken.
-- Keeps the existing image as the primary display; fallback only shows if the image fails to load.
+### 2. Plans Page — `src/pages/PricingPage.tsx`
+- Top banner headline: change from `Simple, transparent pricing` to `Own a defibrillator, the easy way`
+- Top banner subheading: change to `Every plan includes your defibrillator, cabinet, pads and full remote monitoring — one easy monthly payment, no upfront cost, and nothing for you to manage.`
+- Indoor card title: change from `Indoor` to `Indoor Defibrillator Package`
+- Indoor card description: change to `Your defibrillator, indoor cabinet, pads and consumables — fully supplied and monitored, ready to use in sheltered indoor locations.`
+- Outdoor card title: change from `Outdoor` to `Outdoor Defibrillator Package`
+- Outdoor card description: change to `Your defibrillator, plus a heated, weatherproof outdoor cabinet with climate monitoring — built for exposed, all-weather locations.`
+- On both pricing cards, add a small trust line directly above the `Get Started` button: `Defibrillator, cabinet & pads included in your plan — not a separate purchase.` (preserve existing card layout and spacing)
 
-No other files need editing — every other page renders the logo through this same component or the same asset import, and the asset pointer itself is valid.
+### 3. Top Navigation — `src/components/SiteHeader.tsx`
+- Update the desktop "Get a Quote" CTA button text to `Get Your Defibrillator` (keep existing button styling)
+- Update the mobile menu "Get a Quote" CTA button text to `Get Your Defibrillator` (keep existing button styling)
 
-## 2. Sticky mobile call / quote bar
-
-**Goal:** On mobile the phone is a small icon and the primary CTA scrolls out of view. A persistent bottom bar keeps the two key conversion actions always tappable, lifting mobile leads.
-
-**New file — `src/components/MobileCtaBar.tsx`:**
-- Fixed bar pinned to the bottom of the viewport, visible on mobile/tablet only (`lg:hidden`).
-- Two large, thumb-friendly buttons side by side:
-  - **Call** → `tel:0906641050` (secondary/outline style, phone icon).
-  - **Get a Quote** → links to the quote route (primary green/yellow style).
-- Safe-area padding (`env(safe-area-inset-bottom)`) for notched phones, subtle top border + shadow, uses existing design tokens (no hardcoded colors).
-- Entrance handled with a simple slide-up; respects `prefers-reduced-motion`.
-
-**Change — `src/App.tsx`:**
-- Render `<MobileCtaBar />` once globally (inside the router, alongside existing global elements) so it appears on every page.
-- Add bottom padding to page content on mobile (e.g. a `pb-20 lg:pb-0` wrapper or body utility) so the fixed bar never overlaps footer content or the last CTA.
+## Not in scope
+- CTA banner, footer, other page copy, mobile bottom bar, and any other buttons remain unchanged unless listed above.
+- No code logic changes, no new components, no image/style adjustments.
 
 ## Verification
-- Rebuild and confirm no type/build errors.
-- Playwright screenshots at 390px (bar visible, both buttons tappable, no footer overlap) and 1280px (bar hidden).
-- Confirm the Amoul badge still renders the image normally and the text fallback appears only when the image is forced to fail.
-
-## Not included (per your answers)
-- No social proof / testimonials.
-- No CTA-copy overhaul or sector-link rewrites — can be a follow-up if you want.
+- Run a local build/typecheck to confirm no TS errors.
+- Spot-check the preview for the three updated sections and the nav CTA.
