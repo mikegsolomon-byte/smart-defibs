@@ -10,18 +10,18 @@ import { motion } from "framer-motion";
 
 const plans = [
   {
-    name: "Indoor",
+    name: "Indoor Defibrillator Package",
     monthly: "€39",
     yearly: "€429",
-    desc: "For sheltered, indoor locations — everything you need to keep an AED ready and compliant.",
+    desc: "Your defibrillator, indoor cabinet, pads and consumables — fully supplied and monitored, ready to use in sheltered indoor locations.",
     highlight: false,
     key: "indoor" as const,
   },
   {
-    name: "Outdoor",
+    name: "Outdoor Defibrillator Package",
     monthly: "€49",
     yearly: "€539",
-    desc: "Adds a heated outdoor cabinet and climate monitoring for exposed, all-weather locations.",
+    desc: "Your defibrillator, plus a heated, weatherproof outdoor cabinet with climate monitoring — built for exposed, all-weather locations.",
     highlight: true,
     key: "outdoor" as const,
   },
