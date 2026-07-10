@@ -26,6 +26,7 @@ export default function HeroSection() {
         alt="AED defibrillator cabinet mounted on a building wall"
         width={1920}
         height={1080}
+        fetchPriority="high"
         className="absolute inset-0 w-full h-full object-cover object-[95%_center] opacity-70 pointer-events-none select-none"
       />
       {/* Readability overlays */}
