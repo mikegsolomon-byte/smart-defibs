@@ -253,7 +253,7 @@ export default function SectorsPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEO title="AED Sectors — Schools, Workplace, Nursing & Community" description="Tailored AED packages for schools and crèches, nursing homes, workplaces and community CFR groups across Ireland. Compliant, supported, life-saving." path="/sectors" />
+      <SEO title="AED Sectors — Schools, Workplace, Nursing & Community" description="Tailored AED packages for schools and crèches, nursing homes, workplaces and community CFR groups across Ireland. Compliant, supported, life-saving." path="/sectors" jsonLd={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: Object.values(sectorData).flatMap((s) => s.faqs).map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) }} />
       <SiteHeader />
       <main className="flex-1">
         {/* Tab navigation */}

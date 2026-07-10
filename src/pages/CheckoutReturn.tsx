@@ -19,7 +19,7 @@ export default function CheckoutReturn() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEO title="Order confirmation — Smart Defibs LTD" description="Your order has been received." path="/checkout/return" />
+      <SEO title="Order confirmation — Smart Defibs LTD" description="Thank you for your Smart Defibs LTD order. Your payment has been received and a confirmation email with your order details is on its way." path="/checkout/return" />
       <SiteHeader />
       <main className="flex-1 bg-surface-soft flex items-center justify-center py-24 px-4">
         <motion.div

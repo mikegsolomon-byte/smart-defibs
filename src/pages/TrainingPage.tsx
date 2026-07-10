@@ -51,7 +51,7 @@ export default function TrainingPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Training & Awareness — Heart Safe Team, CFR & FAR | Smart Defibs"
+        title="AED & CPR Training Courses | Smart Defibs Ireland"
         description="PHECC-aligned training and awareness from Smart Defibs: the Heart Safe Team Programme, Cardiac First Responder (CFR) and First Aid Response (FAR) courses for organisations across Ireland."
         path="/training"
         jsonLd={{ "@context": "https://schema.org", "@type": "Service", serviceType: "CPR and AED Training", provider: { "@type": "Organization", name: "Smart Defibs LTD" }, areaServed: "IE" }}

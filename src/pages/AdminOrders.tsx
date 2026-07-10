@@ -77,7 +77,7 @@ export default function AdminOrders() {
 
   return (
     <div className="min-h-screen bg-surface-soft">
-      <SEO title="Orders — Smart Defibs admin" description="Order management" path="/admin/orders" />
+      <SEO title="Orders — Smart Defibs admin" description="Internal Smart Defibs LTD order management dashboard for reviewing, tracking and fulfilling defibrillator and accessory orders placed through the website." path="/admin/orders" />
       <header className="bg-card border-b border-border">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
           <div>

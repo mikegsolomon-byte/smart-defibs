@@ -64,7 +64,7 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface-soft px-4 py-16">
-      <SEO title="Admin sign in — Smart Defibs LTD" description="Secure team access." path="/admin/login" />
+      <SEO title="Admin sign in — Smart Defibs LTD" description="Secure staff sign-in for the Smart Defibs LTD admin dashboard, where the team manages AED orders, customer records and account settings." path="/admin/login" />
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

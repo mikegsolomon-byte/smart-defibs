@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://smartdefibs.ie/sitemap.xml
+Sitemap: https://smartdefibs.com/sitemap.xml
