@@ -4,6 +4,7 @@ import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
+import { PlanCheckoutDialog } from "@/components/PlanCheckoutDialog";
 import { Link } from "react-router-dom";
 import { Check, Minus } from "lucide-react";
 import { motion } from "framer-motion";
