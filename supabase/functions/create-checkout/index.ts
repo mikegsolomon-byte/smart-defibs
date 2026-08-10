@@ -13,6 +13,16 @@ const BodySchema = z.object({
 // Countries we ship physical AED units to.
 const SHIPPING_COUNTRIES = ['IE', 'GB'] as const;
 
+async function resolveOrCreateCustomer(
+  stripe: ReturnType<typeof createStripeClient>,
+  email: string,
+): Promise<string> {
+  const existing = await stripe.customers.list({ email, limit: 1 });
+  if (existing.data.length) return existing.data[0].id;
+  const created = await stripe.customers.create({ email });
+  return created.id;
+}
+
 async function createCheckoutSession(options: {
   priceId: string;
   quantity: number;
@@ -25,12 +35,40 @@ async function createCheckoutSession(options: {
   const prices = await stripe.prices.list({ lookup_keys: [options.priceId] });
   if (!prices.data.length) throw new Error("Price not found");
   const stripePrice = prices.data[0];
+  const isRecurring = stripePrice.type === "recurring";
 
   const productId = typeof stripePrice.product === "string"
     ? stripePrice.product
     : stripePrice.product.id;
   const product = await stripe.products.retrieve(productId);
-  const productDescription = product.name;
+
+  const metadata = {
+    product_id: product.metadata?.lovable_external_id || productId,
+    price_id: options.priceId,
+    product_name: product.name,
+    quantity: String(isRecurring ? 1 : options.quantity),
+    environment: options.environment,
+  };
+
+  // Subscription plans are managed monthly/annual packages: no shipping
+  // collection at checkout (installation address is arranged afterwards),
+  // and quantity is always 1.
+  if (isRecurring) {
+    if (!options.customerEmail) throw new Error("Email required for plan checkout");
+    const customerId = await resolveOrCreateCustomer(stripe, options.customerEmail);
+
+    const session = await stripe.checkout.sessions.create({
+      line_items: [{ price: stripePrice.id, quantity: 1 }],
+      mode: "subscription",
+      ui_mode: "embedded_page",
+      return_url: options.returnUrl,
+      customer: customerId,
+      phone_number_collection: { enabled: true },
+      metadata,
+      subscription_data: { metadata },
+    });
+    return session.client_secret;
+  }
 
   const session = await stripe.checkout.sessions.create({
     line_items: [{ price: stripePrice.id, quantity: options.quantity }],
@@ -40,14 +78,8 @@ async function createCheckoutSession(options: {
     shipping_address_collection: { allowed_countries: SHIPPING_COUNTRIES as unknown as string[] },
     phone_number_collection: { enabled: true },
     ...(options.customerEmail && { customer_email: options.customerEmail }),
-    payment_intent_data: { description: productDescription },
-    metadata: {
-      product_id: product.metadata?.lovable_external_id || productId,
-      price_id: options.priceId,
-      product_name: product.name,
-      quantity: String(options.quantity),
-      environment: options.environment,
-    },
+    payment_intent_data: { description: product.name },
+    metadata,
   });
 
   return session.client_secret;
