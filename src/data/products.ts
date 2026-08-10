@@ -207,6 +207,7 @@ export const products: StaticProduct[] = [
     image: outdoorCabinet,
     priceFrom: "€399",
     priceNote: "incl. VAT · 230V mains powered",
+    priceId: "heated_outdoor_cabinet_price",
     shortDescription:
       "Heated, weatherproof outdoor cabinet keeping your AED at the right temperature for 24/7 public access.",
     longDescription:
