@@ -241,6 +241,7 @@ export const products: StaticProduct[] = [
     galleryImages: [indoorCabinet1, indoorCabinet2],
     priceFrom: "€40",
     priceNote: "incl. VAT · easy wall installation",
+    priceId: "indoor_cabinet_price",
     shortDescription:
       "High-visibility indoor cabinet with audible alarm and clear viewing window, protecting your AED while keeping it quick to access.",
     longDescription:
