@@ -173,11 +173,93 @@ async function handlePaymentFailed(paymentIntent: any, env: StripeEnv) {
   await updateOrderStatusByPaymentIntent(paymentIntent.id || null, "failed", env);
 }
 
+function subscriptionRow(subscription: any, env: StripeEnv) {
+  const item = subscription.items?.data?.[0];
+  const priceId = item?.price?.lookup_key
+    || item?.price?.metadata?.lovable_external_id
+    || item?.price?.id
+    || null;
+  const productId = typeof item?.price?.product === 'string' ? item.price.product : null;
+  const periodStart = item?.current_period_start ?? subscription.current_period_start;
+  const periodEnd = item?.current_period_end ?? subscription.current_period_end;
+
+  return {
+    stripe_subscription_id: subscription.id as string,
+    stripe_customer_id: (subscription.customer as string) || null,
+    customer_email: subscription.metadata?.customer_email || null,
+    product_id: subscription.metadata?.product_id || productId,
+    price_id: priceId,
+    plan_name: subscription.metadata?.product_name || null,
+    amount: item?.price?.unit_amount ?? null,
+    currency: item?.price?.currency || 'eur',
+    status: subscription.status as string,
+    current_period_start: periodStart ? new Date(periodStart * 1000).toISOString() : null,
+    current_period_end: periodEnd ? new Date(periodEnd * 1000).toISOString() : null,
+    cancel_at_period_end: !!subscription.cancel_at_period_end,
+    environment: env,
+    updated_at: new Date().toISOString(),
+  };
+}
+
+async function handleSubscriptionUpserted(subscription: any, env: StripeEnv, isNew: boolean) {
+  const row = subscriptionRow(subscription, env);
+  const { error } = await getSupabase()
+    .from('subscriptions')
+    .upsert(row, { onConflict: 'stripe_subscription_id' });
+  if (error) console.error('Failed to record subscription', error);
+
+  if (!isNew) return;
+
+  const amountStr = fmtAmount(row.amount, row.currency);
+  const html = `
+    <div style="font-family:Arial,sans-serif;color:#1a1a1a;max-width:600px;margin:0 auto;padding:24px;">
+      <h2 style="margin:0 0 12px;color:#1f7a3d;">New plan subscription${env === 'sandbox' ? ' (TEST)' : ''}</h2>
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;width:150px;">Plan</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${esc(row.plan_name || row.price_id || 'Defibrillator package')}</td></tr>
+        <tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;">Billing</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${esc(amountStr)}</td></tr>
+        <tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;">Status</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${esc(row.status)}</td></tr>
+        <tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;">Customer</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${esc(row.customer_email || '')}</td></tr>
+      </table>
+      <p style="margin-top:24px;font-size:12px;color:#999;">Subscription reference: ${esc(row.stripe_subscription_id)}</p>
+    </div>`;
+  await sendEmail({
+    to: NOTIFY_TO,
+    subject: `New plan subscription — ${row.plan_name || 'Defibrillator package'}${env === 'sandbox' ? ' (TEST)' : ''}`,
+    html,
+    ...(row.customer_email && { reply_to: row.customer_email }),
+  });
+}
+
+async function handleSubscriptionDeleted(subscription: any, env: StripeEnv) {
+  const { error } = await getSupabase()
+    .from('subscriptions')
+    .update({ status: 'canceled', updated_at: new Date().toISOString() })
+    .eq('stripe_subscription_id', subscription.id)
+    .eq('environment', env);
+  if (error) console.error('Failed to cancel subscription', error);
+}
+
 async function handleWebhook(req: Request, env: StripeEnv) {
   const event = await verifyWebhook(req, env);
   switch (event.type) {
-    case "checkout.session.completed":
-      await handleCheckoutCompleted(event.data.object, env);
+    case "checkout.session.completed": {
+      const session = event.data.object;
+      // Subscription sessions are recorded from customer.subscription.* events.
+      if (session.mode === "subscription") {
+        console.log("Subscription checkout completed:", session.id);
+        break;
+      }
+      await handleCheckoutCompleted(session, env);
+      break;
+    }
+    case "customer.subscription.created":
+      await handleSubscriptionUpserted(event.data.object, env, true);
+      break;
+    case "customer.subscription.updated":
+      await handleSubscriptionUpserted(event.data.object, env, false);
+      break;
+    case "customer.subscription.deleted":
+      await handleSubscriptionDeleted(event.data.object, env);
       break;
     case "charge.refunded":
       await handleChargeRefunded(event.data.object, env);
