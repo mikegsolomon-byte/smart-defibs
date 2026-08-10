@@ -6,6 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
+import { BuyProductDialog } from "@/components/BuyProductDialog";
 import amoulLogoAsset from "@/assets/amoul-logo.png.asset.json";
 import { products } from "@/data/products";
 
