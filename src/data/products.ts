@@ -306,6 +306,7 @@ export const products: StaticProduct[] = [
     image: electrodePads,
     priceFrom: "€65",
     priceNote: "incl. VAT · 3–5 year shelf life (model dependent)",
+    priceId: "amoul_electrode_pads_price",
     shortDescription:
       "Genuine universal adult & paediatric electrode pads with clear placement diagrams and high-conductivity gel.",
     longDescription:
