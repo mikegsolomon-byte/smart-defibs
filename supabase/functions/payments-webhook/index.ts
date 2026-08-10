@@ -398,9 +398,10 @@ async function handleWebhook(req: Request, env: StripeEnv) {
   switch (event.type) {
     case "checkout.session.completed": {
       const session = event.data.object;
-      // Subscription sessions are recorded from customer.subscription.* events.
+      // Subscription rows are written by customer.subscription.*; this branch
+      // attaches the customer email and sends the welcome email.
       if (session.mode === "subscription") {
-        console.log("Subscription checkout completed:", session.id);
+        await handleSubscriptionCheckout(session, env);
         break;
       }
       await handleCheckoutCompleted(session, env);
