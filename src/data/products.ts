@@ -338,6 +338,7 @@ export const products: StaticProduct[] = [
     image: cprResponseKit,
     priceFrom: "€5",
     priceNote: "incl. VAT · single-use rescue essentials",
+    priceId: "aed_cpr_response_kit_price",
     shortDescription:
       "Compact kit with the essentials to support a rescue — shears, razor, face shield, gloves and more.",
     longDescription:
