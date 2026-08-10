@@ -201,42 +201,196 @@ function subscriptionRow(subscription: any, env: StripeEnv) {
   };
 }
 
+const shell = (title: string, bodyHtml: string, footer?: string) => `
+  <div style="font-family:Arial,sans-serif;color:#1a1a1a;max-width:600px;margin:0 auto;padding:24px;">
+    <h2 style="margin:0 0 12px;color:#1f7a3d;">${title}</h2>
+    ${bodyHtml}
+    ${footer ? `<p style="margin-top:24px;font-size:12px;color:#999;">${footer}</p>` : ''}
+    <p style="margin-top:8px;font-size:12px;color:#999;">Smart Defibs — info@smartdefibs.com</p>
+  </div>`;
+
+const kvTable = (rows: [string, string][]) => `
+  <table style="width:100%;border-collapse:collapse;font-size:14px;">
+    ${rows.filter(([, v]) => v).map(([k, v]) => `<tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;width:150px;">${esc(k)}</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${v}</td></tr>`).join('')}
+  </table>`;
+
+const fmtDate = (iso?: string | null) =>
+  iso ? new Date(iso).toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+
+async function getSubscriptionRow(subscriptionId: string, env: StripeEnv) {
+  const { data } = await getSupabase()
+    .from('subscriptions')
+    .select('*')
+    .eq('stripe_subscription_id', subscriptionId)
+    .eq('environment', env)
+    .maybeSingle();
+  return data as Record<string, any> | null;
+}
+
 async function handleSubscriptionUpserted(subscription: any, env: StripeEnv, isNew: boolean) {
+  const previous = isNew ? null : await getSubscriptionRow(subscription.id, env);
   const row = subscriptionRow(subscription, env);
+  // Stripe subscription metadata may lack the email for guest checkout; keep
+  // whatever the checkout session already recorded.
+  if (!row.customer_email && previous?.customer_email) {
+    row.customer_email = previous.customer_email;
+  }
+
   const { error } = await getSupabase()
     .from('subscriptions')
     .upsert(row, { onConflict: 'stripe_subscription_id' });
   if (error) console.error('Failed to record subscription', error);
 
-  if (!isNew) return;
-
+  const planName = row.plan_name || row.price_id || 'Defibrillator package';
   const amountStr = fmtAmount(row.amount, row.currency);
-  const html = `
-    <div style="font-family:Arial,sans-serif;color:#1a1a1a;max-width:600px;margin:0 auto;padding:24px;">
-      <h2 style="margin:0 0 12px;color:#1f7a3d;">New plan subscription${env === 'sandbox' ? ' (TEST)' : ''}</h2>
-      <table style="width:100%;border-collapse:collapse;font-size:14px;">
-        <tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;width:150px;">Plan</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${esc(row.plan_name || row.price_id || 'Defibrillator package')}</td></tr>
-        <tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;">Billing</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${esc(amountStr)}</td></tr>
-        <tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;">Status</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${esc(row.status)}</td></tr>
-        <tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;">Customer</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${esc(row.customer_email || '')}</td></tr>
-      </table>
-      <p style="margin-top:24px;font-size:12px;color:#999;">Subscription reference: ${esc(row.stripe_subscription_id)}</p>
-    </div>`;
+  const ref = `Subscription reference: ${esc(row.stripe_subscription_id)}`;
+
+  if (isNew) {
+    await sendEmail({
+      to: NOTIFY_TO,
+      subject: `New plan subscription — ${planName}${env === 'sandbox' ? ' (TEST)' : ''}`,
+      html: shell(`New plan subscription${env === 'sandbox' ? ' (TEST)' : ''}`, kvTable([
+        ['Plan', esc(planName)],
+        ['Billing', `${esc(amountStr)} per month`],
+        ['Status', esc(row.status)],
+        ['Customer', esc(row.customer_email || '')],
+        ['Renews', esc(fmtDate(row.current_period_end))],
+      ]), ref),
+      ...(row.customer_email && { reply_to: row.customer_email }),
+    });
+    return;
+  }
+
+  // Cancellation scheduled — access continues until the paid-through date.
+  if (row.cancel_at_period_end && previous && !previous.cancel_at_period_end) {
+    const endStr = fmtDate(row.current_period_end);
+    if (row.customer_email) {
+      await sendEmail({
+        to: [row.customer_email],
+        subject: 'Your Smart Defibs plan has been cancelled',
+        html: shell('Your plan cancellation is confirmed', `
+          <p style="margin:0 0 16px;color:#55575d;">We've cancelled your <strong>${esc(planName)}</strong> plan. You'll keep full cover, monitoring and support until <strong>${esc(endStr)}</strong>, and you won't be billed again.</p>
+          <p style="margin:0 0 16px;color:#55575d;">If this was a mistake, or you'd like to talk through your options, just reply to this email and we'll sort it out.</p>`, ref),
+      });
+    }
+    await sendEmail({
+      to: NOTIFY_TO,
+      subject: `Plan cancelled — ${planName}${env === 'sandbox' ? ' (TEST)' : ''}`,
+      html: shell('Plan cancellation scheduled', kvTable([
+        ['Plan', esc(planName)],
+        ['Customer', esc(row.customer_email || '')],
+        ['Access until', esc(endStr)],
+      ]), ref),
+      ...(row.customer_email && { reply_to: row.customer_email }),
+    });
+    return;
+  }
+
+  // Plan upgrade / downgrade — the price on the subscription changed.
+  if (previous && previous.price_id && row.price_id && previous.price_id !== row.price_id) {
+    const fromName = previous.plan_name || previous.price_id;
+    if (row.customer_email) {
+      await sendEmail({
+        to: [row.customer_email],
+        subject: 'Your Smart Defibs plan has been updated',
+        html: shell('Your plan has been updated', `
+          <p style="margin:0 0 16px;color:#55575d;">Your plan has changed from <strong>${esc(fromName)}</strong> to <strong>${esc(planName)}</strong>. Your new rate is <strong>${esc(amountStr)} per month</strong> and takes effect immediately.</p>
+          ${kvTable([['New plan', esc(planName)], ['Next renewal', esc(fmtDate(row.current_period_end))]])}`, ref),
+      });
+    }
+    await sendEmail({
+      to: NOTIFY_TO,
+      subject: `Plan changed — ${fromName} → ${planName}${env === 'sandbox' ? ' (TEST)' : ''}`,
+      html: shell('Plan changed', kvTable([
+        ['From', esc(String(fromName))],
+        ['To', esc(planName)],
+        ['Customer', esc(row.customer_email || '')],
+        ['New rate', `${esc(amountStr)} per month`],
+      ]), ref),
+      ...(row.customer_email && { reply_to: row.customer_email }),
+    });
+  }
+}
+
+// Sent when the subscription checkout session completes, because that is where
+// the customer's email is reliably available for guest checkout.
+async function handleSubscriptionCheckout(session: any, env: StripeEnv) {
+  const subscriptionId = typeof session.subscription === 'string' ? session.subscription : session.subscription?.id;
+  const customer = session.customer_details || {};
+  const email = customer.email || session.customer_email || null;
+  const meta = session.metadata || {};
+  const planName = meta.product_name || 'Defibrillator package';
+
+  if (subscriptionId && email) {
+    const { error } = await getSupabase()
+      .from('subscriptions')
+      .update({ customer_email: email, updated_at: new Date().toISOString() })
+      .eq('stripe_subscription_id', subscriptionId)
+      .eq('environment', env);
+    if (error) console.error('Failed to attach email to subscription', error);
+  }
+
+  if (!email) return;
+  const stored = subscriptionId ? await getSubscriptionRow(subscriptionId, env) : null;
+  const amountStr = fmtAmount(stored?.amount ?? session.amount_total, stored?.currency ?? session.currency);
+  const addrStr = formatAddress(session.shipping_details?.address || customer.address || null);
+
   await sendEmail({
-    to: NOTIFY_TO,
-    subject: `New plan subscription — ${row.plan_name || 'Defibrillator package'}${env === 'sandbox' ? ' (TEST)' : ''}`,
-    html,
-    ...(row.customer_email && { reply_to: row.customer_email }),
+    to: [email],
+    subject: 'Welcome to Smart Defibs — your plan is active',
+    html: shell('Welcome to Smart Defibs', `
+      <p style="margin:0 0 16px;color:#55575d;">Hi ${esc(customer.name || 'there')}, your <strong>${esc(planName)}</strong> plan is now active. Thank you for choosing Smart Defibs.</p>
+      ${kvTable([
+        ['Plan', esc(planName)],
+        ['Monthly cost', esc(amountStr)],
+        ['Renews', esc(fmtDate(stored?.current_period_end))],
+        ['Install address', addrStr],
+      ])}
+      <h3 style="margin:24px 0 8px;font-size:16px;">What's included</h3>
+      <ul style="margin:0 0 16px;padding-left:20px;color:#55575d;font-size:14px;line-height:1.6;">
+        <li>Your defibrillator, cabinet and all consumables</li>
+        <li>Remote monitoring with automatic readiness checks</li>
+        <li>Pad and battery replacement as they expire</li>
+        <li>Ongoing servicing and technical support</li>
+      </ul>
+      <h3 style="margin:24px 0 8px;font-size:16px;">What happens next</h3>
+      <p style="margin:0 0 16px;color:#55575d;">Our team will contact you within one working day to arrange delivery, installation and any training you need. You can reach us any time at info@smartdefibs.com or 090 664 1050.</p>`,
+      subscriptionId ? `Subscription reference: ${esc(subscriptionId)}` : undefined),
   });
 }
 
 async function handleSubscriptionDeleted(subscription: any, env: StripeEnv) {
+  const previous = await getSubscriptionRow(subscription.id, env);
   const { error } = await getSupabase()
     .from('subscriptions')
     .update({ status: 'canceled', updated_at: new Date().toISOString() })
     .eq('stripe_subscription_id', subscription.id)
     .eq('environment', env);
   if (error) console.error('Failed to cancel subscription', error);
+
+  const planName = previous?.plan_name || previous?.price_id || 'Defibrillator package';
+  const email = previous?.customer_email || null;
+  const ref = `Subscription reference: ${esc(subscription.id)}`;
+
+  if (email) {
+    await sendEmail({
+      to: [email],
+      subject: 'Your Smart Defibs plan has ended',
+      html: shell('Your plan has ended', `
+        <p style="margin:0 0 16px;color:#55575d;">Your <strong>${esc(planName)}</strong> plan has now ended and no further payments will be taken.</p>
+        <p style="margin:0 0 16px;color:#55575d;">We'll be in touch about collecting the equipment. If you'd like to restart cover at any point, reply to this email or call us on 090 664 1050.</p>`, ref),
+    });
+  }
+  await sendEmail({
+    to: NOTIFY_TO,
+    subject: `Plan ended — ${planName}${env === 'sandbox' ? ' (TEST)' : ''}`,
+    html: shell('Plan ended', kvTable([
+      ['Plan', esc(String(planName))],
+      ['Customer', esc(email || '')],
+      ['Ended', esc(fmtDate(new Date().toISOString()))],
+    ]), ref),
+    ...(email && { reply_to: email }),
+  });
 }
 
 async function handleWebhook(req: Request, env: StripeEnv) {
