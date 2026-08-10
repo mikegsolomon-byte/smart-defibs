@@ -148,9 +148,17 @@ export default function PricingPage() {
                     Defibrillator, cabinet & pads included in your plan — not a separate purchase.
                   </p>
 
-                  <div className="mt-auto pt-6">
-                    <Button asChild size="lg" className={`w-full ${plan.highlight ? "bg-accent text-accent-foreground hover:bg-accent/90 font-bold" : "bg-primary text-primary-foreground hover:bg-red-deep"}`}>
-                      <Link to="/quote">Get Started</Link>
+                  <div className="mt-auto pt-6 space-y-2">
+                    <PlanCheckoutDialog
+                      planName={plan.name}
+                      monthlyPriceId={plan.monthlyPriceId}
+                      yearlyPriceId={plan.yearlyPriceId}
+                      monthlyLabel={`${plan.monthly} / month`}
+                      yearlyLabel={`${plan.yearly} / year`}
+                      triggerClassName={`w-full ${plan.highlight ? "bg-accent text-accent-foreground hover:bg-accent/90 font-bold" : "bg-primary text-primary-foreground hover:bg-primary/90"}`}
+                    />
+                    <Button asChild variant="outline" size="lg" className="w-full border-accent/40 hover:bg-accent/10 hover:border-accent">
+                      <Link to="/quote">Contact us instead</Link>
                     </Button>
                   </div>
                 </motion.div>
