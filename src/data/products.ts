@@ -273,6 +273,7 @@ export const products: StaticProduct[] = [
     image: battery,
     priceFrom: "€160",
     priceNote: "incl. VAT · model-dependent capacity",
+    priceId: "amoul_aed_battery_price",
     shortDescription:
       "Genuine maintenance-free replacement battery with up to 5-year standby life and support for automatic self-testing.",
     longDescription:
