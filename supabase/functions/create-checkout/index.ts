@@ -65,7 +65,7 @@ async function createCheckoutSession(options: {
       customer: customerId,
       phone_number_collection: { enabled: true },
       metadata,
-      subscription_data: { metadata },
+      subscription_data: { metadata: { ...metadata, customer_email: options.customerEmail } },
     });
     return session.client_secret;
   }
