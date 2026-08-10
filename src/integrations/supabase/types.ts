@@ -191,6 +191,63 @@ export type Database = {
         }
         Relationships: []
       }
+      subscriptions: {
+        Row: {
+          amount: number | null
+          cancel_at_period_end: boolean
+          created_at: string
+          currency: string
+          current_period_end: string | null
+          current_period_start: string | null
+          customer_email: string | null
+          environment: string
+          id: string
+          plan_name: string | null
+          price_id: string | null
+          product_id: string | null
+          status: string
+          stripe_customer_id: string | null
+          stripe_subscription_id: string
+          updated_at: string
+        }
+        Insert: {
+          amount?: number | null
+          cancel_at_period_end?: boolean
+          created_at?: string
+          currency?: string
+          current_period_end?: string | null
+          current_period_start?: string | null
+          customer_email?: string | null
+          environment?: string
+          id?: string
+          plan_name?: string | null
+          price_id?: string | null
+          product_id?: string | null
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number | null
+          cancel_at_period_end?: boolean
+          created_at?: string
+          currency?: string
+          current_period_end?: string | null
+          current_period_start?: string | null
+          customer_email?: string | null
+          environment?: string
+          id?: string
+          plan_name?: string | null
+          price_id?: string | null
+          product_id?: string | null
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       suppressed_emails: {
         Row: {
           created_at: string

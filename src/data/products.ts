@@ -207,6 +207,7 @@ export const products: StaticProduct[] = [
     image: outdoorCabinet,
     priceFrom: "€399",
     priceNote: "incl. VAT · 230V mains powered",
+    priceId: "heated_outdoor_cabinet_price",
     shortDescription:
       "Heated, weatherproof outdoor cabinet keeping your AED at the right temperature for 24/7 public access.",
     longDescription:
@@ -240,6 +241,7 @@ export const products: StaticProduct[] = [
     galleryImages: [indoorCabinet1, indoorCabinet2],
     priceFrom: "€40",
     priceNote: "incl. VAT · easy wall installation",
+    priceId: "indoor_cabinet_price",
     shortDescription:
       "High-visibility indoor cabinet with audible alarm and clear viewing window, protecting your AED while keeping it quick to access.",
     longDescription:
@@ -271,6 +273,7 @@ export const products: StaticProduct[] = [
     image: battery,
     priceFrom: "€160",
     priceNote: "incl. VAT · model-dependent capacity",
+    priceId: "amoul_aed_battery_price",
     shortDescription:
       "Genuine maintenance-free replacement battery with up to 5-year standby life and support for automatic self-testing.",
     longDescription:
@@ -303,6 +306,7 @@ export const products: StaticProduct[] = [
     image: electrodePads,
     priceFrom: "€65",
     priceNote: "incl. VAT · 3–5 year shelf life (model dependent)",
+    priceId: "amoul_electrode_pads_price",
     shortDescription:
       "Genuine universal adult & paediatric electrode pads with clear placement diagrams and high-conductivity gel.",
     longDescription:
@@ -334,6 +338,7 @@ export const products: StaticProduct[] = [
     image: cprResponseKit,
     priceFrom: "€5",
     priceNote: "incl. VAT · single-use rescue essentials",
+    priceId: "aed_cpr_response_kit_price",
     shortDescription:
       "Compact kit with the essentials to support a rescue — shears, razor, face shield, gloves and more.",
     longDescription:

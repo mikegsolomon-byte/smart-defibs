@@ -6,6 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
+import { BuyProductDialog } from "@/components/BuyProductDialog";
 import amoulLogoAsset from "@/assets/amoul-logo.png.asset.json";
 import { products } from "@/data/products";
 
@@ -109,6 +110,9 @@ export default function ProductsPage() {
                           View details <ArrowRight className="h-4 w-4 ml-1.5" />
                         </Link>
                       </Button>
+                      {p.priceId && (
+                        <BuyProductDialog priceId={p.priceId} productTitle={p.title} />
+                      )}
                       <Button asChild variant="outline" className="w-full border-accent/40 text-foreground hover:bg-accent/10 hover:border-accent">
                         <Link to={`/quote?product=${p.handle}`}>
                           <FileText className="h-4 w-4 mr-1.5" /> Contact Us

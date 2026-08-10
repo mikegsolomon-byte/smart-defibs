@@ -4,6 +4,7 @@ import AmoulImporterChip from "@/components/AmoulImporterChip";
 import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
+import { PlanCheckoutDialog } from "@/components/PlanCheckoutDialog";
 import { Link } from "react-router-dom";
 import { Check, Minus } from "lucide-react";
 import { motion } from "framer-motion";
@@ -13,6 +14,8 @@ const plans = [
     name: "Indoor Defibrillator Package",
     monthly: "€39",
     yearly: "€429",
+    monthlyPriceId: "indoor_package_monthly",
+    yearlyPriceId: "indoor_package_yearly",
     desc: "Your defibrillator, indoor cabinet, pads and consumables — fully supplied and monitored, ready to use in sheltered indoor locations.",
     highlight: false,
     key: "indoor" as const,
@@ -21,6 +24,8 @@ const plans = [
     name: "Outdoor Defibrillator Package",
     monthly: "€49",
     yearly: "€539",
+    monthlyPriceId: "outdoor_package_monthly",
+    yearlyPriceId: "outdoor_package_yearly",
     desc: "Your defibrillator, plus a heated, weatherproof outdoor cabinet with climate monitoring — built for exposed, all-weather locations.",
     highlight: true,
     key: "outdoor" as const,
@@ -144,9 +149,17 @@ export default function PricingPage() {
                     Defibrillator, cabinet & pads included in your plan — not a separate purchase.
                   </p>
 
-                  <div className="mt-auto pt-6">
-                    <Button asChild size="lg" className={`w-full ${plan.highlight ? "bg-accent text-accent-foreground hover:bg-accent/90 font-bold" : "bg-primary text-primary-foreground hover:bg-red-deep"}`}>
-                      <Link to="/quote">Get Started</Link>
+                  <div className="mt-auto pt-6 space-y-2">
+                    <PlanCheckoutDialog
+                      planName={plan.name}
+                      monthlyPriceId={plan.monthlyPriceId}
+                      yearlyPriceId={plan.yearlyPriceId}
+                      monthlyLabel={`${plan.monthly} / month`}
+                      yearlyLabel={`${plan.yearly} / year`}
+                      triggerClassName={`w-full ${plan.highlight ? "bg-accent text-accent-foreground hover:bg-accent/90 font-bold" : "bg-primary text-primary-foreground hover:bg-primary/90"}`}
+                    />
+                    <Button asChild variant="outline" size="lg" className="w-full border-accent/40 hover:bg-accent/10 hover:border-accent">
+                      <Link to="/quote">Contact us instead</Link>
                     </Button>
                   </div>
                 </motion.div>
