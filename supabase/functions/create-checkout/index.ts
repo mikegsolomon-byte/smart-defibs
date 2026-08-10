@@ -64,7 +64,8 @@ async function createCheckoutSession(options: {
       return_url: options.returnUrl,
       customer: customerId,
       phone_number_collection: { enabled: true },
-      metadata,
+      automatic_tax: { enabled: true },
+      metadata: { ...metadata, managed_payments: "false" },
       subscription_data: { metadata: { ...metadata, customer_email: options.customerEmail } },
     });
     return session.client_secret;
@@ -77,9 +78,10 @@ async function createCheckoutSession(options: {
     return_url: options.returnUrl,
     shipping_address_collection: { allowed_countries: SHIPPING_COUNTRIES as unknown as string[] },
     phone_number_collection: { enabled: true },
+    automatic_tax: { enabled: true },
     ...(options.customerEmail && { customer_email: options.customerEmail }),
     payment_intent_data: { description: product.name },
-    metadata,
+    metadata: { ...metadata, managed_payments: "false" },
   });
 
   return session.client_secret;
