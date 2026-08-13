@@ -92,7 +92,6 @@ async function handleCheckoutCompleted(session: any, env: StripeEnv) {
 
   const productLine = `${esc(order.product_name || 'AED product')} × ${order.quantity}`;
   const amountStr = fmtAmount(order.amount, order.currency);
-  const { costLabel } = cadence(null, stored);
   const addrStr = formatAddress(shippingAddress);
 
   // Customer confirmation email
