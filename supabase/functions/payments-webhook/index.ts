@@ -217,6 +217,24 @@ const kvTable = (rows: [string, string][]) => `
 const fmtDate = (iso?: string | null) =>
   iso ? new Date(iso).toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
 
+// Billing cadence for email copy. Prefers the Stripe price interval, and falls
+// back to the length of the recorded billing period (yearly plans span ~365d).
+const cadence = (subscription?: any, row?: Record<string, any> | null) => {
+  const price = subscription?.items?.data?.[0]?.price?.recurring;
+  let interval: string | undefined = price?.interval;
+  const count = price?.interval_count ?? 1;
+  if (!interval && row?.current_period_start && row?.current_period_end) {
+    const days = (new Date(row.current_period_end).getTime() - new Date(row.current_period_start).getTime()) / 86400000;
+    interval = days > 45 ? 'year' : 'month';
+  }
+  const isYear = interval === 'year' || (interval === 'month' && count === 12);
+  return {
+    per: isYear ? 'per year' : 'per month',
+    costLabel: isYear ? 'Yearly cost' : 'Monthly cost',
+  };
+};
+
+
 async function getSubscriptionRow(subscriptionId: string, env: StripeEnv) {
   const { data } = await getSupabase()
     .from('subscriptions')
@@ -243,6 +261,7 @@ async function handleSubscriptionUpserted(subscription: any, env: StripeEnv, isN
 
   const planName = row.plan_name || row.price_id || 'Defibrillator package';
   const amountStr = fmtAmount(row.amount, row.currency);
+  const { per } = cadence(subscription, row);
   const ref = `Subscription reference: ${esc(row.stripe_subscription_id)}`;
 
   if (isNew) {
@@ -251,7 +270,7 @@ async function handleSubscriptionUpserted(subscription: any, env: StripeEnv, isN
       subject: `New plan subscription — ${planName}${env === 'sandbox' ? ' (TEST)' : ''}`,
       html: shell(`New plan subscription${env === 'sandbox' ? ' (TEST)' : ''}`, kvTable([
         ['Plan', esc(planName)],
-        ['Billing', `${esc(amountStr)} per month`],
+        ['Billing', `${esc(amountStr)} ${per}`],
         ['Status', esc(row.status)],
         ['Customer', esc(row.customer_email || '')],
         ['Renews', esc(fmtDate(row.current_period_end))],
@@ -294,7 +313,7 @@ async function handleSubscriptionUpserted(subscription: any, env: StripeEnv, isN
         to: [row.customer_email],
         subject: 'Your Smart Defibs plan has been updated',
         html: shell('Your plan has been updated', `
-          <p style="margin:0 0 16px;color:#55575d;">Your plan has changed from <strong>${esc(fromName)}</strong> to <strong>${esc(planName)}</strong>. Your new rate is <strong>${esc(amountStr)} per month</strong> and takes effect immediately.</p>
+          <p style="margin:0 0 16px;color:#55575d;">Your plan has changed from <strong>${esc(fromName)}</strong> to <strong>${esc(planName)}</strong>. Your new rate is <strong>${esc(amountStr)} ${per}</strong> and takes effect immediately.</p>
           ${kvTable([['New plan', esc(planName)], ['Next renewal', esc(fmtDate(row.current_period_end))]])}`, ref),
       });
     }
@@ -305,7 +324,7 @@ async function handleSubscriptionUpserted(subscription: any, env: StripeEnv, isN
         ['From', esc(String(fromName))],
         ['To', esc(planName)],
         ['Customer', esc(row.customer_email || '')],
-        ['New rate', `${esc(amountStr)} per month`],
+        ['New rate', `${esc(amountStr)} ${per}`],
       ]), ref),
       ...(row.customer_email && { reply_to: row.customer_email }),
     });
@@ -333,6 +352,7 @@ async function handleSubscriptionCheckout(session: any, env: StripeEnv) {
   if (!email) return;
   const stored = subscriptionId ? await getSubscriptionRow(subscriptionId, env) : null;
   const amountStr = fmtAmount(stored?.amount ?? session.amount_total, stored?.currency ?? session.currency);
+  const { costLabel } = cadence(null, stored);
   const addrStr = formatAddress(session.shipping_details?.address || customer.address || null);
 
   await sendEmail({
@@ -342,7 +362,7 @@ async function handleSubscriptionCheckout(session: any, env: StripeEnv) {
       <p style="margin:0 0 16px;color:#55575d;">Hi ${esc(customer.name || 'there')}, your <strong>${esc(planName)}</strong> plan is now active. Thank you for choosing Smart Defibs.</p>
       ${kvTable([
         ['Plan', esc(planName)],
-        ['Monthly cost', esc(amountStr)],
+        [costLabel, esc(amountStr)],
         ['Renews', esc(fmtDate(stored?.current_period_end))],
         ['Install address', addrStr],
       ])}
