@@ -217,6 +217,24 @@ const kvTable = (rows: [string, string][]) => `
 const fmtDate = (iso?: string | null) =>
   iso ? new Date(iso).toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
 
+// Billing cadence for email copy. Prefers the Stripe price interval, and falls
+// back to the length of the recorded billing period (yearly plans span ~365d).
+const cadence = (subscription?: any, row?: Record<string, any> | null) => {
+  const price = subscription?.items?.data?.[0]?.price?.recurring;
+  let interval: string | undefined = price?.interval;
+  const count = price?.interval_count ?? 1;
+  if (!interval && row?.current_period_start && row?.current_period_end) {
+    const days = (new Date(row.current_period_end).getTime() - new Date(row.current_period_start).getTime()) / 86400000;
+    interval = days > 45 ? 'year' : 'month';
+  }
+  const isYear = interval === 'year' || (interval === 'month' && count === 12);
+  return {
+    per: isYear ? 'per year' : 'per month',
+    costLabel: isYear ? 'Yearly cost' : 'Monthly cost',
+  };
+};
+
+
 async function getSubscriptionRow(subscriptionId: string, env: StripeEnv) {
   const { data } = await getSupabase()
     .from('subscriptions')
