@@ -261,7 +261,7 @@ async function handleSubscriptionUpserted(subscription: any, env: StripeEnv, isN
 
   const planName = row.plan_name || row.price_id || 'Defibrillator package';
   const amountStr = fmtAmount(row.amount, row.currency);
-  const { per, costLabel: _costLabel } = cadence(subscription, row);
+  const { per } = cadence(subscription, row);
   const ref = `Subscription reference: ${esc(row.stripe_subscription_id)}`;
 
   if (isNew) {
