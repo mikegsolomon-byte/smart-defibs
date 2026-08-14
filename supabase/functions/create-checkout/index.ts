@@ -63,6 +63,8 @@ async function createCheckoutSession(options: {
       ui_mode: "embedded_page",
       return_url: options.returnUrl,
       customer: customerId,
+      customer_update: { address: "auto", name: "auto" },
+      billing_address_collection: "required",
       phone_number_collection: { enabled: true },
       automatic_tax: { enabled: true },
       metadata: { ...metadata, managed_payments: "false" },
