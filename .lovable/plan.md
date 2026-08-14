@@ -1,19 +1,37 @@
-# Test Stripe payments in preview
+# Fix: purchase confirmation emails are being rejected
 
-No code changes are needed. The preview is running on Stripe's test environment (`pk_test_…`), so these test card numbers can be used safely.
+## What I found
 
-## Stripe test card numbers
+Order emails are triggered correctly, but they are **not being delivered**. The payments webhook logs from this morning's test purchase show two rejections (customer email and admin notification):
 
-| Result | Card number | Expiry | CVC |
-|---|---|---|---|
-| Successful payment | `4242 4242 4242 4242` | Any future date | Any 3 digits |
-| Declined card | `4000 0000 0000 0002` | Any future date | Any 3 digits |
-| 3D Secure required | `4000 0025 0000 3155` | Any future date | Any 3 digits |
+```text
+Resend error 403 — "You can only send testing emails to your own email address
+(mikegsolomon@gmail.com). To send emails to other recipients, please verify a
+domain ... and change the `from` address"
+```
 
-Use any valid future expiry and any 3-digit CVC. Enter a real-looking Irish/EU address at checkout. No real money is charged while the preview is in test mode.
+Cause: the payments webhook sends from `onboarding@resend.dev` (Resend's sandbox address), which can only email the account owner. The rest of the site (quote notifications, app emails) already sends from the verified domain `notify.smartdefibs.com`.
 
-## What to expect
+The order record itself is written to the database correctly — only the emails fail.
 
-- After payment, Stripe redirects to `/checkout/return?session_id=...`.
-- A successful test purchase creates a row in Admin → Orders.
-- The "Test mode" banner at the top of the preview is expected and disappears on the live published site.
+## Fix
+
+Switch the payments webhook to the verified sender domain so both emails go out:
+
+- Send from `Smart Defibs <noreply@notify.smartdefibs.com>` instead of `onboarding@resend.dev`.
+- Pass the verified sender domain with the send request, matching how the existing app-email function does it.
+- Keep the two existing sends: customer confirmation to the buyer, order notification to `info@smartdefibs.com` and `maciek_koczur@yahoo.com`.
+- Redeploy the webhook function.
+
+## Verification
+
+After deploying, make one more €0.50 AED Response Kit test purchase and confirm:
+- Buyer receives "Your Smart Defibs order confirmation".
+- Both admin addresses receive "New order — …".
+- Function logs show no Resend errors.
+
+## Technical notes
+
+- File: `supabase/functions/payments-webhook/index.ts` (`sendEmail` helper, `FROM_ADDR`).
+- Reference implementation for the verified-domain send: `supabase/functions/send-transactional-email/index.ts` (`SENDER_DOMAIN` / `FROM_DOMAIN`, `from` + `sender_domain` fields).
+- Same fix applies to all webhook emails (order, plan welcome, cancellation, plan change), since they share `sendEmail`.
