@@ -36,28 +36,73 @@ function formatAddress(addr: any): string {
     .filter(Boolean).map(esc).join(', ');
 }
 
-async function sendEmail(payload: { to: string[]; subject: string; html: string; reply_to?: string }) {
-  const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
-  const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-  if (!LOVABLE_API_KEY || !RESEND_API_KEY) {
-    console.error('Missing email gateway credentials');
-    return false;
+const htmlToText = (html: string) =>
+  html.replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/(p|div|tr|h[1-6]|li)>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
+// Sends through the project's app-email queue so mail goes out from the
+// verified sender domain (notify.smartdefibs.com).
+async function sendEmail(payload: {
+  to: string[];
+  subject: string;
+  html: string;
+  reply_to?: string;
+  label?: string;
+  idempotencyKey?: string;
+}) {
+  const supabase = getSupabase();
+  let ok = true;
+
+  for (const recipient of payload.to) {
+    const messageId = crypto.randomUUID();
+    const label = payload.label || 'payments-webhook';
+    const idempotencyKey = payload.idempotencyKey
+      ? `${payload.idempotencyKey}-${recipient}`
+      : messageId;
+
+    const { error: logError } = await supabase.from('email_send_log').insert({
+      message_id: messageId,
+      template_name: label,
+      recipient_email: recipient,
+      status: 'pending',
+    });
+    if (logError) console.error('Failed to log email', logError);
+
+    const { error } = await supabase.rpc('enqueue_email', {
+      queue_name: 'transactional_emails',
+      payload: {
+        message_id: messageId,
+        to: recipient,
+        from: FROM_ADDR,
+        sender_domain: SENDER_DOMAIN,
+        reply_to: payload.reply_to,
+        subject: payload.subject,
+        html: payload.html,
+        text: htmlToText(payload.html),
+        purpose: 'transactional',
+        label,
+        idempotency_key: idempotencyKey,
+        queued_at: new Date().toISOString(),
+      },
+    });
+    if (error) {
+      console.error('Failed to enqueue email', recipient, error);
+      ok = false;
+    }
   }
-  const resp = await fetch(`${RESEND_GATEWAY_URL}/emails`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${LOVABLE_API_KEY}`,
-      'X-Connection-Api-Key': RESEND_API_KEY,
-    },
-    body: JSON.stringify({ from: FROM_ADDR, ...payload }),
-  });
-  if (!resp.ok) {
-    console.error('Resend error', resp.status, await resp.text().catch(() => ''));
-    return false;
-  }
-  return true;
+
+  return ok;
 }
+
 
 async function handleCheckoutCompleted(session: any, env: StripeEnv) {
   const meta = session.metadata || {};
