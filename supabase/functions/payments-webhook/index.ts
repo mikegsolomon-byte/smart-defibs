@@ -49,6 +49,46 @@ const htmlToText = (html: string) =>
     .replace(/\n{3,}/g, '\n\n')
     .trim();
 
+function generateToken(): string {
+  const bytes = new Uint8Array(32);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+// One unsubscribe token per email address (required by the email API).
+async function getUnsubscribeToken(email: string): Promise<string | null> {
+  const supabase = getSupabase();
+  const normalized = email.toLowerCase();
+
+  const { data: existing, error: lookupError } = await supabase
+    .from('email_unsubscribe_tokens')
+    .select('token, used_at')
+    .eq('email', normalized)
+    .maybeSingle();
+
+  if (lookupError) {
+    console.error('Unsubscribe token lookup failed', lookupError);
+    return null;
+  }
+  if (existing?.token) return existing.token as string;
+
+  const token = generateToken();
+  const { error: upsertError } = await supabase
+    .from('email_unsubscribe_tokens')
+    .upsert({ token, email: normalized }, { onConflict: 'email', ignoreDuplicates: true });
+  if (upsertError) {
+    console.error('Failed to create unsubscribe token', upsertError);
+    return null;
+  }
+
+  const { data: stored } = await supabase
+    .from('email_unsubscribe_tokens')
+    .select('token')
+    .eq('email', normalized)
+    .maybeSingle();
+  return (stored?.token as string) ?? null;
+}
+
 // Sends through the project's app-email queue so mail goes out from the
 // verified sender domain (notify.smartdefibs.com).
 async function sendEmail(payload: {
@@ -61,6 +101,7 @@ async function sendEmail(payload: {
 }) {
   const supabase = getSupabase();
   let ok = true;
+
 
   for (const recipient of payload.to) {
     const messageId = crypto.randomUUID();
