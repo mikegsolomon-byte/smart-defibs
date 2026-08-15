@@ -110,6 +110,13 @@ async function sendEmail(payload: {
       ? `${payload.idempotencyKey}-${recipient}`
       : messageId;
 
+    const unsubscribeToken = await getUnsubscribeToken(recipient);
+    if (!unsubscribeToken) {
+      console.error('Skipping email — no unsubscribe token', recipient);
+      ok = false;
+      continue;
+    }
+
     const { error: logError } = await supabase.from('email_send_log').insert({
       message_id: messageId,
       template_name: label,
@@ -130,11 +137,13 @@ async function sendEmail(payload: {
         html: payload.html,
         text: htmlToText(payload.html),
         purpose: 'transactional',
+        unsubscribe_token: unsubscribeToken,
         label,
         idempotency_key: idempotencyKey,
         queued_at: new Date().toISOString(),
       },
     });
+
     if (error) {
       console.error('Failed to enqueue email', recipient, error);
       ok = false;
