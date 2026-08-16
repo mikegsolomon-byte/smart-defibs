@@ -33,9 +33,9 @@ export function BuyProductDialog({ priceId, productTitle }: BuyProductDialogProp
       <DialogTrigger asChild>
         <Button
           size="lg"
-          className="bg-primary text-primary-foreground hover:bg-primary/90 btn-micro shadow-md flex-1"
+          className="bg-primary text-primary-foreground hover:bg-primary/90 btn-micro shadow-md flex-1 w-full h-14 text-base sm:text-lg font-bold rounded-xl"
         >
-          <ShoppingCart className="h-4 w-4 mr-2" /> Buy Now
+          <ShoppingCart className="h-5 w-5 mr-2" /> Buy Now
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
