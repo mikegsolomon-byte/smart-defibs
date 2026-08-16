@@ -336,7 +336,7 @@ export const products: StaticProduct[] = [
     brand: "Smart Defibs",
     category: "Accessory",
     image: cprResponseKit,
-    priceFrom: "€0.50",
+    priceFrom: "€5",
     priceNote: "incl. VAT · single-use rescue essentials",
     priceId: "aed_cpr_response_kit_price",
     shortDescription:
