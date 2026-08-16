@@ -21,7 +21,7 @@ export default function SiteFooter() {
             <h4 className="font-heading font-semibold mb-6 text-red-bright text-sm uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-3 text-sm text-secondary-foreground/85">
               {[
-                { label: "Products", to: "/products" },
+                { label: "Shop", to: "/products" },
                 { label: "Sector Solutions", to: "/sectors" },
                 { label: "Training", to: "/training" },
                 { label: "Monitoring & Support", to: "/servicing" },
