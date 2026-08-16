@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import aedLogo from "@/assets/aed-logo.png";
 
 const navLinks = [
-  { label: "Devices", href: "/products" },
+  { label: "Shop", href: "/products" },
   { label: "Plans", href: "/pricing" },
   { label: "Training", href: "/training" },
   { label: "Support", href: "/servicing" },
