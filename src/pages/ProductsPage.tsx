@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Award, Check, ArrowRight, FileText } from "lucide-react";
+import { Award, Check, FileText } from "lucide-react";
 import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -105,11 +105,6 @@ export default function ProductsPage() {
                     </div>
 
                     <div className="flex flex-col gap-2">
-                      <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 btn-micro shadow-sm w-full">
-                        <Link to={`/product/${p.handle}`}>
-                          View details <ArrowRight className="h-4 w-4 ml-1.5" />
-                        </Link>
-                      </Button>
                       {p.priceId && (
                         <BuyProductDialog priceId={p.priceId} productTitle={p.title} />
                       )}
