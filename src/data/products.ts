@@ -71,7 +71,7 @@ export const products: StaticProduct[] = [
     category: "Defibrillator",
     image: amoulI3,
     galleryImages: i3Gallery,
-    priceFrom: "€1,299",
+    priceFrom: "€1,300",
     priceNote: "incl. VAT · includes pads & 5-year battery",
     priceId: "aed_i3_4g_price",
     shortDescription:
@@ -106,7 +106,7 @@ export const products: StaticProduct[] = [
     category: "Defibrillator",
     image: amoulI5,
     galleryImages: i5Gallery,
-    priceFrom: "€1,399",
+    priceFrom: "€1,400",
     priceNote: "incl. VAT · pads & 5-year battery included",
     priceId: "aed_i5_view_4g_price",
     shortDescription:
@@ -140,7 +140,8 @@ export const products: StaticProduct[] = [
     brand: "Amoul",
     category: "Defibrillator",
     image: amoulI5,
-    priceFrom: "€1,649",
+    galleryImages: i5Gallery,
+    priceFrom: "€1,650",
     priceNote: "incl. VAT · pads & 5-year battery included",
     priceId: "aed_i5_view_cpr_4g_price",
     shortDescription:
@@ -175,7 +176,7 @@ export const products: StaticProduct[] = [
     brand: "Progetti Medical",
     category: "CPR Device",
     image: chestEr,
-    priceFrom: "€349",
+    priceFrom: "€350",
     priceNote: "incl. VAT · for training & real emergencies",
     priceId: "chest_er_device_price",
     shortDescription:
@@ -210,7 +211,7 @@ export const products: StaticProduct[] = [
     brand: "Smart Defibs",
     category: "Cabinet",
     image: outdoorCabinet,
-    priceFrom: "€399",
+    priceFrom: "€400",
     priceNote: "incl. VAT · 230V mains powered",
     priceId: "heated_outdoor_cabinet_price",
     shortDescription:
