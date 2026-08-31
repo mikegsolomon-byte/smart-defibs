@@ -55,7 +55,7 @@ export default function ProductsPage() {
             <div className="mb-10 max-w-2xl">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent mb-2">Our Range</p>
               <h2 className="font-heading font-extrabold text-3xl md:text-4xl text-foreground">
-                Lifesaving equipment, <span className="text-primary">built to deploy</span>
+                We monitor your AED, <span className="text-primary">so you don't have to.</span>
               </h2>
             </div>
 
@@ -126,25 +126,8 @@ export default function ProductsPage() {
               ))}
             </div>
 
-            {/* Why buy from us */}
-            <div className="mt-16 grid md:grid-cols-3 gap-4">
-              {[
-                "Direct Irish importer — genuine warranty",
-                "Next-day delivery across Ireland",
-                "Full PHECC-aligned training included",
-              ].map((line) => (
-                <div key={line} className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">
-                  <div className="flex-shrink-0 h-8 w-8 rounded-full bg-accent/20 flex items-center justify-center">
-                    <Check className="h-4 w-4 text-accent-foreground" />
-                  </div>
-                  <p className="text-sm font-semibold text-card-foreground">{line}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
-
-        <CTABanner />
       </main>
       <SiteFooter />
     </div>
