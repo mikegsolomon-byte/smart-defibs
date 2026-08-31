@@ -26,6 +26,7 @@ export default function SiteFooter() {
                 { label: "Training", to: "/training" },
                 { label: "Monitoring & Support", to: "/servicing" },
                 { label: "Pricing", to: "/pricing" },
+                { label: "Blog", to: "/blog" },
               ].map((l) => (
                 <li key={l.to}>
                   <Link to={l.to} className="hover:text-red-bright transition-colors inline-block story-link">{l.label}</Link>
