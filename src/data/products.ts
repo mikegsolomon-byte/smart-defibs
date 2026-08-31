@@ -1,11 +1,13 @@
 import amoulI3Asset from "@/assets/amoul-i3.png.asset.json";
+import amoulI3LeftAsset from "@/assets/amoul-i3-left.png.asset.json";
 import amoulI5Old from "@/assets/amoul-i5.jpg";
 import i5OpenWithBag2Asset from "@/assets/i5_open_with_bag_2.jpg.asset.json";
-import chestErAsset from "@/assets/chest-er.png.asset.json";
+import i5OpenPadsLeftAsset from "@/assets/i5_open_pads_left.jpg.asset.json";
+import chestErAsset from "@/assets/chest-er-left.png.asset.json";
 import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
 import indoorCabinet1Asset from "@/assets/indoor-cabinet-1.png.asset.json";
 import indoorCabinet2Asset from "@/assets/indoor-cabinet-2.png.asset.json";
-import batteryAsset from "@/assets/amoul-battery.png.asset.json";
+import batteryAsset from "@/assets/amoul-battery-left.png.asset.json";
 import electrodePadsAsset from "@/assets/amoul-electrode-pads.png.asset.json";
 import cprResponseKitAsset from "@/assets/cpr-response-kit.png.asset.json";
 import i5ClosedInBagAsset from "@/assets/i5_closed_in_bag.jpg.asset.json";
@@ -15,8 +17,9 @@ import i5InBagBackAsset from "@/assets/i5_in_bag_back.jpg.asset.json";
 import i3ClosedWithBagAsset from "@/assets/i3_closed_with_bag.jpg.asset.json";
 import i3InBagBackAsset from "@/assets/i3_in_bag_back.jpg.asset.json";
 
-const amoulI3 = i3ClosedWithBagAsset.url;
+const amoulI3 = amoulI3LeftAsset.url;
 const i3Gallery = [
+  amoulI3LeftAsset.url,
   i3ClosedWithBagAsset.url,
   i3InBagBackAsset.url,
   amoulI3Asset.url,
@@ -28,8 +31,9 @@ const indoorCabinet2 = indoorCabinet2Asset.url;
 const battery = batteryAsset.url;
 const electrodePads = electrodePadsAsset.url;
 const cprResponseKit = cprResponseKitAsset.url;
-const amoulI5 = i5OpenWithBag2Asset.url;
+const amoulI5 = i5OpenPadsLeftAsset.url;
 const i5Gallery = [
+  i5OpenPadsLeftAsset.url,
   i5OpenWithBag2Asset.url,
   i5ClosedInBagAsset.url,
   i5OpenWithBagAsset.url,
@@ -37,6 +41,7 @@ const i5Gallery = [
   i5InBagBackAsset.url,
   amoulI5Old,
 ];
+
 
 export type StaticProduct = {
   handle: string;
@@ -66,7 +71,7 @@ export const products: StaticProduct[] = [
     category: "Defibrillator",
     image: amoulI3,
     galleryImages: i3Gallery,
-    priceFrom: "€1,299",
+    priceFrom: "€1,300",
     priceNote: "incl. VAT · includes pads & 5-year battery",
     priceId: "aed_i3_4g_price",
     shortDescription:
@@ -101,7 +106,7 @@ export const products: StaticProduct[] = [
     category: "Defibrillator",
     image: amoulI5,
     galleryImages: i5Gallery,
-    priceFrom: "€1,399",
+    priceFrom: "€1,400",
     priceNote: "incl. VAT · pads & 5-year battery included",
     priceId: "aed_i5_view_4g_price",
     shortDescription:
@@ -135,7 +140,8 @@ export const products: StaticProduct[] = [
     brand: "Amoul",
     category: "Defibrillator",
     image: amoulI5,
-    priceFrom: "€1,649",
+    galleryImages: i5Gallery,
+    priceFrom: "€1,650",
     priceNote: "incl. VAT · pads & 5-year battery included",
     priceId: "aed_i5_view_cpr_4g_price",
     shortDescription:
@@ -170,7 +176,7 @@ export const products: StaticProduct[] = [
     brand: "Progetti Medical",
     category: "CPR Device",
     image: chestEr,
-    priceFrom: "€349",
+    priceFrom: "€350",
     priceNote: "incl. VAT · for training & real emergencies",
     priceId: "chest_er_device_price",
     shortDescription:
@@ -205,7 +211,7 @@ export const products: StaticProduct[] = [
     brand: "Smart Defibs",
     category: "Cabinet",
     image: outdoorCabinet,
-    priceFrom: "€399",
+    priceFrom: "€400",
     priceNote: "incl. VAT · 230V mains powered",
     priceId: "heated_outdoor_cabinet_price",
     shortDescription:
