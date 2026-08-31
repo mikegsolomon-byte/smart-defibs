@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Plans", href: "/pricing" },
   { label: "Training", href: "/training" },
   { label: "Support", href: "/servicing" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
 ];
 
