@@ -56,8 +56,12 @@ function AnimatedRoutes() {
         <Route path="/servicing" element={<PageTransition><ServicingPage /></PageTransition>} />
         <Route path="/checkout/return" element={<PageTransition><CheckoutReturn /></PageTransition>} />
 
+        <Route path="/blog" element={<PageTransition><BlogPage /></PageTransition>} />
+        <Route path="/blog/:slug" element={<PageTransition><BlogPostPage /></PageTransition>} />
+
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/orders" element={<RequireAdmin><AdminOrders /></RequireAdmin>} />
+        <Route path="/admin/blog" element={<RequireAdmin><AdminBlog /></RequireAdmin>} />
 
         <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
         <Route path="/pricing" element={<PageTransition><PricingPage /></PageTransition>} />
