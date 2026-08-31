@@ -67,55 +67,62 @@ export default function ProductsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="group flex flex-col bg-card border-2 border-border rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:border-accent hover:-translate-y-1 transition-all duration-300"
+                  className="group flex flex-col bg-card border-2 border-border rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:border-accent hover:-translate-y-1 transition-all duration-300 focus-within:border-accent"
                 >
-                  <div className="relative bg-gradient-to-br from-muted to-background aspect-[4/3] flex items-center justify-center overflow-hidden">
-                    {p.flagship && (
-                      <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-accent text-accent-foreground px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-md">
-                        <Award className="h-3 w-3" />
-                        Flagship
-                      </div>
-                    )}
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      loading="lazy"
-                      width={1024}
-                      height={1024}
-                      className="max-h-[220px] w-auto object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-
-                  <div className="flex flex-col flex-1 p-6">
-                    <div className="flex items-center gap-2 mb-3 flex-wrap">
-                      {p.badges.slice(0, 2).map((b) => (
-                        <span key={b} className="text-[10px] font-semibold bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-wider">
-                          {b}
-                        </span>
-                      ))}
-                    </div>
-                    <h3 className="font-heading font-extrabold text-xl text-card-foreground mb-1">{p.title}</h3>
-                    <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">{p.subtitle}</p>
-                    <p className="text-sm text-muted-foreground mb-5 flex-1">{p.shortDescription}</p>
-
-                    <div className="mb-5 pt-4 border-t border-border">
-                      <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">From</p>
-                      <p className="font-heading font-extrabold text-2xl text-primary leading-tight">{p.priceFrom}</p>
-                      <p className="text-[11px] text-muted-foreground">{p.priceNote}</p>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                      {p.priceId && (
-                        <BuyProductDialog priceId={p.priceId} productTitle={p.title} />
+                  <Link
+                    to={`/product/${p.handle}`}
+                    aria-label={`View details for ${p.title}`}
+                    className="flex flex-col flex-1 rounded-t-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <div className="relative bg-gradient-to-br from-muted to-background aspect-[4/3] flex items-center justify-center overflow-hidden">
+                      {p.flagship && (
+                        <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 bg-accent text-accent-foreground px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-md">
+                          <Award className="h-3 w-3" />
+                          Flagship
+                        </div>
                       )}
-                      <Button asChild variant="outline" className="w-full border-accent/40 text-foreground hover:bg-accent/10 hover:border-accent">
-                        <Link to={`/quote?product=${p.handle}`}>
-                          <FileText className="h-4 w-4 mr-1.5" /> Contact Us
-                        </Link>
-                      </Button>
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        loading="lazy"
+                        width={1024}
+                        height={1024}
+                        className="max-h-[220px] w-auto object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
+
+                    <div className="flex flex-col flex-1 p-6 pb-0">
+                      <div className="flex items-center gap-2 mb-3 flex-wrap">
+                        {p.badges.slice(0, 2).map((b) => (
+                          <span key={b} className="text-[10px] font-semibold bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-wider">
+                            {b}
+                          </span>
+                        ))}
+                      </div>
+                      <h3 className="font-heading font-extrabold text-xl text-card-foreground mb-1 group-hover:text-primary transition-colors">{p.title}</h3>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">{p.subtitle}</p>
+                      <p className="text-sm text-muted-foreground mb-5 flex-1">{p.shortDescription}</p>
+
+                      <div className="mb-5 pt-4 border-t border-border">
+                        <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">From</p>
+                        <p className="font-heading font-extrabold text-2xl text-primary leading-tight">{p.priceFrom}</p>
+                        <p className="text-[11px] text-muted-foreground">{p.priceNote}</p>
+                      </div>
+                    </div>
+                  </Link>
+
+                  <div className="flex flex-col gap-2 p-6 pt-0">
+                    {p.priceId && (
+                      <BuyProductDialog priceId={p.priceId} productTitle={p.title} />
+                    )}
+                    <Button asChild variant="outline" className="w-full border-accent/40 text-foreground hover:bg-accent/10 hover:border-accent">
+                      <Link to={`/quote?product=${p.handle}`}>
+                        <FileText className="h-4 w-4 mr-1.5" /> Contact Us
+                      </Link>
+                    </Button>
                   </div>
                 </motion.article>
+
               ))}
             </div>
 

@@ -18,6 +18,9 @@ import ServicingPage from "./pages/ServicingPage.tsx";
 import CheckoutReturn from "./pages/CheckoutReturn.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminOrders from "./pages/AdminOrders.tsx";
+import AdminBlog from "./pages/AdminBlog.tsx";
+import BlogPage from "./pages/BlogPage.tsx";
+import BlogPostPage from "./pages/BlogPostPage.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
@@ -53,8 +56,12 @@ function AnimatedRoutes() {
         <Route path="/servicing" element={<PageTransition><ServicingPage /></PageTransition>} />
         <Route path="/checkout/return" element={<PageTransition><CheckoutReturn /></PageTransition>} />
 
+        <Route path="/blog" element={<PageTransition><BlogPage /></PageTransition>} />
+        <Route path="/blog/:slug" element={<PageTransition><BlogPostPage /></PageTransition>} />
+
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/orders" element={<RequireAdmin><AdminOrders /></RequireAdmin>} />
+        <Route path="/admin/blog" element={<RequireAdmin><AdminBlog /></RequireAdmin>} />
 
         <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
         <Route path="/pricing" element={<PageTransition><PricingPage /></PageTransition>} />
