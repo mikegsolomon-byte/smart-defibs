@@ -18,6 +18,9 @@ import ServicingPage from "./pages/ServicingPage.tsx";
 import CheckoutReturn from "./pages/CheckoutReturn.tsx";
 import AdminLogin from "./pages/AdminLogin.tsx";
 import AdminOrders from "./pages/AdminOrders.tsx";
+import AdminBlog from "./pages/AdminBlog.tsx";
+import BlogPage from "./pages/BlogPage.tsx";
+import BlogPostPage from "./pages/BlogPostPage.tsx";
 
 import AboutPage from "./pages/AboutPage.tsx";
 import PricingPage from "./pages/PricingPage.tsx";
