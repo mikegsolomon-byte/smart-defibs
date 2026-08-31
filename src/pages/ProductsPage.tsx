@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Award, Check, FileText } from "lucide-react";
+import { Award, FileText } from "lucide-react";
 import SEO from "@/components/SEO";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import CTABanner from "@/components/CTABanner";
+
 import { Button } from "@/components/ui/button";
 import { BuyProductDialog } from "@/components/BuyProductDialog";
 import amoulLogoAsset from "@/assets/amoul-logo.png.asset.json";
