@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 
 const badges = [
   "Exclusive Amoul® Partner",
-  "PHECC Aligned Training",
+  "CE Marked",
+  "PHECC Certified Training",
+  "IHF Certified Training",
+  "HSA Certified Training",
   "Speedy Delivery",
 ];
 

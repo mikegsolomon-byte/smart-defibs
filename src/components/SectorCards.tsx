@@ -61,11 +61,7 @@ export default function SectorCards() {
           transition={{ duration: 0.5 }}
           className="text-center mb-8"
         >
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] bg-accent text-accent-foreground px-3 py-1 rounded-full mb-3">Sectors</span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-3 font-extrabold tracking-tight">Solutions for every sector</h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
-            Select your sector and we'll guide you to the right AED solution
-          </p>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight">Solutions for every sector</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">

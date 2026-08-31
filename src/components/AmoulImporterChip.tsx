@@ -26,7 +26,7 @@ export default function AmoulImporterChip({ variant }: { variant?: "dark" | "lig
             <img
               src={amoulLogo}
               alt="Amoul"
-              className="h-5 sm:h-7 w-auto object-contain"
+              className="h-8 sm:h-11 w-auto object-contain"
               onError={(e) => {
                 const img = e.currentTarget;
                 img.style.display = "none";

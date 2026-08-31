@@ -5,7 +5,7 @@ import SiteFooter from "@/components/SiteFooter";
 import CTABanner from "@/components/CTABanner";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ShieldCheck, HeartPulse, Stethoscope, Check, Baby, Syringe, Cross, Award, Activity } from "lucide-react";
+import { ShieldCheck, HeartPulse, Stethoscope, Check, Baby, Syringe, Cross, Award, Activity, Dumbbell, Users, ShieldAlert } from "lucide-react";
 import { motion } from "framer-motion";
 
 const heartSafeIncludes = [
@@ -38,13 +38,18 @@ const courses = [
 ];
 
 const courseTiles = [
-  { icon: HeartPulse, title: "CFR", desc: "Cardiac First Responder" },
-  { icon: Activity, title: "CFR-A", desc: "Cardiac First Responder — Advanced" },
-  { icon: Stethoscope, title: "FAR", desc: "First Aid Response" },
-  { icon: Cross, title: "Emergency First Aid", desc: "Emergency First Aid at work" },
-  { icon: Baby, title: "Paediatric First Aid", desc: "First aid for infants & children" },
+  { icon: HeartPulse, title: "CFR", desc: "Cardiac First Response" },
+  { icon: Activity, title: "CFR-A", desc: "Cardiac First Response (Advanced)" },
+  { icon: Stethoscope, title: "FAR", desc: "First Aid Responder" },
+  { icon: HeartPulse, title: "BLS", desc: "Basic Life Support" },
+  { icon: Activity, title: "ALS", desc: "Advanced Life Support" },
+  { icon: Award, title: "EFR", desc: "Emergency First Responder" },
+  { icon: Dumbbell, title: "Sports First Aid", desc: "Pitch-side and club first aid" },
+  { icon: Cross, title: "Basic First Aid (FAE)", desc: "Everyday first aid essentials" },
+  { icon: Baby, title: "Paediatric First Aid (FAE)", desc: "First aid for infants & children" },
   { icon: Syringe, title: "Anaphylaxis — EpiPen", desc: "EpiPen management & administration" },
-  { icon: Award, title: "EFR", desc: "Emergency First Response" },
+  { icon: Users, title: "PMH", desc: "People Moving and Handling" },
+  { icon: ShieldAlert, title: "PMAV", desc: "Prevention & Management of Aggression and Violence" },
 ];
 
 export default function TrainingPage() {

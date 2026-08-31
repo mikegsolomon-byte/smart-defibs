@@ -56,14 +56,18 @@ export default function HeroSection() {
               Get a defibrillator for your <span className="relative inline-block"><span className="relative z-10">premises</span><span aria-hidden className="absolute left-0 right-0 bottom-1 h-3 bg-accent/70 -z-0 rounded-sm" /></span> — from €39 a month.
             </motion.h1>
 
+            <motion.p variants={fadeUp} className="font-heading font-extrabold text-lg lg:text-2xl text-primary mb-4">
+              Every AED ready. Every day. Every time.
+            </motion.p>
+
             <motion.p variants={fadeUp} className="text-lg lg:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed">
-              Your AED, cabinet, pads and remote monitoring — all included, with no large upfront cost. We supply it, install it, and keep it ready to save a life, every single day.
+              Your AED, cabinet, pads and remote monitoring — all included, with no upfront cost. We supply it, we monitor it, and keep it ready to save a life, every single day.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-red-deep text-base px-8 btn-micro shadow-md shadow-primary/20">
                 <Link to="/quote">
-                  Get Your Defibrillator <ArrowRight className="ml-1 h-4 w-4" />
+                  Get a Quote <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-2 border-foreground/40 text-foreground hover:bg-muted text-base px-8 btn-micro">

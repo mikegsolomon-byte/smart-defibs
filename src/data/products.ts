@@ -78,8 +78,7 @@ export const products: StaticProduct[] = [
       "Connected AED with illuminated rescue diagrams, clear voice prompts and 4G remote monitoring. Adult & paediatric pads included.",
     longDescription:
       "The Amoul i3 4G delivers clear, guided rescue support with illuminated diagrams and voice prompts, while 4G connectivity enables remote monitoring and automatic self-tests. Backed by an 8-year manufacturer warranty, a long-life 5-year battery and IP55 dust & water protection — ready for indoor and outdoor deployment across Ireland.",
-    badges: ["CE Marked", "IP55", "4G Connected"],
-    flagship: true,
+    badges: ["Remote Monitoring", "IP55", "CE Marked", "4G Connected"],
     highlights: [
       { title: "4G remote monitoring", desc: "Automatic daily, weekly & monthly self-tests" },
       { title: "Illuminated rescue diagrams", desc: "Clear visual & voice prompts" },
@@ -113,7 +112,7 @@ export const products: StaticProduct[] = [
       "Premium AED with a 7-inch HD colour display, real-time ECG and 4G remote monitoring for clear, confident rescues.",
     longDescription:
       "The Amoul i5 View 4G adds a 7-inch HD colour display and real-time ECG to clear voice prompts, giving responders full visual guidance during a rescue. 4G connectivity enables remote monitoring and automatic self-tests, while an 8-year warranty, 5-year battery and IP55 protection make it ideal for high-traffic public-access deployments.",
-    badges: ["CE Marked", "7\" HD Display", "4G Connected"],
+    badges: ["Remote Monitoring", "7\" HD Display", "IP55", "CE Marked"],
     highlights: [
       { title: "7\" HD colour display", desc: "Clear visual guidance & voice prompts" },
       { title: "Real-time ECG display", desc: "Live rhythm feedback" },
@@ -148,7 +147,8 @@ export const products: StaticProduct[] = [
       "Our most advanced AED — integrated real-time CPR feedback, 7-inch HD display, real-time ECG and 4G remote monitoring.",
     longDescription:
       "The Amoul i5 View CPR 4G combines integrated real-time CPR feedback with a 7-inch HD colour display and real-time ECG, coaching responders to deliver high-quality compressions while guiding defibrillation. 4G connectivity enables remote monitoring and automatic self-tests, backed by an 8-year warranty, 5-year battery and IP55 protection.",
-    badges: ["CE Marked", "CPR Feedback", "7\" HD Display"],
+    badges: ["Remote Monitoring", "CPR Feedback", "7\" HD Display", "IP55", "CE Marked"],
+    flagship: true,
     highlights: [
       { title: "Integrated CPR feedback", desc: "Real-time compression coaching" },
       { title: "7\" HD colour display", desc: "Clear visual guidance & voice prompts" },
