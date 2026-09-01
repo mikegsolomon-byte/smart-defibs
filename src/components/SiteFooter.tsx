@@ -50,7 +50,7 @@ export default function SiteFooter() {
             <h4 className="font-heading font-semibold mb-6 text-red-bright text-sm uppercase tracking-wider">Contact</h4>
             <ul className="space-y-4 text-sm text-secondary-foreground/85">
               <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-red-bright flex-shrink-0" /> 090 664 1050</li>
-              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-red-bright flex-shrink-0" /> info@smartdefibs.ie</li>
+              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-red-bright flex-shrink-0" /> sales@smartdefibs.com</li>
               <li className="flex items-start gap-3"><MapPin className="h-4 w-4 text-red-bright flex-shrink-0 mt-0.5" /> <span>Unit 18, The Cube FlexiSpace,<br />Lanesborough Road,<br />Co. Roscommon F42 DX61, Ireland</span></li>
             </ul>
           </div>

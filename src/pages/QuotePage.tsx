@@ -174,7 +174,7 @@ export default function QuotePage() {
             >
               {[
                 { icon: Phone, label: "090 664 1050", desc: "Call us for immediate assistance" },
-                { icon: Mail, label: "info@smartdefibs.ie", desc: "Email us any time" },
+                { icon: Mail, label: "sales@smartdefibs.com", desc: "Email us any time" },
               ].map((item) => (
                 <div key={item.label} className="flex gap-4 items-start">
                   <div className="p-3 rounded-xl bg-primary/10 flex-shrink-0">

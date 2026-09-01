@@ -1,7 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { type StripeEnv, verifyWebhook } from "../_shared/stripe.ts";
 
-const NOTIFY_TO = ['info@smartdefibs.com', 'maciek_koczur@yahoo.com'];
+const NOTIFY_TO = ['sales@smartdefibs.com', 'maciek_koczur@yahoo.com'];
 // Verified sender domain used by the app-email infrastructure.
 const SENDER_DOMAIN = 'notify.smartdefibs.com';
 const FROM_ADDR = `Smart Defibs <noreply@${SENDER_DOMAIN}>`;
@@ -202,7 +202,7 @@ async function handleCheckoutCompleted(session: any, env: StripeEnv) {
           ${addrStr ? `<tr><td style="padding:8px 12px;background:#f5f5f5;font-weight:bold;vertical-align:top;">Delivery to</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${addrStr}</td></tr>` : ''}
         </table>
         <p style="margin-top:24px;font-size:12px;color:#999;">Order reference: ${esc(order.stripe_session_id)}</p>
-        <p style="margin-top:8px;font-size:12px;color:#999;">Smart Defibs — info@smartdefibs.ie</p>
+        <p style="margin-top:8px;font-size:12px;color:#999;">Smart Defibs — sales@smartdefibs.com</p>
       </div>`;
     await sendEmail({
       to: [order.customer_email],
@@ -302,7 +302,7 @@ const shell = (title: string, bodyHtml: string, footer?: string) => `
     <h2 style="margin:0 0 12px;color:#1f7a3d;">${title}</h2>
     ${bodyHtml}
     ${footer ? `<p style="margin-top:24px;font-size:12px;color:#999;">${footer}</p>` : ''}
-    <p style="margin-top:8px;font-size:12px;color:#999;">Smart Defibs — info@smartdefibs.com</p>
+    <p style="margin-top:8px;font-size:12px;color:#999;">Smart Defibs — sales@smartdefibs.com</p>
   </div>`;
 
 const kvTable = (rows: [string, string][]) => `
@@ -470,7 +470,7 @@ async function handleSubscriptionCheckout(session: any, env: StripeEnv) {
         <li>Ongoing servicing and technical support</li>
       </ul>
       <h3 style="margin:24px 0 8px;font-size:16px;">What happens next</h3>
-      <p style="margin:0 0 16px;color:#55575d;">Our team will contact you within one working day to arrange delivery, installation and any training you need. You can reach us any time at info@smartdefibs.com or 090 664 1050.</p>`,
+      <p style="margin:0 0 16px;color:#55575d;">Our team will contact you within one working day to arrange delivery, installation and any training you need. You can reach us any time at sales@smartdefibs.com or 090 664 1050.</p>`,
       subscriptionId ? `Subscription reference: ${esc(subscriptionId)}` : undefined),
   });
 }
