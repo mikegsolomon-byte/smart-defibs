@@ -166,7 +166,7 @@ Deno.serve(async (req) => {
     // Send the notification via the app-email system so it goes out from the
     // verified sender domain (notify.smartdefibs.com). Notify the internal team
     // addresses.
-    const NOTIFY_RECIPIENTS = ['info@smartdefibs.com', 'maciek_koczur@yahoo.com']
+    const NOTIFY_RECIPIENTS = ['sales@smartdefibs.com', 'maciek_koczur@yahoo.com']
     let emailSent = false
     for (const recipient of NOTIFY_RECIPIENTS) {
       const { data: emailResult, error: emailError } = await admin.functions.invoke(

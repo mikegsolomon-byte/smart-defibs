@@ -36,7 +36,7 @@ export default function PrivacyPage() {
               <p className="mt-3">
                 Unit 18, The Cube FlexiSpace, Lanesborough Road, Co. Roscommon F42 DX61, Ireland.
                 <br />
-                Email: <a className="text-primary underline" href="mailto:info@smartdefibs.ie">info@smartdefibs.ie</a>
+                Email: <a className="text-primary underline" href="mailto:sales@smartdefibs.com">sales@smartdefibs.com</a>
                 {" "}· Phone: +353 89 499 2903
               </p>
             </section>
@@ -130,8 +130,8 @@ export default function PrivacyPage() {
               </ul>
               <p className="mt-3">
                 To exercise any of these rights, email{" "}
-                <a className="text-primary underline" href="mailto:info@smartdefibs.ie">
-                  info@smartdefibs.ie
+                <a className="text-primary underline" href="mailto:sales@smartdefibs.com">
+                  sales@smartdefibs.com
                 </a>
                 .
               </p>
@@ -160,8 +160,8 @@ export default function PrivacyPage() {
               <h2 className="font-heading font-bold text-xl md:text-2xl mb-3">9. Contact</h2>
               <p>
                 Questions about this policy or how we handle your data? Contact us at{" "}
-                <a className="text-primary underline" href="mailto:info@smartdefibs.ie">
-                  info@smartdefibs.ie
+                <a className="text-primary underline" href="mailto:sales@smartdefibs.com">
+                  sales@smartdefibs.com
                 </a>{" "}
                 or by post at the address above.
               </p>
