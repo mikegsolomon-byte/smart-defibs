@@ -4,7 +4,7 @@ import amoulI5Old from "@/assets/amoul-i5.jpg";
 import i5OpenWithBag2Asset from "@/assets/i5_open_with_bag_2.jpg.asset.json";
 import i5OpenPadsLeftAsset from "@/assets/i5_open_pads_left.jpg.asset.json";
 import chestErAsset from "@/assets/chest-er-left.png.asset.json";
-import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet.png.asset.json";
+import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet-left.png.asset.json";
 import indoorCabinet1Asset from "@/assets/indoor-cabinet-1.png.asset.json";
 import indoorCabinet2Asset from "@/assets/indoor-cabinet-2.png.asset.json";
 import batteryAsset from "@/assets/amoul-battery-left.png.asset.json";
