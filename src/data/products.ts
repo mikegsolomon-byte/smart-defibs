@@ -65,7 +65,7 @@ export type StaticProduct = {
 export const products: StaticProduct[] = [
   {
     handle: "amoul-i3-aed-4g",
-    title: "AED i3 4G",
+    title: "AED i3 4G IP55",
     subtitle: "Semi-Automatic External Defibrillator",
     brand: "Amoul",
     category: "Defibrillator",
@@ -99,7 +99,7 @@ export const products: StaticProduct[] = [
   },
   {
     handle: "amoul-i5-view-aed-4g",
-    title: "AED i5 4G View",
+    title: "AED i5 4G View IP55",
     subtitle: "Semi-Automatic AED with 7\" HD Colour Display",
     brand: "Amoul",
     category: "Defibrillator",
@@ -134,7 +134,7 @@ export const products: StaticProduct[] = [
   },
   {
     handle: "amoul-i5-view-cpr-aed-4g",
-    title: "AED i5 4G View CPR",
+    title: "AED i5 4G View CPR IP55",
     subtitle: "AED with Integrated Real-Time CPR Feedback",
     brand: "Amoul",
     category: "Defibrillator",
