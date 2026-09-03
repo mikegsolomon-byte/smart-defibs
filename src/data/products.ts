@@ -4,9 +4,9 @@ import amoulI5Old from "@/assets/amoul-i5.jpg";
 import i5OpenWithBag2Asset from "@/assets/i5_open_with_bag_2.jpg.asset.json";
 import i5OpenPadsLeftAsset from "@/assets/i5_open_pads_left.jpg.asset.json";
 import chestErAsset from "@/assets/chest-er-left.png.asset.json";
-import outdoorCabinetAsset from "@/assets/heated-outdoor-cabinet-left.png.asset.json";
-import indoorCabinet1Asset from "@/assets/indoor-cabinet-1.png.asset.json";
-import indoorCabinet2Asset from "@/assets/indoor-cabinet-2.png.asset.json";
+import outdoorCabinetAsset from "@/assets/outdoor-cabinet-yellow.jpg.asset.json";
+import indoorCabinet1Asset from "@/assets/indoor-cabinet-green.jpg.asset.json";
+
 import batteryAsset from "@/assets/amoul-battery-left.png.asset.json";
 import electrodePadsAsset from "@/assets/amoul-electrode-pads.png.asset.json";
 import cprResponseKitAsset from "@/assets/cpr-response-kit.png.asset.json";
@@ -27,7 +27,7 @@ const i3Gallery = [
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
 const indoorCabinet1 = indoorCabinet1Asset.url;
-const indoorCabinet2 = indoorCabinet2Asset.url;
+
 const battery = batteryAsset.url;
 const electrodePads = electrodePadsAsset.url;
 const cprResponseKit = cprResponseKitAsset.url;
@@ -75,7 +75,7 @@ export const products: StaticProduct[] = [
     priceNote: "incl. VAT · includes pads & 5-year battery",
     priceId: "aed_i3_4g_price",
     shortDescription:
-      "Connected AED with illuminated rescue diagrams, clear voice prompts and 4G remote monitoring. Adult & paediatric pads included.",
+      "Connected AED with Remote Monitoring \u2013 automatic self-tests, faults, battery status and expiry date reports. Illuminated rescue diagrams, voice prompts and universal adult/paediatric pads.",
     longDescription:
       "The Amoul i3 4G delivers clear, guided rescue support with illuminated diagrams and voice prompts, while 4G connectivity enables remote monitoring and automatic self-tests. Backed by an 8-year manufacturer warranty, a long-life 5-year battery and IP55 dust & water protection — ready for indoor and outdoor deployment across Ireland.",
     badges: ["IP55"],
@@ -109,7 +109,7 @@ export const products: StaticProduct[] = [
     priceNote: "incl. VAT · pads & 5-year battery included",
     priceId: "aed_i5_view_4g_price",
     shortDescription:
-      "Premium AED with a 7-inch HD colour display, real-time ECG and 4G remote monitoring for clear, confident rescues.",
+      "Connected AED with Remote Monitoring \u2013 automatic self-tests, faults, battery status and expiry date reports. 7\" colour display, voice prompts and universal adult/paediatric pads.",
     longDescription:
       "The Amoul i5 View 4G adds a 7-inch HD colour display and real-time ECG to clear voice prompts, giving responders full visual guidance during a rescue. 4G connectivity enables remote monitoring and automatic self-tests, while an 8-year warranty, 5-year battery and IP55 protection make it ideal for high-traffic public-access deployments.",
     badges: ["IP55", "7\" HD Display"],
@@ -144,7 +144,7 @@ export const products: StaticProduct[] = [
     priceNote: "incl. VAT · pads & 5-year battery included",
     priceId: "aed_i5_view_cpr_4g_price",
     shortDescription:
-      "Our most advanced AED — integrated real-time CPR feedback, 7-inch HD display, real-time ECG and 4G remote monitoring.",
+      "Connected AED with Remote Monitoring \u2013 automatic self-tests, faults, battery status and expiry date reports. Real-time CPR feedback, 7\" colour display, voice prompts and universal adult/paediatric pads.",
     longDescription:
       "The Amoul i5 View CPR 4G combines integrated real-time CPR feedback with a 7-inch HD colour display and real-time ECG, coaching responders to deliver high-quality compressions while guiding defibrillation. 4G connectivity enables remote monitoring and automatic self-tests, backed by an 8-year warranty, 5-year battery and IP55 protection.",
     badges: ["IP55", "7\" HD Display", "CPR Feedback", "Flagship"],
@@ -244,7 +244,7 @@ export const products: StaticProduct[] = [
     brand: "Smart Defibs",
     category: "Cabinet",
     image: indoorCabinet1,
-    galleryImages: [indoorCabinet1, indoorCabinet2],
+    galleryImages: [indoorCabinet1],
     priceFrom: "€40",
     priceNote: "incl. VAT · easy wall installation",
     priceId: "indoor_cabinet_price",
