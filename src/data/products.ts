@@ -244,7 +244,7 @@ export const products: StaticProduct[] = [
     brand: "Smart Defibs",
     category: "Cabinet",
     image: indoorCabinet1,
-    galleryImages: [indoorCabinet1, indoorCabinet2],
+    galleryImages: [indoorCabinet1],
     priceFrom: "€40",
     priceNote: "incl. VAT · easy wall installation",
     priceId: "indoor_cabinet_price",
