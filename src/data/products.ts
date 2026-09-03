@@ -27,7 +27,7 @@ const i3Gallery = [
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
 const indoorCabinet1 = indoorCabinet1Asset.url;
-const indoorCabinet2 = indoorCabinet2Asset.url;
+
 const battery = batteryAsset.url;
 const electrodePads = electrodePadsAsset.url;
 const cprResponseKit = cprResponseKitAsset.url;
