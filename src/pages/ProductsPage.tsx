@@ -93,7 +93,7 @@ export default function ProductsPage() {
 
                     <div className="flex flex-col flex-1 p-6 pb-0">
                       <div className="flex items-center gap-2 mb-3 flex-wrap">
-                        {p.badges.slice(0, 2).map((b) => (
+                        {p.badges.slice(0, 3).map((b) => (
                           <span key={b} className="text-[10px] font-semibold bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-wider">
                             {b}
                           </span>
