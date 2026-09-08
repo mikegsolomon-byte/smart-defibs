@@ -22,7 +22,6 @@ const i3Gallery = [
   amoulI3LeftAsset.url,
   i3ClosedWithBagAsset.url,
   i3InBagBackAsset.url,
-  amoulI3Asset.url,
 ];
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
@@ -34,12 +33,10 @@ const cprResponseKit = cprResponseKitAsset.url;
 const amoulI5 = i5OpenPadsLeftAsset.url;
 const i5Gallery = [
   i5OpenPadsLeftAsset.url,
-  i5OpenWithBag2Asset.url,
-  i5ClosedInBagAsset.url,
   i5OpenWithBagAsset.url,
+  i5ClosedInBagAsset.url,
   i5OpenNoBagAsset.url,
   i5InBagBackAsset.url,
-  amoulI5Old,
 ];
 
 
