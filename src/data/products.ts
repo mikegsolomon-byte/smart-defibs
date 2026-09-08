@@ -1,7 +1,4 @@
-import amoulI3Asset from "@/assets/amoul-i3.png.asset.json";
 import amoulI3LeftAsset from "@/assets/amoul-i3-left.png.asset.json";
-import amoulI5Old from "@/assets/amoul-i5.jpg";
-import i5OpenWithBag2Asset from "@/assets/i5_open_with_bag_2.jpg.asset.json";
 import i5OpenPadsLeftAsset from "@/assets/i5_open_pads_left.jpg.asset.json";
 import chestErAsset from "@/assets/chest-er-left.png.asset.json";
 import outdoorCabinetAsset from "@/assets/outdoor-cabinet-yellow.jpg.asset.json";
@@ -22,7 +19,6 @@ const i3Gallery = [
   amoulI3LeftAsset.url,
   i3ClosedWithBagAsset.url,
   i3InBagBackAsset.url,
-  amoulI3Asset.url,
 ];
 const chestEr = chestErAsset.url;
 const outdoorCabinet = outdoorCabinetAsset.url;
@@ -34,12 +30,10 @@ const cprResponseKit = cprResponseKitAsset.url;
 const amoulI5 = i5OpenPadsLeftAsset.url;
 const i5Gallery = [
   i5OpenPadsLeftAsset.url,
-  i5OpenWithBag2Asset.url,
-  i5ClosedInBagAsset.url,
   i5OpenWithBagAsset.url,
+  i5ClosedInBagAsset.url,
   i5OpenNoBagAsset.url,
   i5InBagBackAsset.url,
-  amoulI5Old,
 ];
 
 
