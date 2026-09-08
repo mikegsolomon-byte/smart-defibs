@@ -1,7 +1,4 @@
-import amoulI3Asset from "@/assets/amoul-i3.png.asset.json";
 import amoulI3LeftAsset from "@/assets/amoul-i3-left.png.asset.json";
-import amoulI5Old from "@/assets/amoul-i5.jpg";
-import i5OpenWithBag2Asset from "@/assets/i5_open_with_bag_2.jpg.asset.json";
 import i5OpenPadsLeftAsset from "@/assets/i5_open_pads_left.jpg.asset.json";
 import chestErAsset from "@/assets/chest-er-left.png.asset.json";
 import outdoorCabinetAsset from "@/assets/outdoor-cabinet-yellow.jpg.asset.json";
