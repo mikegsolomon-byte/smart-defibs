@@ -13,6 +13,13 @@ const BodySchema = z.object({
 // Countries we ship physical AED units to.
 const SHIPPING_COUNTRIES = ['IE', 'GB'] as const;
 
+// Seller-confirmed VAT: explicit inclusive rates avoid Stripe Automatic Tax's
+// incorrect live 0% result and retain the exact advertised totals.
+const VAT_RATE_IDS: Record<StripeEnv, string> = {
+  live: 'txr_1UN6aAHn0ZUQXKf50tYhhVsw',
+  sandbox: 'txr_1UN6aA8j8jt0xFf3ljGrBYwA',
+};
+
 async function resolveOrCreateCustomer(
   stripe: ReturnType<typeof createStripeClient>,
   email: string,
@@ -31,6 +38,11 @@ async function createCheckoutSession(options: {
   environment: StripeEnv;
 }) {
   const stripe = createStripeClient(options.environment);
+  const vatRateId = VAT_RATE_IDS[options.environment];
+  const vatRate = await stripe.taxRates.retrieve(vatRateId);
+  if (!vatRate.active || !vatRate.inclusive || vatRate.percentage !== 23) {
+    throw new Error('Checkout requires an active 23% inclusive VAT rate');
+  }
 
   const prices = await stripe.prices.list({ lookup_keys: [options.priceId] });
   if (!prices.data.length) throw new Error("Price not found");
@@ -61,7 +73,7 @@ async function createCheckoutSession(options: {
     const customerId = await resolveOrCreateCustomer(stripe, options.customerEmail);
 
     const session = await stripe.checkout.sessions.create({
-      line_items: [{ price: stripePrice.id, quantity: 1 }],
+      line_items: [{ price: stripePrice.id, quantity: 1, tax_rates: [vatRateId] }],
       mode: "subscription",
       ui_mode: "embedded_page",
       return_url: options.returnUrl,
@@ -69,21 +81,22 @@ async function createCheckoutSession(options: {
       customer_update: { address: "auto", name: "auto" },
       billing_address_collection: "required",
       phone_number_collection: { enabled: true },
-      automatic_tax: { enabled: true },
       metadata: { ...metadata, managed_payments: "false" },
-      subscription_data: { metadata: { ...metadata, customer_email: options.customerEmail } },
+      subscription_data: {
+        default_tax_rates: [vatRateId],
+        metadata: { ...metadata, customer_email: options.customerEmail },
+      },
     });
     return session.client_secret;
   }
 
   const session = await stripe.checkout.sessions.create({
-    line_items: [{ price: stripePrice.id, quantity: options.quantity }],
+    line_items: [{ price: stripePrice.id, quantity: options.quantity, tax_rates: [vatRateId] }],
     mode: "payment",
     ui_mode: "embedded_page",
     return_url: options.returnUrl,
     shipping_address_collection: { allowed_countries: SHIPPING_COUNTRIES as unknown as string[] },
     phone_number_collection: { enabled: true },
-    automatic_tax: { enabled: true },
     ...(options.customerEmail && { customer_email: options.customerEmail }),
     payment_intent_data: { description: product.name },
     metadata: { ...metadata, managed_payments: "false" },
