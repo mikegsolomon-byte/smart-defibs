@@ -66,7 +66,7 @@ export const products: StaticProduct[] = [
     image: amoulI3,
     galleryImages: i3Gallery,
     priceFrom: "€1,300",
-    priceNote: "incl. VAT · includes pads & 5-year battery",
+    priceNote: "incl. 23% VAT · includes pads & 5-year battery",
     priceId: "aed_i3_4g_price",
     shortDescription:
       "Connected AED with Remote Monitoring. Illuminated rescue diagrams. Voice prompts. Universal adult/paediatric pads.",
@@ -100,7 +100,7 @@ export const products: StaticProduct[] = [
     image: amoulI5,
     galleryImages: i5Gallery,
     priceFrom: "€1,400",
-    priceNote: "incl. VAT · pads & 5-year battery included",
+    priceNote: "incl. 23% VAT · pads & 5-year battery included",
     priceId: "aed_i5_view_4g_price",
     shortDescription:
       "Connected AED with Remote Monitoring. 7\" colour display. Voice prompts. Universal adult/paediatric pads.",
@@ -135,7 +135,7 @@ export const products: StaticProduct[] = [
     image: amoulI5,
     galleryImages: i5Gallery,
     priceFrom: "€1,650",
-    priceNote: "incl. VAT · pads & 5-year battery included",
+    priceNote: "incl. 23% VAT · pads & 5-year battery included",
     priceId: "aed_i5_view_cpr_4g_price",
     shortDescription:
       "Connected AED with Remote Monitoring. Real-time CPR feedback. 7\" colour display. Voice prompts. Universal adult/paediatric pads.",
@@ -171,7 +171,7 @@ export const products: StaticProduct[] = [
     category: "CPR Device",
     image: chestEr,
     priceFrom: "€350",
-    priceNote: "incl. VAT · for training & real emergencies",
+    priceNote: "incl. 23% VAT · for training & real emergencies",
     priceId: "chest_er_device_price",
     shortDescription:
       "Compact device delivering real-time compression rate and depth feedback to improve CPR quality in training and real emergencies.",
@@ -206,7 +206,7 @@ export const products: StaticProduct[] = [
     category: "Cabinet",
     image: outdoorCabinet,
     priceFrom: "€400",
-    priceNote: "incl. VAT · 230V mains powered",
+    priceNote: "incl. 23% VAT · 230V mains powered",
     priceId: "heated_outdoor_cabinet_price",
     shortDescription:
       "Heated, galvanised steel cabinet in high-vis ambulance yellow, with a digital temperature display and ILCOR AED signage, keeping your AED at the right temperature for 24/7 public access.",
@@ -240,7 +240,7 @@ export const products: StaticProduct[] = [
     image: indoorCabinet1,
     galleryImages: [indoorCabinet1],
     priceFrom: "€40",
-    priceNote: "incl. VAT · easy wall installation",
+    priceNote: "incl. 23% VAT · easy wall installation",
     priceId: "indoor_cabinet_price",
     shortDescription:
       "High-visibility indoor cabinet with audible alarm and clear viewing window, protecting your AED while keeping it quick to access.",
@@ -272,7 +272,7 @@ export const products: StaticProduct[] = [
     category: "Consumable",
     image: battery,
     priceFrom: "€160",
-    priceNote: "incl. VAT · model-dependent capacity",
+    priceNote: "incl. 23% VAT · model-dependent capacity",
     priceId: "amoul_aed_battery_price",
     shortDescription:
       "Genuine maintenance-free replacement battery with up to 5-year standby life and support for automatic self-testing.",
@@ -305,7 +305,7 @@ export const products: StaticProduct[] = [
     category: "Consumable",
     image: electrodePads,
     priceFrom: "€65",
-    priceNote: "incl. VAT · 3–5 year shelf life (model dependent)",
+    priceNote: "incl. 23% VAT · 3–5 year shelf life (model dependent)",
     priceId: "amoul_electrode_pads_price",
     shortDescription:
       "Genuine universal adult & paediatric electrode pads with clear placement diagrams and high-conductivity gel.",
@@ -337,7 +337,7 @@ export const products: StaticProduct[] = [
     category: "Accessory",
     image: cprResponseKit,
     priceFrom: "€5",
-    priceNote: "incl. VAT · single-use rescue essentials",
+    priceNote: "incl. 23% VAT · single-use rescue essentials",
     priceId: "aed_cpr_response_kit_price",
     shortDescription:
       "Compact kit with the essentials to support a rescue — shears, razor, face shield, gloves and more.",

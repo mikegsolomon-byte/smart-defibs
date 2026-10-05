@@ -56,6 +56,7 @@ export default function HeroSection() {
               Get a defibrillator for your <span className="relative inline-block"><span className="relative z-10">premises</span><span aria-hidden className="absolute left-0 right-0 bottom-1 h-3 bg-accent/70 -z-0 rounded-sm" /></span> — from €39 a month.
             </motion.h1>
 
+            <motion.p variants={fadeUp} className="text-sm text-muted-foreground mb-4">Includes 23% VAT.</motion.p>
             <motion.p variants={fadeUp} className="font-heading font-extrabold text-lg lg:text-2xl text-primary mb-4">
               Every AED ready. Every day. Every time.
             </motion.p>

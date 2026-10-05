@@ -37,7 +37,7 @@ const sectorData = {
       "PHECC CFR-level training course",
     ],
     packageHighlight: "Group order discounts for clubs and CFR schemes",
-    pricing: "1299",
+    pricing: "€1,299 incl. 23% VAT",
     steps: ["Contact us for group pricing", "We deliver", "CFR training & monitoring"],
     whyNeeded: {
       intro:
@@ -110,7 +110,7 @@ const sectorData = {
       "On-site staff training",
     ],
     packageHighlight: "Everything HIQA inspectors look for — in one bundle",
-    pricing: "1299",
+    pricing: "€1,299 incl. 23% VAT",
     steps: ["Request a sector quote", "We assess", "Ongoing training & monitoring"],
     whyNeeded: {
       intro:
@@ -147,7 +147,7 @@ const sectorData = {
       "On-site PHECC certified staff training",
     ],
     packageHighlight: "Grant-eligible — we help schools identify and apply for funding",
-    pricing: "From €1,295 incl. VAT — grant offset may be available",
+    pricing: "From €1,295 incl. 23% VAT — grant offset may be available",
     steps: ["Get a free quote", "We train your staff", "We monitor & maintain it"],
     whyNeeded: {
       intro:
@@ -202,7 +202,7 @@ const sectorData = {
       "Transparent, all-in pricing",
     ],
     packageHighlight: "Simple, reliable kit your staff can use under pressure",
-    pricing: "From €1,295 incl. VAT — staff training included",
+    pricing: "From €1,295 incl. 23% VAT — staff training included",
     steps: ["Request a gym quote", "We train your team", "Ongoing readiness monitoring"],
     whyNeeded: {
       intro:
