@@ -33,6 +33,7 @@ export function StripeEmbeddedCheckout({
 
   return (
     <div id="checkout">
+      <p className="mb-4 text-sm text-muted-foreground">Prices include 23% VAT for Irish purchases. VAT is included, not added at checkout.</p>
       <EmbeddedCheckoutProvider stripe={getStripe()} options={{ fetchClientSecret }}>
         <EmbeddedCheckout />
       </EmbeddedCheckoutProvider>

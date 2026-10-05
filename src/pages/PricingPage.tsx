@@ -145,6 +145,7 @@ export default function PricingPage() {
                     </div>
                   </div>
 
+                  <p className="text-xs text-muted-foreground">Monthly and yearly prices include 23% VAT.</p>
                   <p className="text-sm text-primary font-medium mt-2">
                     Defibrillator, cabinet & pads included in your plan — not a separate purchase.
                   </p>

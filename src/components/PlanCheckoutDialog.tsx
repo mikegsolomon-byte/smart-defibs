@@ -95,6 +95,7 @@ export function PlanCheckoutDialog({
                   </button>
                 ))}
               </div>
+              <p className="text-xs text-muted-foreground">Monthly and yearly prices include 23% VAT.</p>
             </div>
 
             <div className="space-y-2">

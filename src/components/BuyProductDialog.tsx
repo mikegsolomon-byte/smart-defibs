@@ -72,7 +72,7 @@ export function BuyProductDialog({ priceId, productTitle }: BuyProductDialogProp
               </div>
             </div>
             <p className="text-xs text-muted-foreground">
-              You'll enter delivery and payment details on the next step. Prices include VAT.
+              You'll enter delivery and payment details on the next step. Prices include 23% VAT.
             </p>
             <Button size="lg" className="w-full" onClick={() => setCheckout(true)}>
               Continue to payment
