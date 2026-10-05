@@ -35,6 +35,9 @@ async function createCheckoutSession(options: {
   const prices = await stripe.prices.list({ lookup_keys: [options.priceId] });
   if (!prices.data.length) throw new Error("Price not found");
   const stripePrice = prices.data[0];
+  if (stripePrice.tax_behavior !== "inclusive") {
+    throw new Error("Checkout price must include VAT; check the Stripe catalogue tax settings");
+  }
   const isRecurring = stripePrice.type === "recurring";
 
   const productId = typeof stripePrice.product === "string"
