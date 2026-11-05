@@ -170,7 +170,7 @@ export const products: StaticProduct[] = [
     brand: "Progetti Medical",
     category: "CPR Device",
     image: chestEr,
-    priceFrom: "€350",
+    priceFrom: "€250",
     priceNote: "incl. 23% VAT · for training & real emergencies",
     priceId: "chest_er_device_price",
     shortDescription:
