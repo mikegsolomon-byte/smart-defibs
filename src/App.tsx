@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 
 import Index from "./pages/Index.tsx";
+import AedSystemsPage from "./pages/AedSystemsPage.tsx";
 import SectorsPage from "./pages/SectorsPage.tsx";
 import QuotePage from "./pages/QuotePage.tsx";
 import ProductsPage from "./pages/ProductsPage.tsx";
@@ -48,6 +49,7 @@ function AnimatedRoutes() {
 
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
+        <Route path="/aed-systems" element={<PageTransition><AedSystemsPage /></PageTransition>} />
         <Route path="/sectors" element={<PageTransition><SectorsPage /></PageTransition>} />
         <Route path="/quote" element={<PageTransition><QuotePage /></PageTransition>} />
         <Route path="/products" element={<PageTransition><ProductsPage /></PageTransition>} />
