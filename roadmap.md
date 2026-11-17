@@ -6,4 +6,4 @@
 
 # AED Systems preview
 - [x] Create a co-branded showcase using existing product photos and product-page links.
-- [ ] Verify desktop/mobile layout and product navigation, then show the preview.
+- [x] Verify desktop/mobile layout and product navigation, then show the preview.
