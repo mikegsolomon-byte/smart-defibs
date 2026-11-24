@@ -7,6 +7,7 @@ interface StripeEmbeddedCheckoutProps {
   quantity?: number;
   customerEmail?: string;
   returnUrl?: string;
+  subscriptionTotalLabel?: string;
 }
 
 export function StripeEmbeddedCheckout({
@@ -14,6 +15,7 @@ export function StripeEmbeddedCheckout({
   quantity,
   customerEmail,
   returnUrl,
+  subscriptionTotalLabel,
 }: StripeEmbeddedCheckoutProps) {
   const fetchClientSecret = async (): Promise<string> => {
     const { data, error } = await supabase.functions.invoke("create-checkout", {
@@ -33,7 +35,9 @@ export function StripeEmbeddedCheckout({
 
   return (
     <div id="checkout">
-      <p className="mb-4 text-sm text-muted-foreground">Prices include 23% VAT for Irish purchases. VAT is included, not added at checkout.</p>
+      <p className="mb-4 text-sm text-muted-foreground">{subscriptionTotalLabel
+        ? `Advertised subscription prices exclude 23% VAT. Total payable including VAT: ${subscriptionTotalLabel}.`
+        : "Prices include 23% VAT for Irish purchases. VAT is included, not added at checkout."}</p>
       <EmbeddedCheckoutProvider stripe={getStripe()} options={{ fetchClientSecret }}>
         <EmbeddedCheckout />
       </EmbeddedCheckoutProvider>

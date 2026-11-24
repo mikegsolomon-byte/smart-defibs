@@ -8,12 +8,15 @@ import { PlanCheckoutDialog } from "@/components/PlanCheckoutDialog";
 import { Link } from "react-router-dom";
 import { Check, Minus } from "lucide-react";
 import { motion } from "framer-motion";
+import { subscriptionPricing, formatSubscriptionNet, formatSubscriptionGross } from "@/lib/subscriptionPricing";
 
 const plans = [
   {
     name: "Indoor Defibrillator Package",
-    monthly: "€39",
-    yearly: "€429",
+    monthly: formatSubscriptionNet(subscriptionPricing.indoor.monthlyGrossCents),
+    yearly: formatSubscriptionNet(subscriptionPricing.indoor.yearlyGrossCents),
+    monthlyTotal: formatSubscriptionGross(subscriptionPricing.indoor.monthlyGrossCents),
+    yearlyTotal: formatSubscriptionGross(subscriptionPricing.indoor.yearlyGrossCents),
     monthlyPriceId: "indoor_package_monthly",
     yearlyPriceId: "indoor_package_yearly",
     desc: "Your defibrillator, indoor cabinet, pads and consumables — fully supplied and monitored, ready to use in sheltered indoor locations.",
@@ -22,8 +25,10 @@ const plans = [
   },
   {
     name: "Outdoor Defibrillator Package",
-    monthly: "€49",
-    yearly: "€539",
+    monthly: formatSubscriptionNet(subscriptionPricing.outdoor.monthlyGrossCents),
+    yearly: formatSubscriptionNet(subscriptionPricing.outdoor.yearlyGrossCents),
+    monthlyTotal: formatSubscriptionGross(subscriptionPricing.outdoor.monthlyGrossCents),
+    yearlyTotal: formatSubscriptionGross(subscriptionPricing.outdoor.yearlyGrossCents),
     monthlyPriceId: "outdoor_package_monthly",
     yearlyPriceId: "outdoor_package_yearly",
     desc: "Your defibrillator, plus a heated, weatherproof outdoor cabinet with climate monitoring — built for exposed, all-weather locations.",
@@ -91,7 +96,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SEO
-        title="Defibrillator Packages from €39/Month | Smart Defibs"
+        title={`Defibrillator Plans from ${formatSubscriptionNet(subscriptionPricing.indoor.monthlyGrossCents)}/Month excl. VAT | Smart Defibs`}
         description="Every plan includes your defibrillator, cabinet, pads and full remote monitoring — one easy monthly payment, no upfront cost, and nothing for you to manage."
         path="/pricing"
       />
@@ -145,7 +150,7 @@ export default function PricingPage() {
                     </div>
                   </div>
 
-                  <p className="text-xs text-muted-foreground">Monthly and yearly prices include 23% VAT.</p>
+                  <p className="text-xs text-muted-foreground">Excludes 23% VAT. Total payable: {plan.monthlyTotal}/month or {plan.yearlyTotal}/year including VAT.</p>
                   <p className="text-sm text-primary font-medium mt-2">
                     Defibrillator, cabinet & pads included in your plan — not a separate purchase.
                   </p>
@@ -157,6 +162,8 @@ export default function PricingPage() {
                       yearlyPriceId={plan.yearlyPriceId}
                       monthlyLabel={`${plan.monthly} / month`}
                       yearlyLabel={`${plan.yearly} / year`}
+                      monthlyTotalLabel={`${plan.monthlyTotal} / month`}
+                      yearlyTotalLabel={`${plan.yearlyTotal} / year`}
                       triggerClassName={`w-full ${plan.highlight ? "bg-accent text-accent-foreground hover:bg-accent/90 font-bold" : "bg-primary text-primary-foreground hover:bg-primary/90"}`}
                     />
                     <Button asChild variant="outline" size="lg" className="w-full border-accent/40 hover:bg-accent/10 hover:border-accent">

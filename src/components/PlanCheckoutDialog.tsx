@@ -17,6 +17,8 @@ interface PlanCheckoutDialogProps {
   yearlyPriceId: string;
   monthlyLabel: string;
   yearlyLabel: string;
+  monthlyTotalLabel: string;
+  yearlyTotalLabel: string;
   triggerClassName?: string;
   triggerLabel?: string;
 }
@@ -27,6 +29,8 @@ export function PlanCheckoutDialog({
   yearlyPriceId,
   monthlyLabel,
   yearlyLabel,
+  monthlyTotalLabel,
+  yearlyTotalLabel,
   triggerClassName,
   triggerLabel = "Get Started",
 }: PlanCheckoutDialogProps) {
@@ -95,7 +99,7 @@ export function PlanCheckoutDialog({
                   </button>
                 ))}
               </div>
-              <p className="text-xs text-muted-foreground">Monthly and yearly prices include 23% VAT.</p>
+              <p className="text-xs text-muted-foreground">Prices exclude 23% VAT. Total payable including VAT: {billing === "monthly" ? monthlyTotalLabel : yearlyTotalLabel}.</p>
             </div>
 
             <div className="space-y-2">
@@ -109,7 +113,7 @@ export function PlanCheckoutDialog({
                 className="focus-ring"
               />
               <p className="text-xs text-muted-foreground">
-                We'll use this for your subscription receipts and to arrange installation.
+                We'll use this for your subscription receipts.
               </p>
             </div>
 
@@ -123,7 +127,7 @@ export function PlanCheckoutDialog({
             </Button>
           </div>
         ) : (
-          <StripeEmbeddedCheckout priceId={priceId} customerEmail={email} />
+          <StripeEmbeddedCheckout priceId={priceId} customerEmail={email} subscriptionTotalLabel={billing === "monthly" ? monthlyTotalLabel : yearlyTotalLabel} />
         )}
       </DialogContent>
     </Dialog>

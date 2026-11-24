@@ -192,7 +192,6 @@ export default function QuotePage() {
                 <ol className="space-y-3 text-sm text-muted-foreground list-decimal list-inside">
                   <li>We review your enquiry</li>
                   <li>We get back with guidance or a tailored quote</li>
-                  <li>We schedule installation & training if you go ahead</li>
                   <li>Your AED goes live — we monitor it</li>
                 </ol>
               </div>
