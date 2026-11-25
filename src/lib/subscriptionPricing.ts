@@ -1,7 +1,7 @@
-// Keep checkout totals as the source of truth; only the advertised net amount changes.
+// Gross (VAT-inclusive) cents match the Stripe checkout amounts; net display is derived.
 export const subscriptionPricing = {
-  indoor: { monthlyGrossCents: 3900, yearlyGrossCents: 42900 },
-  outdoor: { monthlyGrossCents: 4900, yearlyGrossCents: 53900 },
+  indoor: { monthlyGrossCents: 4797, yearlyGrossCents: 52767 },
+  outdoor: { monthlyGrossCents: 6027, yearlyGrossCents: 66297 },
 } as const;
 
 export function subscriptionNetCents(grossCents: number): number {

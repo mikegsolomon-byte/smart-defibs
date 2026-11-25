@@ -13,7 +13,7 @@ const Index = () => (
   <div className="min-h-screen flex flex-col">
     <SEO
       title={`Defibrillators from ${formatSubscriptionNet(subscriptionPricing.indoor.monthlyGrossCents)}/Month excl. VAT | Smart Defibs Ireland`}
-      description={`Get a defibrillator from ${formatSubscriptionNet(subscriptionPricing.indoor.monthlyGrossCents)}/month excluding 23% VAT (€39 including VAT), with cabinet, pads and remote monitoring included. Smart Defibs Ireland.`}
+      description={`Get a defibrillator from ${formatSubscriptionNet(subscriptionPricing.indoor.monthlyGrossCents)}/month excluding 23% VAT (€47.97 including VAT), with cabinet, pads and remote monitoring included. Smart Defibs Ireland.`}
       path="/"
     />
     <SiteHeader />
